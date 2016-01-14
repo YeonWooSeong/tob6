@@ -1,0 +1,15 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
+<c:set var="context" value="<%=request.getContextPath()%>"></c:set>
+<c:set var="normal" value="${context}/resources/"></c:set>
+<c:set var="js" value="${context}/resources/js"></c:set>
+<c:set var="css" value="${context}/resources/css"></c:set>
+<c:set var="img" value="${context}/resources/images"></c:set>
+<c:set var="startjs" value="${context}/resources/startjs"></c:set>
+<c:set var="startcss" value="${context}/resources/startcss"></c:set>
+<c:set var="startimages" value="${context}/resources/startimages"></c:set>
+<c:set var="fonts" value="${context}/resources/fonts"></c:set>
+

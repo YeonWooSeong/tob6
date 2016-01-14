@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="com.tob.mapper.Option2Mapper">
+ 
+ <insert id="registration" parameterType="com.tob.option2.Option2VO">
+ INSERT INTO OPTION2
+ (OPTION2_ID,OPTION2_NAME)
+ VALUES
+ (#{option2Id},#{option2Name})
+ 
+ </insert>
+
+  
+ <delete id="delete" parameterType="string">
+ DELETE FROM OPTION2 WHERE OPTION2_ID = #{option2Id}
+ </delete>
+ 
+ 
+ 
+ </mapper>
+ 

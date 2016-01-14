@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tob.mapper.CartMapper">
+	<insert id="put" parameterType="com.tob.cart.CartVO">
+		INSERT INTO CART
+			(CART_NUM, CART_TODAY, BOOK_ID, USERID, COUNT) VALUES
+			(#{cartNum},#{cartToday},#{bookId},#{userid},'1')
+	</insert>
+	<select id="getList" resultType="com.tob.cart.BookCartVO" parameterType="com.tob.cart.TodayCartVO">
+		SELECT
+			b.BOOK_ID AS bookId,
+			b.BOOK_NAME AS bookName,
+			b.PRICE AS bookPrice,
+			c.COUNT AS count
+		FROM BOOK b, CART c
+		WHERE c.USERID = #{userid} AND
+		b.BOOK_ID = c.BOOK_ID AND
+		c.CART_TODAY = #{today}
+	</select>
+ 	<update id="changeCount" parameterType="com.tob.cart.BookCartVO">
+ 		UPDATE CART SET COUNT = ${count} WHERE
+ 		BOOK_ID = ${bookId} AND USERID = ${userid}
+ 	</update>
+ 	<select id="getBooksInCart" resultType="string" parameterType="string">
+ 		SELECT BOOK_ID FROM CART WHERE USERID = #{userid};
+ 	</select>
+ 	<select id="getUseridList" resultType="string">
+ 		SELECT USERID FROM CART;
+ 	</select>
+ 	<delete id="remove">
+ 		DELETE FROM CART WHERE BOOK_ID = #{bookId}
+ 	</delete>
+ 	<delete id="removeUserid">
+ 		DELETE FROM CART WHERE USERID = #{userid}
+ 	</delete>
+</mapper>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="com.tob.mapper.BookMapper">
+ 
+<insert id="registration" parameterType="com.tob.book.BookVO">
+INSERT INTO BOOK
+(BOOK_ID,BOOK_NAME,PRICE,WRITER,GRADE,STOCK_SEQ,OPTION_ID,GENRE_ID)
+VALUES
+(#{bookId},#{bookName},#{bookPrice},#{writer},#{grade},#{stockSeq},#{optionBook},#{genreId})
+
+</insert>
+
+
+ 
+<delete id="delete" parameterType="string">
+DELETE FROM BOOK WHERE BOOK_ID = #{bookId}
+</delete>
+
+
+<select id="searchByBook" parameterType="string" resultType="com.tob.book.BookVO">
+SELECT
+
+BOOK_ID AS bookId,
+BOOK_NAME AS bookName,
+PRICE AS bookPrice,
+WRITER AS writer,
+GRADE AS grade,
+STOCK_SEQ AS stockSeq,
+OPTION_ID AS optionBook,
+GENRE_ID AS genreId
+
+
+FROM BOOK WHERE BOOK_ID = #{bookId}
+ 
+</select>
+
+<update id="update" parameterType="com.tob.book.BookVO">
+UPDATE BOOK SET
+GRADE = #{grade}
+WHERE BOOK_ID = #{bookId}
+</update>
+
+<select id="selectAll" resultType="com.tob.book.BookVO"  parameterType="com.tob.global.Command">
+SELECT
+BOOK_ID AS bookId,
+BOOK_NAME AS bookName,
+PRICE AS bookPrice,
+WRITER AS writer,
+GRADE AS grade,
+STOCK_SEQ AS stockSeq,
+OPTION_ID AS optionBook,
+GENRE_ID AS genreId
+FROM BOOK WHERE GENRE_ID = #{keyword}
+LIMIT #{start}, 3
+</select>
+
+ <select id="count" resultType="int">
+ 	SELECT COUNT(*) AS count FROM BOOK
+ </select>
+
+
+<insert id="insert" parameterType="com.tob.book.BookVO">
+INSERT INTO BOOK (BOOKID)VALUES(#{bookId})
+</insert>
+
+<select id="searchByBookName" resultType="com.tob.book.BookVO"  parameterType="com.tob.global.Command">
+SELECT
+BOOK_ID AS bookId,
+BOOK_NAME AS bookName,
+PRICE AS bookPrice,
+WRITER AS writer,
+GRADE AS grade,
+STOCK_SEQ AS stockSeq,
+OPTION_ID AS optionBook,
+GENRE_ID AS genreId
+FROM BOOK WHERE ${column}
+ LIKE CONCAT ('%',#{keyword},'%')
+ORDER BY BOOK_ID DESC
+LIMIT #{start}, 3
+
+   
+</select>
+
+ </mapper>
