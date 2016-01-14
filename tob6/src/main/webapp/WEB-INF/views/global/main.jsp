@@ -180,35 +180,26 @@
 			<div class="row no-margin">
 				<div class="col-md-7 no-padding col-md-offset-5 pricings text-center">
 					<div class="pricing">
-						<div class="box-main active"><img alt="" src="${img}/weekday1.jpg" style="height: 250px">
-							<h4 class="white regular light">18,000원 </h4>
-							<a href="#" data-toggle="modal" data-target="#modal1" class="btn btn-white-fill">Sign Up Now</a>
-							<i class="info-icon icon_question"></i>
+						<div class="box-main active">
+						<label id="you"><img alt="참 좋은 당신을 만났습니다." src="${img}/weekday1.jpg" style="width: 141px; height: 203px;">
+						</label>
 						</div>
 						<div class="box-second active">
-							<ul class="white-list text-left">
-								<li>One Personal Trainer</li>
-								<li>Big gym space for training</li>
-								<li>Free tools &amp; props</li>
-								<li>Free locker</li>
-								<li>Free before / after shower</li>
-							</ul>
+							<label id="happy"><img src="${img}/weekday2.jpg"
+						alt="나는 이제 좀 행복해져야겠다." style="width: 141px; height: 203px;"></label>
 						</div>
 					</div>
 					<div class="pricing">
-						<div class="box-main" data-img="${normal}/img2/pricing2.jpg">
-							<h4 class="white">Cardio Training</h4>
-							<h4 class="white regular light">$100.00 <span class="small-font">/ year</span></h4>
-							<a href="#" data-toggle="modal" data-target="#modal1" class="btn btn-white-fill">Sign Up Now</a>
-							<i class="info-icon icon_question"></i>
+						<div class="box-main">
+							<label id="story"><img src="${img}/recome1.jpg"
+						alt="내 스물아홉 이야기" style="width: 141px; height: 203px;"></label>
+							
 						</div>
 						<div class="box-second">
 							<ul class="white-list text-left">
-								<li>One Personal Trainer</li>
-								<li>Big gym space for training</li>
-								<li>Free tools &amp; props</li>
-								<li>Free locker</li>
-								<li>Free before / after shower</li>
+								<li>이 주의 책 추천은</li>
+								<li>출판사가 추천하는 </li>
+								<li>한 주간의 책입니다.</li>
 							</ul>
 						</div>
 					</div>
@@ -216,8 +207,6 @@
 			</div>
 		</div>
 	</section>
-	
-	
 	
 	
 	<section id="event_section" class="section section-padded blue-bg">
@@ -227,138 +216,160 @@
 				<div class="col-md-8 col-md-offset-2">
 					<div class="owl-twitter owl-carousel">
 						<div class="item text-center">
-							<i class="icon fa fa-twitter"></i>
-							<label id="event_tag"><h1 class="white light">EVENT 댓글달기 로직 확인</h1></label>
+							<i class="icon fa fa-twitter"></i><br />
+							<label id="event_tag">
+							<h1 class="white light">EVENT 댓글로직 확인</h1>
+							</label>
 						</div>
 						<div class="item text-center">
-							<i class="icon fa fa-twitter"></i>
-							<h4 class="white light">To enjoy the glow of good health, you must exercise.</h4>
-							<h4 class="light-white light">#health #training #exercise</h4>
+							<i class="icon fa fa-twitter"></i><br />
+							<img src="${img}/E003.jpg" alt="소프트 스킬 리뷰어 이벤트">
+								<div class="caption">
+									<h4 class="white light">소프트 스킬 리뷰어 이벤트</h4>
+									<p class="white light">2016/01/01~2016/01/31</p>
+									<label id="soft" class="btn btn-primary">더보기</label>
+						</div>
 						</div>
 						<div class="item text-center">
-							<i class="icon fa fa-twitter"></i>
-							<h4 class="white light">To enjoy the glow of good health, you must exercise.</h4>
-							<h4 class="light-white light">#health #training #exercise</h4>
+							<i class="icon fa fa-twitter"></i><br />
+							<h4 class="white light">계속해서 개발중이오니 불편하시더라도 기다려주세요. Thank you!</h4></h4>
+							<h4 class="light-white light">Now Loading....</h4>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
+	
+	
 	<section id="event_submain"></section>
 	<section id="mypage_section"></section>
 	<section id="cart_section"></section>
 	<section id="join_section"></section>
 	<section id="pur_section"></section>
-	
-	<section id="team_section">
-		<div class="container">
-			<div class="row title text-center">
-			<label>	<img src="${img}/team.png" alt="" /></label>
+
+<section id="team_section">
+	<div class="container" style="padding-top: 20px; padding-bottom: 20px;">
+		<div class="row title text-center">
+			<label> <img src="${img}/team.png" alt="" /></label>
 			<div class="row" style="margin-top: 10px;">
 				<div class="col-sm-4">
 					<div class="team-member">
-						<label><img src="#" class="img-responsive img-circle" alt=""></label>
-						<h4 style="color: white;">Hwang YoungJu</h4>
-						<p class="text-muted" style="color: white;">Team Leader</p>
-						<ul class="list-inline social-buttons">
-							<li>
-							<label><img
-									src="${startimages}/icon/icon-twitter.png" alt="" /></label></li>
-							<li><label><img
-									src="${startimages}/icon/facebook-icon.png" alt="" /></label></li>
-							<li><label><img
-									src="${startimages}/icon/linkedin.png" alt="" /></label></li>
-						</ul>
+						<div class="team text-center">
+							<div class="cover"
+								style="background:url('${normal}/img2/team/team-cover1.jpg'); background-size:cover;">
+								<div class="overlay text-center">
+									<h3 class="white">Hwang YoungJu</h3>
+									<h5 class="light light-white">Team Leader</h5>
+								</div>
+							</div>
+							<img src="${normal}/img2/team/team3.jpg" alt="Team Image"
+								class="avatar">
+							<div class="title">
+								<h4>Hwang YoungJu</h4>
+								<h5 class="muted regular">Team Leader</h5>
+							</div>
+						</div>
 					</div>
 				</div>
 				<div class="col-sm-4">
 					<div class="team-member">
-						<label><img src="#" class="img-responsive img-circle" alt=""></label>
-						<h4 style="color: white;">Kim Sumin</h4>
-						<p class="text-muted">준비중</p>
-						<ul class="list-inline social-buttons">
-							<li><label><img
-									src="${startimages}/icon/icon-twitter.png" alt="" /></label></li>
-							<li><label><img
-									src="${startimages}/icon/facebook-icon.png" alt="" /></label></li>
-							<li><label><img
-									src="${startimages}/icon/linkedin.png" alt="" /></label></li>
-						</ul>
+						<div class="team text-center">
+							<div class="cover"
+								style="background:url('${normal}/img2/team/team-cover1.jpg'); background-size:cover;">
+								<div class="overlay text-center">
+									<h3 class="white">"Admin"</h3>
+									<h5 class="light light-white">JAVA, Ajax, Spring et...</h5>
+								</div>
+							</div>
+							<img src="${normal}/img2/team/team3.jpg" alt="Team Image"
+								class="avatar">
+							<div class="title">
+								<h4>Kim Sumin</h4>
+								<h5 class="muted regular">Admin</h5>
+							</div>
+						</div>
 					</div>
 				</div>
-				<div class="col-sm-4">
+				<div class="col-md-4">
+					<div class="team text-center">
+						<div class="cover"
+							style="background:url('${normal}/img2/team/team-cover3.jpg'); background-size:cover;">
+							<div class="overlay text-center">
+								<h3 class="white">BOOK and Android</h3>
+								<h5 class="light light-white">JAVA,Android Studio,Spring et...</h5>
+							</div>
+						</div>
+						<img src="${normal}/img2/team/team2.jpg" alt="Team Image"
+							class="avatar">
+						<div class="title">
+							<h4>Seong YonWoo</h4>
+							<h5 class="muted regular">BOOK AND ANDROID</h5>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="team text-center">
+						<div class="cover" style="background:url('${normal}/img2/team/team-cover2.jpg'); background-size:cover;">
+							<div class="overlay text-center">
+								<h3 class="white">EVNET</h3>
+								<h5 class="light light-white">JAVA, Ajax, Spring et...</h5>
+							</div>
+						</div>
+						<img src="${normal}/img2/team/team1.jpg" alt="Team Image" class="avatar">
+						<div class="title">
+							<h4>Lee JeongMin</h4>
+							<h5 class="muted regular">EVNET</h5>
+						</div>
+					</div>
+				</div>
+			<div class="col-md-4">
+					<div class="team text-center">
+						<div class="cover" style="background:url('${normal}/img2/team/team-cover2.jpg'); background-size:cover;">
+							<div class="overlay text-center">
+								<h3 class="white">Main UI</h3>
+								<h5 class="light light-white">JAVA, Ajax, Spring et...</h5>
+							</div>
+						</div>
+						<img src="${normal}/img2/team/team1.jpg" alt="Team Image" class="avatar">
+						<div class="title">
+							<h4>Lee HyeSuk</h4>
+							<h5 class="muted regular">Main UI</h5>
+						</div>
+					</div>
+				</div>
+			<div class="col-sm-4">
 					<div class="team-member">
-						<label><img src="#" class="img-responsive img-circle" alt=""></label>
-						<h4 style="color: white;">Seong YonWoo</h4>
-						<p class="text-muted">준비중</p>
-						<ul class="list-inline social-buttons">
-							<li><label><img
-									src="${startimages}/icon/icon-twitter.png" alt="" /></label></li>
-							<li><label><img
-									src="${startimages}/icon/facebook-icon.png" alt="" /></label></li>
-							<li><label><img
-									src="${startimages}/icon/linkedin.png" alt="" /></label></li>
-						</ul>
+						<div class="team text-center">
+							<div class="cover"
+								style="background:url('${normal}/img2/team/team-cover1.jpg'); background-size:cover;">
+								<div class="overlay text-center">
+									<h3 class="white">"MEMBER"</h3>
+									<h5 class="light light-white">JAVA, Ajax, Spring et...</h5>
+								</div>
+							</div>
+							<img src="${normal}/img2/team/team3.jpg" alt="Team Image"
+								class="avatar">
+							<div class="title">
+								<h4>Hong HyeongDong</h4>
+								<h5 class="muted regular">MEMBER</h5>
+							</div>
+						</div>
 					</div>
 				</div>
-				<div class="col-sm-4">
-					<div class="team-member">
-						<label><img src="#" class="img-responsive img-circle" alt=""></label>
-						<h4 style="color: white;">Lee JeongMin</h4>
-						<p class="text-muted">준비중</p>
-						<ul class="list-inline social-buttons">
-							<li><label><img
-									src="${startimages}/icon/icon-twitter.png" alt="" /></label></li>
-							<li><label><img
-									src="${startimages}/icon/facebook-icon.png" alt="" /></label></li>
-							<li><label><img
-									src="${startimages}/icon/linkedin.png" alt="" /></label></li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-sm-4">
-					<div class="team-member">
-						<label><img src="#" class="img-responsive img-circle" alt=""></label>
-						<h4 style="color: white;">Lee HyeSuk</h4>
-						<p class="text-muted">준비중</p>
-						<ul class="list-inline social-buttons">
-							<li><label><img
-									src="${startimages}/icon/icon-twitter.png" alt="" /></label></li>
-							<li><label><img
-									src="${startimages}/icon/facebook-icon.png" alt="" /></label></li>
-							<li><label><img
-									src="${startimages}/icon/linkedin.png" alt="" /></label></li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-sm-4">
-					<div class="team-member">
-						<label><img src="#" class="img-responsive img-circle" alt=""></label>
-						<h4 style="color: white;">Hong HyeongDong</h4>
-						<p class="text-muted">준비중</p>
-						<ul class="list-inline social-buttons">
-							<li><label><img
-									src="${startimages}/icon/icon-twitter.png" alt="" /></label></li>
-							<li><label><img
-									src="${startimages}/icon/facebook-icon.png" alt="" /></label></li>
-							<li><label><img
-									src="${startimages}/icon/linkedin.png" alt="" /></label></li>
-						</ul>
-					</div>
-				</div>
+
+
 			</div>
-			
+		</div>
 	</div>
-			</div>
-	</section>
-	
-	
-	
-	
-	
-	
-	<div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+</section>
+
+
+
+
+
+
+<div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content modal-popup">
 				<a href="#" class="close-link"><i class="icon_close_alt2"></i></a>
