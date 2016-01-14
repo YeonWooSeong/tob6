@@ -84,8 +84,10 @@
 						<div class="icon-holder">
 							<img src="${normal}/img2/icons/heart-blue.png" alt="" class="icon">
 						</div>
-						<h4 class="heading">Cardio Training</h4>
-						<p class="description">A elementum ligula lacus ac quam ultrices a scelerisque praesent vel suspendisse scelerisque a aenean hac montes.</p>
+						<h4 class="heading">멈추면 보여요</h4>
+						<p class="description">이세상 최고의 명품옷은 바로 자신감을 입는 것 입니다.
+						- 멈추면, 비로소 보이는 것들 中
+						 </p>
 					</div>
 				</div>
 				<div class="col-md-4">
@@ -93,8 +95,12 @@
 						<div class="icon-holder">
 							<img src="${normal}/img2/icons/guru-blue.png" alt="" class="icon">
 						</div>
-						<h4 class="heading">Yoga Pilates</h4>
-						<p class="description">A elementum ligula lacus ac quam ultrices a scelerisque praesent vel suspendisse scelerisque a aenean hac montes.</p>
+						<h4 class="heading">If I'm moon</h4>
+						<p class="description">​내가 만약 달이 된다면
+							지금 그 사람의 창가에도
+							아마 몇 줄기는 내려지겠지<br>
+							-김소월 '첫사랑'-
+						</p>
 					</div>
 				</div>
 				<div class="col-md-4">
@@ -403,15 +409,15 @@
 					<a href="#" class="btn btn-blue ripple trial-button">Start Free Trial</a>
 				</div>
 				<div class="col-sm-6 text-center-mobile">
-					<h3 class="white">Opening Hours <span class="open-blink"></span></h3>
+					<h3 class="white">Call please<span class="open-blink"></span></h3>
 					<div class="row opening-hours">
 						<div class="col-sm-6 text-center-mobile">
 							<h5 class="light-white light">Mon - Fri</h5>
-							<h3 class="regular white">9:00 - 22:00</h3>
+							<h3 class="regular white">9:00 - 21:00</h3>
 						</div>
 						<div class="col-sm-6 text-center-mobile">
 							<h5 class="light-white light">Sat - Sun</h5>
-							<h3 class="regular white">10:00 - 18:00</h3>
+							<h3 class="regular white">10:00 - 21:00</h3>
 						</div>
 					</div>
 				</div>
