@@ -76,7 +76,7 @@
 	<section id="book_section" class="section section-padded">
 		<div class="container">
 			<div class="row text-center title">
-				<label id="book_more"><h1 class="light muted">BOOK 메인으로 들어가기!!!</h1></label>
+				<label id="book_more"><img src="${img}/book.png" alt="" /></label>
 			</div>
 			<div class="row services">
 				<div class="col-md-4">
@@ -115,7 +115,7 @@
 	<section id="best_section" class="section gray-bg">
 		<div class="container">
 			<div class="row title text-center">
-				<label id="best_more"><h1 class="light muted">BEST-SECTION</h1></label>
+				<label id="best_more"><img src="${img}/bstseller.png" alt="" /></label>
 			</div>
 			<div class="row">
 				<div class="col-md-4">
@@ -175,14 +175,13 @@
 	<section id="week_section" class="section">
 		<div class="container">
 			<div class="row title text-center">
-				<label id="week_more"><h1 class="light white">WEEK-SECTION</h1></label>
+				<label id="week_more"><img src="${img}/week.png" alt="" /></label>
 			</div>
 			<div class="row no-margin">
 				<div class="col-md-7 no-padding col-md-offset-5 pricings text-center">
 					<div class="pricing">
-						<div class="box-main active" data-img="${normal}/img2/pricing1.jpg">
-							<h4 class="white">Yoga Pilates</h4>
-							<h4 class="white regular light">$850.00 <span class="small-font">/ year</span></h4>
+						<div class="box-main active"><img alt="" src="${img}/weekday1.jpg" style="height: 250px">
+							<h4 class="white regular light">18,000원 </h4>
 							<a href="#" data-toggle="modal" data-target="#modal1" class="btn btn-white-fill">Sign Up Now</a>
 							<i class="info-icon icon_question"></i>
 						</div>
@@ -224,7 +223,7 @@
 	<section id="event_section" class="section section-padded blue-bg">
 		<div class="container">
 			<div class="row">
-				<label id="event_more"><h1>EVENT-SECTION</h1></label>
+				<label id="event_more"><img src="${img}/event.png" alt="" /></label>
 				<div class="col-md-8 col-md-offset-2">
 					<div class="owl-twitter owl-carousel">
 						<div class="item text-center">
@@ -251,6 +250,112 @@
 	<section id="cart_section"></section>
 	<section id="join_section"></section>
 	<section id="pur_section"></section>
+	
+	<section id="team_section">
+		<div class="container">
+			<div class="row title text-center">
+			<label>	<img src="${img}/team.png" alt="" /></label>
+			<div class="row" style="margin-top: 10px;">
+				<div class="col-sm-4">
+					<div class="team-member">
+						<label><img src="#" class="img-responsive img-circle" alt=""></label>
+						<h4 style="color: white;">Hwang YoungJu</h4>
+						<p class="text-muted" style="color: white;">Team Leader</p>
+						<ul class="list-inline social-buttons">
+							<li>
+							<label><img
+									src="${startimages}/icon/icon-twitter.png" alt="" /></label></li>
+							<li><label><img
+									src="${startimages}/icon/facebook-icon.png" alt="" /></label></li>
+							<li><label><img
+									src="${startimages}/icon/linkedin.png" alt="" /></label></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<div class="team-member">
+						<label><img src="#" class="img-responsive img-circle" alt=""></label>
+						<h4 style="color: white;">Kim Sumin</h4>
+						<p class="text-muted">준비중</p>
+						<ul class="list-inline social-buttons">
+							<li><label><img
+									src="${startimages}/icon/icon-twitter.png" alt="" /></label></li>
+							<li><label><img
+									src="${startimages}/icon/facebook-icon.png" alt="" /></label></li>
+							<li><label><img
+									src="${startimages}/icon/linkedin.png" alt="" /></label></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<div class="team-member">
+						<label><img src="#" class="img-responsive img-circle" alt=""></label>
+						<h4 style="color: white;">Seong YonWoo</h4>
+						<p class="text-muted">준비중</p>
+						<ul class="list-inline social-buttons">
+							<li><label><img
+									src="${startimages}/icon/icon-twitter.png" alt="" /></label></li>
+							<li><label><img
+									src="${startimages}/icon/facebook-icon.png" alt="" /></label></li>
+							<li><label><img
+									src="${startimages}/icon/linkedin.png" alt="" /></label></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<div class="team-member">
+						<label><img src="#" class="img-responsive img-circle" alt=""></label>
+						<h4 style="color: white;">Lee JeongMin</h4>
+						<p class="text-muted">준비중</p>
+						<ul class="list-inline social-buttons">
+							<li><label><img
+									src="${startimages}/icon/icon-twitter.png" alt="" /></label></li>
+							<li><label><img
+									src="${startimages}/icon/facebook-icon.png" alt="" /></label></li>
+							<li><label><img
+									src="${startimages}/icon/linkedin.png" alt="" /></label></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<div class="team-member">
+						<label><img src="#" class="img-responsive img-circle" alt=""></label>
+						<h4 style="color: white;">Lee HyeSuk</h4>
+						<p class="text-muted">준비중</p>
+						<ul class="list-inline social-buttons">
+							<li><label><img
+									src="${startimages}/icon/icon-twitter.png" alt="" /></label></li>
+							<li><label><img
+									src="${startimages}/icon/facebook-icon.png" alt="" /></label></li>
+							<li><label><img
+									src="${startimages}/icon/linkedin.png" alt="" /></label></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<div class="team-member">
+						<label><img src="#" class="img-responsive img-circle" alt=""></label>
+						<h4 style="color: white;">Hong HyeongDong</h4>
+						<p class="text-muted">준비중</p>
+						<ul class="list-inline social-buttons">
+							<li><label><img
+									src="${startimages}/icon/icon-twitter.png" alt="" /></label></li>
+							<li><label><img
+									src="${startimages}/icon/facebook-icon.png" alt="" /></label></li>
+							<li><label><img
+									src="${startimages}/icon/linkedin.png" alt="" /></label></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			
+	</div>
+			</div>
+	</section>
+	
+	
+	
+	
 	
 	
 	<div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -282,7 +387,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-6 text-center-mobile">
-					<h3 class="white">Reserve a Free Trial Class!</h3>
+					
 					<h5 class="light regular light-white">Shape your body and improve your health.</h5>
 					<a href="#" class="btn btn-blue ripple trial-button">Start Free Trial</a>
 				</div>
