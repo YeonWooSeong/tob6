@@ -1,0 +1,52 @@
+@CHARSET "UTF-8";
+
+.wrap{
+width: 1200px;
+height: 900px;
+}
+.alpha{
+	
+    margin: 10px;
+	
+}
+
+.book1{
+	width : 1000px;
+	height: 180px;
+	
+}
+
+.header{
+	width: 1200px;
+	height: 100px;
+	padding: 0;
+	background-color: black;
+}
+.see{
+	width: 1000px;
+	height: 50px;
+	background-color: white;
+}
+.see1{
+	width: 1000px;
+	height: 30px;
+	background-color: white;
+}
+.bodybody{
+	width: 1200px;
+	height: 800px;
+	
+}
+.bodybodybody{
+	width: 1000px;
+	height: 800px;
+	background-color: blue;
+	float: left;
+	
+}
+.remote{
+	width: 200px;
+	height: 800px;
+	background-color: red;
+	float: left;
+}

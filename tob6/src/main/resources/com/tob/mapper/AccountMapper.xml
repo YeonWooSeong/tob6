@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+ <mapper namespace="com.tob.mapper.AccountMapper">
+ 
+ <select id="selectTotal" resultType="int" parameterType="string">
+ 	SELECT SUM(SUM) FROM PURCHASE WHERE ACCOUNT_NUM= #{account_num}
+ </select>
+
+ <select id="ratio" resultType="string">
+ 	SELECT GENRE_ID FROM PURCHASE, 
+ 	BOOK WHERE PURCHASE.BOOK_ID=BOOK.BOOK_ID
+ </select>
+   
+ </mapper>
+ 
+ 

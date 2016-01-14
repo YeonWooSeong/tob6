@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+ <mapper namespace="com.tob.mapper.MemberMapper">
+ <select id="selectAll" resultType="com.tob.member.MemberVO" parameterType="com.tob.global.Command">
+ 	SELECT 
+	 	USERID AS userid,
+	 	PASSWORD AS password,
+	 	NAME AS name,
+	 	BIRTH AS birth,
+	 	GENDER AS gender,
+	 	EMAIL AS email,
+	 	PHONE AS phone,
+	 	ADDR AS addr,
+	 	PROFILE AS profile
+ 		FROM MEMBER ORDER BY userid ASC
+         LIMIT #{start}, 3
+ </select>
+ <select id="selectSomeBy" resultType="com.tob.member.MemberVO" parameterType="com.tob.global.Command">
+ 	SELECT 
+	 	USERID AS userid,
+	 	PASSWORD AS password,
+	 	NAME AS name,
+	 	BIRTH AS birth,
+	 	GENDER AS gender,
+	 	EMAIL AS email,
+	 	PHONE AS phone,
+	 	ADDR AS addr,
+	 	PROFILE AS profile
+ 		FROM MEMBER WHERE ${column} LIKE CONCAT('%',#{keyword},'%')
+        ORDER BY userid DESC LIMIT #{start}, 2
+ </select>
+ <select id="selectOneBy" resultType="com.tob.member.MemberVO" parameterType="string">
+ 	SELECT
+ 		USERID AS userid,
+	 	PASSWORD AS password,
+	 	NAME AS name,
+	 	BIRTH AS birth,
+	 	GENDER AS gender,
+	 	EMAIL AS email,
+	 	PHONE AS phone,
+	 	ADDR AS addr,
+	 	PROFILE AS profile
+ 	FROM MEMBER WHERE USERID = #{userid}
+ </select>
+ <select id="count" resultType="int">
+ 	SELECT COUNT(*) AS count FROM MEMBER
+ </select>
+<insert id="insert" parameterType="com.tob.member.MemberVO">
+ 	INSERT INTO MEMBER (USERID,PASSWORD,NAME,BIRTH,GENDER,EMAIL,PHONE,ADDR,PROFILE) 
+ 	VALUES (
+	 	#{userid},
+	 	#{password},
+	 	#{name},
+	 	#{birth},
+	 	#{gender},
+	 	#{email},
+	 	#{phone},
+	 	#{addr},
+	 	#{profile}
+ 	)
+ </insert>
+ <update id="update" parameterType="com.tob.member.MemberVO">
+	UPDATE MEMBER SET  
+		EMAIL = #{email}
+	WHERE USERID = #{userid}	
+ </update>
+ <delete id="remove" parameterType="string">
+ 	DELETE FROM MEMBER WHERE USERID = #{userid}
+ </delete>
+ <select id="searchByEmail" parameterType="string" resultType="com.tob.member.MemberVO">
+ 	SELECT 
+ 		USERID AS userid,
+	 	PASSWORD AS password,
+	 	NAME AS name,
+	 	BIRTH AS birth,
+	 	GENDER AS gender,
+	 	EMAIL AS email,
+	 	PHONE AS phone,
+	 	ADDR AS addr,
+	 	PROFILE AS profile
+	 FROM MEMBER WHERE EMAIL = #{email}
+ </select>
+ </mapper>

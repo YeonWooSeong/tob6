@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="com.tob.mapper.GenreMapper">
+ 
+ <insert id="registration" parameterType="com.tob.genre.GenreVO">
+ INSERT INTO GENRE
+ (GENRE_ID,GENRE_NAME,CATEGORY_ID)
+ VALUES
+ (#{genreId},#{genreName},#{categoryId})
+ 
+ </insert>
+ 
+ 
+ <delete id="delete" parameterType="string">
+ DELETE FROM GENRE WHERE GENRE_ID = #{genreId}
+ </delete>
+ 
+ 
+ <select id="searchByGenre" parameterType="string" resultType="com.tob.genre.GenreVO">
+ SELECT
+GENRE_ID AS genreId,
+GENRE_NAME AS genreName,
+CATEGORY_ID AS categoryId 
+
+  FROM GENRE WHERE GENRE_ID = #{categoryId}
+ 
+ </select>
+ 
+ <select id="selectAll" resultType="com.tob.genre.GenreVO">
+ SELECT
+GENRE_ID AS genreId,
+GENRE_NAME AS genreName,
+CATEGORY_ID AS categoryId 
+FROM GENRE
+ </select>
+ 
+ </mapper>
+ 

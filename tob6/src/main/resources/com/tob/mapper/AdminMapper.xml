@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+ <mapper namespace="com.tob.mapper.AdminMapper">
+ 
+ <select id="selectById" resultType="com.tob.admin.AdminVO" parameterType="string">
+ 	SELECT
+ 		ID AS id,
+	 	PASSWORD AS password,
+	 	ADMIN_EMAIL AS adminEmail
+ 	FROM ADMIN WHERE ID = #{id}
+ </select>
+ 
+ <select id="selectByEmail" resultType="com.tob.admin.AdminVO" parameterType="string">
+ 	SELECT
+ 		ID AS id,
+	 	PASSWORD AS password,
+	 	ADMIN_EMAIL AS adminEmail
+ 	FROM ADMIN WHERE ADMIN_EMAIL = #{email} 
+ </select>
+ 
+ 
+ <insert id="insert" parameterType="com.tob.admin.AdminVO">
+ 	INSERT INTO ADMIN (ID,PASSWORD,ADMIN_EMAIL) 
+ 	VALUES (
+	 	#{id},
+	 	#{password},
+	 	#{adminEmail}
+ 	) 
+ </insert>
+ 
+ <update id="update" parameterType="com.tob.admin.AdminVO">
+	UPDATE ADMIN SET 
+		PASSWORD = #{password}
+	WHERE ID = #{id}	
+ </update>
+ 
+ 
+ </mapper>

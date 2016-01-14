@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="com.tob.mapper.CategoryMapper">
+ 
+ <insert id="registration" parameterType="com.tob.category.CategoryVO">
+ INSERT INTO CATEGORY
+ (CATEGORY_ID,CATEGORY_NAME)
+ VALUES
+ (#{categoryId},#{categoryName})
+ 
+ </insert>
+
+  
+ <delete id="delete" parameterType="string">
+ DELETE FROM CATEGORY WHERE CATEGORY_ID = #{categoryId}
+ </delete>
+ 
+ 
+ <select id="searchByCategory" parameterType="string" resultType="com.tob.category.CategoryVO">
+ SELECT
+CATEGORY_ID AS categoryId,
+CATEGORY_NAME AS categoryName 
+  FROM CATEGORY WHERE CATEGORY_ID = #{categoryId}
+ 
+ </select>
+ 
+ </mapper>
+ 
