@@ -47,8 +47,8 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">주문 관리 <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="${context}/account/test">테스트 페이지</a></li>
-            <li><a href="#">날짜별 주문 목록</a></li>
+            <li><a href="#" id="cart_list">전체 주문 목록</a></li>
+            <li><a href="${context}/admin/test">날짜별 주문 목록</a></li>
           </ul>
         </li>
       </ul>
@@ -66,7 +66,6 @@
             <input type="text" class="form-control" placeholder="책 검색" size="10" id="query" name="query"/></div>
             <button type="submit" id="main_search" class="btn btn-default">DAUM 검색</button>  
 		</form>
-		<button id="searchBook" class="btn btn-default" style="margin-top: 0.55%;">검 색</button>
      
     </div>
   </div>
@@ -94,15 +93,17 @@ function search_query() {
 			+"결과 목록</div></div>"
 			+"<table class='table'>"
 		result += "<tr>";
-		result += "<th WIDTH=20%>제목</th><th WIDTH=30%>본문</th><th WIDTH=10%>저자</th><th WIDTH=10%>카테고리</th><th WIDTH=10%>판매가격</th><th WIDTH=10%>상세보기</th>";
+		result += "<th WIDTH=20%>제목</th><th WIDTH=10%>저자</th><th WIDTH=10%>카테고리</th><th WIDTH=10%>출판사</th>";
+		result += "<th WIDTH=10%>출판일</th><th WIDTH=10%>판매가격</th><th WIDTH=10%>상세보기</th>";
 		result += "</tr>";
 		for (var i in data.channel.item)
 		{
 			result += "<tr>";
 			result += "<td width=20%>"+data.channel.item[i].title+"</td>";
-			result += "<td width=30%>"+data.channel.item[i].description+"</td>";
 			result += "<td width=10%>"+data.channel.item[i].author+"</td>";
 			result += "<td width=10%>"+data.channel.item[i].category+"</td>";
+			result += "<td width=10%>"+data.channel.item[i].pub_nm+"</td>";
+			result += "<td width=10%>"+data.channel.item[i].pub_date+"</td>";
 			result += "<td width=10%>"+data.channel.item[i].sale_price+"</td>";
 			result += "<td width=10%><a onclick='daumBook.link("+"\""+data.channel.item[i].link+"\""+")'>"+data.channel.item[i].link+"</a></td>";
 			result += "</tr>";
@@ -138,11 +139,10 @@ function search_query() {
 		$('#main_todayBook').click(function() {
 			AdminBook.inputBookId(); 
 		});
-		$('#searchBook').click(function() {
-			var keyword = $("#query").val();
-			BookSearch.result('1', keyword);
+		
+		$('#cart_list').click(function() {
+			adminPurchase.purList(context); 
 		});
-
 	});
 	
 	/* ============== 다음 책 정보 사이트 이동 ================= */
@@ -663,21 +663,21 @@ var MemberReg = {
 					if (startPage != 1) {
 						pagination += 
 						'<a href="#" onclick="AdminMemberList.list(1)">'
-						+'<IMG SRC="${img}/admin/btn_bf_block.gif">&nbsp;'
+						+'<IMG style="margin-right: 5px;" SRC="${img}/admin/btn_bf_block.gif">&nbsp;'
 						+'</a>'
 						+'<a href="#" onclick="AdminMemberList.list('+(startPage-groupSize)+')">'
-						+'<IMG SRC="${img}/admin/btn_bf_page.gif">&nbsp;'
+						+'<IMG style="margin-right: 5px;"SRC="${img}/admin/btn_bf_page.gif">&nbsp;'
 						+'</a>'
 					}
 					
 					for (var i = startPage; i <= lastPage; i++) {
 						if (i == pageNo ) {
 							pagination +=
-								'<font style="color:red;font-size: 20px">'+i+'</font>';
+								'<font style="color:red;font-size: 30px">'+i+'</font>';
 						} else {
 							pagination +=
 								'<a href="#" onclick="AdminMemberList.list('+i+')">'
-								+'<font>'+i+'</font>'
+								+'<font style="font-size: 20px; margin-right: 5px;">'+i+'</font>'
 								+'</a>';
 						}
 					}
@@ -685,10 +685,10 @@ var MemberReg = {
 					if (lastPage != totalPage) {
 						pagination +=
 						    '<a href="#" onclick="AdminMemberList.list('+(startPage + groupSize)+')">'
-		    	            +'<IMG SRC=" ${img}/admin/btn_nxt_page.gif"> &nbsp;'
+		    	            +'<IMG style="margin-left: 5px;" SRC=" ${img}/admin/btn_nxt_page.gif"> &nbsp;'
 		           			+'</a>'
 		           			+'<a href="#" onclick="AdminMemberList.list('+(totalPage - ((totalPage-1) % groupSize))+')">'
-		                	+'<IMG SRC=" ${img}/admin/btn_nxt_block.gif"> &nbsp;'
+		                	+'<IMG style="margin-left: 5px;" SRC=" ${img}/admin/btn_nxt_block.gif"> &nbsp;'
 		           			+'</a>';
 					}
 					pagination +='</TD></TR></TABLE>';
@@ -1055,21 +1055,21 @@ var adminBook ={
 					if (startPage != 1) {
 						pagination += 
 						'<a href="#" onclick="AdminbookList.list(1)">'
-						+'<IMG SRC="${img}/admin/btn_bf_block.gif">&nbsp;'
+						+'<IMG style="margin-right: 5px;" SRC="${img}/admin/btn_bf_block.gif">&nbsp;'
 						+'</a>'
 						+'<a href="#" onclick="AdminBookList.list('+(startPage-groupSize)+')">'
-						+'<IMG SRC="${img}/admin/btn_bf_page.gif">&nbsp;'
+						+'<IMG style="margin-right: 5px;" SRC="${img}/admin/btn_bf_page.gif">&nbsp;'
 						+'</a>'
 					}
 					
 					for (var i = startPage; i <= lastPage; i++) {
 						if (i == pageNo ) {
 							pagination +=
-								'<font style="color:red;font-size: 20px">'+i+'</font>';
+								'<font style="color:red;font-size: 30px">'+i+'</font>';
 						} else {
 							pagination +=
 								'<a href="#" onclick="AdminBookList.list('+i+')">'
-								+'<font>'+i+'</font>'
+								+'<font style="font-size: 20px; margin-right: 5px;">'+i+'</font>'
 								+'</a>';
 						}
 					}
@@ -1077,10 +1077,10 @@ var adminBook ={
 					if (lastPage != totalPage) {
 						pagination +=
 						    '<a href="#" onclick="AdminBookList.list('+(startPage + groupSize)+')">'
-		    	            +'<IMG SRC=" ${img}/admin/btn_nxt_page.gif"> &nbsp;'
+		    	            +'<IMG style="margin-left: 5px;" SRC=" ${img}/admin/btn_nxt_page.gif"> &nbsp;'
 		           			+'</a>'
 		           			+'<a href="#" onclick="AdminBookList.list('+(totalPage - ((totalPage-1) % groupSize))+')">'
-		                	+'<IMG SRC=" ${img}/admin/btn_nxt_block.gif"> &nbsp;'
+		                	+'<IMG style="margin-left: 5px;" SRC=" ${img}/admin/btn_nxt_block.gif"> &nbsp;'
 		           			+'</a>';
 					}
 					pagination +='</TD></TR></TABLE>';
@@ -1236,14 +1236,38 @@ var AdminBook = {
 		}		
 };
 
-var BookSearch = {
-		result : function(pageNo, keyword) {
-			$.getJSON(context + '/admin/bookSearch/'+pageNo+'/'+keyword, function(data) {
-				alert(keyword);
-			})
-		}		
-}
-	
+var adminPurchase = {
+		purList : function(context) {
+			var arr = [];
+			$.getJSON(context+'/purchase/list', function(data) {
+				var table = "<div class='panel panel-default' style='width: 80%; margin: auto;'>"
+					+"<div class='panel-heading'>"
+					+"<div style='color: #7fb3b3; font-size: 30px; font-family: 굴림; margin-left: 500px; font-weight:bold' >"
+					+"전체 주문 목록</div></div>"
+					+'<table id="pur_list" class="table"><tr><th>주문번호</th><th>합계</th><th>어카운트 넘버</th>'
+					+'<th>주문한 아이디</th><th>주문한 책 이름</th></tr>';
+				$.each(data, function(i, val) {
+					table +='<tr><td>'+this.purNum+'</td>'
+					+'<td>'+this.sum+'</td>'
+					+'<td>'+this.accountNum+'</td>'
+					+'<td>'+this.userid+'</td>'
+					+'<td>'+this.bookid+'</td>'
+					+'<td><label id="'+this.purNum+'">삭제</label></td></tr>';
+					arr.push(this.purNum);
+				});
+				table += '</table></div>'; 
+				$('.mainView').html(table);
+				
+				$.each(data, function(i, val) {
+					$('#'+arr[i]).click(function() {
+						alert('삭제 버튼 먹음');
+					});
+				});		
+			});
+		}
+		
+};
+
 	
 </script>
 

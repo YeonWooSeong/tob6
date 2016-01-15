@@ -9,12 +9,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.tob.mapper.AccountMapper;
+import com.tob.purchase.PurchaseVO;
  
 
 
 @Service
 public class AccountServiceImpl implements AccountService{
 	private static final Logger logger = LoggerFactory.getLogger(AccountServiceImpl.class);
+	@Autowired AccountVO account;
 	@Autowired private SqlSession sqlSession;
 	
 	@Override
@@ -29,6 +31,14 @@ public class AccountServiceImpl implements AccountService{
 		logger.info("AccountServiceImpl : ratio");
 		AccountMapper mapper = sqlSession.getMapper(AccountMapper.class);
 		return mapper.ratio();
+	}
+
+	@Override
+	public List<PurchaseVO> dayList(AccountVO account) {
+		logger.info("AccountServiceImpl : dayList");
+		
+		AccountMapper mapper = sqlSession.getMapper(AccountMapper.class);
+		return mapper.dayList(account);
 	}
 
 

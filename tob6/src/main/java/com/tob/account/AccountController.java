@@ -24,6 +24,7 @@ import com.tob.event.EventVO;
 import com.tob.global.CommandFactory;
 import com.tob.member.MemberServiceImpl;
 import com.tob.member.MemberVO;
+import com.tob.purchase.PurchaseVO;
  
 
 @Controller
@@ -50,12 +51,13 @@ private static final Logger logger = LoggerFactory.getLogger(AccountController.c
 			Model model
 			) {
 		logger.info("라인차트 진입");
-
+		
 		String year = key.substring(0,4);
 		String month = key.substring(4,6);
 		String day = key.substring(6,8);
 		logger.info(year);
 		logger.info(day);
+	
 		model.addAttribute("sum", accountService.getTotal(key));
 		model.addAttribute("year", year);
 		model.addAttribute("month", month);
@@ -100,6 +102,23 @@ private static final Logger logger = LoggerFactory.getLogger(AccountController.c
 		model.addAttribute("cartoon", cartoon);
 		model.addAttribute("child", child);
 		return model;
+	}
+	
+	@RequestMapping("/day/{finalStart}/{finalEnd}")
+	public @ResponseBody List<PurchaseVO> day(
+			Model model,
+			@PathVariable("finalStart")String finalStart,
+			@PathVariable("finalEnd")String finalEnd
+			) {
+		
+		account.setStart(finalStart);
+		account.setEnd(finalEnd);
+		logger.info("day() 진입");
+		
+		List<PurchaseVO> list = accountService.dayList(account);
+		model.addAttribute("list", list);
+	
+		return list;
 	}
 	
 }

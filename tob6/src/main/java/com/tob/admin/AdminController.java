@@ -63,6 +63,13 @@ public class AdminController {
 		return "admin/admin/main.tiles";
 	}
 	
+	@RequestMapping("/test")
+	public String test(){
+		logger.info("AdminController-test() 진입");
+
+		return "admin/admin/test.tiles";
+	}
+	
 	@RequestMapping("/member_profile/{userid}")
 	public @ResponseBody MemberVO memberProfile(
 			@PathVariable("userid")String userid,

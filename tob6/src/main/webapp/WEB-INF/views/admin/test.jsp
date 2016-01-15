@@ -1,287 +1,134 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
+<select id="start_year" name="start_year">
+    <option value="2016" >2016</option>
+    <option value="2015" >2015</option>
+    <option value="2014" >2014</option>
+</select>
+<select id="start_month" name="start_month">
+    <option value="01" >1</option>
+    <option value="02" >2</option>
+    <option value="03" >3</option>
+    <option value="04" >4</option>
+    <option value="05" >5</option>
+    <option value="06" >6</option>
+    <option value="07" >7</option>
+    <option value="08" >8</option>
+    <option value="09" >9</option>
+    <option value="10" >10</option>
+    <option value="11" >11</option>
+    <option value="12" >12</option>
+</select> 
 
-<script src="https://code.highcharts.com/highcharts.js"></script>
-<script src="https://code.highcharts.com/modules/data.js"></script>
-<script src="https://code.highcharts.com/modules/drilldown.js"></script>
-<div id="map" style="width:100%;height:350px;"></div>
+<select id="start_day" name="start_day">
+</select>~
 
-<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=53e2827500534f733c75dadaccfdbaa2"></script>
-<script type="text/javascript">
-$(function () {
+<select id="end_year" name="end_year">
+    <option value="2016" >2016</option>
+    <option value="2015" >2015</option>
+    <option value="2014" >2014</option>
+</select>
+<select id="end_month" name="end_month">
+    <option value="01" >1</option>
+    <option value="02" >2</option>
+    <option value="03" >3</option>
+    <option value="04" >4</option>
+    <option value="05" >5</option>
+    <option value="06" >6</option>
+    <option value="07" >7</option>
+    <option value="08" >8</option>
+    <option value="09" >9</option>
+    <option value="10" >10</option>
+    <option value="11" >11</option>
+    <option value="12" >12</option>
+</select>
+
+<select id="end_day" name="end_day">
+</select>
+ 
+<input type="button" id="day_confirm" value="확인"/>
+
+
+<script>
+$(function() {
+	var sDay=1;
+	var eDay=31;
+	var strDay="";
 	
-	var chart =  new  Highcharts.Chart({
-        chart: {
-            type: 'column',
-            renderTo :  'container'
-        },
-        title: {
-            text: 'Browser market shares. January, 2015 to May, 2015'
-        },
-        subtitle: {
-            text: 'Click the columns to view versions. Source: <a href="http://netmarketshare.com">netmarketshare.com</a>.'
-        },
-        xAxis: {
-            type: 'category'
-        },
-        yAxis: {
-            title: {
-                text: 'Total percent market share'
-            }
+	for(var i=sDay; i<=eDay; i++)
+	{
+		strDay +="<option value="+i+">"+i+"</option>";
+	}
+	
+	var sDay2=1;
+	var eDay2=31;
+	var strDay2="";
+	
+	for(var i=sDay2; i<=eDay2; i++)
+	{
+		strDay2 +="<option value="+i+">"+i+"</option>";
+	}
+	
+	$("#start_day").html(strDay); 
+	$("#end_day").html(strDay2); 
+	
+		$('#day_confirm').click(function() {
+		//선택된 값을 가져온다.
+		var startYear = $("#start_year option:selected").val();
+		var startMonth = $("#start_month option:selected").val();
+		var startDay = $("#start_day option:selected").val();
+		var endYear = $("#end_year option:selected").val();
+		var endMonth = $("#end_month option:selected").val();
+		var endDay = $("#end_day option:selected").val();
+		
+		if (startDay<10) {
+			startDay = "0"+startDay
+		}
+		if (endDay<10) {
+			endDay = "0"+endDay
+		}
 
-        },
-        legend: {
-            enabled: false
-        },
-        plotOptions: {
-            series: {
-                borderWidth: 0,
-                dataLabels: {
-                    enabled: true,
-                    format: '{point.y:.1f}%'
-                }
-            }
-        },
+		var finalStart = startYear+startMonth+startDay
+		var finalEnd = endYear+endMonth+endDay
+		
+		if (Number(finalStart) > Number(finalEnd) ) {
+			alert("시작 날짜와 종료 날짜를 확인해주세요");
+		}
 
-        tooltip: {
-            headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
-            pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}%</b> of total<br/>'
-        },
+		/* document.getElementById("start_year").innerHTML = strYear */
 
-        series: [{
-            name: 'Brands',
-            colorByPoint: true,
-            data: [{
-                name: 'Microsoft Internet Explorer',
-                y: 56.33,
-                drilldown: 'Microsoft Internet Explorer'
-            }, {
-                name: 'Chrome',
-                y: 24.03,
-                drilldown: 'Chrome'
-            }, {
-                name: 'Firefox',
-                y: 10.38,
-                drilldown: 'Firefox'
-            }, {
-                name: 'Safari',
-                y: 4.77,
-                drilldown: 'Safari'
-            }, {
-                name: 'Opera',
-                y: 0.91,
-                drilldown: 'Opera'
-            }, {
-                name: 'Proprietary or Undetectable',
-                y: 0.2,
-                drilldown: null
-            }]
-        }],
-        drilldown: {
-            series: [{
-                name: 'Microsoft Internet Explorer',
-                id: 'Microsoft Internet Explorer',
-                data: [
-                    [
-                        'v11.0',
-                        24.13
-                    ],
-                    [
-                        'v8.0',
-                        17.2
-                    ],
-                    [
-                        'v9.0',
-                        8.11
-                    ],
-                    [
-                        'v10.0',
-                        5.33
-                    ],
-                    [
-                        'v6.0',
-                        1.06
-                    ],
-                    [
-                        'v7.0',
-                        0.5
-                    ]
-                ]
-            }, {
-                name: 'Chrome',
-                id: 'Chrome',
-                data: [
-                    [
-                        'v40.0',
-                        5
-                    ],
-                    [
-                        'v41.0',
-                        4.32
-                    ],
-                    [
-                        'v42.0',
-                        3.68
-                    ],
-                    [
-                        'v39.0',
-                        2.96
-                    ],
-                    [
-                        'v36.0',
-                        2.53
-                    ],
-                    [
-                        'v43.0',
-                        1.45
-                    ],
-                    [
-                        'v31.0',
-                        1.24
-                    ],
-                    [
-                        'v35.0',
-                        0.85
-                    ],
-                    [
-                        'v38.0',
-                        0.6
-                    ],
-                    [
-                        'v32.0',
-                        0.55
-                    ],
-                    [
-                        'v37.0',
-                        0.38
-                    ],
-                    [
-                        'v33.0',
-                        0.19
-                    ],
-                    [
-                        'v34.0',
-                        0.14
-                    ],
-                    [
-                        'v30.0',
-                        0.14
-                    ]
-                ]
-            }, {
-                name: 'Firefox',
-                id: 'Firefox',
-                data: [
-                    [
-                        'v35',
-                        2.76
-                    ],
-                    [
-                        'v36',
-                        2.32
-                    ],
-                    [
-                        'v37',
-                        2.31
-                    ],
-                    [
-                        'v34',
-                        1.27
-                    ],
-                    [
-                        'v38',
-                        1.02
-                    ],
-                    [
-                        'v31',
-                        0.33
-                    ],
-                    [
-                        'v33',
-                        0.22
-                    ],
-                    [
-                        'v32',
-                        0.15
-                    ]
-                ]
-            }, {
-                name: 'Safari',
-                id: 'Safari',
-                data: [
-                    [
-                        'v8.0',
-                        2.56
-                    ],
-                    [
-                        'v7.1',
-                        0.77
-                    ],
-                    [
-                        'v5.1',
-                        0.42
-                    ],
-                    [
-                        'v5.0',
-                        0.3
-                    ],
-                    [
-                        'v6.1',
-                        0.29
-                    ],
-                    [
-                        'v7.0',
-                        0.26
-                    ],
-                    [
-                        'v6.2',
-                        0.17
-                    ]
-                ]
-            }, {
-                name: 'Opera',
-                id: 'Opera',
-                data: [
-                    [
-                        'v12.x',
-                        0.34
-                    ],
-                    [
-                        'v28',
-                        0.24
-                    ],
-                    [
-                        'v27',
-                        0.17
-                    ],
-                    [
-                        'v29',
-                        0.16
-                    ]
-                ]
-            }]
-        }
-    });
+		AdminPurchase.list(finalStart, finalEnd );
+
+	});
 });
 
-var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-mapOption = { 
-    center: new daum.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-    level: 3 // 지도의 확대 레벨
-};
+	var AdminPurchase = {
+			list : function(finalStart, finalEnd) {
+				$.ajax(context+'/account/day/'+finalStart+'/'+finalEnd,{
+					data : {
+						
+					},
+					dataType : 'json',
+					success : function(data) {
+						alert('검색 결과 성공');
+					},
+					error : function(xhr, status, msg) {
+						alert('에러발생상태 : '+status +', 내용 :'+msg);
+					}
+				});				
+			}
+	};
 
-var map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-
-//마커가 표시될 위치입니다 
-var markerPosition  = new daum.maps.LatLng(33.450701, 126.570667); 
-
-//마커를 생성합니다
-var marker = new daum.maps.Marker({
-position: markerPosition
-});
-
-//마커가 지도 위에 표시되도록 설정합니다
-marker.setMap(map);
 
 </script>
+
+
+
+
+
+
+
+
+
+
 

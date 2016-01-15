@@ -41,7 +41,7 @@ var Purchase = {
 					arr.push(this.purNum);
 				});
 				table += '</table></div>'; 
-				$('#pur_section').html(table);
+				$('.mainView').html(table);
 				
 				$.each(data, function(i, val) {
 					$('#'+arr[i]).click(function() {
