@@ -39,7 +39,7 @@ public class PurchaseServiceImpl implements PurchaseService{
     	logger.info("형 변환된 책 가격 : "+price_int);
     	purchase.setPurNum(result);
     	purchase.setSum(price_int);
-    	purchase.setAccountNum(purToday);
+    	purchase.setAccNum(purToday);
     	purchase.setUserid(userid);
     	purchase.setBookid(bookId);
     	

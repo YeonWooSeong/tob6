@@ -2,6 +2,9 @@ package com.tob.cart;
 
 import java.io.Serializable;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class BookCartVO implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private String cartNum;
@@ -9,7 +12,7 @@ public class BookCartVO implements Serializable{
 	private String count;
 	private String bookId;		//고유번호
 	private String bookName;	//이름
-	private String bookPrice;	//가격
+	private int bookPrice;	//가격
 	private String writer;		//지은이
 	private String grade;		// 평점
 	private String bookseq; 	//재고량
@@ -31,7 +34,7 @@ public class BookCartVO implements Serializable{
 	public String getBookName() {
 		return bookName;
 	}
-	public String getBookPrice() {
+	public int getBookPrice() {
 		return bookPrice;
 	}
 	public String getWriter() {
@@ -64,7 +67,7 @@ public class BookCartVO implements Serializable{
 	public void setBookName(String bookName) {
 		this.bookName = bookName;
 	}
-	public void setBookPrice(String bookPrice) {
+	public void setBookPrice(int bookPrice) {
 		this.bookPrice = bookPrice;
 	}
 	public void setWriter(String writer) {

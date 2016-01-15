@@ -22,5 +22,5 @@ public interface MemberService {
 	   public List<MemberVO> getList(Command2 command);
 	   public int changePwd(MemberVO member);
 	   public int remove(String userid);
-	   public List<BookCartVO> getList(String userid);
+	  /* public List<BookCartVO> getList(String userid);*/
 	}

@@ -427,6 +427,7 @@
 			Member.detail(context+'/member/detail/${user.userid}');
 		});
 		$('#my_cart').click(function() {
+			/* Cart.main(context, '${user.userid}'); */
 			Cart.list('${user.userid}');
 		});
 		

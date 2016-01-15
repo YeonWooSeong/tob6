@@ -1,10 +1,17 @@
 var Cart = {
 		userid : '',
+		total : 0,
 		getUserid : function() {
 			return this.userid;
 		},
 		setUserid : function(userid) {
 			this.userid = userid; 
+		},
+		getTotal : function() {
+			return this.total;
+		},
+		setTotal : function(total) {
+			this.total += total; 
 		},
 	
 	main : function(link, userid) {
@@ -66,8 +73,8 @@ var Cart = {
 						+'<th width="130" height="29" align="center">수량</th>'
 						+'<th width="110" height="29" align="center">보관/삭제</tr></tbody>';
 			$.each(data, function(i, val) {
-				table +='<tr><td width="50" text-align="center"></td>'
-				+'<td width="*"><a href="#" id="'+this.bookName+'">'+this.bookName+'</a></td>'
+				table +='<tr><td width="50" text-align="center"><label text-align="center">'+(i+1)+'</label></td>'
+				+'<td width="*"><label id="'+this.bookName+'">'+this.bookName+'</label></td>'
 				+'<td width="130" text-align="center">'+this.bookPrice * this.count +'</td>'    //<form name="changeCount" Action="#" Method="post">	 빈 공간 폼테그.
 				+'<form name="form'+i+'"><td width="150"  text-align="center">'
 				+'	<div style="float:left" id="count'+i+'">'
@@ -80,13 +87,15 @@ var Cart = {
 /*==>onclick*/	+'<td width="100" align="center"><button id="delete'+i+'" align="center" onclick="Cart.remove('+'\''+this.bookId+'\''+')">삭제</button></td>'
 				+'<span id="d'+i+'"></span></tr>';
 				arr.push(this.bookId);
+				//total += this.bookPrice;
+				Cart.setTotal(this.bookPrice);
 			});
 			
 			table += '</tbody></table><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" style="margin-top: 10px" bgcolor="#E3EDF7"><tbody>'
 				+'<tr><td align="center" style="padding: 10px 0 10px 0"><table cellpadding="0" cellspacing="0" border="0" width="610"><tbody><tr><td>'
 				+'<table cellpadding="0" cellspacing="0" border="0"'
 				+'width="289"><tbody><tr><td width="140">총 상품가격</td>'
-				+'<td width="149"><strong>합계가 들어와야되</strong></td>'
+				+'<td width="149"><strong>'+Cart.getTotal()+'</strong></td>'
 				+'</tr><tr><td height="20">배송비</td><td><strong>0</strong>원</td></tr><tr><td height="20">총 주문 상품 수</td>'
 				+'<td><strong></span></strong>권</td>'
 				+'<td></td></tr></tbody></table>'
@@ -125,9 +134,16 @@ var Cart = {
 		    
 	},
 	
-	putInCart : function(bookId) {
-		Cart.getBooksInCart();
-		Cart.put(bookId);
+	putInCart : function(userid, bookId) {
+		alert('Cart.putInCart 진입, 넘어온 아이디 : '+userid);
+		alert('Cart.putInCart 진입, 넘어온 책 아이디  : '+bookId);
+		if (userid == "") {
+			alert('로그인 후 이용가능합니다.');
+		} else {
+			Cart.getBooksInCart();
+			Cart.put(bookId);
+		}
+		
 	},
 	
 	putInPurchase : function(userid, bookId, price) {

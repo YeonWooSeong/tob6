@@ -159,7 +159,7 @@ public class MemberController {
         }
         return member;
     }
-    @RequestMapping("/list/{userid}")
+  /*  @RequestMapping("/list/{userid}")
 	public @ResponseBody List<BookCartVO> cartlist(
 				@PathVariable("userid")String userid
 			){
@@ -168,6 +168,5 @@ public class MemberController {
 		List<BookCartVO> list = service.getList(userid);
 		logger.info("카트 컨트롤러 list() 결과 : " + list.size());
 		return list;
-	}
-    /*@RequestMapping("")*/
+	}*/
 }

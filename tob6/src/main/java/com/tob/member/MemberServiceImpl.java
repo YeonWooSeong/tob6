@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.tob.cart.BookCartVO;
-import com.tob.cart.TodayCartVO;
 import com.tob.global.Command;
 import com.tob.global.Command2;
 import com.tob.mapper.CartMapper;
@@ -21,7 +20,6 @@ import com.tob.mapper.MemberMapper;
 public class MemberServiceImpl implements MemberService{
 	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 	@Autowired private SqlSession sqlSession;
-	@Autowired TodayCartVO todaycart;
 		@SuppressWarnings("unused")
 		@Override
 		public String joinForm() {
@@ -104,19 +102,18 @@ public class MemberServiceImpl implements MemberService{
 		MemberMapper mapper = sqlSession.getMapper(MemberMapper.class);
 		return mapper.logout(userid,password);
 		}	
-		@Override
-		public List<BookCartVO> getList(String userid) {
+		/*@Override
+		public List<CartVO> getList(String userid) {
 			logger.info("MemberServiceImpl : getList 진입");
 			logger.info("넘어온 유저아이디 : " + userid);
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
 			Calendar c1 = Calendar.getInstance();
 			String today = sdf.format(c1.getTime());
-			todaycart.setUserid(userid);
-			todaycart.setToday(today);
+			cart.setUserid(userid);
 			
 			MemberMapper mapper = sqlSession.getMapper(MemberMapper.class);
-			return mapper.getList(todaycart);
-		}
+			return mapper.getList(cart);
+		}*/
 		
 }
 		

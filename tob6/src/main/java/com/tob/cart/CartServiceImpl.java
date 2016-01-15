@@ -18,7 +18,6 @@ public class CartServiceImpl implements CartService {
 	private static final Logger logger = LoggerFactory.getLogger(CartServiceImpl.class);
 	@Autowired private SqlSession sqlSession;
 	@Autowired CartVO cart;
-	@Autowired TodayCartVO todaycart;
 	
 	List<?> BooksInCart;
 	List<?> UserIdList;
@@ -45,14 +44,12 @@ public class CartServiceImpl implements CartService {
 			} 
 		}
     	cart.setCartNum(result);
-        cart.setcartToday(cartToday);
      	cart.setBookid(bookId);
      	cart.setUserid(userid);
      	cart.setCount("1");
      	logger.info("바뀐 카트VO의  책 아이디 : " + cart.getBookid());
     	logger.info("바뀐 카트VO의 유저 아이디 : " + cart.getUserid());
     	logger.info("바뀐 카트VO의 카트 넘버 : " + cart.getCartNum());
-    	logger.info("바뀐 카트VO의 TODAY카트 넘버 : " + cart.getcartToday());
     	
      	/*for (int i = 0; i < BookIdList.size(); i++) {
 			if (BookIdList.get(i).equals(BookIdList.get(i)) && UserIdList.get(i-1).equals(UserIdList.get(i))) {
@@ -66,15 +63,8 @@ public class CartServiceImpl implements CartService {
 	@Override
 	public List<BookCartVO> getList(String userid) {
 		logger.info("CartServiceImpl : getList 진입");
-		
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
-		Calendar c1 = Calendar.getInstance();
-		String today = sdf.format(c1.getTime());
-		todaycart.setUserid(userid);
-		todaycart.setToday(today);
-		
 		CartMapper mapper = sqlSession.getMapper(CartMapper.class);
-		return mapper.getList(todaycart);
+		return mapper.getList(userid);
 	}
 	@Override
 	public int remove(String bookId) {

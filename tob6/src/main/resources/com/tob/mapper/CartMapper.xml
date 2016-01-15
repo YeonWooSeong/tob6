@@ -7,7 +7,7 @@
 			(CART_NUM, CART_TODAY, BOOK_ID, USERID, COUNT) VALUES
 			(#{cartNum},#{cartToday},#{bookId},#{userid},'1')
 	</insert>
-	<select id="getList" resultType="com.tob.cart.BookCartVO" parameterType="com.tob.cart.TodayCartVO">
+	<select id="getList" resultType="com.tob.cart.BookCartVO" parameterType="string">
 		SELECT
 			b.BOOK_ID AS bookId,
 			b.BOOK_NAME AS bookName,
@@ -15,8 +15,7 @@
 			c.COUNT AS count
 		FROM BOOK b, CART c
 		WHERE c.USERID = #{userid} AND
-		b.BOOK_ID = c.BOOK_ID AND
-		c.CART_TODAY = #{today}
+		b.BOOK_ID = c.BOOK_ID 
 	</select>
  	<update id="changeCount" parameterType="com.tob.cart.BookCartVO">
  		UPDATE CART SET COUNT = ${count} WHERE
