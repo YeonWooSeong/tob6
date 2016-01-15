@@ -65,23 +65,23 @@ public class PurchaseController {
 			) throws UnsupportedEncodingException, MessagingException{
 		Email_Pur email = new Email_Pur(); 
 		logger.info("구매 컨트롤러 - sendEmail() 진입");
-		MemberVO member = (MemberVO) session.getAttribute("user");
-		logger.info("로그인 된 유저의 이메일 : "+member.getEmail());
-		member = memberService.searchByEmail(member.getEmail());
-		logger.info("이메일로 찾은 멤버의 아이디 : "+member.getUserid());
-		if (member.getEmail() == null) {
+		
+		if (session.getAttribute("user") == null) {
 			model.addAttribute("login_check","unlogin");
 		} else {
+			MemberVO member = (MemberVO) session.getAttribute("user");
+			logger.info("로그인 된 유저의 이메일 : "+member.getEmail());
+			member = memberService.searchByEmail(member.getEmail());
+			logger.info("이메일로 찾은 멤버의 아이디 : "+member.getUserid());
 			model.addAttribute("login_check","login");
+			int randomNum =(int) (Math.random()*9999) + 1000;
+			String sentence = "등록하신" + member.getEmail() + "로 구매인증 번호가가 발송되었습니다.";
+			String sentence2 = "구매인증 번호는 " + randomNum + "입니다.";
+			email.setReciver(member.getEmail());
+			email.setSubject(sentence);
+			email.setContent(sentence2);
+			emailSender.sendMail(email);
 		}
-		int randomNum =(int) (Math.random()*9999) + 1000;
-		
-		String sentence = "등록하신" + member.getEmail() + "로 구매인증 번호가가 발송되었습니다.";
-		String sentence2 = "구매인증 번호는 " + randomNum + "입니다.";
-		email.setReciver(member.getEmail());
-		email.setSubject(sentence);
-		email.setContent(sentence2);
-		emailSender.sendMail(email);
 		return model;
 	}
 	

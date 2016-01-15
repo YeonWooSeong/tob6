@@ -31,11 +31,13 @@
 					<li><a href="#best_section">BEST-SELLER</a></li>
 					<li><a href="#week_section">WEEK-BOOK</a></li>
 					<li><a href="#event_section">EVENT</a></li>
+					<li><a href="#pur_section">PURCHASE</a></li>
 			<c:if test="${empty sessionScope.user}">
 			<!-- 로그인 안한 상태 -->
 			<li><a href="${context}/admin/main">Admin</a></li>
 			<li><a href="#" data-toggle="modal" data-target="#modal1" class="btn btn-blue">Sign In</a></li>
 			<li style="float: right"><a href="${context}/member/joinForm" id="join">회원가입</a></li>
+			
 			</c:if>
 			<c:if test="${not empty sessionScope.user}">
 			<li style="float: right; padding-right: 10px;"><a href="#mypage_section" id="mypage">마이페이지</a></li>
@@ -250,7 +252,7 @@
 	<section id="mypage_section"></section>
 	<section id="cart_section"></section>
 	<section id="join_section"></section>
-	<section id="pur_section"></section>
+	<section id="pur_section"> <h1 id="pur_list">구매목록 리스트 조회</h1></section>
 	
 	
 	<div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

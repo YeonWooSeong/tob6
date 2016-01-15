@@ -110,7 +110,7 @@ var book = {
 				$.each(data.listOld,function(i,value){
 					$('#'+oldArr[i]).click(function() {
 						alert('중고책 페이지  ,'+oldArrName[i]+'  페이지로 이동.')
-						book.bookSimplePage('1', userid);
+						book.bookSimplePage2('1', newArr[i], userid);
 						alert('넘어가는 유저아이디 : '+ userid);
 					});
 					

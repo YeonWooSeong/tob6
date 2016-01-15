@@ -69,18 +69,17 @@ var Cart = {
 				table +='<tr><td width="50" text-align="center"></td>'
 				+'<td width="*"><a href="#" id="'+this.bookName+'">'+this.bookName+'</a></td>'
 				+'<td width="130" text-align="center">'+this.bookPrice * this.count +'</td>'    //<form name="changeCount" Action="#" Method="post">	 빈 공간 폼테그.
-				+'<td width="150"  text-align="center">'
+				+'<form name="form'+i+'"><td width="150"  text-align="center">'
 				+'	<div style="float:left" id="count'+i+'">'
-				+'		<input type="text" size="1" id="c'+i+'" value="'+this.count+'" onkeyup="Cart.myFunction('+i+','+'\''+this.bookId+'\''+')"></input>'
+				+'		<input type="text" size="1" id="c'+i+'" value="'+this.count+'"></input>'
 				+'	</div>'
 				+'	<div class="button" style="float:left;margin-left:4px">'
 /*==>onclick*/	+'		<input type="submit" class="button_gray" style="width:55px" value="변경" onclick="Cart.change('+'\''+this.bookId+'\''+')">'
 				+'	</div>'
-				+'</td>'
+				+'</td></form>'
 /*==>onclick*/	+'<td width="100" align="center"><button id="delete'+i+'" align="center" onclick="Cart.remove('+'\''+this.bookId+'\''+')">삭제</button></td>'
 				+'<span id="d'+i+'"></span></tr>';
 				arr.push(this.bookId);
-				list.push()
 			});
 			
 			table += '</tbody></table><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" style="margin-top: 10px" bgcolor="#E3EDF7"><tbody>'
@@ -103,20 +102,27 @@ var Cart = {
 		});
 	},
 	
+	change : function() {
+		
+	},
+	
 	myFunction : function(i, bookId) {
 		alert('Cart.myFuncion진입 넘어온 값 : '+i);
 		alert('Cart.myFuncion진입 넘어온 값 : '+ bookId);
 		$('#count'+i).empty();
 		alert('count i 번째 디브 지웠음.');
-		var result = '<span id="demo"></span>';
-		$('#count'+i).append('<input type="text" size="1" id="c'+i+'" value="<span id=d'+i+'></span>"' +'" onkeyup="Cart.myFunction('+'\''+i+'\''+','+'\''+bookId+'\''+')"></input>');
+		var result = '<span id="d'+i+'"></span>';
+		alert('' + x);
+		alert('result : ' + result);
+		$('#count'+i).append('<input type="text" size="1" id="c'+i+'" onkeyup="Cart.myFunction('+'\''+i+'\''+','+'\''+bookId+'\''+')"></input><p>My name is: <span id="demo"></span></p>');
 		
 	
 		alert('count i 번째 다시 그리고 난 뒤 i 값 : ' +i);
 		alert('count i 번째 다시 그리고 난 뒤 BookId 값 : ' +bookId);
 		alert('i 번째 스팬 값 : ' + result);
 		 var x = document.getElementById("c"+i).value;
-		    document.getElementById("d"+i).innerHTML = x;
+		    document.getElementById("demo").innerHTML = x;
+		    
 	},
 	
 	putInCart : function(bookId) {
@@ -125,29 +131,32 @@ var Cart = {
 	},
 	
 	putInPurchase : function(userid, bookId, price) {
-		Cart.send_email();
-		alert('Cart.putInPurchase진입. 구매 클릭 됨.');
-		alert('넘어온 유저아이디  : '+userid);
-		alert('넘어온 책 아이디 : '+bookId);
-		alert('넘어온 책 가격 : '+price);
-	    $.ajax(context+'/purchase/buy', {
-	    	data : {
-	    		userid : userid,
-	    		bookId : bookId,
-	    		price : price
-	    	},
-			dataType : "json",
-			type : 'get',
-			contentType : "application/json;",
-			mimeType : "application/json;",
-			async : false,
-			success : function() {
-				alert('구매 완료.');
-			},
-			error : function() {
-				alert('ajax 에러');
-			}
-	    });
+		if (userid === "") {
+			alert('로그인 후 이용가능합니다.');
+		} else {
+			alert('Cart.putInPurchase진입. 구매 클릭 됨.');
+			alert('넘어온 유저아이디  : '+userid);
+			alert('넘어온 책 아이디 : '+bookId);
+			alert('넘어온 책 가격 : '+price);
+		    $.ajax(context+'/purchase/buy', {
+		    	data : {
+		    		userid : userid,
+		    		bookId : bookId,
+		    		price : price
+		    	},
+				dataType : "json",
+				type : 'get',
+				contentType : "application/json;",
+				mimeType : "application/json;",
+				async : false,
+				success : function(data) {
+					alert('구매가 완료되었습니다.');
+				},
+				error : function() {
+					alert('ajax 에러');
+				}
+		    });
+		}
 	},
 	
 	send_email : function() {
