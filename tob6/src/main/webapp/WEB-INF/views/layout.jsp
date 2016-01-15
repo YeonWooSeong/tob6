@@ -70,6 +70,15 @@
 	<script src="${normal}/js2/jquery.onepagenav.js"></script>
 	<script src="${normal}/js2/main.js"></script>
    <!-- Normalize -->
-
+<script>
+var context = '${context}';
+var img = '${img}';
+var js = '${js}';
+var css = '${css}';
+var fonts = '${fonts}';
+var startimages = '${startimages}';
+var startcss = '${startcss}';
+var startjs = '${startjs}';
+</script>
 </body>
 </html>
