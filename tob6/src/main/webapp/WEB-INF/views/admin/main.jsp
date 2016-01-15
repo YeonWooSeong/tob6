@@ -16,7 +16,7 @@
 </div>
 
 <!-- =============== 지점 소개 ============== -->
-<div style="width: 45%; height: 65%; margin-left: 5%; margin-top:2%; float: left;">
+<div style="width: 45%; height: 55%; margin-left: 2%; margin-top:2%; float: left;">
 
 <div style="width:100%; height:50%; float: left;">
    <div id="map" style="width:50%; height:100%; float: left; border : 1px solid black;"></div>
@@ -122,7 +122,7 @@ var lineChartFactor = function() {
    }
    today = yyyy+mm+dd;
 
-   for (var i = today; i > 20160101; i--) {
+   for (var i = today; i > 20160106; i--) {
       $.ajax(context + "/account/chart_line",{
               data : {
                  "key" : i
@@ -135,7 +135,6 @@ var lineChartFactor = function() {
                 lineDay.push(data.day);
              },
              error : function() {
-               alert("실패");
              }
             });
    }

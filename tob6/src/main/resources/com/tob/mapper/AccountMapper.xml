@@ -13,7 +13,17 @@
  	SELECT GENRE_ID FROM PURCHASE, 
  	BOOK WHERE PURCHASE.BOOK_ID=BOOK.BOOK_ID
  </select>
-   
+  
+  <select id="dayList" resultType="com.tob.purchase.PurchaseVO" parameterType="com.tob.account.AccountVO">
+ 	SELECT
+			PUR_NUM AS purNum,
+			SUM AS sum,
+			ACCOUNT_NUM AS accountNum,
+			USERID AS userid,
+			BOOK_ID AS bookid
+		FROM PURCHASE WHERE ACCOUNT_NUM BETWEEN #{start} AND #{end}
+ </select>
+ 
  </mapper>
  
  
