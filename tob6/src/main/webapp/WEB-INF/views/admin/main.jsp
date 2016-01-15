@@ -6,7 +6,7 @@
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 
-
+<div style="width: 100%; height: 800px;">
 <!-- =============== 일주일 판매 차트 ============== -->
 <div id="curve_chart" style="width: 45%; height: 65%; margin-left: 5%; float: left; "></div >
 <div id="container" style="width: 45%; height: 65%; margin-right: 5%; float: right; "></div>
@@ -25,13 +25,15 @@
    <label id="btn_gangnam"><img style="margin-left: 5%; margin-top: 5%;"src="${img}/admin/home_go.png"/></label>
 </div>
 
-<div style="width:100%; height:50%; float: right; margin-top: 0px;">
+<div style="width:100%; height:50%; float: right;margin-top: 0px; ">
    <div id="map2" style="width:50%; height:100%; float: right; border : 1px solid black;"></div>
    <p style="float: right; margin-right: 5%; margin-top: 10px; font-family:Verdana; font-size:25px;">신촌점</p>
    <p style="float: right; margin-right: 5%;">서울 마포구 신수동 63-14 구프라자 3층 </p>
    <p style="float: right; margin-right: 5%;">업무문의 02.707.0491~4 </p>
    <label id="btn_sc"><img style="margin-top: 5%; margin-left: 50%;" src="${img}/admin/home_go.png"/></label>   
 </div>
+</div>
+
 </div>
 
 
@@ -224,7 +226,6 @@ position: markerPosition
 //마커가 지도 위에 표시되도록 설정합니다
 marker.setMap(map);
 
-/* ================ 맵2 ==================== */
 
 var mapContainer = document.getElementById('map2'), // 지도를 표시할 div 
 mapOption = { 
