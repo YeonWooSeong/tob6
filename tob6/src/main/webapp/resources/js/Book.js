@@ -31,7 +31,7 @@ var book = {
 				/*해외도서 */
 				table += '<div class="alpha"><font color="red"><strong>'+data.listAbroadName+'</strong></font><br /><p><p>';
 				$.each(data.listAbroad,function(index,value){
-					table += '<li><label id="'+this.genreId+'">'+this.genreName+'</label></li></div>'; 
+					table += '<li class="lili"><label id="'+this.genreId+'">'+this.genreName+'</label></li></div>'; 
 					abroadArr.push(this.genreId);
 					abroadArrName.push(this.genreName);
 					});
@@ -41,7 +41,7 @@ var book = {
 				/*국내도서 */
 				table += '<div class="alpha"><font color="red"><strong>'+data.listDomesticName+'</strong></font><br /><p><p>';
 				$.each(data.listDomestic,function(index,value){
-					table += '<li><label id="'+this.genreId+'">'+this.genreName+'</label></li></div>'; 
+					table += '<li class="lili"><label id="'+this.genreId+'">'+this.genreName+'</label></li></div>'; 
 					domesticArr.push(this.genreId);
 					domesticArrName.push(this.genreName);
 					});
@@ -51,7 +51,7 @@ var book = {
 				/*전자책 */
 				table += '<div class="alpha"><font color="red"><strong>'+data.listEbookName+'</strong></font><br /><p><p>';
 				$.each(data.listEbook,function(index,value){
-					table += '<li><label id="'+this.genreId+'">'+this.genreName+'</label></li></div>'; 
+					table += '<li class="lili"><label id="'+this.genreId+'">'+this.genreName+'</label></li></div>'; 
 					ebookArr.push(this.genreId);
 					ebookArrName.push(this.genreName);
 					});
@@ -60,7 +60,7 @@ var book = {
 				/*신간 */
 				table += '<div class="alpha"><font color="red"><strong>'+data.listNewName+'</strong></font><br /><p><p>';
 				$.each(data.listNew,function(index,value){
-					table += '<li><label id="'+this.genreId+'">'+this.genreName+'</label></li></div>'; 
+					table += '<li class="lili"><label id="'+this.genreId+'">'+this.genreName+'</label></li></div>'; 
 					newArr.push(this.genreId);
 					newArrName.push(this.genreName);
 					});
@@ -68,11 +68,19 @@ var book = {
 				/*중고책*/
 				table += '<div class="alpha"><font color="red"><strong>'+data.listOldName+'</strong></font><br /><p><p>';
 				$.each(data.listOld,function(index,value){
-					table += '<li><label id="'+this.genreId+'">'+this.genreName+'</label></li></div>'; 
+					table += '<li class="lili"><label id="'+this.genreId+'">'+this.genreName+'</label></li></div>'; 
 					oldArr.push(this.genreId);
 					oldArrName.push(this.genreName);
 					});
 				$('#book_section').html(table);
+				$('.alpha').css('width','80px').css('margin-top','10px').css('vertical-align','middle')
+				.css('margin-left','250px');
+				$('h3').css('text-align','center');
+				$('.lili').css('vertical-align','middle').css('width','100px').css('float','left')
+				.css('display','block');
+				
+				
+				
 				
 				/*---------------------------다음페이지로 넘어가기.-------------------------------*/
 				$.each(data.listAbroad,function(i,value){
@@ -131,28 +139,30 @@ var book = {
 				var lastPage = data.lastPage;
 				var totPage = data.totPage;
 				
-				var bookList= '<div id="bookContents2" style="color: black;"><h2>책 목록</h2>'
+				var bookList= '<div id="bookContents2" style="width: 100%;"><h2 style="text-align: center;">책 목록</h2>'
 					$.each(data.list,function(index,value){
-						bookList +='<div class="book1">';
-							bookList +='<img alt="" src="'+context+'/resources/images/'+this.bookId+'.jpg" width="106px" height="150px" align="left">';
-							bookList +='<label id="'+this.bookId+'"><strong>'+this.bookName+'</strong></label>';
-							bookList +='<font color="white" ">'+this.optionBook+'</font>'; 
+						bookList +='<div class="book1" style="width: 1000px; margin: auto;">';
+							bookList +='<img alt="" src="'+context+'/resources/images/'+this.bookId+'.jpg" width="106px" height="150px" align="left" >';
+							bookList +='<label id="'+this.bookId+'"><strong style="padding-left : 20px;">'+this.bookName+'</strong></label>';
+							bookList +='<font color="white">'+this.optionBook+'</font>'; 
 							bookList +='<font color="white" style="color: green">이벤트</font>';
 							bookList +='<font color="white" class="maroon">경품</font>';
-							bookList +='<font color="white" style="background-color: purple;">무료배송</font>';
-							bookList +='<font color="gray">'+this.writer+'</font><br />';
-							bookList +='<font color="red" class="white">'+this.bookPrice+'</font><font>원</font><font  size="2px">[10%할인!]</font>';
+							bookList +='<font color="white" style="background-color: purple;">무료배송</font><br>';
+							bookList +='<font color="gray" style="padding-left : 30px;">'+this.writer+'</font><br />';
+							bookList +='<font color="red" style="padding-left : 30px;" >'+this.bookPrice+'</font><font>원</font><font  size="2px">[10%할인!]</font>';
 							bookList +='<font style="background-color: gray" class="white">회원평점</font><font color="red" >'+this.grade+'</font>';
 							bookList +='<br /><br /><br /><br />';
-							bookList +='<input type="button"  value="장바구니에 담기" onclick="Cart.putInCart('+'\''+this.bookId+'\''+')">';
+							bookList +='<input type="button" style="margin-left: 10px;"  value="장바구니에 담기" onclick="Cart.putInCart('+'\''+this.bookId+'\''+')">';
 							bookList +='<input type="button"  value="바로구매" onclick="Cart.putInPurchase('+'\''+userid+'\''+','+'\''+this.bookId+'\''+','+'\''+this.bookPrice+'\''+')">';
 							bookList +='<br /><br /><br /><br />';
 						arr.push(this.bookId);
-						
 					});
-
+					
+					
+					
+					
 				//----@#$%$#^$&^@%&@#^#$^#$^@#%&^^&#%^&*%^*#%^*&#&*#&*^$&*//
-					var pagination = '<TABLE id="pagination">'
+					var pagination = '<TABLE id="pagination" style="text-align: center;">'
 						if (startPage != 1) {
 							pagination += '<a href="'+context+'/book/Book_selectAll/1">'
 							+'<IMG SRC="'+img+'/left.png">&nbsp'
@@ -166,7 +176,7 @@ var book = {
 						
 						for (var i = startPage ; i <= lastPage; i++) {
 							if (i == pageNo) {
-								pagination+='<font style="color:red;font-size: 20px">'
+								pagination+='<font style="color:red;font-size: 20px; ">'
 								+i
 								+'</font>';
 							} else {
@@ -186,6 +196,7 @@ var book = {
 						bookList+=pagination;
 						bookList+='</div>';	
 					
+						
 						//----@#$%$#^$&^@%&@#^#$^#$^@#%&^^&#%^&*%^*#%^*&#&*#&*^$&*//
 				
 				$('#book_section').html(bookList);
@@ -205,19 +216,20 @@ var book = {
 		
 	mainPage : function(bookId) {
 			$.getJSON(context + '/book/Book_main/'+bookId ,function(data){
-				var bookPage = '<div class="contents">'
-					+'<div class="book">'
+				var bookPage = '<div class="contents" >'
+					+'<div class="book" style="margin: auto; width:1000px;" >'
 					+'<img alt="" src="'+context+'/resources/images/'+data.bookId+'.jpg" width="200px" height="301px" align="left">'
 					+'</div>'
 					+'<div class="book2">'
 					+'<br />'
 					+'<p>'
-					+'<font color="#00BFFF" size="20px"><strong>'+data.bookName+'</strong></font><font>　</font><font color="black" size="2px"><strong> 어느 괴짜 과학자의 화성판 어드벤처 생존기 | 앤디 위어 장편소설</strong></font><br /><br />'
-					+'<font>　　　　　　　　　　　　　</font> <font color="gray" size="2px">'+data.writer+'</font><br />'
-					+'<font>　　　　　　　　　　　　　</font><font color="#DC143C" size="3px">'+data.grade+'</font><font>　</font><br />'
+					+'<font color="#00BFFF" size="20px"><strong style="padding-left:30px;">'+data.bookName+'</strong></font><br>'
+					+'<font color="black" size="2px"><strong style="padding-left:40px;"> 어느 괴짜 과학자의 화성판 어드벤처 생존기 | 앤디 위어 장편소설</strong></font><br /><br />'
+					+'<font color="gray" size="2px" style="padding-left:30px;">'+data.writer+'</font><br />'
+					+'<font color="#DC143C" size="3px" style="padding-left:30px;">'+data.grade+'</font><br />'
 					+'<br /><br /><br /><br /><br /><br /><br /><br />'
-					+'<font>　　　　　　　</font><font color="black" size="3px">판매가 :</font> <font color="red" size="7pk"><strong>'+data.bookPrice+'</strong></font><font color="purple" size="3px"><strong>[10%↓ 1,500원 할인]</strong></font><br />'
-					+'<font>　　　　　　　</font><font color="black">제휴할인가 :</font> <font color="skyblue" size="3px"><strong><12,820원</strong></font><font color="black">교보-KB국민카드 5% 청구할인(실적무관)</font><font>　　</font>'
+					+'<font color="black" size="3px" style="padding-left:250px;">판매가 :</font> <font color="red" size="7pk"><strong>'+data.bookPrice+'</strong></font><font color="purple" size="3px"><strong>[10%↓ 1,500원 할인]</strong></font><br />'
+					+'<font color="black" style="padding-left: 250px;">제휴할인가 :</font> <font color="skyblue" size="3px"><strong><12,820원</strong></font><font color="black">교보-KB국민카드 5% 청구할인(실적무관)</font><font>　　</font>'
 					+'<input type="button" value="책검색" id="search">'
 					+'<br /></div></div>';
 				$('#book_section').html(bookPage);

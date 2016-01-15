@@ -247,7 +247,13 @@
 						</div>
 						<div class="item text-center">
 							<i class="icon fa fa-twitter"></i><br />
-							<h4 class="white light">계속해서 개발중이오니 불편하시더라도 기다려주세요. Thank you!</h4></h4>
+							<h4 class="white light">계속해서 개발중이오니 불편하시더라도 기다려주세요.<br> 
+							Thank you!</h4></h4>
+							<h4 class="light-white light">Now Loading....</h4>
+						</div>
+						<div class="item text-center">
+							<i class="icon fa fa-twitter"></i><br />
+							<h4 class="white light">로딩중...</h4>
 							<h4 class="light-white light">Now Loading....</h4>
 						</div>
 					</div>
