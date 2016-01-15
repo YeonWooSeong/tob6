@@ -12,4 +12,3 @@
 <c:set var="startcss" value="${context}/resources/startcss"></c:set>
 <c:set var="startimages" value="${context}/resources/startimages"></c:set>
 <c:set var="fonts" value="${context}/resources/fonts"></c:set>
-

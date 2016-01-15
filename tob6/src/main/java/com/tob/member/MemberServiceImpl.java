@@ -3,10 +3,8 @@ package com.tob.member;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
-import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
-import org.apache.tomcat.util.http.mapper.Mapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +13,7 @@ import org.springframework.stereotype.Service;
 import com.tob.cart.BookCartVO;
 import com.tob.cart.TodayCartVO;
 import com.tob.global.Command;
+import com.tob.global.Command2;
 import com.tob.mapper.CartMapper;
 import com.tob.mapper.MemberMapper;
 
@@ -88,7 +87,7 @@ public class MemberServiceImpl implements MemberService{
 			return mapper.selectSomeBy(domain, searchword);
 		}
 		@Override
-		public List<MemberVO> getList(Command command) {
+		public List<MemberVO> getList(Command2 command) {
 			logger.info("MemberServiceImpl : getList");
 			MemberMapper mapper = sqlSession.getMapper(MemberMapper.class);
 			return mapper.selectAll(command);
@@ -117,13 +116,6 @@ public class MemberServiceImpl implements MemberService{
 			
 			MemberMapper mapper = sqlSession.getMapper(MemberMapper.class);
 			return mapper.getList(todaycart);
-		}
-		@Override
-		public MemberVO searchByEmail(String email) {
-			logger.info("MemberServiceImpl : searchByEmail 진입");
-			logger.info("넘어온 이메일 : " + email);
-			MemberMapper mapper = sqlSession.getMapper(MemberMapper.class);
-			return mapper.searchByEmail(email);
 		}
 		
 }

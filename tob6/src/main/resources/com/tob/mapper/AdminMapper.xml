@@ -21,6 +21,20 @@
  	FROM ADMIN WHERE ADMIN_EMAIL = #{email} 
  </select>
  
+ <select id="selectAll" resultType="com.tob.book.BookVO" parameterType="com.tob.global.Command">
+ 	SELECT
+		BOOK_ID AS bookId,
+		BOOK_NAME AS bookName,
+		PRICE AS bookPrice,
+		WRITER AS writer,
+		GRADE AS grade,
+		STOCK_SEQ AS stockSeq,
+		OPTION_ID AS optionBook,
+		GENRE_ID AS genreId
+ 		FROM BOOK ORDER BY bookId ASC
+         LIMIT #{start}, 10
+ </select>
+ 
  
  <insert id="insert" parameterType="com.tob.admin.AdminVO">
  	INSERT INTO ADMIN (ID,PASSWORD,ADMIN_EMAIL) 
@@ -36,6 +50,18 @@
 		PASSWORD = #{password}
 	WHERE ID = #{id}	
  </update>
+ 
+ <select id="count" resultType="int">
+ 	SELECT COUNT(*) AS count FROM BOOK
+ </select>
+ 
+ <delete id="deletePurchase" parameterType="string">
+ 	DELETE FROM PURCHASE WHERE BOOK_ID = #{bookId}
+ </delete>
+ 
+ <delete id="deleteCart" parameterType="string">
+ 	DELETE FROM CART WHERE BOOK_ID = #{bookId}
+ </delete>
  
  
  </mapper>

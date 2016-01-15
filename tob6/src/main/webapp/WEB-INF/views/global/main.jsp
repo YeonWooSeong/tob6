@@ -78,7 +78,7 @@
 	<section id="book_section" class="section section-padded">
 		<div class="container">
 			<div class="row text-center title">
-				<label id="book_more"><h1 class="light muted">BOOK 메인으로 들어가기!!!</h1></label>
+				<label id="book_more"><img src="${img}/book.png" alt="" /></label>
 			</div>
 			<div class="row services">
 				<div class="col-md-4">
@@ -86,8 +86,10 @@
 						<div class="icon-holder">
 							<img src="${normal}/img2/icons/heart-blue.png" alt="" class="icon">
 						</div>
-						<h4 class="heading">Cardio Training</h4>
-						<p class="description">A elementum ligula lacus ac quam ultrices a scelerisque praesent vel suspendisse scelerisque a aenean hac montes.</p>
+						<h4 class="heading">멈추면 보여요</h4>
+						<p class="description">이세상 최고의 명품옷은 바로 자신감을 입는 것 입니다.
+						- 멈추면, 비로소 보이는 것들 中
+						 </p>
 					</div>
 				</div>
 				<div class="col-md-4">
@@ -95,8 +97,12 @@
 						<div class="icon-holder">
 							<img src="${normal}/img2/icons/guru-blue.png" alt="" class="icon">
 						</div>
-						<h4 class="heading">Yoga Pilates</h4>
-						<p class="description">A elementum ligula lacus ac quam ultrices a scelerisque praesent vel suspendisse scelerisque a aenean hac montes.</p>
+						<h4 class="heading">If I'm moon</h4>
+						<p class="description">​내가 만약 달이 된다면
+							지금 그 사람의 창가에도
+							아마 몇 줄기는 내려지겠지<br>
+							-김소월 '첫사랑'-
+						</p>
 					</div>
 				</div>
 				<div class="col-md-4">
@@ -117,7 +123,7 @@
 	<section id="best_section" class="section gray-bg">
 		<div class="container">
 			<div class="row title text-center">
-				<label id="best_more"><h1 class="light muted">BEST-SECTION</h1></label>
+				<label id="best_more"><img src="${img}/bstseller.png" alt="" /></label>
 			</div>
 			<div class="row">
 				<div class="col-md-4">
@@ -177,41 +183,31 @@
 	<section id="week_section" class="section">
 		<div class="container">
 			<div class="row title text-center">
-				<label id="week_more"><h1 class="light white">WEEK-SECTION</h1></label>
+				<label id="week_more"><img src="${img}/week.png" alt="" /></label>
 			</div>
 			<div class="row no-margin">
 				<div class="col-md-7 no-padding col-md-offset-5 pricings text-center">
 					<div class="pricing">
-						<div class="box-main active" data-img="${normal}/img2/pricing1.jpg">
-							<h4 class="white">Yoga Pilates</h4>
-							<h4 class="white regular light">$850.00 <span class="small-font">/ year</span></h4>
-							<a href="#" data-toggle="modal" data-target="#modal1" class="btn btn-white-fill">Sign Up Now</a>
-							<i class="info-icon icon_question"></i>
+						<div class="box-main active">
+						<label id="you"><img alt="참 좋은 당신을 만났습니다." src="${img}/weekday1.jpg" style="width: 141px; height: 203px;">
+						</label>
 						</div>
 						<div class="box-second active">
-							<ul class="white-list text-left">
-								<li>One Personal Trainer</li>
-								<li>Big gym space for training</li>
-								<li>Free tools &amp; props</li>
-								<li>Free locker</li>
-								<li>Free before / after shower</li>
-							</ul>
+							<label id="happy"><img src="${img}/weekday2.jpg"
+						alt="나는 이제 좀 행복해져야겠다." style="width: 141px; height: 203px;"></label>
 						</div>
 					</div>
 					<div class="pricing">
-						<div class="box-main" data-img="${normal}/img2/pricing2.jpg">
-							<h4 class="white">Cardio Training</h4>
-							<h4 class="white regular light">$100.00 <span class="small-font">/ year</span></h4>
-							<a href="#" data-toggle="modal" data-target="#modal1" class="btn btn-white-fill">Sign Up Now</a>
-							<i class="info-icon icon_question"></i>
+						<div class="box-main">
+							<label id="story"><img src="${img}/recome1.jpg"
+						alt="내 스물아홉 이야기" style="width: 141px; height: 203px;"></label>
+							
 						</div>
 						<div class="box-second">
 							<ul class="white-list text-left">
-								<li>One Personal Trainer</li>
-								<li>Big gym space for training</li>
-								<li>Free tools &amp; props</li>
-								<li>Free locker</li>
-								<li>Free before / after shower</li>
+								<li>이 주의 책 추천은</li>
+								<li>출판사가 추천하는 </li>
+								<li>한 주간의 책입니다.</li>
 							</ul>
 						</div>
 					</div>
@@ -219,35 +215,41 @@
 			</div>
 		</div>
 	</section>
-	
-	
 	
 	
 	<section id="event_section" class="section section-padded blue-bg">
 		<div class="container">
 			<div class="row">
-				<label id="event_more"><h1>EVENT-SECTION</h1></label>
+				<label id="event_more"><img src="${img}/event.png" alt="" /></label>
 				<div class="col-md-8 col-md-offset-2">
 					<div class="owl-twitter owl-carousel">
 						<div class="item text-center">
-							<i class="icon fa fa-twitter"></i>
-							<label id="event_tag"><h1 class="white light">EVENT 댓글달기 로직 확인</h1></label>
+							<i class="icon fa fa-twitter"></i><br />
+							<label id="event_tag">
+							<h1 class="white light">EVENT 댓글로직 확인</h1>
+							</label>
 						</div>
 						<div class="item text-center">
-							<i class="icon fa fa-twitter"></i>
-							<h4 class="white light">To enjoy the glow of good health, you must exercise.</h4>
-							<h4 class="light-white light">#health #training #exercise</h4>
+							<i class="icon fa fa-twitter"></i><br />
+							<img src="${img}/E003.jpg" alt="소프트 스킬 리뷰어 이벤트">
+								<div class="caption">
+									<h4 class="white light">소프트 스킬 리뷰어 이벤트</h4>
+									<p class="white light">2016/01/01~2016/01/31</p>
+									<label id="soft" class="btn btn-primary">더보기</label>
+						</div>
 						</div>
 						<div class="item text-center">
-							<i class="icon fa fa-twitter"></i>
-							<h4 class="white light">To enjoy the glow of good health, you must exercise.</h4>
-							<h4 class="light-white light">#health #training #exercise</h4>
+							<i class="icon fa fa-twitter"></i><br />
+							<h4 class="white light">계속해서 개발중이오니 불편하시더라도 기다려주세요. Thank you!</h4></h4>
+							<h4 class="light-white light">Now Loading....</h4>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
+	
+	
 	<section id="event_submain"></section>
 	<section id="mypage_section"></section>
 	<section id="cart_section"></section>
@@ -255,7 +257,129 @@
 	<section id="pur_section"> <h1 id="pur_list">구매목록 리스트 조회</h1></section>
 	
 	
-	<div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+<section id="team_section">
+	<div class="container" style="padding-top: 20px; padding-bottom: 20px;">
+		<div class="row title text-center">
+			<label> <img src="${img}/team.png" alt="" /></label>
+			<div class="row" style="margin-top: 10px;">
+				<div class="col-sm-4">
+					<div class="team-member">
+						<div class="team text-center">
+							<div class="cover"
+								style="background:url('${normal}/img2/team/team-cover1.jpg'); background-size:cover;">
+								<div class="overlay text-center">
+									<h3 class="white">Hwang YoungJu</h3>
+									<h5 class="light light-white">Team Leader</h5>
+								</div>
+							</div>
+							<img src="${normal}/img2/team/team3.jpg" alt="Team Image"
+								class="avatar">
+							<div class="title">
+								<h4>Hwang YoungJu</h4>
+								<h5 class="muted regular">Team Leader</h5>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<div class="team-member">
+						<div class="team text-center">
+							<div class="cover"
+								style="background:url('${normal}/img2/team/team-cover1.jpg'); background-size:cover;">
+								<div class="overlay text-center">
+									<h3 class="white">"Admin"</h3>
+									<h5 class="light light-white">JAVA, Ajax, Spring et...</h5>
+								</div>
+							</div>
+							<img src="${normal}/img2/team/team3.jpg" alt="Team Image"
+								class="avatar">
+							<div class="title">
+								<h4>Kim Sumin</h4>
+								<h5 class="muted regular">Admin</h5>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="team text-center">
+						<div class="cover"
+							style="background:url('${normal}/img2/team/team-cover3.jpg'); background-size:cover;">
+							<div class="overlay text-center">
+								<h3 class="white">BOOK and Android</h3>
+								<h5 class="light light-white">JAVA,Android Studio,Spring et...</h5>
+							</div>
+						</div>
+						<img src="${normal}/img2/team/team2.jpg" alt="Team Image"
+							class="avatar">
+						<div class="title">
+							<h4>Seong YonWoo</h4>
+							<h5 class="muted regular">BOOK AND ANDROID</h5>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="team text-center">
+						<div class="cover" style="background:url('${normal}/img2/team/team-cover2.jpg'); background-size:cover;">
+							<div class="overlay text-center">
+								<h3 class="white">EVNET</h3>
+								<h5 class="light light-white">JAVA, Ajax, Spring et...</h5>
+							</div>
+						</div>
+						<img src="${normal}/img2/team/team1.jpg" alt="Team Image" class="avatar">
+						<div class="title">
+							<h4>Lee JeongMin</h4>
+							<h5 class="muted regular">EVNET</h5>
+						</div>
+					</div>
+				</div>
+			<div class="col-md-4">
+					<div class="team text-center">
+						<div class="cover" style="background:url('${normal}/img2/team/team-cover2.jpg'); background-size:cover;">
+							<div class="overlay text-center">
+								<h3 class="white">Main UI</h3>
+								<h5 class="light light-white">JAVA, Ajax, Spring et...</h5>
+							</div>
+						</div>
+						<img src="${normal}/img2/team/team1.jpg" alt="Team Image" class="avatar">
+						<div class="title">
+							<h4>Lee HyeSuk</h4>
+							<h5 class="muted regular">Main UI</h5>
+						</div>
+					</div>
+				</div>
+			<div class="col-sm-4">
+					<div class="team-member">
+						<div class="team text-center">
+							<div class="cover"
+								style="background:url('${normal}/img2/team/team-cover1.jpg'); background-size:cover;">
+								<div class="overlay text-center">
+									<h3 class="white">"MEMBER"</h3>
+									<h5 class="light light-white">JAVA, Ajax, Spring et...</h5>
+								</div>
+							</div>
+							<img src="${normal}/img2/team/team3.jpg" alt="Team Image"
+								class="avatar">
+							<div class="title">
+								<h4>Hong HyeongDong</h4>
+								<h5 class="muted regular">MEMBER</h5>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+			</div>
+		</div>
+	</div>
+</section>
+
+
+
+
+
+
+<div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content modal-popup">
 				<a href="#" class="close-link"><i class="icon_close_alt2"></i></a>
@@ -284,20 +408,20 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-6 text-center-mobile">
-					<h3 class="white">Reserve a Free Trial Class!</h3>
+					
 					<h5 class="light regular light-white">Shape your body and improve your health.</h5>
 					<a href="#" class="btn btn-blue ripple trial-button">Start Free Trial</a>
 				</div>
 				<div class="col-sm-6 text-center-mobile">
-					<h3 class="white">Opening Hours <span class="open-blink"></span></h3>
+					<h3 class="white">Call please<span class="open-blink"></span></h3>
 					<div class="row opening-hours">
 						<div class="col-sm-6 text-center-mobile">
 							<h5 class="light-white light">Mon - Fri</h5>
-							<h3 class="regular white">9:00 - 22:00</h3>
+							<h3 class="regular white">9:00 - 21:00</h3>
 						</div>
 						<div class="col-sm-6 text-center-mobile">
 							<h5 class="light-white light">Sat - Sun</h5>
-							<h3 class="regular white">10:00 - 18:00</h3>
+							<h3 class="regular white">10:00 - 21:00</h3>
 						</div>
 					</div>
 				</div>

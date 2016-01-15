@@ -12,10 +12,10 @@
   </definition>
   
   <!-- 관리자용 타일즈 -->
-  <definition name="admin_layout" template="/WEB-INF/views/layout.jsp">
+  <definition name="admin_layout" template="/WEB-INF/views/layout2.jsp">
     <put-attribute name="header" value="" />
     <put-attribute name="content" value="" />
-    <put-attribute name="footer" value="/WEB-INF/views/global/footer.jsp" />
+    <put-attribute name="footer" value="/WEB-INF/views/admin/footer.jsp" />
   </definition>
   <definition name="admin/*/*.tiles" extends="admin_layout">
    	<put-attribute name="header" value="/WEB-INF/views/admin/header.jsp"/>

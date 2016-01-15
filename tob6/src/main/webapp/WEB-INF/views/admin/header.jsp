@@ -2,7 +2,6 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" >
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" >
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-
 <jsp:useBean id="now" class="java.util.Date"/>
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
@@ -41,15 +40,15 @@
           <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">이벤트 관리 <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="${context}/admin/event_reg">이벤트 등록</a></li>
-            <li><a href="${context}/admin/event_list">전체 이벤트 목록</a></li>
+            <li><a href="#">이벤트 등록</a></li>
+            <li><a href="#">전체 이벤트 목록</a></li>
           </ul>
         </li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">주문 관리 <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="${context}/account/test">테스트 페이지</a></li>
-            <li><a href="${context}/admin/account_list">날짜별 주문 목록</a></li>
+            <li><a href="#">날짜별 주문 목록</a></li>
           </ul>
         </li>
       </ul>
@@ -65,8 +64,9 @@
               
             <div class="form-group" style="margin-left: 20px;">
             <input type="text" class="form-control" placeholder="책 검색" size="10" id="query" name="query"/></div>
-            <button type="submit" id="main_search" class="btn btn-default">검 색</button>
+            <button type="submit" id="main_search" class="btn btn-default">DAUM 검색</button>  
 		</form>
+		<button id="searchBook" class="btn btn-default" style="margin-top: 0.55%;">검 색</button>
      
     </div>
   </div>
@@ -128,7 +128,7 @@ function search_query() {
 		});
 		
 		$('#main_bookReg').click(function() {
-			adminBook.init(); 
+			adminBook.init3(); 
 		});
 		
 		$('#main_bookList').click(function() {
@@ -137,6 +137,10 @@ function search_query() {
 		
 		$('#main_todayBook').click(function() {
 			AdminBook.inputBookId(); 
+		});
+		$('#searchBook').click(function() {
+			var keyword = $("#query").val();
+			BookSearch.result('1', keyword);
 		});
 
 	});
@@ -147,8 +151,7 @@ function search_query() {
 			link : function(url) {
 				alert(url);
 				window.open(url);
-			}
-			
+			}	
 	}
 	
 	
@@ -157,8 +160,50 @@ function search_query() {
 	var AdminMemberReg = {
 			init : function(url) {
 				$.getJSON(url, function(data) {
-					var reg = '<div class="container"><div class="row"><div class="col-md-6 col-md-offset-3"><div class="panel panel-login"><div class="panel-heading"><div class="row"><div class="col-xs-6"><a href="#"class="active"id="login-form-link">관리자등록</a></div><div class="col-xs-6"><a href="#"id="register-form-link">회원 등록</a></div></div><hr></div><div class="panel-body"><div class="row"><div class="col-lg-12"><form id="login-form"action=""method="post"role="form"style="display: block;"><div class="form-group"><label></label><input type="text"class="form-control"placeholder="ID"id="admin_id"></div><div class="form-group"><label></label><input type="password"class="form-control"placeholder="password"id="admin_password"></div><div class="form-group"><label></label><input type="email"class="form-control"placeholder="Email"id="admin_email"></div><div class="form-group"style="width: 300px; float: left;"><label></label><input type="text"name="form-control"id="confirm_num"tabindex="2"class="form-control"placeholder="인증번호"></div><button type="button"id="btn_confirm" style="margin-top:6px; font-size: 12px; width: 100px; border-radius: 10px; float: left;"class="btn btn-primary btn-block">인증번호 발송</button><div class="row"style="float: left; margin-top: 20px;"><div class="col-xs-4 col-sm-3 col-md-3"><span class="button-checkbox"><button type="button"class="btn"data-color="info"tabindex="7">I Agree</button><input type="checkbox"name="t_and_c"id="t_and_c"class="hidden"value="1"></span></div><div class="col-xs-8 col-sm-9 col-md-9"style="font-size: 14px; margin-top: 5px;"><strong class="label label-primary">관리자 등록</strong>을 하기전에<a href="#"data-toggle="modal"data-target="#t_and_c_m">규정사항</a>을 확인하십시오</div></div><div class="form-group"style="margin-top: 10px;"><div class="row"><div class="col-sm-6 col-sm-offset-3"style="margin-top: 20px;"><input type="submit"name="register-submit"id="admin_join"tabindex="4"class="form-control btn btn-register"value="Register Now"></div></div></div></form>'
-					+'<form id="register-form"action="" method="post"role="form"style="display: none; "><div class="form-group"><input type="text"name="userid"id="userid"tabindex="1"class="form-control"placeholder="사용자ID"value=""></div><div class="form-group"><input type="password"name="password"id="password"tabindex="2"class="form-control"placeholder="비밀번호"></div><div class="form-group"><input type="text"name="name"id="name"tabindex="1"class="form-control"placeholder="이름"value=""></div><div class="form-group"><input type="text"name="birth"id="birth"tabindex="1"class="form-control"placeholder="생일"value=""></div><div class="form-group"><input type="text"name="gender"id="gender"tabindex="1"class="form-control"placeholder="성별"value=""></div><div class="form-group"><input type="text"name="email"id="email"tabindex="1"class="form-control"placeholder="이메일"value=""></div><div class="form-group"><input type="text"name="phone"id="phone"tabindex="1"class="form-control"placeholder="Phone(  -없이 입력해주세요)"value=""></div><div class="form-group"><input type="text"name="addr"id="addr"tabindex="1"class="form-control"placeholder="주소"value=""></div><div class="form-group"style="margin-top: 0px;"><div class="row"><div class="col-sm-6 col-sm-offset-3"><input type="submit"name="login-submit"id="member_join"tabindex="4"class="form-control btn btn-login"value="Register Now"></div></div></div></form></div></div></div></div></div></div></div><div class="modal fade"id="t_and_c_m"tabindex="-1"role="dialog"aria-labelledby="myModalLabel"aria-hidden="true"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button"class="close"data-dismiss="modal"aria-hidden="true">×</button><h4 class="modal-title"id="myModalLabel">사내 규정사항</h4></div><div class="modal-body"><p>사내 규정사항</p></div><div class="modal-footer"><button type="button"class="btn btn-primary"data-dismiss="modal">I Agree</button></div></div></div></div>';
+					var reg = '<div class="container"><div class="row">'
+					+'<div class="col-md-6 col-md-offset-3"><div class="panel panel-login">'
+					+'<div class="panel-heading"><div class="row"><div class="col-xs-6">'
+					+'<a href="#"class="active"id="login-form-link">관리자등록</a></div>'
+					+'<div class="col-xs-6"><a href="#"id="register-form-link">회원 등록</a></div></div><hr></div>'
+					+'<div class="panel-body"><div class="row">'
+					+'<div class="col-lg-12">'
+					+'<form id="login-form"role="form"style="display: block;">'
+					+'<div class="form-group"><label></label>'
+					+'<input type="text"class="form-control"placeholder="ID"id="admin_id"></div>'
+					+'<div class="form-group"><label></label>'
+					+'<input type="password"class="form-control"placeholder="password"id="admin_password"></div>'
+					+'<div class="form-group"><label></label>'
+					+'<input type="email"class="form-control"placeholder="Email"id="admin_email"></div>'
+					+'<div class="form-group"style="width: 300px; float: left;"><label></label>'
+					+'<input type="text"name="form-control"id="confirm_num"tabindex="2"class="form-control"placeholder="인증번호"></div>'
+					+'<button type="button"id="btn_confirm" style="margin-top:6px; font-size: 12px; width: 100px; border-radius: 10px; float: left;"class="btn btn-primary btn-block">인증번호 발송</button>'
+					+'<div class="row"style="float: left; margin-top: 20px;">'
+					+'<div class="col-xs-4 col-sm-3 col-md-3"><span class="button-checkbox">'
+					+'<label><span class="hide">규정사항 동의</span><input type="checkbox" name="agree" value="agree" /><span class="protxt">이용약관에 동의합니다.</span></label>'
+					+'<input type="checkbox"name="t_and_c"id="t_and_c"class="hidden"value="1"></span></div>'
+					+'<div class="col-xs-8 col-sm-9 col-md-9"style="font-size: 14px; margin-top: 5px;">'
+					+'<strong class="label label-primary">관리자 등록</strong>을 하기전에<a href="#"data-toggle="modal"data-target="#t_and_c_m">규정사항</a>을 확인하십시오</div></div>'
+					+'<div class="form-group"style="margin-top: 10px;"><div class="row">'
+					+'<div class="col-sm-6 col-sm-offset-3"style="margin-top: 20px;">'
+					+'<input type="button"name="register-submit"id="admin_join"tabindex="4"class="form-control btn btn-register"value="Register Now"></div></div></div></form>'
+					+'<form id="register-form"style="display: none; ">'
+					+'<div class="form-group">'
+					+'<input type="text"name="userid"id="userid"tabindex="1"class="form-control"placeholder="사용자ID"value=""></div>'
+					+'<div class="form-group"><input type="password"name="password"id="password"tabindex="2"class="form-control"placeholder="비밀번호"></div>'
+					+'<div class="form-group"><input type="text"name="name"id="name"tabindex="1"class="form-control"placeholder="이름"value=""></div>'
+					+'<div class="form-group"><input type="text"name="birth"id="birth"tabindex="1"class="form-control"placeholder="생일"value=""></div>'
+					+'<div class="form-group"><input type="text"name="gender"id="gender"tabindex="1"class="form-control"placeholder="성별"value=""></div>'
+					+'<div class="form-group"><input type="text"name="email"id="email"tabindex="1"class="form-control"placeholder="이메일"value=""></div>'
+					+'<div class="form-group"><input type="text"name="phone"id="phone"tabindex="1"class="form-control"placeholder="Phone(  -없이 입력해주세요)"value=""></div>'
+					+'<div class="form-group"><input type="text"name="addr"id="addr"tabindex="1"class="form-control"placeholder="주소"value=""></div>'
+					+'<div class="form-group"style="margin-top: 0px;"><div class="row">'
+					+'<div class="col-sm-6 col-sm-offset-3">'
+					+'<input type="button"name="login-submit"id="member_join"tabindex="4"class="form-control btn btn-login"value="Register Now"></div></div></div></form></div></div></div></div></div></div></div>'
+					+'<div class="modal fade"id="t_and_c_m"tabindex="-1"role="dialog"aria-labelledby="myModalLabel"aria-hidden="true">'
+					+'<div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header">'
+					+'<button type="button"class="close"data-dismiss="modal"aria-hidden="true">×</button><h4 class="modal-title"id="myModalLabel">사내 규정사항</h4></div>'
+					+'<div class="modal-body"><p>사내 규정사항</p></div><div class="modal-footer">'
+					+'<button type="button"class="btn btn-primary"data-dismiss="modal">I Agree</button></div></div></div></div>';
 				
 					$('.mainView').html(reg);
 					style.style();
@@ -191,10 +236,11 @@ function search_query() {
 
 					
 					$("#admin_join").click(function(){
+ 
 						var admin_id = $("#admin_id").val();
 						var admin_password = $("#admin_password").val();
 						var admin_email = $("#admin_email").val();
-						
+						var agree = $("input:checkbox:checked").val();
 						if (admin_id === "") {
 							alert('공란을 채워주세요.');
 						} 
@@ -203,8 +249,12 @@ function search_query() {
 						} 
 						else if(admin_email === "") {
 							alert('공란을 채워주세요.');
-						}else {
-							AdminReg.join();	
+						}
+						else if(agree != "agree") {
+							alert('동의해야지?');
+						}
+						else {
+							AdminReg.join();
 						}
 						
 					});
@@ -243,14 +293,14 @@ function search_query() {
 						else if(addr === "") {
 							alert('공란을 채워주세요.');
 						} else {
-							AdminMember.join();	
+							MemberReg.join2();	
 						}
 						
 					});
 			
 					/* =============== 이용약관 부분 ================= */
 					
-					$('.button-checkbox').each(function () {
+					$('.button-checkbox').each(function(){
 
 				        // Settings
 				        var $widget = $(this),
@@ -265,7 +315,7 @@ function search_query() {
 				                    icon: 'glyphicon glyphicon-unchecked'
 				                }
 				            };
-
+			
 				        // Event Handlers
 				        $button.on('click', function () {
 				            $checkbox.prop('checked', !$checkbox.is(':checked'));
@@ -277,8 +327,10 @@ function search_query() {
 				            updateDisplay();
 				        });
 
+				        
+				        
 				        // Actions
-				        function updateDisplay() {
+				        function updateDisplay(){
 				            var isChecked = $checkbox.is(':checked');
 
 				            // Set the button's state
@@ -301,6 +353,7 @@ function search_query() {
 				                    .addClass('btn-default');
 				            }
 				        }
+				        //Action end
 
 				        // Initialization
 				        function init() {
@@ -312,13 +365,16 @@ function search_query() {
 				                $button.prepend('<i class="state-icon ' + settings[$button.data('state')].icon + '"></i>');
 				            }
 				        }
-				        init();
+				        /*  init end line */
 				    });
+					/* 이용약관부분 */
 	
 				});
-			},			
+			}			
 		};
  
+/* =================  AdminMemberReg End Line  =================  */
+
  	var style = {
  			style : function() {
 				$('.panel-login').css('border-color','#ccc').css('-webkit-box-shadow','0px 2px 3px 0px rgba(0,0,0,0.2)')
@@ -418,8 +474,8 @@ function search_query() {
 			}
 	};
 	
-var AdminMember = {
-		join : function() {
+var MemberReg = {
+		join2 : function() {
 			var join_member = {
 				"userid" :$("#userid").val(),
 				"password" :$("#password").val(),
@@ -635,26 +691,7 @@ var AdminMember = {
 		                	+'<IMG SRC=" ${img}/admin/btn_nxt_block.gif"> &nbsp;'
 		           			+'</a>';
 					}
-					pagination +='</TD>';
-										
-					pagination += '<TD WIDTH=200 ALIGN=RIGHT>'
-					+'<FORM NAME="memberSearch" action="'+context+'/admin/memberSearch/1" style="color: black">'
-					+'<SELECT NAME="column" SIZE=1>'
-					+'<OPTION VALUE="" SELECTED>선택'
-					+'</OPTION>'
-					+'<OPTION VALUE="id">ID'
-					+'</OPTION>'
-					+'<OPTION VALUE="name">이름'
-					+'</OPTION>'
-					+'<OPTION VALUE="gender">성별'
-					+'</OPTION>'
-					+'</SELECT>'
-					+'<INPUT TYPE=TEXT NAME="keyword" SIZE=10 MAXLENGTH=20>'
-					+'<INPUT TYPE=submit value="검색">'
-					+'</FORM>'
-					+'</TD>'
-					+'</TR>'
-					+'</TABLE>';
+					pagination +='</TD></TR></TABLE>';
 					
 					table += pagination;
 					$('.mainView').html(table);
@@ -776,12 +813,12 @@ var AdminMember = {
 	/* ================== 책 등록 ====================== */
 	
 var adminBook ={
-	init : function(url) {
+	init3 : function(url) {
 		$.getJSON(context+'/admin/book_reg',
 		function(data) {
 	var table ='<div class="container"><div class="row">'
 	+'<div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">'
-	+'<form role="form"><h2 style="margin-left: 220px;">책 등록</h2><hr class="colorgraph">'
+	+'<h2 style="margin-left: 220px;">책 등록</h2><hr class="colorgraph">'
 	+'<div class="row"><div class="col-xs-12 col-sm-6 col-md-6"><div class="form-group">'
 	+'<input type="text" name="bookId" id="bookId" class="form-control input-lg" placeholder="책 아이디" tabindex="1" style="width: 450px;">'
 	+'</div></div>'
@@ -815,8 +852,8 @@ var adminBook ={
 	+'<div class="col-xs-8 col-sm-9 col-md-9">'
 	+'<strong class="label label-primary">책 등록</strong>을 하기전에 <a href="#" data-toggle="modal" data-target="#t_and_c_m">규정사항</a>을 확인하십시오. </div></div><hr class="colorgraph">'
 	+'<div class="row"><div class="col-xs-12 col-md-6">'
-	+'<input type="submit" id="reg_book_btn" value="책 등록" class="btn btn-primary btn-block btn-lg" tabindex="2" style="margin-left: 180px; width: 200px;">'
-	+'</div></div></form></div></div>'
+	+'<input type="button" id="reg_book_btn" value="책 등록" class="btn btn-primary btn-block btn-lg" tabindex="2" style="margin-left: 180px; width: 200px;">'
+	+'</div></div></div></div>'
 	+'<div class="modal fade" id="t_and_c_m" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">'
 	+'<div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header">'
 	+'<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>'
@@ -862,14 +899,13 @@ var adminBook ={
 		else if(genreId === "") {
 			alert('공란을 채워주세요.');
 		} else {
-			bookReg.join();	
+			bookReg.bookJoin();	
 		}
 		
 	});
 	
 	var bookReg = {
-			
-			join : function() {
+			bookJoin : function() {
 				var join_book = {
 					"bookId" :$("#bookId").val(),
 					"bookName" :$("#bookName").val(),
@@ -891,7 +927,7 @@ var adminBook ={
 					success : function(data) {
 						if(data.result == "success"){
 							alert(data.bookName+"책 등록 완료되었습니다.");
-							location.href(context+'/admin/main');
+							adminBook.init3();
 						}
 						if(data.result == "fail"){
 							alert("책 등록 실패하였습니다. 다시 시도해주세요.");
@@ -1047,27 +1083,7 @@ var adminBook ={
 		                	+'<IMG SRC=" ${img}/admin/btn_nxt_block.gif"> &nbsp;'
 		           			+'</a>';
 					}
-					pagination +='</TD>';
-					
-					
-					pagination += '<TD WIDTH=200 ALIGN=RIGHT>'
-					+'<FORM NAME="memberSearch" action="'+context+'/admin/BookSearch/1" style="color: black">'
-					+'<SELECT NAME="column" SIZE=1>'
-					+'<OPTION VALUE="" SELECTED>선택'
-					+'</OPTION>'
-					+'<OPTION VALUE="id">ID'
-					+'</OPTION>'
-					+'<OPTION VALUE="name">이름'
-					+'</OPTION>'
-					+'<OPTION VALUE="gender">성별'
-					+'</OPTION>'
-					+'</SELECT>'
-					+'<INPUT TYPE=TEXT NAME="keyword" SIZE=10 MAXLENGTH=20>'
-					+'<INPUT TYPE=submit value="검색">'
-					+'</FORM>'
-					+'</TD>'
-					+'</TR>'
-					+'</TABLE>';
+					pagination +='</TD></TR></TABLE>';
 					
 					table += pagination;
 					$('.mainView').html(table);
@@ -1217,9 +1233,16 @@ var AdminBook = {
 					});
 			});
 					
-		}	
-		
+		}		
 };
+
+var BookSearch = {
+		result : function(pageNo, keyword) {
+			$.getJSON(context + '/admin/bookSearch/'+pageNo+'/'+keyword, function(data) {
+				alert(keyword);
+			})
+		}		
+}
 	
 	
 </script>

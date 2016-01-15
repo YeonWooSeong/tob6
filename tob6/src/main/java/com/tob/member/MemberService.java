@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.tob.cart.BookCartVO;
 import com.tob.global.Command;
+import com.tob.global.Command2;
 
 
 public interface MemberService {
@@ -17,11 +18,8 @@ public interface MemberService {
 	   public MemberVO logout(String userid, String password);
 	   public int count();
 	   public MemberVO searchById(String userid);
-	   
-	   public MemberVO searchByEmail(String email);
-	   
 	   public List<MemberVO> searchBySearchword(String domain,String searchword);
-	   public List<MemberVO> getList(Command command);
+	   public List<MemberVO> getList(Command2 command);
 	   public int changePwd(MemberVO member);
 	   public int remove(String userid);
 	   public List<BookCartVO> getList(String userid);

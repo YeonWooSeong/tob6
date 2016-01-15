@@ -44,9 +44,6 @@ private static final Logger logger = LoggerFactory.getLogger(AccountController.c
 	@Autowired AccountVO account;
 	@Autowired AccountServiceImpl accountService;
 	
-
-	
-	
 	@RequestMapping("/chart_line")
 	public void lineChart(
 			String key,

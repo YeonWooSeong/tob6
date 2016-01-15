@@ -58,7 +58,7 @@ public class PurchaseController {
 		
 		return model;
 	}
-	@RequestMapping("/sendEmail")
+	/*@RequestMapping("/sendEmail")
 	public Model sendEmail(
 			HttpSession session,
 			Model model
@@ -83,7 +83,7 @@ public class PurchaseController {
 			emailSender.sendMail(email);
 		}
 		return model;
-	}
+	}*/
 	
 	@RequestMapping("/remove/{purNum}")
 	public String remove(

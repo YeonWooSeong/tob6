@@ -33,6 +33,7 @@ import com.tob.cart.CartVO;
 import com.tob.event.EventServiceImpl;
 import com.tob.event.EventVO;
 import com.tob.global.CommandFactory;
+import com.tob.global.CommandFactory2;
 
 
 @Controller
@@ -62,19 +63,6 @@ public class AdminController {
 		return "admin/admin/main.tiles";
 	}
 	
-	@RequestMapping("/api_exam01")
-	public String apiTest(){
-		logger.info("AdminController-apiTest() 진입");
-
-		return "admin/admin/api_exam01.tiles";
-	}
-	
-	@RequestMapping("/api_proxy")
-	public String apiTest2(){
-		logger.info("AdminController-api_proxy() 진입");
-		return "admin/admin/api_proxy.tiles";
-	}
-	
 	@RequestMapping("/member_profile/{userid}")
 	public @ResponseBody MemberVO memberProfile(
 			@PathVariable("userid")String userid,
@@ -88,21 +76,7 @@ public class AdminController {
 		return member;
 		
 	}
-	
-	@RequestMapping("/member_reg")
-	public Model memberReg(
-			Model model
-			){
-		logger.info("AdminController-memberReg() 페이지만 진입");
-		return model;
-	}
-	
-	@RequestMapping("/member_reg2")
-	public String memberReg2(
-			){
-		logger.info("AdminController-memberReg2() 페이지만 진입");
-		return "admin/admin/memberReg.tiles";
-	}
+
 	
 	@RequestMapping("/member_list")
 	public String memberList(){
@@ -132,7 +106,8 @@ public class AdminController {
 			){
 		
 		logger.info("멤버컨트롤러 member_delete() - 진입");
-
+		adminService.deletePurchase(userid);
+		adminService.deleteCart(userid);
 		int result = memberService.remove(userid);
 		if (result == 1) {
 			logger.info("멤버 삭제 성공");
@@ -152,7 +127,7 @@ public class AdminController {
 		logger.info("넘어온 페이지번호 : {}",pageNo);
 
 		int pageNumber = Integer.parseInt(pageNo);
-		int pageSize = 3;
+		int pageSize = 10;
 		int groupSize = 3;
 		int count = memberService.count();
 		
@@ -168,7 +143,7 @@ public class AdminController {
 		
 		logger.info("라스트페이지:{}",lastPage);
 		Map<String,Object> map = new HashMap<String,Object>();
-		map.put("list", memberService.getList(CommandFactory.list(pageNo)));
+		map.put("list", memberService.getList(CommandFactory2.list(pageNo)));
 		map.put("count", memberService.count());
 		map.put("pageNo", pageNo);
 		map.put("startPage", startPage);
@@ -243,10 +218,7 @@ public class AdminController {
 			} else {
 				logger.info("회원가입 실패");
 				model.addAttribute("result", "fail");
-			}
-		
-		
-		
+			}	
 		
 		return model;
 	}
@@ -352,6 +324,9 @@ public class AdminController {
 		
 		logger.info("멤버컨트롤러 book_delete() - 진입");
 		
+		adminService.deleteCart(bookId);
+		adminService.deletePurchase(bookId);
+		
 		int result = bookService.delete(bookId);
 		if (result == 1) {
 			logger.info("책 삭제성공");
@@ -367,9 +342,9 @@ public class AdminController {
 			Model model){
 		
 		int pageNumber = Integer.parseInt(pageNo);
-		int pageSize = 5;
+		int pageSize = 10;
 		int groupSize = 3;
-		int count = bookService.count();
+		int count = adminService.count();
 		int totalPage = count/pageSize;
 		if (count%pageSize != 0) {
 			totalPage += 1;
@@ -383,7 +358,7 @@ public class AdminController {
 		logger.info("AdminController bookList()");
 		logger.info("넘어온 페이지번호 : {}",pageNo);
 		Map<String,Object> map = new HashMap<String,Object>();
-		map.put("list", bookService.selectAll(CommandFactory.list(pageNo)));
+		map.put("list", adminService.selectAll(CommandFactory2.list(pageNo)));
 		map.put("count", count);
 		map.put("totalPage", totalPage);
 		map.put("pageNo", pageNumber);
@@ -436,6 +411,31 @@ public class AdminController {
 		return book;
 	}
 	
+	@RequestMapping("/bookSearch/{pageNo}/{bookId}")
+	public @ResponseBody BookVO bookSearch(
+			@PathVariable("pageNo")String pageNo, 
+			@PathVariable("keyword")String keyword 
+			
+			){
+		logger.info("bookSearch()");
+		logger.info("검색 단어 : {}",keyword);
+		logger.info("페이지 넘버 : {}",pageNo);
+		List<BookVO> list = bookService.searchByBookName(CommandFactory.list(pageNo));
+		logger.info("책 이름 : {}",list);
+		return book;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	@RequestMapping("/event_reg")
 	public String eventreg(){
 		logger.info("AdminController-eventreg() 진입");
@@ -480,18 +480,7 @@ public class AdminController {
 		return map;
 	}
 	
-	
-	@RequestMapping("/purchase_list")
-	public String purchaseList(){
-		logger.info("AdminController-purchaseList() 진입");
-		return "admin/admin/purchaseList.tiles";
-	}
-	
-	@RequestMapping("/account_list")
-	public String accountList(){
-		logger.info("AdminController-accountList() 진입");
-		return "admin/admin/accountList.tiles";
-	}
+
 
 	
 }
