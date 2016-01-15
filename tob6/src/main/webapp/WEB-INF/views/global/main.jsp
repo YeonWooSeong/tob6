@@ -19,7 +19,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="${context}/"><img src="${normal}/img2/logo.png" data-active-url="${normal}/img2/logo-active.png" alt=""></a>
+				<a class="navbar-brand" href="${context}/"><img src="${img}/tob_after.png" data-active-url="${img}/tob.png" alt=""></a>
 			</div>
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			
@@ -58,8 +58,8 @@
 				<div class="header-text">
 					<div class="row">
 						<div class="col-md-12 text-center">
-							<h3 class="light white">Take care of your body.</h3>
-							<h1 class="white typed">It's the only place you have to live.</h1>
+							<h3 class="light white">Welcome to homepage.</h3>
+							<h1 class="white typed">You can easily buy the book.</h1>
 							<span class="typed-cursor">|</span>
 						</div>
 					</div>
@@ -78,6 +78,7 @@
 			<div class="row text-center title">
 				<label id="book_more"><img src="${img}/book.png" alt="" /></label>
 			</div>
+				<h5 class="text-center">전체목록은 BOOK을 눌러주세요.</h5>
 			<div class="row services">
 				<div class="col-md-4">
 					<div class="service">
@@ -108,15 +109,22 @@
 						<div class="icon-holder">
 							<img src="${normal}/img2/icons/weight-blue.png" alt="" class="icon">
 						</div>
-						<h4 class="heading">Power Training</h4>
-						<p class="description">A elementum ligula lacus ac quam ultrices a scelerisque praesent vel suspendisse scelerisque a aenean hac montes.</p>
+						<h4 class="heading">미래</h4>
+						<p class="description">미래를 예측하는<br> 최선의 방법은 미래를 창조하는 것이다. <br>
+						-알랜 케이
+						</p>
 					</div>
 				</div>
 			</div>
 		</div>
-		<div class="cut cut-bottom"></div>
-	</section>
 	
+	</section>
+
+	
+
+
+
+
 
 	<section id="best_section" class="section gray-bg">
 		<div class="container">
@@ -124,59 +132,57 @@
 				<label id="best_more"><img src="${img}/bstseller.png" alt="" /></label>
 			</div>
 			<div class="row">
-				<div class="col-md-4">
-					<div class="team text-center">
-						<div class="cover" style="background:url('${normal}/img2/team/team-cover1.jpg'); background-size:cover;">
-							<div class="overlay text-center">
-								<h3 class="white">$69.00</h3>
-								<h5 class="light light-white">1 - 5 sessions / month</h5>
-							</div>
-						</div>
-						<img src="${normal}/img2/team/team3.jpg" alt="Team Image" class="avatar">
-						<div class="title">
-							<h4>Ben Adamson</h4>
-							<h5 class="muted regular">Fitness Instructor</h5>
-						</div>
-						<button data-toggle="modal" data-target="#modal1" class="btn btn-blue-fill">Sign Up Now</button>
+		<div style="margin: auto; width: 100%;">
+					<div class="col-xs-6 col-md-3">
+						<label class="thumbnail" id="now">
+							<img src="${img}/bstbook1.jpg" alt="지금 이 순간"
+							style="width: 141px; height: 203px;"> </label>
+					</div>
+					<div class="col-xs-6 col-md-3">
+						<label class="thumbnail" id="sapi">
+						<img src="${img}/bstbook2.jpg" alt="사피엔스"
+							style="width: 141px; height: 203px;">
+						</label>
+					</div>
+					<div class="col-xs-6 col-md-3">
+						<label class="thumbnail" id="lonly"> 
+						 <img src="${img}/bstbook3.jpg" alt="가끔은 격하게 위로워야 한다."
+							style="width: 141px; height: 203px;"></label>
+					</div>
+					<div class="col-xs-6 col-md-3">
+						<label class="thumbnail" id="mine">
+						<img src="${img}/bstbook4.jpg" alt="내안에서 나를 만드는 것들"
+							style="width: 141px; height: 203px;"></label>
+					</div>
+					<div class="col-xs-6 col-md-3">
+						<label class="thumbnail" id="mine"> <img
+							src="${img}/bstbook5.jpg" alt="언제 들어도 좋은 말"
+							style="width: 141px; height: 203px;"></label>
+					</div>
+					<div class="col-xs-6 col-md-3">
+						<label class="thumbnail" id="mine"><img
+							src="${img}/bstbook6.jpg" alt="중동 테러리즘]"
+							style="width: 141px; height: 203px;"></label>
+					</div>
+					<div class="col-xs-6 col-md-3">
+						<label class="thumbnail" id="mine">
+						<img
+							src="${img}/bstbook7.jpg" alt="혼자 있는 시간의 힘"
+							style="width: 141px; height: 203px;"></label>
+					</div>
+					<div class="col-xs-6 col-md-3">
+						<label class="thumbnail" id="mine"><img
+							src="${img}/bstbook8.jpg" alt="마법천자문"
+							style="width: 141px; height: 203px;"></label>
 					</div>
 				</div>
-				<div class="col-md-4">
-					<div class="team text-center">
-						<div class="cover" style="background:url('${normal}/img2/team/team-cover2.jpg'); background-size:cover;">
-							<div class="overlay text-center">
-								<h3 class="white">$69.00</h3>
-								<h5 class="light light-white">1 - 5 sessions / month</h5>
-							</div>
-						</div>
-						<img src="${normal}/img2/team/team1.jpg" alt="Team Image" class="avatar">
-						<div class="title">
-							<h4>Eva Williams</h4>
-							<h5 class="muted regular">Personal Trainer</h5>
-						</div>
-						<a href="#" data-toggle="modal" data-target="#modal1" class="btn btn-blue-fill ripple">Sign Up Now</a>
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="team text-center">
-						<div class="cover" style="background:url('${normal}/img2/team/team-cover3.jpg'); background-size:cover;">
-							<div class="overlay text-center">
-								<h3 class="white">$69.00</h3>
-								<h5 class="light light-white">1 - 5 sessions / month</h5>
-							</div>
-						</div>
-						<img src="${normal}/img2/team/team2.jpg" alt="Team Image" class="avatar">
-						<div class="title">
-							<h4>John Phillips</h4>
-							<h5 class="muted regular">Personal Trainer</h5>
-						</div>
-						<a href="#" data-toggle="modal" data-target="#modal1" class="btn btn-blue-fill ripple">Sign Up Now</a>
-					</div>
+				<!-- 종료 -->
 				</div>
 			</div>
-		</div>
 	</section>
 	
-	
+
+
 	
 	<section id="week_section" class="section">
 		<div class="container">
@@ -213,6 +219,8 @@
 			</div>
 		</div>
 	</section>
+
+
 	
 	
 	<section id="event_section" class="section section-padded blue-bg">
@@ -225,6 +233,7 @@
 							<i class="icon fa fa-twitter"></i><br />
 							<label id="event_tag">
 							<h1 class="white light">EVENT 댓글로직 확인</h1>
+							<p class="white light">이벤트 검색은 Event 로고를 클릭해주세요.</p>
 							</label>
 						</div>
 						<div class="item text-center">
@@ -400,13 +409,13 @@
 	
 	
 	
-	<footer>
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-6 text-center-mobile">
+<footer>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6 text-center-mobile">
 					
-					<h5 class="light regular light-white">Shape your body and improve your health.</h5>
-					<a href="#" class="btn btn-blue ripple trial-button">Start Free Trial</a>
+				<h5 class="light regular light-white">Please call team.</h5>
+				<a href="#" class="btn btn-blue ripple trial-button">준비중입니다.</a>
 				</div>
 				<div class="col-sm-6 text-center-mobile">
 					<h3 class="white">Call please<span class="open-blink"></span></h3>
@@ -424,13 +433,19 @@
 			</div>
 			<div class="row bottom-footer text-center-mobile">
 				<div class="col-sm-8">
-					<p>&copy; 2015 All Rights Reserved. Powered by <a href="http://www.phir.co/">PHIr</a> exclusively for <a href="http://tympanus.net/codrops/">Codrops</a></p>
+					<p>&copy; 2016 All Rights Reserved. (주)한빛이엔아이  </p>
+					<p style="font-size: 5px;">
+            통신판매신고 : 마포 제 0358호｜ TEL : 02-707-1480 ｜ 대표이사 : 염기호 ｜
+            주소 : 121-854 서울시 마포구 신수동 63-14 구프라자 3층 <br />
+            한빛교육센터강남센터: 서울특별시 강남구 테헤란로 5길 11 유빌딩 3층 
+            한빛교육센터신촌센터 홈페이지 관리자 : 김도환
+					</p>
 				</div>
 				<div class="col-sm-4 text-right text-center-mobile">
 					<ul class="social-footer">
-						<li><a href="http://www.facebook.com/pages/Codrops/159107397912"><i class="fa fa-facebook"></i></a></li>
-						<li><a href="http://www.twitter.com/codrops"><i class="fa fa-twitter"></i></a></li>
-						<li><a href="https://plus.google.com/101095823814290637419"><i class="fa fa-google-plus"></i></a></li>
+						<li><a href="http://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
+						<li><a href="http://www.twitter.com/"><i class="fa fa-twitter"></i></a></li>
+						<li><a href="https://plus.google.com/"><i class="fa fa-google-plus"></i></a></li>
 					</ul>
 				</div>
 			</div>
