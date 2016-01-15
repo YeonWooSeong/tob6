@@ -1,9 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
      <!-- Footer -->
     <footer>
-         
-		<div style="width:100%; height:5%; float: left;"></div>
-
+         <div style="width:100%; height:50px; float: left;"></div>
 <script language=javascript>
 		var ST_I23112_htmlstr = '';										// 스크롤되는 내용 전체를 담을 변수
 		var ST_I23112_flag = false;										// 스크롤 여부 결정 플래그

@@ -4,9 +4,9 @@
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="https://code.highcharts.com/modules/data.js"></script>
 <script src="https://code.highcharts.com/modules/drilldown.js"></script>
+<div id="map" style="width:100%;height:350px;"></div>
 
-<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
-
+<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=53e2827500534f733c75dadaccfdbaa2"></script>
 <script type="text/javascript">
 $(function () {
 	
@@ -263,5 +263,25 @@ $(function () {
         }
     });
 });
+
+var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+mapOption = { 
+    center: new daum.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+    level: 3 // 지도의 확대 레벨
+};
+
+var map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+
+//마커가 표시될 위치입니다 
+var markerPosition  = new daum.maps.LatLng(33.450701, 126.570667); 
+
+//마커를 생성합니다
+var marker = new daum.maps.Marker({
+position: markerPosition
+});
+
+//마커가 지도 위에 표시되도록 설정합니다
+marker.setMap(map);
+
 </script>
 
