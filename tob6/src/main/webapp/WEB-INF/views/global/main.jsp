@@ -219,6 +219,8 @@
 			</div>
 		</div>
 	</section>
+
+
 	
 	
 	<section id="event_section" class="section section-padded blue-bg">
@@ -245,7 +247,13 @@
 						</div>
 						<div class="item text-center">
 							<i class="icon fa fa-twitter"></i><br />
-							<h4 class="white light">계속해서 개발중이오니 불편하시더라도 기다려주세요. Thank you!</h4></h4>
+							<h4 class="white light">계속해서 개발중이오니 불편하시더라도 기다려주세요.<br> 
+							Thank you!</h4></h4>
+							<h4 class="light-white light">Now Loading....</h4>
+						</div>
+						<div class="item text-center">
+							<i class="icon fa fa-twitter"></i><br />
+							<h4 class="white light">로딩중...</h4>
 							<h4 class="light-white light">Now Loading....</h4>
 						</div>
 					</div>
@@ -255,11 +263,8 @@
 	</section>
 	
 	
-	<section id="event_submain"></section>
-	<section id="mypage_section"></section>
-	<section id="cart_section"></section>
 	<section id="join_section"></section>
-
+	<section id="mypage_section"></section>
 <section id="team_section">
 	<div class="container" style="padding-top: 20px; padding-bottom: 20px;">
 		<div class="row title text-center">
@@ -377,8 +382,8 @@
 </section>
 
 
-
-
+<section></section>
+<section id="cart_section">	</section>
 
 
 <div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -401,8 +406,6 @@
 			</div>
 		</div>
 	</div>
-	
-	
 
 	<!-- Holder for mobile navigation -->
 	<div class="mobile-nav">

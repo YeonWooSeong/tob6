@@ -61,7 +61,7 @@ var Cart = {
 		var arr = [];
 		var list = [];
 		$.getJSON(context+'/cart/list/'+userid, function(data) {
-			var table = '<div id="Shop_Basket" style="height:100%">'
+			var table = '<div id="Shop_Basket" style="height:500px">'
 						+'<table width="866" align="center" border="0" cellspacing="0" cellpadding="0"><tbody><tr><td colspan="2">'
 						+'<table id="table_lis" width="100%" align="center" border="0" cellspacing="0" cellpadding="0"><tbody><tr><td colspan="2">'
 						+'<table width="100%" align="center" border="0" cellspacing="0" cellpadding="0"><tbody><tr><td align="left"><h3 class="title_middle_black">'

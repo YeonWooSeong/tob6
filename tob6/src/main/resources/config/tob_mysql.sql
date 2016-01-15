@@ -101,7 +101,7 @@ CREATE TABLE REPLY(
 );
 
 
-INSERT INTO ADMIN VALUES('AD','AD');
+INSERT INTO ADMIN VALUES('AD','AD','soomin0322@naver.com');
 
 INSERT INTO MEMBER VALUES('a','a','hong','1991.07.17','남','pheonix0717@naver,com','010-4278-4789','서울시 광진구 화양동','default.png');
 INSERT INTO MEMBER VALUES('b','b','hwang','2000.01.11','남','ssun9900@naver,com','010-1234-1549','서울시 강남구 역삼동','default.png');
