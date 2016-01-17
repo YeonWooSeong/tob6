@@ -102,18 +102,7 @@ public class MemberServiceImpl implements MemberService{
 		MemberMapper mapper = sqlSession.getMapper(MemberMapper.class);
 		return mapper.logout(userid,password);
 		}	
-		/*@Override
-		public List<CartVO> getList(String userid) {
-			logger.info("MemberServiceImpl : getList 진입");
-			logger.info("넘어온 유저아이디 : " + userid);
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
-			Calendar c1 = Calendar.getInstance();
-			String today = sdf.format(c1.getTime());
-			cart.setUserid(userid);
-			
-			MemberMapper mapper = sqlSession.getMapper(MemberMapper.class);
-			return mapper.getList(cart);
-		}*/
+	
 		
 }
 		

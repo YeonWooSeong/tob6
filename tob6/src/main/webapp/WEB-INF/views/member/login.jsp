@@ -65,7 +65,7 @@
 					userid : $('#userid').val(),
 					password : $('#password').val()
 				},
-				type : 'get',
+				type : 'post',
 				datatype : 'json',
 				success : function(data) {
 					if (data.userid === $('#userid').val()) {

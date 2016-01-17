@@ -58,7 +58,7 @@ public class PurchaseController {
 		
 		return model;
 	}
-	/*@RequestMapping("/sendEmail")
+	@RequestMapping("/sendEmail")
 	public Model sendEmail(
 			HttpSession session,
 			Model model
@@ -71,7 +71,7 @@ public class PurchaseController {
 		} else {
 			MemberVO member = (MemberVO) session.getAttribute("user");
 			logger.info("로그인 된 유저의 이메일 : "+member.getEmail());
-			member = memberService.searchByEmail(member.getEmail());
+			member = memberService.searchById(member.getUserid());
 			logger.info("이메일로 찾은 멤버의 아이디 : "+member.getUserid());
 			model.addAttribute("login_check","login");
 			int randomNum =(int) (Math.random()*9999) + 1000;
@@ -83,7 +83,7 @@ public class PurchaseController {
 			emailSender.sendMail(email);
 		}
 		return model;
-	}*/
+	}
 	
 	@RequestMapping("/remove/{purNum}")
 	public String remove(

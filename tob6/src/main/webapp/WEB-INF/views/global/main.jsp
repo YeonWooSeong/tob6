@@ -35,7 +35,8 @@
 			<!-- 로그인 안한 상태 -->
 			<li><a href="${context}/admin/main">Admin</a></li>
 			<li><a href="#" data-toggle="modal" data-target="#modal1" class="btn btn-blue">Sign In</a></li>
-			<li style="float: right"><a href="${context}/member/joinForm" id="join">회원가입</a></li>
+			<li style="float: right"><a href="#" data-toggle="modal" data-target="#modal2">Sign Up</a></li>
+			<li ><a href="${context}/member/joinForm" id="join">회원가입</a></li>
 			</c:if>
 			<c:if test="${not empty sessionScope.user}">
 			<li style="float: right; padding-right: 10px;"><a href="#mypage_section" id="mypage">마이페이지</a></li>
@@ -329,14 +330,14 @@
 					<div class="team text-center">
 						<div class="cover" style="background:url('${normal}/img2/team/team-cover2.jpg'); background-size:cover;">
 							<div class="overlay text-center">
-								<h3 class="white">EVNET</h3>
+								<h3 class="white">EVENT</h3>
 								<h5 class="light light-white">JAVA, Ajax, Spring et...</h5>
 							</div>
 						</div>
 						<img src="${normal}/img2/team/team1.jpg" alt="Team Image" class="avatar">
 						<div class="title">
 							<h4>Lee JeongMin</h4>
-							<h5 class="muted regular">EVNET</h5>
+							<h5 class="muted regular">EVENT</h5>
 						</div>
 					</div>
 				</div>
@@ -386,27 +387,60 @@
 <section id="cart_section">	</section>
 
 
-<div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content modal-popup">
 				<a href="#" class="close-link"><i class="icon_close_alt2"></i></a>
 				<h3 class="white">Sign In</h3>
-				<form action="" class="popup-form">
-					<input type="text" class="form-control form-white" placeholder="ID">
-					<input type="text" class="form-control form-white" placeholder="Password">
+				<form class="popup-form" method="post">
+					<input type="text" name="userid" id="userid" class="form-control form-white" placeholder="ID">
+					<input type="password" name="password" id="password" class="form-control form-white" placeholder="Password">
+					<div class="checkbox-holder text-left">
+						<div class="checkbox">
+							<input type="checkbox" value="None" id="squaredOne" name="check" />
+							<label for="squaredOne"><span><strong>Remember Me</strong></span></label>
+						</div>
+					</div>
+					<button type="button" class="btn btn-submit" id="btn_login">Log In</button>
+					<!-- <button type="submit" class="btn btn-submit">Submit</button> -->
+				</form>
+			</div>
+		</div>
+	</div>
+	
+	<div class="modal fade" id="modal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content modal-popup">
+				<a href="#" class="close-link"><i class="icon_close_alt2"></i></a>
+				<h3 class="white">Sign Up</h3>
+				<form class="popup-form" method="post">
+					<input type="text" name="userid" id="userid" class="form-control form-white" placeholder="ID">
+					<input type="password" name="password" id="password" class="form-control form-white" placeholder="Password">
+					<input type="text" name="name" id="name" class="form-control form-white" placeholder="NAME">
+					<input type="text" name="birth" id="birth" class="form-control form-white" placeholder="BIRTH">
+					<div class="radiobox-holder text-left">
+						<div>
+							<label><input type="radio" value="None" value="Man" name="optradio" checked/> Man</label>
+							<label><input type="radio" value="None" value="Woman" name="optradio" />Woman</label>
+						</div>
+					</div>
+					<input type="text" name="email" id="email" class="form-control form-white" placeholder="EMAIL">
+					<input type="text" name="phone" id="phone" class="form-control form-white" placeholder="PHONE">
+					<input type="text" name="addr" id="addr" class="form-control form-white" placeholder="ADDRESS">
 					<div class="checkbox-holder text-left">
 						<div class="checkbox">
 							<input type="checkbox" value="None" id="squaredOne" name="check" />
 							<label for="squaredOne"><span>I Agree to the <strong>Terms &amp; Conditions</strong></span></label>
 						</div>
 					</div>
-					<button type="button" class="btn btn-submit"><a href="${context}/member/loginForm">Log In</a></button>
+					<button type="button" class="btn btn-submit" id="btn_Sign_up">Sign up</button>
 					<!-- <button type="submit" class="btn btn-submit">Submit</button> -->
 				</form>
 			</div>
 		</div>
 	</div>
-
+	
+	
 	<!-- Holder for mobile navigation -->
 	<div class="mobile-nav">
 		<ul>
@@ -416,6 +450,62 @@
 	
 <script type="text/javascript">
 	$(function() {
+		$('#btn_login').click(function() {
+			if ($("#userid").val() == "") {
+				alert("아이디를 입력하세요.");
+				$("#userid").focus();
+				return false;
+			}
+			if ($("#password").val() == "") {
+				alert("비밀번호를 입력하세요.");
+				$("#password").focus();
+				return false;
+			}
+			Member.login(context);
+		});
+		$('#btn_Sign_up').click(function() {
+			
+			if ($("#userid").val() == "") {
+				alert("아이디를 입력하세요.");
+				$("#userid").focus();
+				return false;
+			}
+			if ($("#password").val() == "") {
+				alert("비밀번호를 입력하세요.");
+				$("#password").focus();
+				return false;
+			}
+			if ($("#name").val() == "") {
+				alert("이름을 입력하세요.");
+				$("name").focus();
+				return false;
+			}
+			if ($("#birth").val() == "") {
+				alert("생년월일을 입력하세요.");
+				$("birth").focus();
+				return false;
+			}
+			if ($("#email").val() == "") {
+				alert("이메일을 입력하세요.");
+				$("email").focus();
+				return false;
+			}
+			if ($("#phone").val() == "") {
+				alert("전화번호를 입력하세요.");
+				$("phone").focus();
+				return false;
+			}
+			if ($("#addr").val() == "") {
+				alert("주소를 입력하세요.");
+				$("addr").focus();
+				return false;
+			}
+			if ($("#squaredOne").is(":checked") == false) {
+				alert("정보이용에 동의해주세요.");
+				return false;
+			}
+			Member.join();
+		});
 		$('#book_more').click(function() {
 			alert('섹션의 유저아이디 : '+'${user.userid}');
 			book.all('${user.userid}');

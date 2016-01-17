@@ -1,6 +1,7 @@
 var Cart = {
 		userid : '',
 		total : 0,
+		comma : '',
 		getUserid : function() {
 			return this.userid;
 		},
@@ -13,6 +14,37 @@ var Cart = {
 		setTotal : function(total) {
 			this.total += total; 
 		},
+		getComma : function() {
+			return this.comma;
+		},
+		setComma : function(bookPrice) {
+			 var result = '';
+			 var temp = '';
+			 var j = 0;
+			 for (var i = bookPrice.length-1; i >= 0; i--) {
+				j++;
+				if (j > 0) {
+					if (j % 3 == 0) {
+						var b = ',';
+						b += bookPrice.substring(i, i+3);
+						temp = b;
+						b = result;
+						result = temp;
+						result += b;
+					}
+					if (j+1 == bookPrice.length) {
+						var temp2 = bookPrice.substring(0, j%3+1);
+						temp = temp2;
+						temp2 = result;
+						result = temp;
+						result += temp2;
+					}
+				}
+				
+				
+			}
+			this.comma = result;
+		},
 	
 	main : function(link, userid) {
 		alert('메인으로 넘어옴');
@@ -23,7 +55,7 @@ var Cart = {
 	},
 
 	put : function(bookId) {
-		$.ajax(context+'/cart/put',{
+		$.ajax(context+'/cart/put',{ 
 			data : {
 				bookId : bookId
 			},
@@ -73,6 +105,7 @@ var Cart = {
 						+'<th width="130" height="29" align="center">수량</th>'
 						+'<th width="110" height="29" align="center">보관/삭제</tr></tbody>';
 			$.each(data, function(i, val) {
+				Cart.setComma(this.bookPrice);
 				table +='<tr><td width="50" text-align="center"><label text-align="center">'+(i+1)+'</label></td>'
 				+'<td width="*"><label id="'+this.bookName+'">'+this.bookName+'</label></td>'
 				+'<td width="130" text-align="center">'+this.bookPrice * this.count +'</td>'    //<form name="changeCount" Action="#" Method="post">	 빈 공간 폼테그.
@@ -102,7 +135,7 @@ var Cart = {
 				+'</td><td width="1" bgcolor="#ffffff"></td></tbody></table>'
 				+'<table cellpadding="0" cellspacing="0" border="0" width="600"><tbody><tr>'
 				+'<td width="140" height="20" class="pt1"><strong>총 결제 예상 금액</strong></td>'
-				+'<td width="149" class="pt1"><span class="pt3">합계 금액이 들어와야댐</span></td></tr></tbody></table>                </td></tr></tbody>'
+				+'<td width="149" class="pt1"><span class="pt3">'+Cart.getTotal()+'</span></td></tr></tbody></table>                </td></tr></tbody>'
 				+'</table>'
 				+'</div>';
 			
@@ -110,6 +143,7 @@ var Cart = {
 			
 		});
 	},
+	
 	
 	change : function() {
 		
@@ -150,6 +184,7 @@ var Cart = {
 		if (userid === "") {
 			alert('로그인 후 이용가능합니다.');
 		} else {
+			/*Cart.send_email();*/
 			alert('Cart.putInPurchase진입. 구매 클릭 됨.');
 			alert('넘어온 유저아이디  : '+userid);
 			alert('넘어온 책 아이디 : '+bookId);
