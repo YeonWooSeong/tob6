@@ -224,8 +224,8 @@
 
 	
 	
-	<section id="event_section" class="section section-padded blue-bg">
-		<div class="container">
+	<section id="event" class="section section-padded blue-bg">
+		<div class="container" id="event_section">
 			<div class="row">
 				<label id="event_more"><img src="${img}/event.png" alt="" /></label>
 				<div class="col-md-8 col-md-offset-2">
@@ -261,6 +261,7 @@
 				</div>
 			</div>
 		</div>
+		<div id="event_submain" class="container" style="margin-bottom: 100px;"></div>
 	</section>
 	
 	
