@@ -10,15 +10,17 @@
  	 	WRITER AS writer,
  	 	REG_DATE AS regDate,
  		THUMNALI AS thumnail
- 	 FROM REPLY ORDER BY replySeq DESC
+ 	  FROM REPLY ORDER BY replySeq DESC
  	  	LIMIT #{start}, 8
  </select>
+ 
  <insert id="insert" parameterType="com.tob.reply.ReplyVO" >
  	INSERT INTO REPLY
  	 (REPLY_SEQ,COMMENT,WRITER,REG_DATE,THUMNALI)
  	VALUES
- 	 (#{replySeq}, #{comment}, #{writer}, #{regDate}, #{thumnail})
+ 	 (#{replySeq}, #{comment}, #{writer}, now(), #{thumnail})
  </insert>
+ 
  <update id="update" parameterType="com.tob.reply.ReplyVO">
  	UPDATE REPLY SET
  		COMMENT = #{comment},
@@ -27,10 +29,10 @@
  		THUMNALI = #{thumnail}
  	WHERE REPLY_SEQ = #{replySeq}
  </update>
+ 
  <delete id="delete" parameterType="string">
  	DELETE FROM REPLY WHERE REPLY_SEQ = #{replySeq}
  </delete>
-
 
  <select id="count" resultType="int">
  	SELECT COUNT(*) AS count FROM REPLY
