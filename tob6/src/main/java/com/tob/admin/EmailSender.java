@@ -44,7 +44,7 @@ public class EmailSender  {
 
         Transport transportSSL = sessionSSL.getTransport();
         // EVEN IF YOU SKIP PORT NUMBER , IT WOULD WORK
-        transportSSL.connect("smtp.gmail.com", 465, "sellerofkorea@gmail.com", "hjsm0825"); // 이메일주소와, 비번
+        transportSSL.connect("smtp.gmail.com", 465, "sellerofkorea@gmail.com", "hanbit0717"); // 이메일주소와, 비번
         transportSSL.sendMessage(messageSSL, messageSSL.getAllRecipients());
         transportSSL.close();
         System.out.println("SSL done.");
