@@ -2,6 +2,10 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" >
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" >
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+
+
 <jsp:useBean id="now" class="java.util.Date"/>
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
@@ -48,14 +52,15 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">주문 관리 <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="#" id="cart_list">전체 주문 목록</a></li>
-            <li><a href="${context}/admin/test">날짜별 주문 목록</a></li>
+            <li><a href="#" id="calenderList">날짜별 주문 목록</a></li>
+            <li><a href="${context}/admin/test" >날짜별 주문 목록</a></li>
           </ul>
         </li>
       </ul>
       
       <form id="search_form" action="javascript:search_query();" method="post" class="navbar-form navbar-left">
       
-      <select id=searchType style="margin-left: 100px;">
+      <select class="form-control" id=searchType style="margin-left: 100px;">
                 <option value="all">전체 검색</option>
                 <option value="title">제목 검색</option>
                 <option value="keyword">주제어 검색</option>
@@ -72,10 +77,11 @@
 </nav>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
 <script type="text/javascript">
 /* =================== 검색 ====================== */	
 
-function search_query() {      
+ function search_query() {      
 	var query = $("#query").val();
 	var category = $("#category").val();
 	var searchType = $("#searchType").val();
@@ -115,10 +121,12 @@ function search_query() {
 	}).complete(function(){
 		$(".mainView").html(result);                                    
 	});
-}
+} 
 
 /* =========================================== */
+ 
 	$(function() {
+
 		
 		$('#main_memberReg').click(function() {
 			AdminMemberReg.init();
@@ -143,8 +151,13 @@ function search_query() {
 		$('#cart_list').click(function() {
 			adminPurchase.purList(context); 
 		});
-	});
+		
+		$('#calenderList').click(function() {
+			AdminPurchase2.calender(); 
+		});
 	
+	});
+
 	/* ============== 다음 책 정보 사이트 이동 ================= */
 	
 	var daumBook = {
@@ -176,13 +189,13 @@ function search_query() {
 					+'<input type="email"class="form-control"placeholder="Email"id="admin_email"></div>'
 					+'<div class="form-group"style="width: 300px; float: left;"><label></label>'
 					+'<input type="text"name="form-control"id="confirm_num"tabindex="2"class="form-control"placeholder="인증번호"></div>'
-					+'<button type="button"id="btn_confirm" style="margin-top:6px; font-size: 12px; width: 100px; border-radius: 10px; float: left;"class="btn btn-primary btn-block">인증번호 발송</button>'
+					+'<button type="button"id="btn_confirm" style="margin-top:5%; margin-left: 5%; font-size: 12px; width: 100px; border-radius: 10px; float: left;"class="btn btn-primary btn-block">인증번호 발송</button>'
 					+'<div class="row"style="float: left; margin-top: 20px;">'
-					+'<div class="col-xs-4 col-sm-3 col-md-3"><span class="button-checkbox">'
-					+'<label><span class="hide">규정사항 동의</span><input type="checkbox" name="agree" value="agree" /><span class="protxt">이용약관에 동의합니다.</span></label>'
+					+'<div class="col-xs-4 col-sm-3 col-md-3" style="width: 100%"><span class="button-checkbox">'
+					+'<label><span class="hide">규정사항 동의</span><input type="checkbox" name="agree" value="agree" /><span class="protxt"> 이용약관에 동의합니다.</span></label>'
 					+'<input type="checkbox"name="t_and_c"id="t_and_c"class="hidden"value="1"></span></div>'
 					+'<div class="col-xs-8 col-sm-9 col-md-9"style="font-size: 14px; margin-top: 5px;">'
-					+'<strong class="label label-primary">관리자 등록</strong>을 하기전에<a href="#"data-toggle="modal"data-target="#t_and_c_m">규정사항</a>을 확인하십시오</div></div>'
+					+'<strong class="label label-primary">관리자 등록</strong> 을 하기전에<a href="#"data-toggle="modal"data-target="#t_and_c_m"> 규정사항</a>을 확인하십시오</div></div>'
 					+'<div class="form-group"style="margin-top: 10px;"><div class="row">'
 					+'<div class="col-sm-6 col-sm-offset-3"style="margin-top: 20px;">'
 					+'<input type="button"name="register-submit"id="admin_join"tabindex="4"class="form-control btn btn-register"value="Register Now"></div></div></div></form>'
@@ -202,7 +215,14 @@ function search_query() {
 					+'<div class="modal fade"id="t_and_c_m"tabindex="-1"role="dialog"aria-labelledby="myModalLabel"aria-hidden="true">'
 					+'<div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header">'
 					+'<button type="button"class="close"data-dismiss="modal"aria-hidden="true">×</button><h4 class="modal-title"id="myModalLabel">사내 규정사항</h4></div>'
-					+'<div class="modal-body"><p>사내 규정사항</p></div><div class="modal-footer">'
+					+'<div class="modal-body"><p>제 1 조 (목적)'
+					+'<p>공정거래 자율준수프로그램 운영지침(이하 “지침”"이라고 함)은 공정거래 자율준수프로그램 운영규정 (이하 “규정”이라고 함)을 효율적으로 운영하기 위하여 규정에서 지침에 위임한 사항 및 자율준수관리자에게 위임된 사항을 세부적으로 정하여 시행함을 그 목적으로 한다.</p>'
+					+'<p>제 2 조 (용어의 정의)</p>'
+					+'<p>규정에서 정하는 용어 외에 이 지침에서 사용하는 용어의 정의는 다음 각 호와 같다.</p>'
+					+'<p>1. 사전검증이라 함은 경쟁법 위반소지가 있는 행위를 사전에 조사, 검토하고, 관련부서장이 자율준수관리자와 협의하여 필요한 조치를 취함으로써 법위반 행위를 예방하는 것을 말한다.</p>'
+					+'<p>2. 모니터링이라 함은 현장점검, 체크리스트, 보고서 등을 통해 법위반 행위와 공정거래 자율준수 프로그램의 운영의 적절성 등을 점검조사 하는 것을 말한다.</p>'
+					+'<p>3. 제재조치라 함은 임직원의 구조적반복적으로 발생하는 경쟁법 위반 행위에 대하여 엄정히 징계 등 조치함으로써 임직원에게 공정거래 자율준수의식을 고취시키는 행위를 말한다.</p>'
+					+'<p>4. 문서관리라 함은 업무 수행 중에 발생하는 문서의 보관, 보존, 폐기 등 전 과정을 관리하는 것을 말한다.</p></div><div class="modal-footer">'
 					+'<button type="button"class="btn btn-primary"data-dismiss="modal">I Agree</button></div></div></div></div>';
 				
 					$('.mainView').html(reg);
@@ -251,7 +271,7 @@ function search_query() {
 							alert('공란을 채워주세요.');
 						}
 						else if(agree != "agree") {
-							alert('동의해야지?');
+							alert('이용약관에 동의해주십시오');
 						}
 						else {
 							AdminReg.join();
@@ -823,7 +843,7 @@ var adminBook ={
 	+'<input type="text" name="bookId" id="bookId" class="form-control input-lg" placeholder="책 아이디" tabindex="1" style="width: 450px;">'
 	+'</div></div>'
 	+'<div class="row"><div class="col-xs-12 col-md-6">'
-	+'<a href="#" class="btn btn-success btn-block btn-lg" style="width: 100px; float: right; margin-right: 15px;">중복확인</a>'
+	+'<a href="#" id="duplication" class="btn btn-success btn-block btn-lg" style="width: 100px; float: right; margin-right: 15px;">중복확인</a>'
 	+'</div></div></div>'
 	+'<div class="form-group">'
 	+'<input type="text" name="bookName" id="bookName" class="form-control input-lg" placeholder="책 이름" tabindex="3"></div>'
@@ -832,14 +852,23 @@ var adminBook ={
 	+'<div class="form-group">'
 	+'<input type="text" name="writer" id="writer" class="form-control input-lg" placeholder="작가" tabindex="5"></div>'
 	+'<div class="form-group">'
-	+'<input type="text" name="grade" id="grade" class="form-control input-lg" placeholder="등급" tabindex="6"></div>'
-	+'<div class="form-group">'
+	+'<input type="text" name="grade" id="grade" class="form-control input-lg" placeholder="평점" tabindex="6"></div>'
+	+'<div class="form-group" >'
 	+'<input type="text" name="stockSeq" id="stockSeq" class="form-control input-lg" placeholder="재고량" tabindex="7"></div>'
-	+'<label class="radio-inline"><input type="radio"name="option" value="md" /> md </label>'
-	+'<label class="radio-inline"><input type="radio"name="option" value="free" /> free </label>'
-	+'<label class="radio-inline"><input type="radio"name="option" value="var" /> var </label>'
-	+'<label class="radio-inline"><input type="radio"name="option" value="foo" /> foo </label>'
-	+'<select name="genre" id="genre">'
+	+'<div class="row" style="width: 50%; height: 20%; font-size: 20px; margin-left: 1%; float:left;">'
+	+'<p style="float: left; font-size: 20px; color:grey;">옵션</p>'
+	+'<div class="btn-group" data-toggle="buttons" style="margin-right:10%; float: right">'
+	+'<label class="btn btn-default">'
+	+'<input  name="option" value="free" checked="checked" type="radio">free</label>'
+	+'<label class="btn btn-default">'
+	+'<input  name="option" value="var" type="radio">var </label>'
+	+'<label class="btn btn-default">'
+	+'<input  name="option" value="foo" type="radio">foo</label>'
+	+'<label class="btn btn-default">'
+	+'<input  name="option" value="md" type="radio">md'
+	+'</label>'
+	+'</div></div>'
+	+'<select class="form-control" name="genre" id="genre" style="width: 50%; float: right">'
 	+'<option name="genre" value="">장르</option>'
 	+'<option name="genre" value="fiction">fiction</option>'
 	+'<option name="genre" value="essay">essay</option>'
@@ -847,10 +876,9 @@ var adminBook ={
 	+'<option name="genre" value="classic">classic</option>'
 	+'<option name="genre" value="poem">poem</option></select>'
 	+'<div class="row"><div class="col-xs-4 col-sm-3 col-md-3"><span class="button-checkbox">'
-	+'<button type="button" class="btn" data-color="info" tabindex="7">I Agree</button>'
 	+'<input type="checkbox" name="t_and_c" id="t_and_c" class="hidden" value="1"></span></div>'
 	+'<div class="col-xs-8 col-sm-9 col-md-9">'
-	+'<strong class="label label-primary">책 등록</strong>을 하기전에 <a href="#" data-toggle="modal" data-target="#t_and_c_m">규정사항</a>을 확인하십시오. </div></div><hr class="colorgraph">'
+	+'</div></div><hr class="colorgraph">'
 	+'<div class="row"><div class="col-xs-12 col-md-6">'
 	+'<input type="button" id="reg_book_btn" value="책 등록" class="btn btn-primary btn-block btn-lg" tabindex="2" style="margin-left: 180px; width: 200px;">'
 	+'</div></div></div></div>'
@@ -864,6 +892,12 @@ var adminBook ={
 	$('.mainView').html(table);
 	
 	adminBook.style();
+	
+	$('#duplication').click(function() {
+		var dupleId = $('#bookId').val();
+		bookReg.duplication(dupleId);
+		
+	});
 	
 	$("#reg_book_btn").click(function(){
 		var bookId = $("#bookId").val();
@@ -905,6 +939,26 @@ var adminBook ={
 	});
 	
 	var bookReg = {
+			 duplication: function(dupleId) {
+				 $.ajax(context + "/admin/duplication/" +dupleId,{
+						data : {
+							"dupleId" : dupleId
+						},
+						dataType : "json",
+						async : false,
+						success : function(data) {
+							if(data.result == "success"){
+								alert("등록 가능한 ID 입니다.");
+							}
+							if(data.result == "fail"){
+								alert("중복되었습니다. 다시 시도해주세요.");
+							}
+						},
+						error : function(xhr, status, msg) {
+						}
+				 });
+			 },
+
 			bookJoin : function() {
 				var join_book = {
 					"bookId" :$("#bookId").val(),
@@ -941,61 +995,6 @@ var adminBook ={
 				
 			}
 	};	
-
-	$('.button-checkbox').each(function () {
-        // Settings
-        var $widget = $(this),
-            $button = $widget.find('button'),
-            $checkbox = $widget.find('input:checkbox'),
-            color = $button.data('color'),
-            settings = {
-                on: {
-                    icon: 'glyphicon glyphicon-check'
-                },
-                off: {
-                    icon: 'glyphicon glyphicon-unchecked'
-                }
-            };
-        // Event Handlers
-        $button.on('click', function () {
-            $checkbox.prop('checked', !$checkbox.is(':checked'));
-            $checkbox.triggerHandler('change');
-            updateDisplay();
-        });
-        $checkbox.on('change', function () {
-            updateDisplay();
-        });
-        // Actions
-        function updateDisplay() {
-            var isChecked = $checkbox.is(':checked');
-            // Set the button's state
-            $button.data('state', (isChecked) ? "on" : "off");
-            // Set the button's icon
-            $button.find('.state-icon')
-                .removeClass()
-                .addClass('state-icon ' + settings[$button.data('state')].icon);
-            // Update the button's color
-            if (isChecked) {
-                $button
-                    .removeClass('btn-default')
-                    .addClass('btn-' + color + ' active');
-            }
-            else {
-                $button
-                    .removeClass('btn-' + color + ' active')
-                    .addClass('btn-default');
-            }
-        }
-        // Initialization
-        function init() {
-            updateDisplay();
-            // Inject the icon if applicable
-            if ($button.find('.state-icon').length == 0) {
-                $button.prepend('<i class="state-icon ' + settings[$button.data('state')].icon + '"></i>');
-            }
-        }
-        init();
-    });
 	});
 	},
 	style : function() {
@@ -1249,7 +1248,7 @@ var adminPurchase = {
 				$.each(data, function(i, val) {
 					table +='<tr><td>'+this.purNum+'</td>'
 					+'<td>'+this.sum+'</td>'
-					+'<td>'+this.accountNum+'</td>'
+					+'<td>'+this.accNum+'</td>'
 					+'<td>'+this.userid+'</td>'
 					+'<td>'+this.bookid+'</td>'
 					+'<td><label id="'+this.purNum+'">삭제</label></td></tr>';
@@ -1268,7 +1267,55 @@ var adminPurchase = {
 		
 };
 
-	
+var AdminPurchase2 = {
+		
+		calender : function() {
+			$('.mainView').html('<div style="margin-left: 35%; margin-top: 3%; height: 500px;">'
+					+'<div style="width: 20%; float: left; "><input class="form-control" type="date" name="purchase_start" id="purchase_start"></div>'
+				  	+'<div style="width: 20%; float: left; "><input class="form-control" type="date" name="purchase_end" id="purchase_end"></div>'
+				 	+'<div style="width: 20%; float: left; "><input class="btn btn-default" type="button" id="calender_confirm" value="확인"/></div></div>');
+					
+			$('#calender_confirm').click(function(){
+				var calender_start = $('#purchase_start').val();
+				var calender_end = $('#purchase_end').val();
+
+				AdminPurchase2.list(calender_start, calender_end );
+				
+			});	
+		},
+		
+		list : function(calender_start, calender_end) {
+			var arr = [];
+			$.getJSON(context+'/account/day/'+calender_start+'/'+calender_end, function(data) {
+				var table ="<div class='panel panel-default' style='width: 80%; margin: auto; '>"
+					+"<div class='panel-heading'>"
+					+"<div style='color: #7fb3b3; font-size: 30px; font-family: 굴림; margin-left: 38%; font-weight:bold' >"
+					+"기간별 주문 목록</br></div>"
+					+"<div style='margin-left: 41%;'>"+calender_start+" ~ "+calender_end+"</div></div>"
+					+'<table id="pur_list" class="table"><tr><th>주문번호</th><th>합계</th><th>어카운트 넘버</th>'
+					+'<th>주문한 아이디</th><th>주문한 책 이름</th></tr>';
+				$.each(data, function(i, val) {
+					table +='<tr><td>'+this.purNum+'</td>'
+					+'<td>'+this.sum+'</td>'
+					+'<td>'+this.accNum+'</td>'
+					+'<td>'+this.userid+'</td>'
+					+'<td>'+this.bookid+'</td>'
+					+'<td><label id="'+this.purNum+'">삭제</label></td></tr>';
+					arr.push(this.purNum);
+				});
+				table += '</table></div>'; 
+				$('.mainView').html(table);
+				
+				$.each(data, function(i, val) {
+					$('#'+arr[i]).click(function() {
+						alert('삭제 버튼 먹음');
+					});
+				});
+			});			
+		}
+};
+
+
 </script>
 
 

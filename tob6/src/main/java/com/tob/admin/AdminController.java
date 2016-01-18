@@ -44,6 +44,7 @@ public class AdminController {
 	@Autowired AdminService adminService;
 	@Autowired AdminVO admin;
 	@Autowired BookVO book;
+	@Autowired BookVO book2;
 	@Autowired BookServiceImpl bookService;
 	@Autowired MemberVO member;
 	@Autowired MemberServiceImpl memberService;
@@ -283,10 +284,11 @@ public class AdminController {
 		logger.info("AdminController-bookreg() 페이지만 진입");
 		return model;
 	}
-
+	
+	
 	
 	@RequestMapping(value="/book_join", method=RequestMethod.POST)
-	public Model bookJoin(
+	public @ResponseBody Model bookJoin(
 			@RequestBody BookVO param,
 			Model model
 			){
@@ -296,26 +298,27 @@ public class AdminController {
 		logger.info("책 이름 : {}", param.getBookName());
 		logger.info("책 가격 : {}", param.getBookPrice());
 		logger.info("책 작가 : {}", param.getWriter());
-		logger.info("책 등급 : {}", param.getGrade());
+		logger.info("책 평점 : {}", param.getGrade());
 		logger.info("책 재고량 : {}", param.getStockSeq());
 		logger.info("책 옵션 : {}", param.getOptionBook());
 		logger.info("책 장르 : {}", param.getGenreId());
-
-		book.setBookId(param.getBookId());
-		book.setBookName(param.getBookName());
-		book.setBookPrice(param.getBookPrice());
-		book.setWriter(param.getWriter());
-		book.setGrade(param.getGrade());
-		book.setStockSeq(param.getStockSeq());
-		book.setOptionBook(param.getOptionBook());
-		book.setGenreId(param.getGenreId());
 		
 		
-		int result = bookService.registration(book);
+		book2.setBookId(param.getBookId());
+		book2.setBookName(param.getBookName());
+		book2.setBookPrice(param.getBookPrice());
+		book2.setWriter(param.getWriter());
+		book2.setGrade(param.getGrade());
+		book2.setStockSeq(param.getStockSeq());
+		book2.setOptionBook(param.getOptionBook());
+		book2.setGenreId(param.getGenreId());
+		
+		
+		int result = bookService.registration(book2);
         if (result == 1) {
             logger.info("북 등록 성공");
             model.addAttribute("result","success");
-			model.addAttribute("bookName",book.getBookName());
+			model.addAttribute("bookName",book2.getBookName());
         } else {
             logger.info("북 등록 실패");
             model.addAttribute("result", "fail");
@@ -324,6 +327,22 @@ public class AdminController {
 		
 	}
 	
+	@RequestMapping("/duplication/{dupleId}")
+	public @ResponseBody Model duplication(
+			String dupleId,
+			Model model
+			){
+		logger.info("AdminController-duplication() 진입");
+		logger.info("넘어온 bookId : {}", dupleId);
+		book = bookService.searchByBook(dupleId);
+		if (book == null) {
+			model.addAttribute("result", "success");
+		} else {
+			model.addAttribute("result", "fail");
+		}
+		return model;
+	}
+
 	@RequestMapping("/book_delete/{bookId}")
 	public @ResponseBody BookVO bookDelete(
 			@RequestParam("bookId")String bookId
@@ -391,9 +410,7 @@ public class AdminController {
 	
 	@RequestMapping(value="/book_update",method=RequestMethod.POST)
 	public @ResponseBody BookVO bookUpdate(
-
 			@RequestParam("grade")String grade
-
 			){
 		logger.info("멤버컨트롤러 book_update() - 진입");
 

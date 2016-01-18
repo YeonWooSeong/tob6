@@ -3,6 +3,7 @@ package com.tob.account;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.StringTokenizer;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -104,19 +105,31 @@ private static final Logger logger = LoggerFactory.getLogger(AccountController.c
 		return model;
 	}
 	
-	@RequestMapping("/day/{finalStart}/{finalEnd}")
+	@RequestMapping("/day/{calender_start}/{calender_end}")
 	public @ResponseBody List<PurchaseVO> day(
-			Model model,
-			@PathVariable("finalStart")String finalStart,
-			@PathVariable("finalEnd")String finalEnd
+			@PathVariable("calender_start")String calender_start,
+			@PathVariable("calender_end")String calender_end
 			) {
 		
-		account.setStart(finalStart);
-		account.setEnd(finalEnd);
+		String start = "";
+		StringTokenizer strToken = new StringTokenizer(calender_start,"-");
+		while (strToken.hasMoreTokens()){
+		       start += strToken.nextToken();
+		       logger.info(start);
+		}
+		
+		String end = "";
+		StringTokenizer strToken2 = new StringTokenizer(calender_end,"-");
+		while (strToken2.hasMoreTokens()){
+		       end += strToken2.nextToken();
+		       logger.info(end);
+		}
+		
+		account.setStart(start);
+		account.setEnd(end);
 		logger.info("day() 진입");
 		
 		List<PurchaseVO> list = accountService.dayList(account);
-		model.addAttribute("list", list);
 	
 		return list;
 	}
