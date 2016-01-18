@@ -78,7 +78,7 @@ var Event = {
             $.each(data.list, function(index,value) {
                
                    $('#'+ arr[index]).click( function() {
-                       alert("이벤트 댓글달기로 이동");
+                       alert("이벤트 댓글달기로 이동1");
                         Event.eventPage(arr[index]);
 
             });
@@ -92,18 +92,18 @@ var Event = {
    eventPage : function(evtId) {
       $.getJSON(context +'/event/Event_main/'+evtId,function(data){
          var eventPage = '<div class="contents">'
-            +'<div class="event" style="margin:auto">'
+            +'<div class="event" style="margin-left :175px;  margin-bottom:2%;">'
             +'<img alt="" src="'+context+'/resources/images/skill.jpg">'
-            +'<div style="margin-left:8%">'
+            +'<div style="margin-top:35px;">'
             +'<label for="reply" style="display:block;">댓글</label>'
-            +'<textarea name="reply" cols="82" rows="20" style="width:60%; height:10%; color:black;" placeholder="로그인 후 댓글을 입력하세요"></textarea></div>'
+            +'<textarea name="reply" cols="82" rows="20" style="width:70%; height :80px; color:black;" placeholder="로그인 후 댓글을 입력하세요"></textarea></div>'
             +'<div><button id="reply_btn" class="btn btn-primary btn-lg center-block" style="margin-left:35%; margin-right:20px; float:left;">입력</button>'
-            +'<button id="read_btn" class="btn btn-primary btn-lg center-block" data-dismiss="modal" aria-hidden="true" style="margin-left:0;">입력</button>'
             +'</div><div id="reply_area" style="padding-top:10px;"></div>'
             +'</div>';
             $('#event_section').html(eventPage);
+            $('#event_submain').empty();
             $ ("#reply_btn").click(function() {
-                   if($(".navbar-right a").text() === "로그인"){
+                   if("${user.id}" != null){
                        alert("댓글을 달려면 로그인을 해주세요");
                    }else{
                        $.ajax(context+"/reply/Reply",{
@@ -111,7 +111,7 @@ var Event = {
                                    "writer" : $(".navbar-right a").text(),
                                    "comment" : $("#readModal textarea[name=reply]").val(),
                                    "regDate" : $(),
-                                   "thumnail" : $
+                                   "thumnail" :$
                              },
                             success : function() {
                                  $ ("#reply_area").append("<p style='border:solid; position:relative;'>" + $(".navbar-right a").text() + " | " +$("textarea[name=reply]").val () + "<button id='remove_reply"+ (index++ ) +"'style='position:absolute; right:0; top:0; border:none; color:black; background:white;'>지우기</button></p>");
@@ -188,11 +188,13 @@ var Event = {
                findRe+=pagination;
                
                $('#event_submain').html(findRe);
+               
+           
                      });
                      
                },
          
-      
+ 
 
    
    

@@ -33,9 +33,9 @@ public class ReplyServiceImpl implements ReplyService {
 	}
 
 	@Override
-	public int delete(String writer) {
+	public int delete(int replySeq) {
 		ReplyMapper mapper = sqlSession.getMapper(ReplyMapper.class);
-		return mapper.delete(writer);
+		return mapper.delete(replySeq);
 	}
 
 	@Override
@@ -48,6 +48,12 @@ public class ReplyServiceImpl implements ReplyService {
 	public List<ReplyVO> selectAll(Command command) {
 		ReplyMapper mapper = sqlSession.getMapper(ReplyMapper.class);
 		return mapper.selectAll(command);
+	}
+
+	@Override
+	public int reply(ReplyVO reply) {
+		ReplyMapper mapper = sqlSession.getMapper(ReplyMapper.class);
+		return mapper.reply(reply);
 	}
 
 }

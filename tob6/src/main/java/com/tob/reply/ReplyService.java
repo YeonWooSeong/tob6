@@ -7,7 +7,8 @@ import com.tob.global.Command;
 public interface ReplyService {
 	public int insert(ReplyVO o);
 	public int update(ReplyVO o);
-	public int delete(String writer);
+	public int delete(int replySeq);
+	public int reply(ReplyVO reply);
 	public int count();
 	public List<ReplyVO> selectAll(Command command);
 }
