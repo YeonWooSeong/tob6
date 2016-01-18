@@ -249,6 +249,20 @@ INSERT INTO BOOK VALUES('16','나홀로 부동산 경매 [개정판 5판]','9000
 INSERT INTO BOOK VALUES('17','지금 이 순간','13000','기욤뮈소','5.3','15','free','cartoon');
 INSERT INTO BOOK VALUES('18','당신 거기 있어줄래요','15000','기욤뮈소','9.3','43','free','cartoon');
 INSERT INTO BOOK VALUES('19','들꽃 향기로 남은 너','16000','이민기','8.5','42','free','cartoon');
+INSERT INTO BOOK VALUES('20','들꽃 향기로 남은 너','16000','이민기','8.5','42','free','cham');
+INSERT INTO BOOK VALUES('21','들꽃 향기로 남은 너','16000','이민기','8.5','42','free','cham');
+INSERT INTO BOOK VALUES('22','들꽃 향기로 남은 너','16000','이민기','8.5','42','free','cham');
+INSERT INTO BOOK VALUES('23','들꽃 향기로 남은 너','16000','이민기','8.5','42','free','cham');
+INSERT INTO BOOK VALUES('24','들꽃 향기로 남은 너','16000','이민기','8.5','42','free','cham');
+INSERT INTO BOOK VALUES('25','들꽃 향기로 남은 너','16000','이민기','8.5','42','free','cham');
+INSERT INTO BOOK VALUES('26','들꽃 향기로 남은 너','16000','이민기','8.5','42','free','computer');
+INSERT INTO BOOK VALUES('27','들꽃 향기로 남은 너','16000','이민기','8.5','42','free','computer');
+INSERT INTO BOOK VALUES('28','들꽃 향기로 남은 너','16000','이민기','8.5','42','free','computer');
+INSERT INTO BOOK VALUES('29','들꽃 향기로 남은 너','16000','이민기','8.5','42','free','computer');
+INSERT INTO BOOK VALUES('30','들꽃 향기로 남은 너','16000','이민기','8.5','42','free','computer');
+INSERT INTO BOOK VALUES('31','들꽃 향기로 남은 너','16000','이민기','8.5','42','free','computer');
+INSERT INTO BOOK VALUES('32','들꽃 향기로 남은 너','16000','이민기','8.5','42','free','computer');
+INSERT INTO BOOK VALUES('33','들꽃 향기로 남은 너','16000','이민기','8.5','42','free','computer');
 
 INSERT INTO PURCHASE VALUES('20160114-0001','780000','20160114','a','10');
 INSERT INTO PURCHASE VALUES('20160113-0001','600000','20160113','b','13');
@@ -260,6 +274,5 @@ INSERT INTO PURCHASE VALUES('20160108-0001','200000','20160108','h','19');
 INSERT INTO PURCHASE VALUES('20160107-0001','150000','20160107','a','17');
 INSERT INTO PURCHASE VALUES('20160106-0001','100000','20160106','a','40');
 
-INSERT INTO CART VALUES('20160117-0001', '10', 'e', '3');
 
 COMMIT;

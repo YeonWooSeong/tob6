@@ -77,42 +77,7 @@ public class BookController {
 	
 	
 	
-	//전체 책 목록  보여주기 1.(배열 내리기) => 로그인 안했을 때. @@@@@@@@@@@@@@@
-	@RequestMapping("/Book_selectAll/{pageNo}")
-	public @ResponseBody Map<String,Object> bookAll(
-			@PathVariable("pageNo")String pageNo,
-			
-			HttpSession session,
-			Model model
-			){
-		logger.info("BookController selectAll()진입.");
-		logger.info("넘어온 페이지No. : {}",pageNo);
-		
-		int pageNumber = Integer.parseInt(pageNo);
-		int pageSize = 3;
-		int groupSize = 3;
-		int count = service.count();
-		logger.info("번호 : {}",count);
-		int totalPage = count/pageSize;
-		if (count%pageSize != 0) {
-			totalPage += 1;
-		}
-		int startPage = pageNumber - ((pageNumber-1) % groupSize);
-		int lastPage = startPage + groupSize -1;
-		if (lastPage > totalPage) {
-			lastPage = totalPage;
-		}
-		Map<String,Object> map = new HashMap<String,Object>();
-		map.put("list", service.selectAll(CommandFactory.list(pageNo)));
-		map.put("count", count);
-		map.put("totalPage", totalPage);
-		map.put("pageNo", pageNumber);
-		map.put("startPage", startPage);
-		map.put("lastPage", lastPage);
-		map.put("groupSize", groupSize);
-		logger.info("BookController:Book_selectAll()");
-		return map;
-	}
+	
 	
 	// 책 상세 정보 보여주기 2.
 	@RequestMapping("/Book_main/{bookId}")

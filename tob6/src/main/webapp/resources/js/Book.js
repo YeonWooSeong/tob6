@@ -154,7 +154,7 @@ var book = {
 							bookList +='<br /><br /><br /><br />';
 							bookList +='<input type="button" style="margin-left: 10px;" value="장바구니에 담기" onclick="Cart.putInCart('+'\''+userid+'\''+','+'\''+this.bookId+'\''+')">';
 							bookList +='<input type="button"  value="바로구매" onclick="Cart.putInPurchase('+'\''+userid+'\''+','+'\''+this.bookId+'\''+','+'\''+this.bookPrice+'\''+')">';
-							bookList +='<br /><br /><br /><br />';
+							bookList +='<br /><br /><br /><br /></div></div>';
 						arr.push(this.bookId);
 					});
 					

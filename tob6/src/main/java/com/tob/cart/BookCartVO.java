@@ -9,7 +9,7 @@ public class BookCartVO implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private String cartNum;
 	private String userid;
-	private String count;
+	private int count;
 	private String bookId;		//고유번호
 	private String bookName;	//이름
 	private int bookPrice;	//가격
@@ -25,7 +25,7 @@ public class BookCartVO implements Serializable{
 	public String getUserid() {
 		return userid;
 	}
-	public String getCount() {
+	public int getCount() {
 		return count;
 	}
 	public String getBookId() {
@@ -58,7 +58,7 @@ public class BookCartVO implements Serializable{
 	public void setUserid(String userid) {
 		this.userid = userid;
 	}
-	public void setCount(String count) {
+	public void setCount(int count) {
 		this.count = count;
 	}
 	public void setBookId(String bookId) {

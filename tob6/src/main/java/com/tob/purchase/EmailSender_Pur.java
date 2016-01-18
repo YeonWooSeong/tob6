@@ -37,14 +37,14 @@ public class EmailSender_Pur  {
         sessionSSL.setDebug(true);
 
         Message messageSSL = new MimeMessage(sessionSSL);
-        messageSSL.setFrom(new InternetAddress("sellerofkorea@gmail.com", "김수민")); //setFrom: 보내는 사람의 이메일 주소와, 이름
+        messageSSL.setFrom(new InternetAddress("pheonix0717@gmail.com", "황영주")); //setFrom: 보내는 사람의 이메일 주소와, 이름
         messageSSL.setRecipients(Message.RecipientType.TO, InternetAddress.parse(adminEmail.getReciver())); // setRecipients: 받는 사람의 이메일 주소
         messageSSL.setSubject(adminEmail.getSubject()); // 메일 제목
         messageSSL.setText(adminEmail.getContent()); // 메일 내용
 
         Transport transportSSL = sessionSSL.getTransport();
         // EVEN IF YOU SKIP PORT NUMBER , IT WOULD WORK
-        transportSSL.connect("smtp.gmail.com", 465, "sellerofkorea@gmail.com", "hjsm0825"); // 이메일주소와, 비번
+        transportSSL.connect("smtp.gmail.com", 465, "pheonix0717@gmail.com", "dark12ho"); // 이메일주소와, 비번
         transportSSL.sendMessage(messageSSL, messageSSL.getAllRecipients());
         transportSSL.close();
         System.out.println("SSL done.");

@@ -2,6 +2,8 @@ package com.tob.cart;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -84,14 +86,19 @@ public class CartController {
 	
 	@RequestMapping("/change")
 	public Model change(
-			String data,
+			int count,
+			String bookId,
 			Model model
 			){
 		logger.info("카트 컨트롤러 - change() 진입");
+		logger.info("넘어온 수량 : {}", count);
+		logger.info("넘어온 책아이디 : {}", bookId);
+		/* 파라미터가 String data, Mode, model
+		 * logger.info("카트 컨트롤러 - change() 진입");
 		logger.info("넘어온 북아이디 : {}",data);
 		String[] result = data.split(",");
 		logger.info("분리된 북아이디 : {}" ,result[0]);
-		logger.info("분리된 수량 : {}" ,result[1]);
+		logger.info("분리된 수량 : {}" ,result[1]);*/
 		
 		
 		

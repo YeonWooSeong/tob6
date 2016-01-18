@@ -26,7 +26,6 @@
 			
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav navbar-right main-nav">
-					<li><a href="#info">Info</a></li>
 					<li><a href="#book_section">BOOK</a></li>
 					<li><a href="#best_section">BEST-SELLER</a></li>
 					<li><a href="#week_section">WEEK-BOOK</a></li>
@@ -36,7 +35,6 @@
 			<li><a href="${context}/admin/main">Admin</a></li>
 			<li><a href="#" data-toggle="modal" data-target="#modal1" class="btn btn-blue">Sign In</a></li>
 			<li style="float: right"><a href="#" data-toggle="modal" data-target="#modal2">Sign Up</a></li>
-			<li ><a href="${context}/member/joinForm" id="join">회원가입</a></li>
 			</c:if>
 			<c:if test="${not empty sessionScope.user}">
 			<li style="float: right; padding-right: 10px;"><a href="#mypage_section" id="mypage">마이페이지</a></li>
@@ -384,7 +382,7 @@
 
 
 <section></section>
-<section id="cart_section">	</section>
+<section id="cart_section" style="margin-bottom: 20%;">	</section>
 
 
 	<div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

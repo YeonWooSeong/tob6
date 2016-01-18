@@ -95,17 +95,29 @@
    </form>
 </div>
 
-<select id="bookCount" size="1">
-	<option value="1">1</option>
-	<option value="2">2</option>
-	<option value="3">3</option>
-	<option value="4">4</option>
-	<option value="5">5</option>
-	<option value="6">6</option>
-	<option value="7">7</option>
-	<option value="8">8</option>
-	<option value="9">9</option>
-</select>
+<div class="orderlist" align="center" style="display: table;">
+	<div class="row" style="display: table-row;">
+		<div class="column" style="display: table-cell;">    </div>
+		<div class="column" style="display: table-cell;">상품명</div>
+		<div class="column" style="display: table-cell;">가격</div>
+		<div class="column" style="display: table-cell;">수량</div>
+		<div class="column" style="display: table-cell;">삭제</div>
+	</div>
+	
+	<div class="row" style="display: table-row;">
+		<div class="column" style="display: table-cell;">    </div>
+		<div class="column" style="display: table-cell;">상품명</div>
+		<div class="column" style="display: table-cell;">가격</div>
+		<div class="column" style="display: table-cell;">수량</div>
+		<div class="column" style="display: table-cell;">삭제</div>
+	</div>
+	
+</div>
+
+
+
+
+
 <script type="text/javascript">
 	$(function() {
 		Cart.list(userid);
