@@ -110,14 +110,14 @@ public class MemberController {
         logger.info("멤버컨트롤러 :"+member.getProfile());
         return member;
     }
-    @RequestMapping(value="/update",method=RequestMethod.POST)
+    @RequestMapping(value="/update",method=RequestMethod.GET)
     public @ResponseBody MemberVO update(
     		@RequestParam(required=false,value="file")MultipartFile multipartFile,
-            @RequestParam("userid")String userid,
-            @RequestParam("password")String password,
-            @RequestParam("addr")String addr,
-            @RequestParam("email")String email,
-            @RequestParam("phone")String phone){
+            @RequestParam("ch_userid")String userid,
+            @RequestParam("ch_password")String password,
+            @RequestParam("ch_addr")String addr,
+            @RequestParam("ch_email")String email,
+            @RequestParam("ch_phone")String phone){
         logger.info("멤버컨트롤러 update() - 진입");
         String path = Constants.imageDomain+"resources\\images\\";
 		FileUpload fileUpload = new FileUpload();

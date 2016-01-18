@@ -1,7 +1,6 @@
 var Cart = {
 		userid : '',
 		total : 0,
-		comma : '',
 		totalCount : 0,
 		getUserid : function() {
 			return this.userid;
@@ -21,38 +20,7 @@ var Cart = {
 		setTotalCount : function(totalCount) {
 			this.totalCount += totalCount; 
 		},
-		/*getComma : function() {
-			return this.comma;
-		},
-		setComma : function(bookPrice) {
-			 var result = '';
-			 var temp = '';
-			 var j = 0;
-			 for (var i = bookPrice.length-1; i >= 0; i--) {
-				j++;
-				if (j > 0) {
-					if (j % 3 == 0) {
-						var b = ',';
-						b += bookPrice.substring(i, i+3);
-						temp = b;
-						b = result;
-						result = temp;
-						result += b;
-					}
-					if (j+1 == bookPrice.length) {
-						var temp2 = bookPrice.substring(0, j%3+1);
-						temp = temp2;
-						temp2 = result;
-						result = temp;
-						result += temp2;
-					}
-				}
 				
-				
-			}
-			this.comma = result;
-		},*/
-		
 	
 	main : function(link, userid) {
 		alert('메인으로 넘어옴');
@@ -96,58 +64,34 @@ var Cart = {
 		});
 	},
 	
-	
+	cc : function comma(str) {
+	    str = String(str);
+	    return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,');
+	},
 	list : function(userid) {
 		var arr = [];
 		var list = [];
+/*		<form name="form'+i+'" action="'+context+'/cart/change">*/
 		$.getJSON(context+'/cart/list/'+userid, function(data) {
 			var table = '<h3 style="margin-left:10%; margin-bottom: 2%;">TOB 배송 상품 장바구니</h3><div class="orderlist" align="center" style="display: table; width:60%; margin-left:20%;"><div class="row" style="display: table-row;"><div class="column" style="display: table-cell;"></div><div class="column" style="display: table-cell;"><h5>상품명</h5></div><div class="column" style="display: table-cell;"><h5>가격</h5></div><div class="column" style="display: table-cell;"><h5>수량</h5></div><div class="column" style="display: table-cell;"><h5>삭제</h5></div></div>';
 			$.each(data, function(i, val) {
-				/*Cart.setComma(this.bookPrice);*/
+				
 				table +='<div class="row" style="display: table-row; margin-bottom: 3%;">'
 					+'<div class="column" style="display: table-cell;">'+(i+1)+'</div>'
 					+'<div class="column" style="display: table-cell;">'+this.bookName+'</div>'
-					+'<div class="column" style="display: table-cell;">'+(this.bookPrice * this.count)+'</div>'
-					+'<form name="form'+i+'" action="'+context+'/cart/change"><div class="column" style="display: table-cell;">'
-					+'	<input type="text" size="1" id="count'+i+'" value="'+this.count+'"></input>'
-					+'	<input type="button" id="'+this.bookId+i+'" style="margin-left:5px;" value="변경"></input>'
-					+'</div></form>'
+					+'<div class="column" style="display: table-cell;">'+Cart.cc(this.bookPrice * this.count)+'</div>'
 					+'<div class="column" style="display: table-cell;">'
-					+'	<input type="button" value="삭제"></input></div>'
+					+'	<input type="text" size="1" id="count'+i+'" value="'+this.count+'"></input>'				//onclick="Cart.change('+'\''+$('#count'+i+'').val()+'\''+','+'\''+this.bookId+'\''+')"
+					//+'	<input type="button" class="cat" id="'+this.bookId+i+'" style="margin-left:5px;" value="변경" onclick="Cart.change('+'\''+this.count+'\''+','+'\''+this.bookId+'\''+')"></input>'
+					+'</div>'
+					+'<div class="column" style="display: table-cell;">'
+					+'	<input type="button" value="삭제" id="delete'+i+'" onclick="Cart.remove('+'\''+this.bookId+'\''+')"></input></div>'
 					+'</div>'
 					;
-				arr.push(this.bookId);
 				//total += this.bookPrice;
+				arr.push(this.bookId);
 				Cart.setTotal(this.bookPrice);
 				Cart.setTotalCount(this.count);
-				
-				/*$('#'+this.bookId+i).click(function() {
-					alert(i+'번째 버튼 클릭됨');
-				});*/
-				$('#160').click(function() {
-					alert('클릭 이벤 먹음');
-					$('#form'+i).submit(function(e) {
-						e.preventDefault();
-						alert('form 전송 완료');
-						$.ajax(context+'/cart/change',{
-							data : {
-								count : $('#count'+i).val(),
-								bookId : bookId
-							},
-							dataType : "json",
-							type : 'get',
-							contentType : "application/json;",
-							mimeType : "application/json;",
-							async : false,
-							success : function() {
-								alert('장바구니에 담겼습니다.');
-							},
-							error : function() {
-								alert('이미 장바구니에 있습니다.');
-							}
-						});
-					});
-				});
 				
 			});
 			
@@ -155,27 +99,27 @@ var Cart = {
 				+'<tr><td align="center" style="padding: 10px 0 10px 0"><table cellpadding="0" cellspacing="0" border="0" width="610"><tbody><tr><td>'
 				+'<table cellpadding="0" cellspacing="0" border="0"'
 				+'width="289"><tbody><tr><td width="140">총 상품가격</td>'
-				+'<td width="149"><strong>'+Cart.getTotal()+'</strong></td>'
+				+'<td width="149"><strong>'+Cart.cc(Cart.getTotal())+'</strong></td>'
 				+'</tr><tr><td height="20">배송비</td><td><strong>0</strong>원</td></tr><tr><td height="20">총 주문 상품 수</td>'
-				+'<td><strong>'+Cart.getTotalCount()+'</strong>권</td>'
+				+'<td><strong>'+Cart.getTotalCount()+'</strong>권 </td>'
 				+'<td></td></tr></tbody></table>'
 				+'</td><td width="1" bgcolor="#ffffff"></td></tbody></table>'
 				+'<table cellpadding="0" cellspacing="0" border="0" width="900" style="margin-left:300px"><tbody><tr>'
 				+'<td width="300" height="20" class="pt1"><strong>총 결제 예상 금액</strong></td>'
-				+'<td width="300" class="pt1"><h2><span class="pt3">'+Cart.getTotal()+'</span>원</h2></td>'
-				+'<td class="pt1"><input type="image" src="'+context+'/resources/images/pay.png" name="submit" id="pay" value="결제하기"></input></td>  </tr></tbody></table>                </td></tr></tbody>'
+				+'<td width="300" class="pt1"><h2><span class="pt3">'+Cart.cc(Cart.getTotal())+'</span>원</h2></td>'
+				+'<td class="pt1"><input type="image" src="'+context+'/resources/images/pay.png" name="submit" value="결제하기" onclick="Cart.putInPurchase('+'\''+userid+'\''+','+'\''+arr[0]+'\''+','+'\''+Cart.cc(Cart.getTotal())+'\''+')"></input></td>  </tr></tbody></table>                </td></tr></tbody>'
 				+'</table>'
 				+'</div>';
 			
 			$('#cart_section').empty().append(table);
 			
-			
 		});
 	},
 	
 	
-	change : function() {
-		alert('Cart.change() 진입(.js) ');
+	change : function(test) {
+		
+		alert('Cart.change() 진입 '+test);
 	},
 	
 	/*myFunction : function(i, bookId) {
@@ -231,6 +175,7 @@ var Cart = {
 				async : false,
 				success : function(data) {
 					alert('구매가 완료되었습니다.');
+					
 				},
 				error : function() {
 					alert('ajax 에러');

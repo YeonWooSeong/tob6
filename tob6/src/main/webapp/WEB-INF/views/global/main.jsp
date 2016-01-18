@@ -37,7 +37,7 @@
 			<li style="float: right"><a href="#" data-toggle="modal" data-target="#modal2">Sign Up</a></li>
 			</c:if>
 			<c:if test="${not empty sessionScope.user}">
-			<li style="float: right; padding-right: 10px;"><a href="#mypage_section" id="mypage">마이페이지</a></li>
+			<li style="float: right; padding-right: 10px;"><a href="#" data-toggle="modal" data-target="#modal3" >마이페이지</a></li>
 			<li style="float: right;"><a class="page-scroll" href="#cart_section" id="my_cart">장바구니</a></li>
 			<li style="float: right;"><a href="${context}/member/logout">Log out</a></li>
 			</c:if>
@@ -406,31 +406,26 @@
 		</div>
 	</div>
 	
+	
 	<div class="modal fade" id="modal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content modal-popup">
 				<a href="#" class="close-link"><i class="icon_close_alt2"></i></a>
 				<h3 class="white">Sign Up</h3>
 				<form class="popup-form" method="post">
-					<input type="text" name="userid" id="userid" class="form-control form-white" placeholder="ID">
-					<input type="password" name="password" id="password" class="form-control form-white" placeholder="Password">
-					<input type="text" name="name" id="name" class="form-control form-white" placeholder="NAME">
-					<input type="text" name="birth" id="birth" class="form-control form-white" placeholder="BIRTH">
+					<input type="text" name="up_userid" id="up_userid" class="form-control form-white" placeholder="ID">
+					<input type="password" name="up_password" id="up_password" class="form-control form-white" placeholder="Password">
+					<input type="text" name="up_name" id="up_name" class="form-control form-white" placeholder="NAME">
+					<input type="text" name="up_birth" id="up_birth" class="form-control form-white" placeholder="BIRTH">
 					<div class="radiobox-holder text-left">
 						<div>
 							<label><input type="radio" value="None" value="Man" name="optradio" checked/> Man</label>
 							<label><input type="radio" value="None" value="Woman" name="optradio" />Woman</label>
 						</div>
 					</div>
-					<input type="text" name="email" id="email" class="form-control form-white" placeholder="EMAIL">
-					<input type="text" name="phone" id="phone" class="form-control form-white" placeholder="PHONE">
-					<input type="text" name="addr" id="addr" class="form-control form-white" placeholder="ADDRESS">
-					<div class="checkbox-holder text-left">
-						<div class="checkbox">
-							<input type="checkbox" value="None" id="squaredOne" name="check" />
-							<label for="squaredOne"><span>I Agree to the <strong>Terms &amp; Conditions</strong></span></label>
-						</div>
-					</div>
+					<input type="text" name="up_email" id="up_email" class="form-control form-white" placeholder="EMAIL">
+					<input type="text" name="up_phone" id="up_phone" class="form-control form-white" placeholder="PHONE">
+					<input type="text" name="up_addr" id="up_addr" class="form-control form-white" placeholder="ADDRESS">
 					<button type="button" class="btn btn-submit" id="btn_Sign_up">Sign up</button>
 					<!-- <button type="submit" class="btn btn-submit">Submit</button> -->
 				</form>
@@ -438,12 +433,30 @@
 		</div>
 	</div>
 	
-	
-	<!-- Holder for mobile navigation -->
-	<div class="mobile-nav">
-		<ul>
-		</ul>
-		<a href="#" class="close-link"><i class="arrow_up"></i></a>
+	<div class="modal fade" id="modal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content modal-popup">
+				<a href="#" class="close-link"><i class="icon_close_alt2"></i></a>
+				<h3 class="white">정보 수정</h3>
+				<form class="popup-form" method="post" id="form_mem_change" >
+					<input type="text" name="ch_userid" id="ch_userid" class="form-control form-white" placeholder="${user.userid}" readonly/>
+					<input type="password" name="ch_password" id="ch_password" class="form-control form-white" placeholder="${user.password}">
+					<input type="text" name="ch_name" id="ch_name" class="form-control form-white" placeholder="${user.name}">
+					<input type="text" name="ch_birth" id="ch_birth" class="form-control form-white" placeholder="${user.birth}">
+					<div class="radiobox-holder text-left">
+						<div>
+							<label><input type="radio" value="None" value="Man" name="optradio" checked/> Man</label>
+							<label><input type="radio" value="None" value="Woman" name="optradio" />Woman</label>
+						</div>
+					</div>
+					<input type="text" name="ch_email" id="ch_email" class="form-control form-white" placeholder="${user.email}">
+					<input type="text" name="ch_phone" id="ch_phone" class="form-control form-white" placeholder="${user.phone}">
+					<input type="text" name="ch_addr" id="ch_addr" class="form-control form-white" placeholder="${user.addr}">
+					<button type="submit" class="btn btn-submit" id="btn_change">정보 수정하기</button>
+					<!-- <button type="submit" class="btn btn-submit">Submit</button> -->
+				</form>
+			</div>
+		</div>
 	</div>
 	
 <script type="text/javascript">
@@ -461,48 +474,74 @@
 			}
 			Member.login(context);
 		});
+		
 		$('#btn_Sign_up').click(function() {
 			
-			if ($("#userid").val() == "") {
+			if ($("#up_userid").val() == "") {
 				alert("아이디를 입력하세요.");
-				$("#userid").focus();
+				$("#up_userid").focus();
 				return false;
 			}
-			if ($("#password").val() == "") {
+			if ($("#up_password").val() == "") {
 				alert("비밀번호를 입력하세요.");
-				$("#password").focus();
+				$("#up_password").focus();
 				return false;
 			}
-			if ($("#name").val() == "") {
+			if ($("#up_name").val() == "") {
 				alert("이름을 입력하세요.");
-				$("name").focus();
+				$("#up_name").focus();
 				return false;
 			}
-			if ($("#birth").val() == "") {
+			if ($("#up_birth").val() == "") {
 				alert("생년월일을 입력하세요.");
-				$("birth").focus();
+				$("#up_birth").focus();
 				return false;
 			}
-			if ($("#email").val() == "") {
+			if ($("#up_email").val() == "") {
 				alert("이메일을 입력하세요.");
-				$("email").focus();
+				$("#up_up_email").focus();
 				return false;
 			}
 			if ($("#phone").val() == "") {
 				alert("전화번호를 입력하세요.");
-				$("phone").focus();
+				$("#up_phone").focus();
 				return false;
 			}
-			if ($("#addr").val() == "") {
+			if ($("#up_addr").val() == "") {
 				alert("주소를 입력하세요.");
-				$("addr").focus();
+				$("#up_addr").focus();
 				return false;
 			}
-			if ($("#squaredOne").is(":checked") == false) {
-				alert("정보이용에 동의해주세요.");
-				return false;
-			}
-			Member.join();
+			Member.join(context);
+		});
+		
+		$('#btn_change').click(function() {
+			alert('정보변경 버튼 먹음');
+			$('#form_mem_change').submit(function(e) {
+				alert('폼테그 보내는 mem.change().submit진입');
+				e.preventDefault();
+				$.ajax(context+'/member/update',{
+					data : {
+						password : $('#ch_password').val(),
+						name : $('#ch_name').val(),
+						birth : $('#ch_birth').val(),
+						email : $('#ch_email').val(), 
+						phone : $('#ch_phone').val(),
+						addr : $('#ch_addr').val() 
+					},
+					dataType : "json",
+					type : 'get',
+					contentType : "application/json;",
+					mimeType : "application/json;",
+					async : false,
+					success : function(data) {
+						alert('정보 수정 성공');
+					},
+					error : function() {
+						alert('ajax 에러');
+					}
+				});
+			});
 		});
 		$('#book_more').click(function() {
 			alert('섹션의 유저아이디 : '+'${user.userid}');

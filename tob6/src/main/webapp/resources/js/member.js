@@ -24,18 +24,19 @@ var Member = {
 		},
 		join : function() {
 			var member = {
-				"userid" : $('#userid').val(),
-				"password" : $('#password').val(),
-				"name" : $('#name').val(),
-				"birth" : $('#birth').val(),
+				"userid" : $('#up_userid').val(),
+				"password" : $('#up_password').val(),
+				"name" : $('#up_name').val(),
+				"birth" : $('#up_birth').val(),
 				"gender" : $(':radio:checked').val(),
-				"email" : $('#email').val(),
-				"phone" : $('#phone').val(),
-				"addr" : $('#addr').val(),
+				"email" : $('#up_email').val(),
+				"phone" : $('#up_phone').val(),
+				"addr" : $('#up_addr').val(),
 			};
 			alert('join진입');
+			alert('입력된 아이디 : '+userid);
 			$.ajax({
-				url : "${context}/member/join",
+				url : context+"/member/join",
 				data : JSON.stringify(member),
 				dataType : "json",
 				type: 'post',
@@ -45,14 +46,14 @@ var Member = {
 				success : function(data) {
 					if (data != null) {
 						alert(data.name + "님 회원가입 가입되었습니다.");
-						location.href = "${context}/";
+						location.href = "";
 					} else {
 						alert("회원가입 중 오류가 발생했습니다.");
 						return false;
 					}
 				},
 				error : function(e) {
-					alert("에러");
+					alert("이미 존재하는 아이디가 있습니다.");
 				}
 			});
 		},
@@ -126,18 +127,6 @@ var Member = {
 						});
 					});
 				});
-			});
-		},
-		update : function() {
-			$.ajax('',{
-				data : {},
-				dataType : 'json',
-				success : function(data) {
-					
-				},
-				error : function(e) {
-					
-				}
 			});
 		},
 		style : function(){
