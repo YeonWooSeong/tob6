@@ -251,7 +251,7 @@ var book = {
 		
 		//------------------------ 오늘의책  입력하기 버튼이랑 텍스트. ///관리자
 		inputBookId : function() {
-			$('#book_section').html('<form action=""><input type="text" style=" border-bottom-color: blue;  border-top-color:green;"  id="textInputId"> &nbsp; '
+			$('#book_section').html('<form action="" style="text-align:center; "><input type="text" style=" border-bottom-color: blue; border-top-color:green;"  id="textInputId"> &nbsp; '
 					+'<input type="button" value="오늘의 책 선정" id="btCheck"></form>'
 					)
 					$('#btCheck').click(function() {
@@ -283,7 +283,7 @@ var book = {
 		
 		//책 검색 텍스트와 버튼---------------------------------------------------
 		inputBookName : function(userid) {
-			var finding = '<form action=""><input type="text" style="border-color: red;" width="15px" id="textInputName" name="nameSearch"> &nbsp;'
+			var finding = '<form action="" style="text-align:center;"><input type="text" style="border-color: red;" width="15px" id="textInputName" name="nameSearch"> &nbsp;'
 					+'<input type="button" value="검색" id="btCheckName"></form>';
 			$('#book_section').append(finding);
 			
