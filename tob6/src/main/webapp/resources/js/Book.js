@@ -258,7 +258,7 @@ var book = {
 							$("#textInputId").focus();
 							return false;
 						}
-						book.searchForTodayBook2("#textInputId","#book_section");
+						book.searchForTodayBook2($("#textInputId").val(),"#book_section");
 						
 					})
 		},
@@ -273,6 +273,7 @@ var book = {
 					+'<font color="black" size="2px">책 내용 들어갈 자리.</font>';
 					$(target).html(todayBook2);
 					$('#'+data.bookId).click(function() {
+						
 						book.mainPage(bookId);
 					});
 			});
