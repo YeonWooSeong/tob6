@@ -82,7 +82,7 @@
 				<div class="col-md-4">
 					<div class="service">
 						<div class="icon-holder">
-							<img src="${normal}/img2/icons/heart-blue.png" alt="" class="icon">
+							<img src="${img}/b00k.png" alt="" class="icon">
 						</div>
 						<h4 class="heading">멈추면 보여요</h4>
 						<p class="description">이세상 최고의 명품옷은 바로 자신감을 입는 것 입니다.
@@ -93,7 +93,7 @@
 				<div class="col-md-4">
 					<div class="service">
 						<div class="icon-holder">
-							<img src="${normal}/img2/icons/guru-blue.png" alt="" class="icon">
+							<img src="${img}/book_icon_2.png" alt="" class="icon">
 						</div>
 						<h4 class="heading">If I'm moon</h4>
 						<p class="description">​내가 만약 달이 된다면
@@ -106,7 +106,7 @@
 				<div class="col-md-4">
 					<div class="service">
 						<div class="icon-holder">
-							<img src="${normal}/img2/icons/weight-blue.png" alt="" class="icon">
+							<img src="${img}/book_icon.png" alt="" class="icon">
 						</div>
 						<h4 class="heading">미래</h4>
 						<p class="description">미래를 예측하는<br> 최선의 방법은 미래를 창조하는 것이다. <br>
@@ -135,7 +135,7 @@
 					<div class="col-xs-6 col-md-3">
 						<label class="thumbnail" id="now">
 							<img src="${img}/bstbook1.jpg" alt="지금 이 순간"
-							style="width: 141px; height: 203px;"> </label>
+							style=" width: 141px; height: 203px;"> </label>
 					</div>
 					<div class="col-xs-6 col-md-3">
 						<label class="thumbnail" id="sapi">
@@ -295,7 +295,7 @@
 								style="background:url('${normal}/img2/team/team-cover1.jpg'); background-size:cover;">
 								<div class="overlay text-center">
 									<h3 class="white">"Admin"</h3>
-									<h5 class="light light-white">JAVA, Ajax, Spring et...</h5>
+									<h5 class="light light-white">JAVA, Ajax, Spring etc...</h5>
 								</div>
 							</div>
 							<img src="${normal}/img2/team/team3.jpg" alt="Team Image"
@@ -313,7 +313,7 @@
 							style="background:url('${normal}/img2/team/team-cover3.jpg'); background-size:cover;">
 							<div class="overlay text-center">
 								<h3 class="white">BOOK and Android</h3>
-								<h5 class="light light-white">JAVA,Android Studio,Spring et...</h5>
+								<h5 class="light light-white">JAVA,Android Studio,Spring etc...</h5>
 							</div>
 						</div>
 						<img src="${normal}/img2/team/team2.jpg" alt="Team Image"
@@ -329,7 +329,7 @@
 						<div class="cover" style="background:url('${normal}/img2/team/team-cover2.jpg'); background-size:cover;">
 							<div class="overlay text-center">
 								<h3 class="white">EVENT</h3>
-								<h5 class="light light-white">JAVA, Ajax, Spring et...</h5>
+								<h5 class="light light-white">JAVA, Ajax, Spring etc...</h5>
 							</div>
 						</div>
 						<img src="${normal}/img2/team/team1.jpg" alt="Team Image" class="avatar">
@@ -344,7 +344,7 @@
 						<div class="cover" style="background:url('${normal}/img2/team/team-cover2.jpg'); background-size:cover;">
 							<div class="overlay text-center">
 								<h3 class="white">Main UI</h3>
-								<h5 class="light light-white">JAVA, Ajax, Spring et...</h5>
+								<h5 class="light light-white">JAVA, Ajax, Spring etc...</h5>
 							</div>
 						</div>
 						<img src="${normal}/img2/team/team1.jpg" alt="Team Image" class="avatar">
@@ -361,7 +361,7 @@
 								style="background:url('${normal}/img2/team/team-cover1.jpg'); background-size:cover;">
 								<div class="overlay text-center">
 									<h3 class="white">"MEMBER"</h3>
-									<h5 class="light light-white">JAVA, Ajax, Spring et...</h5>
+									<h5 class="light light-white">JAVA, Ajax, Spring etc...</h5>
 								</div>
 							</div>
 							<img src="${normal}/img2/team/team3.jpg" alt="Team Image"

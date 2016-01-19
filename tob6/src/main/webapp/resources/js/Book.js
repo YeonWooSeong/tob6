@@ -75,7 +75,7 @@ var book = {
 				$('#book_section').html(table);
 				$('.alpha').css('width','80px').css('margin-top','10px').css('vertical-align','middle')
 				.css('margin-left','250px');
-				$('h3').css('text-align','center');
+				$('h3').css('text-align','center').css('padding-bottom','20px');
 				$('.lili').css('vertical-align','middle').css('width','100px').css('float','left')
 				.css('display','block');
 				
@@ -87,7 +87,6 @@ var book = {
 					$('#'+abroadArr[i]).click(function() {
 						book.bookEmpty();
 						book.bookSimplePage2('1',abroadArr[i],userid);
-						alert('장르아이디 들어갔니? '+abroadArr[i])
 					});
 					
 				});
@@ -117,9 +116,7 @@ var book = {
 				// 일부로 안준거.
 				$.each(data.listOld,function(i,value){
 					$('#'+oldArr[i]).click(function() {
-						alert('중고책 페이지  ,'+oldArrName[i]+'  페이지로 이동.')
 						book.bookSimplePage2('1', newArr[i], userid);
-						alert('넘어가는 유저아이디 : '+ userid);
 					});
 					
 				});
@@ -139,7 +136,8 @@ var book = {
 				var lastPage = data.lastPage;
 				var totPage = data.totPage;
 				
-				var bookList= '<div id="bookContents2" style="width: 100%;"><h2 style="text-align: center;">책 목록</h2>'
+				var bookList= '<div id="bookContents2" style="width: 100%;">'
+					+'<h2 style="text-align: center; padding-bottom: 20px;">책 목록</h2>'
 					$.each(data.list,function(index,value){
 						bookList +='<div class="book1" style="width: 1000px; margin: auto;">';
 							bookList +='<img alt="" src="'+context+'/resources/images/'+this.bookId+'.jpg" width="106px" height="150px" align="left" >';
@@ -162,21 +160,21 @@ var book = {
 					
 					
 				//----@#$%$#^$&^@%&@#^#$^#$^@#%&^^&#%^&*%^*#%^*&#&*#&*^$&*//
-					var pagination = '<TABLE id="pagination" style="text-align: center;">'
+					var pagination = '<TABLE id="pagination" style=" text-align: center;">'
 						if (startPage != 1) {
-							pagination += '<a href="'+context+'/book/Book_selectAll/1">'
+							pagination += '<a href="'+context+'/book/Book_selectAll/1" style="text-align: center;">'
 							+'<IMG SRC="'+img+'/left.png">&nbsp'
 							+'</a>';
 						}
 						if ((startPage - groupSize) > 0 ) {
-							pagination +='<a href="'+context+'/book/Book_selectAll/'+(startPage-groupSize)+'">'
+							pagination +='<a href="'+context+'/book/Book_selectAll/'+(startPage-groupSize)+'" style="text-align: center;">'
 							+'<IMG SRC="'+img+'/right.png">&nbsp'
 							+'</a>';
 						}
 						
 						for (var i = startPage ; i <= lastPage; i++) {
 							if (i == pageNo) {
-								pagination+='<font style="color:red;font-size: 20px; ">'
+								pagination+='<font style="color:red;font-size: 20px; text-align: center;">'
 								+i
 								+'</font>';
 							} else {

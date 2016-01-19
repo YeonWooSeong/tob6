@@ -1,21 +1,26 @@
 var Event = {
       event : function() {
-         $('#event_section').html('<div class="big"><div class="big_1"><div class="cate">'
-               +'<div class="cate_1"><a class="highlight" href= "css_syntax.asp"><br>이벤트 </a></div>'
-               +'<div class="cate_2"><a class="highlight" href= "css_syntax.asp"><br>국내도서 </a></div>'
-               +'<div class="cate_3"><a class="highlight" href= "css_syntax.asp"><br>외국도서 </a></div>'
-               +'<div class="cate_4"><a class="highlight" href= "css_syntax.asp"><br>eBook </a></div>'
-               +'<div class="cate_5"><a class="highlight" href= "css_syntax.asp"><br>문화 이벤트 </a></div>'
-               +'<div class="cate_6"><a class="highlight" href= "css_syntax.asp"><br>당첨자 발표 </a></div>'
-               +'<div class="cate_7"><a class="highlight" href= "css_syntax.asp"><br>지난 이벤트 </a></div></div>'
-               +'<div class="sea"><div class="sea_1"><div class="sm_1 auto" ><h1>추천이벤트</h1><ol><li></li><li></li><li></li></ol></div></div>'
-               +'<div class="sea_2"><div class="sm_2 auto"><div class="sm_2_1"><form action="">'
+         $('#event_section').html('<div class="big" style="width: 1200px; margin-left:50px; height: 400px;">'
+               +'<div class="sea_1" style="width:650px; border : 1px solid wihte; margin-left: 40px">'
+               +'<div class="sm_1" ><h1 style="color: white;">추천이벤트</h1>'
+               +'<ol><li style="color: white;" ></li>'
+               +'<li style="color: white;"></li><li style="color: white;"></li></ol></div></div>'
+               +'<div class="sea_2" style="margin-top:10px; color:white;"><div class="sm_2"><div class="sm_2_1">'
+               +'<form action="" style="margin-left: 30px; margin-top: 5px;">'
                +'<input type="checkbox" name="book" value="전체" checked>전체  '
-               +'<input type="checkbox" name="book" value="국내도서">국내도서 <input type="checkbox" name="book" value="외국도서">외국도서'
-               +'<input type="checkbox" name="book" value="eBook">eBook <input type="checkbox" name="book" value="문화 이벤트">문화 이벤트 </form></div>'
-               +'<div class="sm_2_2"><form action="action_page.php"><input type="radio" name="promotion" value="전체" checked>전체 '
-               +'<input type="radio" name="promotion" value="경품/할인">경품/할인 <input type="radio" name="promotion" value="1+1">1+1 </form></div>'
-               +'<div class="sm_2_3"><form action="">이벤트 검색:<input type="text" style="color : black" name="nameSearch"><input type="button" value="검색" id="search"></form></div></div></div></div></div></div></div>');
+               +'<input type="checkbox" name="book" value="국내도서">국내도서'
+               +'<input type="checkbox" name="book" value="외국도서">외국도서'
+               +'<input type="checkbox" name="book" value="eBook">eBook'
+               +'<input type="checkbox" name="book" value="문화 이벤트">문화 이벤트 </form></div>'
+               +'<div class="sm_2_2">'
+               +'<form action="action_page.php" style="margin-left: 30px; color: white;">'
+               +'<input type="radio" name="promotion" value="전체" checked>전체 '
+               +'<input type="radio" name="promotion" value="경품/할인">경품/할인 '
+               +'<input type="radio" name="promotion" value="1+1">1+1 </form></div>'
+               +'<div class="sm_2_3"><form action="" style="margin-left: 30px; color: white;">이벤트 검색:'
+               +'<input type="text" style="color: black; margin-left:5px;" name="nameSearch">'
+               +'<input type="button" style="color: black;" value="검색" id="search"></form>'
+               +'</div></div></div></div>');
       
 
          $('#search').click(function name() {
