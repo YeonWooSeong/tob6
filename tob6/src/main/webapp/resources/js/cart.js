@@ -73,18 +73,24 @@ var Cart = {
 		var list = [];
 /*		<form name="form'+i+'" action="'+context+'/cart/change">*/
 		$.getJSON(context+'/cart/list/'+userid, function(data) {
-			var table = '<h3 style="margin-left:10%; margin-bottom: 2%;">TOB 배송 상품 장바구니</h3><div class="orderlist" align="center" style="display: table; width:60%; margin-left:20%;"><div class="row" style="display: table-row;"><div class="column" style="display: table-cell;"></div><div class="column" style="display: table-cell;"><div id="test">상품명</div></div><div class="column" style="display: table-cell;"><h5>가격</h5></div><div class="column" style="display: table-cell;"><h5>수량</h5></div><div class="column" style="display: table-cell;"><h5>삭제</h5></div></div>';
+			var table = '<h3 style="margin-left:10%; margin-bottom: 2%;">TOB 배송 상품 장바구니</h3>'
+				+'<div class="orderlist" align="center" style="display: table; width:60%; margin-left:20%;">'
+				+'<div class="row" style="display: table-row;"><div class="column" style="display: table-cell; border: 1px solid silver;">'
+				+'</div><div class="column" style="display: table-cell; border: 1px solid silver;"><h5>상품명</h5></div>'
+				+'<div class="column" style="display: table-cell; border: 1px solid silver;"><h5>가격</h5></div>'
+				+'<div class="column" style="display: table-cell; border: 1px solid silver;"><h5>수량</h5></div>'
+				+'<div class="column" style="display: table-cell; border: 1px solid silver;"><h5>삭제</h5></div></div>';
 			$.each(data, function(i, val) {
 				
-				table +='<div class="row" style="display: table-row; margin-bottom: 3%;">'
-					+'<div class="column" style="display: table-cell;">'+(i+1)+'</div>'
-					+'<div class="column" style="display: table-cell;">'+this.bookName+'</div>'
-					+'<div class="column" style="display: table-cell;">'+Cart.cc(this.bookPrice * this.count)+'</div>'
-					+'<div class="column" style="display: table-cell;">'
+				table +='<div class="row" style="display: table-row; margin-bottom: 3%; border: 1px solid silver;" >'
+					+'<div class="column" style="display: table-cell; border: 1px solid silver;">'+(i+1)+'</div>'
+					+'<div class="column" style="display: table-cell; border: 1px solid silver;">'+this.bookName+'</div>'
+					+'<div class="column" style="display: table-cell; border: 1px solid silver;">'+Cart.cc(this.bookPrice * this.count)+'</div>'
+					+'<div class="column" style="display: table-cell; border: 1px solid silver;">'
 					+'	<input type="text" class="vol" size="1" id="'+this.bookId+'" value="'+this.count+'"></input>'				//onclick="Cart.change('+'\''+$('#count'+i+'').val()+'\''+','+'\''+this.bookId+'\''+')"
 					+'	<input type="button" class="cat" id="'+this.bookId+'" style="margin-left:5px;" value="변경"></input>'
 					+'</div>'
-					+'<div class="column" style="display: table-cell;">'
+					+'<div class="column" style="display: table-cell; border: 1px solid silver;">'
 					+'	<input type="button" value="삭제" id="delete'+i+'" onclick="Cart.remove('+'\''+this.bookId+'\''+')"></input></div>'
 					+'</div>'
 					;
@@ -106,7 +112,7 @@ var Cart = {
 				+'</td><td width="1" bgcolor="#ffffff"></td></tbody></table>'
 				+'<table cellpadding="0" cellspacing="0" border="0" width="900" style="margin-left:300px"><tbody><tr>'
 				+'<td width="300" height="20" class="pt1"><strong>총 결제 예상 금액</strong></td>'
-				+'<td id="totPrice" width="300" class="pt1"><h2><span class="pt3">'+Cart.cc(Cart.getTotal())+'</span>원</h2></td>'
+				+'<td id="totPrice" width="300" class="pt1"><h2><span class="pt3" style="color: red;">'+Cart.cc(Cart.getTotal())+'</span>원</h2></td>'
 				+'<td class="pt1"><input type="image" src="'+context+'/resources/images/pay.png" name="submit" value="결제하기" onclick="Cart.putInPurchase('+'\''+userid+'\''+','+'\''+arr[0]+'\''+','+'\''+Cart.cc(Cart.getTotal())+'\''+')"></input></td>  </tr></tbody></table>                </td></tr></tbody>'
 				+'</table>'
 				+'</div>';
@@ -143,6 +149,7 @@ var Cart = {
 			async : false,
 			success : function() {
 				alert('변경이 완료되었습니다.');
+				
 			},
 			error : function() {
 				alert('ajax 에러.');
