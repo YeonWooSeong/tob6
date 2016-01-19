@@ -383,7 +383,7 @@
 
 
 <section></section>
-<section id="cart_section" style="margin-bottom: 20%;">	</section>
+<section id="cart_section" style="margin-top: 5%; margin-bottom: 5%;">	</section>
 
 
 	<div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -453,7 +453,7 @@
 					<input type="text" name="ch_email" id="ch_email" class="form-control form-white" placeholder="${user.email}">
 					<input type="text" name="ch_phone" id="ch_phone" class="form-control form-white" placeholder="${user.phone}">
 					<input type="text" name="ch_addr" id="ch_addr" class="form-control form-white" placeholder="${user.addr}">
-					<button type="submit" class="btn btn-submit" id="btn_change">정보 수정하기</button>
+					<button type="button" class="btn btn-submit" id="btn_change">정보 수정하기</button>
 					<!-- <button type="submit" class="btn btn-submit">Submit</button> -->
 				</form>
 			</div>
@@ -477,7 +477,6 @@
 		});
 		
 		$('#btn_Sign_up').click(function() {
-			
 			if ($("#up_userid").val() == "") {
 				alert("아이디를 입력하세요.");
 				$("#up_userid").focus();
@@ -517,33 +516,9 @@
 		});
 		
 		$('#btn_change').click(function() {
-			alert('정보변경 버튼 먹음');
-			$('#form_mem_change').submit(function(e) {
-				alert('폼테그 보내는 mem.change().submit진입');
-				e.preventDefault();
-				$.ajax(context+'/member/update',{
-					data : {
-						password : $('#ch_password').val(),
-						name : $('#ch_name').val(),
-						birth : $('#ch_birth').val(),
-						email : $('#ch_email').val(), 
-						phone : $('#ch_phone').val(),
-						addr : $('#ch_addr').val() 
-					},
-					dataType : "json",
-					type : 'get',
-					contentType : "application/json;",
-					mimeType : "application/json;",
-					async : false,
-					success : function(data) {
-						alert('정보 수정 성공');
-					},
-					error : function() {
-						alert('ajax 에러');
-					}
-				});
-			});
+			Member.change(context);
 		});
+		
 		$('#book_more').click(function() {
 			alert('섹션의 유저아이디 : '+'${user.userid}');
 			book.all('${user.userid}');

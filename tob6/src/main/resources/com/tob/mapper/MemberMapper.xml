@@ -63,7 +63,11 @@
  </insert>
  <update id="update" parameterType="com.tob.member.MemberVO">
 	UPDATE MEMBER SET  
-		EMAIL = #{email}
+		PASSWORD = #{password},
+		NAME = #{name},
+		EMAIL = #{email},
+		PHONE = #{phone},
+		ADDR = #{addr}
 	WHERE USERID = #{userid}	
  </update>
  <delete id="remove" parameterType="string">

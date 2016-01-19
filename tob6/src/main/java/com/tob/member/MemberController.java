@@ -110,6 +110,38 @@ public class MemberController {
         logger.info("멤버컨트롤러 :"+member.getProfile());
         return member;
     }
+    @RequestMapping("/change")
+    public @ResponseBody MemberVO change(
+    		String password,
+    		String name,
+    		String email,
+    		String phone,
+    		String addr
+    		){
+    	logger.info("멤버컨트롤러 change() - 진입");
+    	logger.info("넘어온 비밀번호 : " + password);
+    	logger.info("넘어온 이름 : " + name);
+    	logger.info("넘어온 이메일 : " + email);
+    	logger.info("넘어온 폰 번호 : " + phone);
+    	logger.info("넘어온 주소 : " + addr);
+    	member.setPassword(password);
+    	member.setName(name);
+    	member.setEmail(email);
+    	member.setPhone(phone);
+    	member.setAddr(addr);
+    	
+    	int result = service.change(member);
+    	if (result == 1) {
+			logger.info("변경 성공");
+			
+		} else {
+			logger.info("변경 실패");
+		}
+    	return null;
+    }
+    
+    
+    
     @RequestMapping(value="/update",method=RequestMethod.GET)
     public @ResponseBody MemberVO update(
     		@RequestParam(required=false,value="file")MultipartFile multipartFile,

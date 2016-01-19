@@ -10,7 +10,7 @@ var Member = {
 				type : 'post',
 				datatype : 'json',
 				success : function(data) {
-					if (data.userid === $('#userid').val()) {
+					if (data.userid === $('#userid').val() && data.password === $('#password').val()) {
 						alert('로그인 성공'+data.userid);
 						location.href = "";
 					} else {
@@ -21,6 +21,33 @@ var Member = {
 					alert('에러');
 				}
 			});
+		},
+		change : function(context) {
+			alert('멤버의 변경 진입');
+			$.ajax(context+'/member/change',{
+				data : { //이름, 생일, 이메일, 폰, 주소
+					password : $('#ch_password').val(),
+					name : $('#ch_name').val(),
+					email : $('#ch_email').val(),
+					phone : $('#ch_phone').val(),
+					addr : $('#ch_addr').val()
+				},
+				dataType : "json",
+				type : 'get',
+				contentType : "application/json;",
+				mimeType : "application/json;",
+				async : false,
+				success : function() {
+					alert('회원정보가 수정되었습니다.');
+					location.href="";
+				},
+				error : function() {
+					alert('ajax 에러');
+				}
+				
+			});
+			
+			
 		},
 		join : function() {
 			var member = {
