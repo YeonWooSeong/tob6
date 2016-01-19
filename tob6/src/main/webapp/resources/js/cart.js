@@ -175,7 +175,7 @@ var Cart = {
 				async : false,
 				success : function(data) {
 					alert('구매가 완료되었습니다.');
-					
+					Cart.emptyCart(userid);
 				},
 				error : function() {
 					alert('ajax 에러');
@@ -249,9 +249,28 @@ var Cart = {
 					
 				}
 			});
-			
-		
 
+	},
+	
+	emptyCart : function(userid) {
+		alert('Cart.emptyCart 진입, 넘어온 아이디 : ' + userid);
+		$.ajax(context+'/cart/empty', {
+			data : {
+				userid : userid
+			},
+			dataType : "json",
+			type : 'get',
+			contentType : "application/json;",
+			mimeType : "application/json;",
+			async : false,
+			success : function() {
+				alert('구매완료 후 장바구니 비우기 완료.');
+			},
+			error : function() {
+				
+			}
+		});
+		
 	}
 	
 	

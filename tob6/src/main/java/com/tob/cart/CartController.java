@@ -99,9 +99,7 @@ public class CartController {
 		String[] result = data.split(",");
 		logger.info("분리된 북아이디 : {}" ,result[0]);
 		logger.info("분리된 수량 : {}" ,result[1]);*/
-		
-		
-		
+
 		
 		return model;
 	}
@@ -114,20 +112,18 @@ public class CartController {
 		logger.info("카트 컨트롤러 = remove() 진입");
 		logger.info("넘어온 북아이디 : {}", bookId);
 		int result = service.remove(bookId);
+		return model;
+	}
+	@RequestMapping("/empty")
+	public Model empty(
+			String userid,
+			Model model
+			){
+		int result = service.empty(userid);
 		
 		return model;
 	}
 	
-	@RequestMapping("/removeUserid")
-	public Model removeUserid(
-			HttpSession session,
-			Model model
-			){
-		logger.info("카트 컨트롤러 = removeUserid() 진입");
-		MemberVO member = (MemberVO) session.getAttribute("user");
-		int result = service.removeUserid(member.getUserid());
-		return model;
-	}
 	
 	
 }

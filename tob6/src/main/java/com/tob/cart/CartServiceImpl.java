@@ -79,10 +79,10 @@ public class CartServiceImpl implements CartService {
 		return mapper.changeCount(userid, bookId, count);
 	}
 	@Override
-	public int removeUserid(String userid) {
-		logger.info("CartServiceImpl : removeUserid 진입");
+	public int empty(String userid) {
+		logger.info("CartServiceImpl : empty 진입");
 		CartMapper mapper = sqlSession.getMapper(CartMapper.class);
-		return mapper.removeUserid(userid);
+		return mapper.empty(userid);
 	}
 	@Override
 	public List<?> getBooksInCart(String userid) {

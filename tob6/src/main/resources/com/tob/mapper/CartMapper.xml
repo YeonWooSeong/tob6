@@ -30,7 +30,7 @@
  	<delete id="remove">
  		DELETE FROM CART WHERE BOOK_ID = #{bookId}
  	</delete>
- 	<delete id="removeUserid">
+ 	<delete id="empty">
  		DELETE FROM CART WHERE USERID = #{userid}
  	</delete>
 </mapper>
