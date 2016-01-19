@@ -114,6 +114,8 @@ public class MemberController {
     public @ResponseBody MemberVO change(
     		String password,
     		String name,
+    		String birth,
+    		String gender,
     		String email,
     		String phone,
     		String addr
@@ -121,11 +123,15 @@ public class MemberController {
     	logger.info("멤버컨트롤러 change() - 진입");
     	logger.info("넘어온 비밀번호 : " + password);
     	logger.info("넘어온 이름 : " + name);
+    	logger.info("넘어온 생일 : " + birth);
+    	logger.info("넘어온 성별 : " + gender);
     	logger.info("넘어온 이메일 : " + email);
     	logger.info("넘어온 폰 번호 : " + phone);
     	logger.info("넘어온 주소 : " + addr);
     	member.setPassword(password);
     	member.setName(name);
+    	member.setBirth(birth);
+    	member.setGender(gender);
     	member.setEmail(email);
     	member.setPhone(phone);
     	member.setAddr(addr);
@@ -137,7 +143,7 @@ public class MemberController {
 		} else {
 			logger.info("변경 실패");
 		}
-    	return null;
+    	return member;
     }
     
     

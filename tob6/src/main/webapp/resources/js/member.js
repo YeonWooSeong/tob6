@@ -28,6 +28,8 @@ var Member = {
 				data : { //이름, 생일, 이메일, 폰, 주소
 					password : $('#ch_password').val(),
 					name : $('#ch_name').val(),
+					birth : $('#ch_birth').val(),
+					gender : $(':radio:checked').val(),
 					email : $('#ch_email').val(),
 					phone : $('#ch_phone').val(),
 					addr : $('#ch_addr').val()
@@ -37,9 +39,14 @@ var Member = {
 				contentType : "application/json;",
 				mimeType : "application/json;",
 				async : false,
-				success : function() {
-					alert('회원정보가 수정되었습니다.');
-					location.href="";
+				success : function(data) {
+					if (data.userid !== null) {
+						alert('회원정보가 수정되었습니다.');
+						location.href="";
+					} else {
+						alert('미입력한 정보가 있습니다.');
+					}
+					
 				},
 				error : function() {
 					alert('ajax 에러');
