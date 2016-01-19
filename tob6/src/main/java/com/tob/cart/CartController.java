@@ -86,11 +86,13 @@ public class CartController {
 	
 	@RequestMapping("/change")
 	public Model change(
+			String userid,
 			int count,
 			String bookId,
 			Model model
 			){
 		logger.info("카트 컨트롤러 - change() 진입");
+		logger.info("넘어온 아이디 : {}", userid);
 		logger.info("넘어온 수량 : {}", count);
 		logger.info("넘어온 책아이디 : {}", bookId);
 		/* 파라미터가 String data, Mode, model
@@ -99,7 +101,7 @@ public class CartController {
 		String[] result = data.split(",");
 		logger.info("분리된 북아이디 : {}" ,result[0]);
 		logger.info("분리된 수량 : {}" ,result[1]);*/
-
+		int result = service.changeCount(userid, count, bookId);
 		
 		return model;
 	}

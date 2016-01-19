@@ -18,8 +18,8 @@
 		b.BOOK_ID = c.BOOK_ID 
 	</select>
  	<update id="changeCount" parameterType="com.tob.cart.BookCartVO">
- 		UPDATE CART SET COUNT = ${count} WHERE
- 		BOOK_ID = ${bookId} AND USERID = ${userid}
+ 		UPDATE CART SET COUNT = #{count} WHERE
+ 		BOOK_ID = #{bookId} AND USERID = #{userid}
  	</update>
  	<select id="getBooksInCart" resultType="string" parameterType="string">
  		SELECT BOOK_ID FROM CART WHERE USERID = #{userid};

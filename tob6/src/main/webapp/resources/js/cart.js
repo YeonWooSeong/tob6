@@ -73,7 +73,7 @@ var Cart = {
 		var list = [];
 /*		<form name="form'+i+'" action="'+context+'/cart/change">*/
 		$.getJSON(context+'/cart/list/'+userid, function(data) {
-			var table = '<h3 style="margin-left:10%; margin-bottom: 2%;">TOB 배송 상품 장바구니</h3><div class="orderlist" align="center" style="display: table; width:60%; margin-left:20%;"><div class="row" style="display: table-row;"><div class="column" style="display: table-cell;"></div><div class="column" style="display: table-cell;"><h5>상품명</h5></div><div class="column" style="display: table-cell;"><h5>가격</h5></div><div class="column" style="display: table-cell;"><h5>수량</h5></div><div class="column" style="display: table-cell;"><h5>삭제</h5></div></div>';
+			var table = '<h3 style="margin-left:10%; margin-bottom: 2%;">TOB 배송 상품 장바구니</h3><div class="orderlist" align="center" style="display: table; width:60%; margin-left:20%;"><div class="row" style="display: table-row;"><div class="column" style="display: table-cell;"></div><div class="column" style="display: table-cell;"><div id="test">상품명</div></div><div class="column" style="display: table-cell;"><h5>가격</h5></div><div class="column" style="display: table-cell;"><h5>수량</h5></div><div class="column" style="display: table-cell;"><h5>삭제</h5></div></div>';
 			$.each(data, function(i, val) {
 				
 				table +='<div class="row" style="display: table-row; margin-bottom: 3%;">'
@@ -81,8 +81,8 @@ var Cart = {
 					+'<div class="column" style="display: table-cell;">'+this.bookName+'</div>'
 					+'<div class="column" style="display: table-cell;">'+Cart.cc(this.bookPrice * this.count)+'</div>'
 					+'<div class="column" style="display: table-cell;">'
-					+'	<input type="text" size="1" id="count'+i+'" value="'+this.count+'"></input>'				//onclick="Cart.change('+'\''+$('#count'+i+'').val()+'\''+','+'\''+this.bookId+'\''+')"
-					//+'	<input type="button" class="cat" id="'+this.bookId+i+'" style="margin-left:5px;" value="변경" onclick="Cart.change('+'\''+this.count+'\''+','+'\''+this.bookId+'\''+')"></input>'
+					+'	<input type="text" class="vol" size="1" id="'+this.bookId+'" value="'+this.count+'"></input>'				//onclick="Cart.change('+'\''+$('#count'+i+'').val()+'\''+','+'\''+this.bookId+'\''+')"
+					+'	<input type="button" class="cat" id="'+this.bookId+'" style="margin-left:5px;" value="변경"></input>'
 					+'</div>'
 					+'<div class="column" style="display: table-cell;">'
 					+'	<input type="button" value="삭제" id="delete'+i+'" onclick="Cart.remove('+'\''+this.bookId+'\''+')"></input></div>'
@@ -90,7 +90,7 @@ var Cart = {
 					;
 				//total += this.bookPrice;
 				arr.push(this.bookId);
-				Cart.setTotal(this.bookPrice);
+				Cart.setTotal(this.bookPrice * this.count);
 				Cart.setTotalCount(this.count);
 				
 			});
@@ -106,20 +106,49 @@ var Cart = {
 				+'</td><td width="1" bgcolor="#ffffff"></td></tbody></table>'
 				+'<table cellpadding="0" cellspacing="0" border="0" width="900" style="margin-left:300px"><tbody><tr>'
 				+'<td width="300" height="20" class="pt1"><strong>총 결제 예상 금액</strong></td>'
-				+'<td width="300" class="pt1"><h2><span class="pt3">'+Cart.cc(Cart.getTotal())+'</span>원</h2></td>'
+				+'<td id="totPrice" width="300" class="pt1"><h2><span class="pt3">'+Cart.cc(Cart.getTotal())+'</span>원</h2></td>'
 				+'<td class="pt1"><input type="image" src="'+context+'/resources/images/pay.png" name="submit" value="결제하기" onclick="Cart.putInPurchase('+'\''+userid+'\''+','+'\''+arr[0]+'\''+','+'\''+Cart.cc(Cart.getTotal())+'\''+')"></input></td>  </tr></tbody></table>                </td></tr></tbody>'
 				+'</table>'
 				+'</div>';
 			
 			$('#cart_section').empty().append(table);
-			
+			$('.cat').click(function() {
+				alert($('input[id="'+$(this).attr('id')+'"]').val());
+				alert($(this).attr('id'));
+				Cart.change(userid, $('input[id="'+$(this).attr('id')+'"]').val(), $(this).attr('id'));
+				//$(this).attr('id')
+				//alert($('input:text').val($(this)));
+				//alert($('#count2').val());
+				//$(this).attr('id');
+			});
 		});
 	},
 	
 	
-	change : function(test) {
+	change : function(userid, count, bookId) {
 		
-		alert('Cart.change() 진입 '+test);
+		alert('Cart.change() 진입 넘어온 아이디 : '+userid);
+		alert('Cart.change() 진입 넘어온 수량 : '+count);
+		alert('Cart.change() 진입 넘어온 책아이디 : '+bookId);
+		$.ajax(context+'/cart/change',{
+			data : {
+				userid : userid,
+				count : count,
+				bookId : bookId
+			},
+			dataType : "json",
+			type : 'get',
+			contentType : "application/json;",
+			mimeType : "application/json;",
+			async : false,
+			success : function() {
+				alert('변경이 완료되었습니다.');
+			},
+			error : function() {
+				alert('ajax 에러.');
+			}
+		});
+		
 	},
 	
 	/*myFunction : function(i, bookId) {

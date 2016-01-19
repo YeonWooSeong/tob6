@@ -15,7 +15,7 @@ public interface CartMapper {
 		public List<?> getUseridList();
 		
 		//U
-		public int changeCount(String userid, String bookId, int count);
+		public int changeCount(BookCartVO o);
 		
 		//D
 		public int remove(String bookid);

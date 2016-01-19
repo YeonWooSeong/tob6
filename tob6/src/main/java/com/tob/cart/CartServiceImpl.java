@@ -18,7 +18,7 @@ public class CartServiceImpl implements CartService {
 	private static final Logger logger = LoggerFactory.getLogger(CartServiceImpl.class);
 	@Autowired private SqlSession sqlSession;
 	@Autowired CartVO cart;
-	
+	@Autowired BookCartVO bookCart;
 	List<?> BooksInCart;
 	List<?> UserIdList;
 	@Override
@@ -73,10 +73,16 @@ public class CartServiceImpl implements CartService {
 		return mapper.remove(bookId);
 	}
 	@Override
-	public int changeCount(String userid, String bookId, int count) {
+	public int changeCount(String userid, int count, String bookId) {
 		logger.info("CartServiceImpl : changeCount 진입");
+		logger.info(userid);
+		String count1 = Integer.toString(count);
+		logger.info(count1);
 		CartMapper mapper = sqlSession.getMapper(CartMapper.class);
-		return mapper.changeCount(userid, bookId, count);
+		bookCart.setUserid(userid);
+		bookCart.setCount(count);
+		bookCart.setBookId(bookId);
+		return mapper.changeCount(bookCart);
 	}
 	@Override
 	public int empty(String userid) {
