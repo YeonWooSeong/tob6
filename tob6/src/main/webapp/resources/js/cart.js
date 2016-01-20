@@ -192,6 +192,7 @@ var Cart = {
 			alert('로그인 후 이용가능합니다.');
 		} else {
 			Cart.send_email(userid);
+			
 			alert('Cart.putInPurchase진입. 구매 클릭 됨.');
 			alert('넘어온 유저아이디  : '+userid);
 			alert('넘어온 책 아이디 : '+bookId);

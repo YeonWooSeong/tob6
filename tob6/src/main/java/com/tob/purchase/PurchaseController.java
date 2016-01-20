@@ -6,6 +6,9 @@ import java.util.List;
 import javax.mail.MessagingException;
 import javax.servlet.http.HttpSession;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -67,7 +70,36 @@ public class PurchaseController {
 			HttpSession session,
 			Model model
 			) throws UnsupportedEncodingException, MessagingException{
-		Email_Pur email = new Email_Pur(); 
+		Email_Pur email = new Email_Pur();
+		String SOURCE_HTML = "<html><head><title>Jsoup Example</title></head>"
+	            + "<body><h1>Welcome to JournalDev!!</h1><br />"
+	            + "<div id=\"id1\">Hello</div>"
+	            + "<div class=\"class1\">Pankaj</div>"
+	            + "<a href=\"http://journaldev.com\">Home</a>"
+	            + "<a href=\"http://wikipedia.org\">Wikipedia</a>"
+	            + "</body></html>";
+		 Document doc = Jsoup.parse(SOURCE_HTML);
+		 System.out.println("Title="+doc.title());
+         
+	        //let's add attribute rel="nofollow" to all the links
+	        doc.select("a[href]").attr("rel", "nofollow");
+	        //System.out.println(doc.html());
+	         
+	        //change div class="class1" to class2
+	        doc.select("div.class1").attr("class", "class2");
+	        //System.out.println(doc.html());
+	         
+	        //change the HTML value of first h1 element
+	        doc.select("h1").first().html("Welcome to JournalDev.com");
+	        doc.select("h1").first().append("!!");
+	        //System.out.println(doc.html());
+	         
+	        //let's make Home link bold
+	        doc.select("a[href]").first().html("<strong>Home</strong>");
+	        System.out.println(doc.html());
+		
+		
+		
 		logger.info("구매 컨트롤러 - sendEmail() 진입");
 		logger.info("넘어온 유저아이디 : " + userid);
 		
@@ -94,10 +126,8 @@ public class PurchaseController {
 				int todaycount = list.get(i).getCount();
 				
 				sentence2 += todaybookId + "\t" + todaybookName + "\t" + todayPrice + "\t" + todaycount + "\n";
-				
-				
 			}
-			
+			sentence2 += doc.html();
 			//String sentence = "등록하신" + member.getEmail() + "로 구매인증 번호가가 발송되었습니다.";
 			
 			//String sentence2 = userid + " 님의 구매내역 \n 책 이름 : " + list.get(0).getBookName() 
