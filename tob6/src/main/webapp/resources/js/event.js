@@ -1,3 +1,5 @@
+ 
+
 var Event = {
       event : function() {
          $('#event_section').html('<div class="big"><h2 style="color: white; padding-top:10; float : left;">EVENT</h2>'
@@ -95,29 +97,32 @@ var Event = {
             +'<div class="event" style="margin-left :175px;  margin-bottom:2%;">'
             +'<img alt="" src="'+context+'/resources/images/skill.jpg">'
             +'<div style="margin-top:35px;">'
-            +'<label for="reply" style="display:block;">댓글</label>'
+         	+'<label for="reply" style="display:block;">댓글</label>'
             +'<textarea name="reply" cols="82" rows="20" style="width:70%; height :80px; color:black;" placeholder="로그인 후 댓글을 입력하세요"></textarea></div>'
             +'<div><button id="reply_btn" class="btn btn-primary btn-lg center-block" style="margin-left:35%; margin-right:20px; float:left;">입력</button>'
             +'</div><div id="reply_area" style="padding-top:10px;"></div>'
             +'</div>';
-            $('#event_section').html(eventPage);
+         	$('#event_section').empty();
+         	$('#event_section').html(eventPage);
             $('#event_submain').empty();
+            
             $ ("#reply_btn").click(function() {
-                   if("${user.id}" != null){
+            	var userid = $('#userid').val();
+            	   alert(userid);
+                   if(userid == ""){
                        alert("댓글을 달려면 로그인을 해주세요");
                    }else{
                        $.ajax(context+"/reply/Reply",{
                             data : {
-                                   "writer" : $(".navbar-right a").text(),
-                                   "comment" : $("#readModal textarea[name=reply]").val(),
-                                   "regDate" : $(),
-                                   "thumnail" :$
+                                   "writer" : userid,
+                                   "comment" : $("textarea[name=reply]").val(),
+                                   "thumnail" : profile
                              },
                             success : function() {
-                                 $ ("#reply_area").append("<p style='border:solid; position:relative;'>" + $(".navbar-right a").text() + " | " +$("textarea[name=reply]").val () + "<button id='remove_reply"+ (index++ ) +"'style='position:absolute; right:0; top:0; border:none; color:black; background:white;'>지우기</button></p>");
+                                 $("#reply_area").append("<p style='border:solid; position:relative;'>" + $("${user.id}").text() + " | " +$("textarea[name=reply]").val () + "<button id='remove_reply"+ (index++ ) +"'style='position:absolute; right:0; top:0; border:none; color:black; background:white;'>지우기</button></p>");
                                    // 댓글지우기 //
-                                  $ ("#remove_reply" + (index-1)).click(function() {
-                                       $ ("#" + this.id).parent().remove() ;
+                                  $("#remove_reply" +(index-1)).click(function() {
+                                       $("#" + this.id).parent().remove() ;
                                    });   
                              },
                             error : function() {
@@ -130,7 +135,7 @@ var Event = {
             
       });
    },
-      findEvent : function(pageNo,searchEventName) {
+     findEvent : function(pageNo,searchEventName) {
           var resultSearchEvent = [];
          $.getJSON(context+'/event/Event_find/'+pageNo+'/'+searchEventName,function(data){
             var count = data.count;
@@ -199,4 +204,3 @@ var Event = {
    
    
 };
-

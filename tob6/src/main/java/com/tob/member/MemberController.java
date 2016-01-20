@@ -88,8 +88,10 @@ public class MemberController {
         member = service.selectOneBy(userid);
         System.out.println("member = service.selectOneBy(userid) 통과"+member.getUserid());
         if (member != null) {
-            logger.info("로그인성공");
+            logger.info("널이아님, 로그인성공");
             session.setAttribute("user", member);
+            member = (MemberVO) session.getAttribute("user");
+            System.out.println(member.getUserid());
         } else {
             logger.info("로그인실패");
         }

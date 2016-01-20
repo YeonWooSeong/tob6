@@ -241,6 +241,7 @@
 								<div class="caption">
 									<h4 class="white light">소프트 스킬 리뷰어 이벤트</h4>
 									<p class="white light">2016/01/01~2016/01/31</p>
+									<input type="text" value="${user.userid}" id="userid">
 									<label id="soft" class="btn btn-primary">더보기</label>
 						</div>
 						</div>
@@ -547,6 +548,7 @@
 		$('#book_more').click(function() {
 			alert('섹션의 유저아이디 : '+'${user.userid}');
 			book.all('${user.userid}');
+
 		});
 		$('#event_more').click(function() {
 			Event.event('${user.userid}');
