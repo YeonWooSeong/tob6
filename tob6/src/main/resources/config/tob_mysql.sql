@@ -103,7 +103,7 @@ CREATE TABLE REPLY(
 
 INSERT INTO ADMIN VALUES('AD','AD','soomin0322@naver.com');
 
-INSERT INTO MEMBER VALUES('a','a','hong','1991.07.17','남','pheonix0717@naver,com','010-4278-4789','서울시 광진구 화양동','default.png');
+INSERT INTO MEMBER VALUES('a','a','hong','1991.07.17','남','pheonix0717@naver.com','010-4278-4789','서울시 광진구 화양동','default.png');
 INSERT INTO MEMBER VALUES('b','b','hwang','2000.01.11','남','ssun9900@naver,com','010-1234-1549','서울시 강남구 역삼동','default.png');
 INSERT INTO MEMBER VALUES('c','c','young','1897.09.20','여','asdfbva@naver,com','010-4200-1234','서울시 구로구 xx동','default.png');
 INSERT INTO MEMBER VALUES('d','d','admin','1120.11.11','남','snh3n@naver,com','010-4175-0910','서울시 강북구 yy동','default.png');

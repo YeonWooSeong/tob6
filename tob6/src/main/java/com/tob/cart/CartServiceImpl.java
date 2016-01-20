@@ -68,10 +68,11 @@ public class CartServiceImpl implements CartService {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
 		 Calendar c1 = Calendar.getInstance();
 		 String cartToday1 = sdf.format(c1.getTime());
+		 cartToday.setCartToday(cartToday1);
+		 cartToday.setUserid(userid);
+		 CartMapper mapper = sqlSession.getMapper(CartMapper.class);
 		 
-		 
-		 
-		return null;
+		return mapper.getTodayList(cartToday);
 	}
 	@Override
 	public List<BookCartVO> getList(String userid) {

@@ -17,6 +17,19 @@
 		WHERE c.USERID = #{userid} AND
 		b.BOOK_ID = c.BOOK_ID 
 	</select>
+	<select id="getTodayList" resultType="com.tob.cart.BookCartVO" parameterType="com.tob.cart.CartTodayVO">
+		SELECT
+			b.BOOK_ID AS bookId,
+			b.BOOK_NAME AS bookName,
+			b.PRICE AS bookPrice,
+			c.COUNT AS count
+		FROM BOOK b, CART c
+		WHERE c.USERID = #{userid} AND
+		c.CART_TODAY = #{cartToday} AND
+		b.BOOK_ID = c.BOOK_ID
+		
+			
+	</select>
  	<update id="changeCount" parameterType="com.tob.cart.BookCartVO">
  		UPDATE CART SET COUNT = #{count} WHERE
  		BOOK_ID = #{bookId} AND USERID = #{userid}

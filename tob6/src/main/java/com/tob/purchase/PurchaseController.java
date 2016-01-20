@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.tob.cart.BookCartVO;
 import com.tob.cart.CartServiceImpl;
 import com.tob.member.MemberServiceImpl;
 import com.tob.member.MemberVO;
@@ -80,12 +81,28 @@ public class PurchaseController {
 			model.addAttribute("login_check","login");
 			
 			int randomNum =(int) (Math.random()*9999) + 1000;
+			List<BookCartVO> list = cartService.getTodayList(userid);
+			logger.info(list.toString());
+			String sentence = "TOB 홈페이지 구매내역";
+			String sentence2 = userid +" 님의 구매내역 \n" + "책 이름 \t 책 가격 \t 수량 \n";
 			
 			
+			for (int i = 0; i < list.size(); i++) {
+				String todaybookId = list.get(i).getBookId();
+				String todaybookName = list.get(i).getBookName();
+				int todayPrice = list.get(i).getBookPrice();
+				int todaycount = list.get(i).getCount();
+				
+				sentence2 += todaybookId + "\t" + todaybookName + "\t" + todayPrice + "\t" + todaycount + "\n";
+				
+				
+			}
 			
 			//String sentence = "등록하신" + member.getEmail() + "로 구매인증 번호가가 발송되었습니다.";
-			String sentence = "TOB 홈페이지";
-			String sentence2 = "구매인증 번호는 " + randomNum + "입니다.";
+			
+			//String sentence2 = userid + " 님의 구매내역 \n 책 이름 : " + list.get(0).getBookName() 
+			//		+ "\n 책 가격 : " + list.get(0).getBookPrice() + "\n 수량 : " + list.get(0).getCount() + " \n 결제완료 되었습니다.";
+			
 			email.setReciver(member.getEmail());
 			email.setSubject(sentence);
 			email.setContent(sentence2);
