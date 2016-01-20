@@ -71,7 +71,8 @@
 	<!-- *********************** 섹션(컨텐트) ************************** -->
 	
 	
-	<section id="book_section" class="section section-padded">
+	<section id="book_section" class="section section-padded"
+	style="background: linear-gradient(to bottom, #0d4fdd 0%,#60abf8 47%,#96efff 100%);" >
 		<div class="container">
 			<div class="row text-center title">
 				<label id="book_more"><img src="${img}/book.png" alt="" /></label>
@@ -84,7 +85,7 @@
 							<img src="${img}/b00k.png" alt="" class="icon">
 						</div>
 						<h4 class="heading">멈추면 보여요</h4>
-						<p class="description">이세상 최고의 명품옷은 바로 자신감을 입는 것 입니다.
+						<p class="description" style="color: white;">이세상 최고의 명품옷은 바로<br> 자신감을 입는 것 입니다. <br>
 						- 멈추면, 비로소 보이는 것들 中
 						 </p>
 					</div>
@@ -95,8 +96,8 @@
 							<img src="${img}/book_icon_2.png" alt="" class="icon">
 						</div>
 						<h4 class="heading">If I'm moon</h4>
-						<p class="description">​내가 만약 달이 된다면
-							지금 그 사람의 창가에도
+						<p class="description" style="color: white;">​내가 만약 달이 된다면 <br>
+							지금 그 사람의 창가에도<br>
 							아마 몇 줄기는 내려지겠지<br>
 							-김소월 '첫사랑'-
 						</p>
@@ -108,7 +109,7 @@
 							<img src="${img}/book_icon.png" alt="" class="icon">
 						</div>
 						<h4 class="heading">미래</h4>
-						<p class="description">미래를 예측하는<br> 최선의 방법은 미래를 창조하는 것이다. <br>
+						<p class="description" style="color: white;">미래를 예측하는<br> 최선의 방법은 미래를 <br>창조하는 것이다. <br>
 						-알랜 케이
 						</p>
 					</div>
@@ -122,8 +123,8 @@
 
 
 	
-	<section id="week_section" class="section">
-		<div class="container">
+	<section id="week_section" class="section" style="background: linear-gradient(to bottom, #96efff 0%,#00a8ff 32%);">
+		<div class="container" style=" margin-top: 10px;">
 			<div class="row title text-center">
 				<label id="week_more"><img src="${img}/week.png" alt="" /></label>
 			</div>
@@ -204,7 +205,7 @@
 	
 	<section id="join_section"></section>
 	<section id="mypage_section"></section>
-<section id="team_section">
+<section id="team_section" style="background: linear-gradient(to bottom, #00a8ff 0%,#29d2db 23%,#5dfcd4 55%,#ffffff 86%);">
 	<div class="container" style="padding-top: 20px; padding-bottom: 20px;">
 		<div class="row title text-center">
 			<label> <img src="${img}/team.png" alt="" /></label>
@@ -215,7 +216,7 @@
 							<div class="cover"
 								style="background:url('${normal}/img2/team/team-cover1.jpg'); background-size:cover;">
 								<div class="overlay text-center">
-									<h3 class="white">Hwang YoungJu</h3>
+									<h3 class="white">Cart & Purchase</h3>
 									<h5 class="light light-white">Team Leader</h5>
 								</div>
 							</div>
@@ -234,11 +235,11 @@
 							<div class="cover"
 								style="background:url('${normal}/img2/team/team-cover1.jpg'); background-size:cover;">
 								<div class="overlay text-center">
-									<h3 class="white">"Admin"</h3>
+									<h3 class="white">Admin</h3>
 									<h5 class="light light-white">JAVA, Ajax, Spring etc...</h5>
 								</div>
 							</div>
-							<img src="${normal}/img2/team/team3.jpg" alt="Team Image"
+							<img src="${normal}/img2/team/sumin.jpg" alt="Team Image"
 								class="avatar">
 							<div class="title">
 								<h4>Kim Sumin</h4>
@@ -287,7 +288,7 @@
 								<h5 class="light light-white">JAVA, Ajax, Spring etc...</h5>
 							</div>
 						</div>
-						<img src="${normal}/img2/team/team1.jpg" alt="Team Image" class="avatar">
+						<img src="${normal}/img2/team/hyesuk.jpg" alt="Team Image" class="avatar">
 						<div class="title">
 							<h4>Lee HyeSuk</h4>
 							<h5 class="muted regular">Main UI</h5>
