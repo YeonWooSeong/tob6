@@ -10,6 +10,9 @@ public interface CartService {
 	// 장바구니 목록 확인
 	public List<BookCartVO> getList(String userid);
 	
+	// 당일 장바구니 목록 부르기
+	public List<BookCartVO> getTodayList(String userid);
+	
 	// DB 책 아이디만 담기.
 	public List<?> getBooksInCart(String userid);
 	

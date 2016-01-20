@@ -18,6 +18,7 @@ public class CartServiceImpl implements CartService {
 	private static final Logger logger = LoggerFactory.getLogger(CartServiceImpl.class);
 	@Autowired private SqlSession sqlSession;
 	@Autowired CartVO cart;
+	@Autowired CartTodayVO cartToday;
 	@Autowired BookCartVO bookCart;
 	List<?> BooksInCart;
 	List<?> UserIdList;
@@ -30,10 +31,10 @@ public class CartServiceImpl implements CartService {
 
         Calendar c1 = Calendar.getInstance();
 
-    	String cartToday = sdf.format(c1.getTime());
+    	String cartToday1 = sdf.format(c1.getTime());
     	String var = "-";
     	String strToday2 = sdf2.format(c1.getTime());
-    	String result = cartToday + var + strToday2;
+    	String result = cartToday1 + var + strToday2;
     	logger.info("넘어온 책 아이디 : " + bookId);
     	logger.info("넘어온 유저 아이디 : " + userid);
     	logger.info("생성된 카트 넘버 : " + result);
@@ -44,6 +45,7 @@ public class CartServiceImpl implements CartService {
 			} 
 		}
     	cart.setCartNum(result);
+    	cart.setCartToday(cartToday1);
      	cart.setBookid(bookId);
      	cart.setUserid(userid);
      	cart.setCount("1");
@@ -59,6 +61,17 @@ public class CartServiceImpl implements CartService {
 		}*/
     	CartMapper mapper = sqlSession.getMapper(CartMapper.class);
      	return mapper.put(cart);
+	}
+	@Override
+	public List<BookCartVO> getTodayList(String userid) {
+		logger.info("CartServiceImpl : getTodayList 진입");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+		 Calendar c1 = Calendar.getInstance();
+		 String cartToday1 = sdf.format(c1.getTime());
+		 
+		 
+		 
+		return null;
 	}
 	@Override
 	public List<BookCartVO> getList(String userid) {
@@ -105,6 +118,7 @@ public class CartServiceImpl implements CartService {
 		logger.info("getUseridList 의 결과 : {}",UserIdList.size());
 		return mapper.getUseridList();
 	}
+	
 	
 	
 	

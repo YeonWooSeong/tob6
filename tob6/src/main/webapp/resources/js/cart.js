@@ -68,10 +68,10 @@ var Cart = {
 	    str = String(str);
 	    return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,');
 	},
+	
 	list : function(userid) {
 		var arr = [];
 		var list = [];
-/*		<form name="form'+i+'" action="'+context+'/cart/change">*/
 		$.getJSON(context+'/cart/list/'+userid, function(data) {
 			var table = '<h3 style="margin-left:10%; margin-bottom: 2%;">TOB 배송 상품 장바구니</h3>'
 				+'<div class="orderlist" align="center" style="display: table; width:60%; margin-left:20%;">'
@@ -94,7 +94,6 @@ var Cart = {
 					+'	<input type="button" value="삭제" id="delete'+i+'" onclick="Cart.remove('+'\''+this.bookId+'\''+')"></input></div>'
 					+'</div>'
 					;
-				//total += this.bookPrice;
 				arr.push(this.bookId);
 				Cart.setTotal(this.bookPrice * this.count);
 				Cart.setTotalCount(this.count);
@@ -192,7 +191,7 @@ var Cart = {
 		if (userid === "") {
 			alert('로그인 후 이용가능합니다.');
 		} else {
-			/*Cart.send_email();*/
+			Cart.send_email(userid);
 			alert('Cart.putInPurchase진입. 구매 클릭 됨.');
 			alert('넘어온 유저아이디  : '+userid);
 			alert('넘어온 책 아이디 : '+bookId);
@@ -210,7 +209,7 @@ var Cart = {
 				async : false,
 				success : function(data) {
 					alert('구매가 완료되었습니다.');
-					Cart.emptyCart(userid);
+					//Cart.emptyCart(userid);
 				},
 				error : function() {
 					alert('ajax 에러');
@@ -219,11 +218,11 @@ var Cart = {
 		}
 	},
 	
-	send_email : function() {
-		alert('Cart.send_email진입');
+	send_email : function(userid) {
+		alert('Cart.send_email진입, 넘어온 아이디 : ' + userid);
 		$.ajax(context+'/purchase/sendEmail', {
 			data : {
-				
+				userid : userid
 			},
 			dataType : "json",
 			type : 'get',

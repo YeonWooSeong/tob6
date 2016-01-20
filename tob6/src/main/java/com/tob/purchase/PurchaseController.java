@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.tob.cart.CartServiceImpl;
 import com.tob.member.MemberServiceImpl;
 import com.tob.member.MemberVO;
 
@@ -27,6 +28,7 @@ public class PurchaseController {
 	private static final Logger logger = LoggerFactory.getLogger(PurchaseController.class);
 	@Autowired PurchaseVO purchase;
 	@Autowired PurchaseServiceImpl service;
+	@Autowired CartServiceImpl cartService;
 	@Autowired MemberServiceImpl memberService;
 	@Autowired EmailSender_Pur emailSender;
 	@RequestMapping("/Purchase")
@@ -60,11 +62,13 @@ public class PurchaseController {
 	}
 	@RequestMapping("/sendEmail")
 	public Model sendEmail(
+			String userid,
 			HttpSession session,
 			Model model
 			) throws UnsupportedEncodingException, MessagingException{
 		Email_Pur email = new Email_Pur(); 
 		logger.info("구매 컨트롤러 - sendEmail() 진입");
+		logger.info("넘어온 유저아이디 : " + userid);
 		
 		if (session.getAttribute("user") == null) {
 			model.addAttribute("login_check","unlogin");
@@ -74,8 +78,13 @@ public class PurchaseController {
 			member = memberService.searchById(member.getUserid());
 			logger.info("이메일로 찾은 멤버의 아이디 : "+member.getUserid());
 			model.addAttribute("login_check","login");
+			
 			int randomNum =(int) (Math.random()*9999) + 1000;
-			String sentence = "등록하신" + member.getEmail() + "로 구매인증 번호가가 발송되었습니다.";
+			
+			
+			
+			//String sentence = "등록하신" + member.getEmail() + "로 구매인증 번호가가 발송되었습니다.";
+			String sentence = "TOB 홈페이지";
 			String sentence2 = "구매인증 번호는 " + randomNum + "입니다.";
 			email.setReciver(member.getEmail());
 			email.setSubject(sentence);
