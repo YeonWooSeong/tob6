@@ -27,7 +27,6 @@
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav navbar-right main-nav">
 					<li><a href="#book_section">BOOK</a></li>
-					<li><a href="#best_section">BEST-SELLER</a></li>
 					<li><a href="#week_section">WEEK-BOOK</a></li>
 					<li><a href="#event_section">EVENT</a></li>
 			<c:if test="${empty sessionScope.user}">
@@ -119,66 +118,6 @@
 		<div id="submain"></div>
 	</section>
 
-	
-
-
-
-
-
-	<section id="best_section" class="section gray-bg">
-		<div class="container">
-			<div class="row title text-center">
-				<label id="best_more"><img src="${img}/bstseller.png" alt="" /></label>
-			</div>
-			<div class="row">
-		<div style="margin: auto; width: 100%;">
-					<div class="col-xs-6 col-md-3">
-						<label class="thumbnail" id="now">
-							<img src="${img}/bstbook1.jpg" alt="지금 이 순간"
-							style=" width: 141px; height: 203px;"> </label>
-					</div>
-					<div class="col-xs-6 col-md-3">
-						<label class="thumbnail" id="sapi">
-						<img src="${img}/bstbook2.jpg" alt="사피엔스"
-							style="width: 141px; height: 203px;">
-						</label>
-					</div>
-					<div class="col-xs-6 col-md-3">
-						<label class="thumbnail" id="lonly"> 
-						 <img src="${img}/bstbook3.jpg" alt="가끔은 격하게 위로워야 한다."
-							style="width: 141px; height: 203px;"></label>
-					</div>
-					<div class="col-xs-6 col-md-3">
-						<label class="thumbnail" id="mine">
-						<img src="${img}/bstbook4.jpg" alt="내안에서 나를 만드는 것들"
-							style="width: 141px; height: 203px;"></label>
-					</div>
-					<div class="col-xs-6 col-md-3">
-						<label class="thumbnail" id="mine"> <img
-							src="${img}/bstbook5.jpg" alt="언제 들어도 좋은 말"
-							style="width: 141px; height: 203px;"></label>
-					</div>
-					<div class="col-xs-6 col-md-3">
-						<label class="thumbnail" id="mine"><img
-							src="${img}/bstbook6.jpg" alt="중동 테러리즘]"
-							style="width: 141px; height: 203px;"></label>
-					</div>
-					<div class="col-xs-6 col-md-3">
-						<label class="thumbnail" id="mine">
-						<img
-							src="${img}/bstbook7.jpg" alt="혼자 있는 시간의 힘"
-							style="width: 141px; height: 203px;"></label>
-					</div>
-					<div class="col-xs-6 col-md-3">
-						<label class="thumbnail" id="mine"><img
-							src="${img}/bstbook8.jpg" alt="마법천자문"
-							style="width: 141px; height: 203px;"></label>
-					</div>
-				</div>
-				<!-- 종료 -->
-				</div>
-			</div>
-	</section>
 	
 
 

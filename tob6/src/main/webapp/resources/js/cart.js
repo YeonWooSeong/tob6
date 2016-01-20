@@ -149,7 +149,6 @@ var Cart = {
 			async : false,
 			success : function() {
 				alert('변경이 완료되었습니다.');
-				
 			},
 			error : function() {
 				alert('ajax 에러.');
