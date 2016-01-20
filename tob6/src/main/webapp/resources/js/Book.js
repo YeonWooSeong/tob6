@@ -27,58 +27,100 @@ var book = {
 			var oldArr =[];
 			var oldArrName =[];
 			$.getJSON(context + '/genre/Genre',function(data){
-				var table = '<h3>전체 목록</h3>';
+				var bigTable = '<div id="bigTable" style="width: 70%; margin:auto; "></div>';
+				var table1 = '<div class="hoho"><img alt="" src="'+context+'/resources/images/All_list.png" ></div>';
 				/*해외도서 */
-				table += '<div class="alpha"><font color="red"><strong>'+data.listAbroadName+'</strong></font><br /><p><p>';
+				table1 += '<div class="alpha"><font color="blue"><strong style="font-size:18px;">'+data.listAbroadName+'</strong></font><br /><p><p>';
 				$.each(data.listAbroad,function(index,value){
-					table += '<li class="lili"><label id="'+this.genreId+'">'+this.genreName+'</label></li></div>'; 
+					table1 += '<li class="lili"><label id="'+this.genreId+'">'+this.genreName+'</label></li>'; 
 					abroadArr.push(this.genreId);
 					abroadArrName.push(this.genreName);
 					});
 				
+				table1 += '</div><br>';
 				
 				
+				var table2 = '';
 				/*국내도서 */
-				table += '<div class="alpha"><font color="red"><strong>'+data.listDomesticName+'</strong></font><br /><p><p>';
+				table2 = '<div class="alpha"><font color="blue"><strong style="font-size:18px;">'+data.listDomesticName+'</strong></font><br /><p><p>';
 				$.each(data.listDomestic,function(index,value){
-					table += '<li class="lili"><label id="'+this.genreId+'">'+this.genreName+'</label></li></div>'; 
+					table2 += '<li class="lili"><label id="'+this.genreId+'">'+this.genreName+'</label></li>'; 
 					domesticArr.push(this.genreId);
 					domesticArrName.push(this.genreName);
 					});
+				table2 += '</div><br>';
 				
-				
-				
+				var table3 ='';
 				/*전자책 */
-				table += '<div class="alpha"><font color="red"><strong>'+data.listEbookName+'</strong></font><br /><p><p>';
+				table3 += '<div class="alpha"><font color="blue"><strong style="font-size:18px;">'+data.listEbookName+'</strong></font><br /><p><p>';
 				$.each(data.listEbook,function(index,value){
-					table += '<li class="lili"><label id="'+this.genreId+'">'+this.genreName+'</label></li></div>'; 
+					table3 += '<li class="lili"><label id="'+this.genreId+'">'+this.genreName+'</label></li>'; 
 					ebookArr.push(this.genreId);
 					ebookArrName.push(this.genreName);
 					});
+				table3 += '</div><br>';
 				
-				
+				var table4 = '';
 				/*신간 */
-				table += '<div class="alpha"><font color="red"><strong>'+data.listNewName+'</strong></font><br /><p><p>';
+				table4 += '<div class="alpha"><font color="blue"><strong style="font-size:18px;">'+data.listNewName+'</strong></font><br /><p><p>';
 				$.each(data.listNew,function(index,value){
-					table += '<li class="lili"><label id="'+this.genreId+'">'+this.genreName+'</label></li></div>'; 
+					table4 += '<li class="lili"><label id="'+this.genreId+'">'+this.genreName+'</label></li>'; 
 					newArr.push(this.genreId);
 					newArrName.push(this.genreName);
 					});
+				table4 += '</div><br>';
 				
+				var table5 = '';
 				/*중고책*/
-				table += '<div class="alpha"><font color="red"><strong>'+data.listOldName+'</strong></font><br /><p><p>';
+				table5 += '<div class="alpha"><font color="blue"><strong style="font-size:18px;">'+data.listOldName+'</strong></font><br /><p><p>';
 				$.each(data.listOld,function(index,value){
-					table += '<li class="lili"><label id="'+this.genreId+'">'+this.genreName+'</label></li></div>'; 
+					table5 += '<li class="lili"><label id="'+this.genreId+'">'+this.genreName+'</label></li>';
 					oldArr.push(this.genreId);
 					oldArrName.push(this.genreName);
 					});
-				$('#book_section').html(table);
-				$('.alpha').css('width','80px').css('margin-top','10px').css('vertical-align','middle')
-				.css('margin-left','250px');
-				$('h3').css('text-align','center').css('padding-bottom','20px');
+				table5 += '</div><br>';
+					
+				
+				var table6 ='';
+				table6 += '<div class="alpha"><font color="blue"><strong style="font-size:18px;">영미도서</strong></font><br /><p><p>'
+					+'<li class="lili"><label><b>과학</b></label></li><li class="lili"><b>가정/육아</b></li>'
+					+'<li class="lili"><b>건강</b></li><li class="lili"><b>여행</b></li><li class="lili"><b>라이트노벨</b></li>'
+					+'<li class="lili"><b>취미/실용</b></li><li class="lili"><b>한국소개도서</b></li>'
+					+'<li class="lili"><b>요리</b></li>'
+					+'</div><br>';
+				
+				var table7 ='';
+				table7 += '<div class="alpha"><font color="blue"><strong style="font-size:18px;">중미도서</strong></font><br /><p><p>'
+					+'<li class="lili"><label><b>한국소개도서</b></label></li><li class="lili"><b>스포츠</b></li>'
+					+'<li class="lili"><b>잡지</b></li><li class="lili"><b>대중문화</b></li><li class="lili"><b>애니</b></li>'
+					+'<li class="lili"><b>인문</b></li><li class="lili"><b>스페인도서</b></li><li class="lili"><b>ELT</b></li>'
+					+'</div><br>';
+					
+				var table8 ='';
+				table8 += '<div class="alpha"><font color="blue"><strong style="font-size:18px;">e-book</strong></font><br /><p><p>'
+					+'<li class="lili"><label><b>프랑스도서</b></label></li><li class="lili"><b>독일도서</b></li>'
+					+'<li class="lili"><b>중국도서</b></li><li class="lili"><b>기술</b></li><li class="lili"><b>엔터테인먼트</b></li>'
+					+'<li class="lili"><b>문고</b></li><li class="lili"><b>자연</b></li><li class="lili"><b>기술과학</b></li>'
+					+'</div><br>';
+				
+				var table9 ='';
+				table9 += '<div class="alpha"><font color="blue"><strong style="font-size:18px;">e연재</strong></font><br /><p><p>'
+					+'<li class="lili"><label><b>신서</b></label></li><li class="lili"><b>예술/건축</b></li>'
+					+'<li class="lili"><b>로맨스</b></li><li class="lili"><b>판타지</b></li><li class="lili"><b>전쟁</b></li>'
+					+'<li class="lili"><b>대체역사</b></li>'
+					+'</div><br>';
+				
+				
+				$('#book_section').html(bigTable);
+				$('#bigTable').append(table1).append(table2).append(table3).append(table4).append(table5)
+				.append(table6).append(table7).append(table8).append(table9);
+				
+				$('.alpha').css('margin-top','10px').css('margin-left','10px').css('margin-bottom','10px').css('vertical-align','middle');
+				$('.hoho').css('margin','auto').css('padding-bottom','40px').css('width','100px');
 				$('.lili').css('vertical-align','middle').css('width','100px').css('float','left')
 				.css('display','block');
-				
+				$('#book_section').css('height','900px').css('margin','auto');
+			
 				
 				
 				
@@ -137,30 +179,31 @@ var book = {
 				var totPage = data.totPage;
 				
 				var bookList= '<div id="bookContents2" style="width: 100%;">'
-					+'<h2 style="text-align: center; padding-bottom: 20px;">책 목록</h2>'
+					+'<h2 style="text-align: center; padding-bottom: 20px;"><strong>책 목록</strong></h2>'
 					$.each(data.list,function(index,value){
-						bookList +='<div class="book1" style="width: 1000px; margin: auto;">';
+						bookList +='<div class="book1" style="width: 600px; margin: auto;">';
 							bookList +='<img alt="" src="'+context+'/resources/images/'+this.bookId+'.jpg" width="106px" height="150px" align="left" >';
 							bookList +='<label id="'+this.bookId+'"><strong style="padding-left : 20px;">'+this.bookName+'</strong></label>';
-							bookList +='<font color="white">'+this.optionBook+'</font>'; 
-							bookList +='<font color="white" style="color: green">이벤트</font>';
-							bookList +='<font color="white" class="maroon">경품</font>';
+							bookList +='<font color="white" style="color: #478ff0;">'+this.optionBook+'</font>'; 
+							bookList +='<font color="white" style="color: maroon">이벤트</font>';
 							bookList +='<font color="white" style="background-color: purple;">무료배송</font><br>';
-							bookList +='<font color="gray" style="padding-left : 30px;">'+this.writer+'</font><br />';
+							bookList +='<font color="white" style="padding-left : 30px;">'+this.writer+'</font><br />';
 							bookList +='<font color="red" style="padding-left : 30px;" >'+this.bookPrice+'</font><font>원</font><font  size="2px">[10%할인!]</font>';
 							bookList +='<font style="background-color: gray" class="white">회원평점</font><font color="red" >'+this.grade+'</font>';
 							bookList +='<br /><br /><br /><br />';
-							bookList +='<input type="button" style="margin-left: 10px;" value="장바구니에 담기" onclick="Cart.putInCart('+'\''+userid+'\''+','+'\''+this.bookId+'\''+')">';
-							bookList +='<input type="button"  value="바로구매" onclick="Cart.putInPurchase('+'\''+userid+'\''+','+'\''+this.bookId+'\''+','+'\''+this.bookPrice+'\''+')">';
+							bookList +='<span style="padding-left: 20px;"><input type="image" src="'+context+'/resources/images/btn_bag.gif" onclick="Cart.putInCart('+'\''+userid+'\''+','+'\''+this.bookId+'\''+')"></span>';
+							bookList +='<input type="image" src="'+context+'/resources/images/btn_buy.gif" onclick="Cart.putInPurchase('+'\''+userid+'\''+','+'\''+this.bookId+'\''+','+'\''+this.bookPrice+'\''+')">';
 							bookList +='<br /><br /><br /><br /></div></div>';
 						arr.push(this.bookId);
 					});
 					
+			
 					
-					
-					
+				
+					/*;
+*/			
 				//----@#$%$#^$&^@%&@#^#$^#$^@#%&^^&#%^&*%^*#%^*&#&*#&*^$&*//
-					var pagination = '<TABLE id="pagination" style=" text-align: center;">'
+					var pagination = '<div class="pagina_div" style=" text-align: center;"><TABLE id="pagination" >'
 						if (startPage != 1) {
 							pagination += '<a href="'+context+'/book/Book_selectAll/1" style="text-align: center;">'
 							+'<IMG SRC="'+img+'/left.png">&nbsp'
@@ -189,7 +232,7 @@ var book = {
 							pagination += +'<a href="'+context+'/book/Book_selectAll/'+(startPage+groupSize)+'">'
 						}
 						pagination += '</TD>';
-						pagination += '<TD WIDTH=200 ALIGN=RIGHT>'
+						pagination += '<TD WIDTH=200 ALIGN=RIGHT></div>'
 
 						bookList+=pagination;
 						bookList+='</div>';	

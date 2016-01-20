@@ -88,10 +88,10 @@ var Cart = {
 					+'<div class="column" style="display: table-cell; border: 1px solid silver;">'+Cart.cc(this.bookPrice * this.count)+'</div>'
 					+'<div class="column" style="display: table-cell; border: 1px solid silver;">'
 					+'	<input type="text" class="vol" size="1" id="'+this.bookId+'" value="'+this.count+'"></input>'				//onclick="Cart.change('+'\''+$('#count'+i+'').val()+'\''+','+'\''+this.bookId+'\''+')"
-					+'	<input type="button" class="cat" id="'+this.bookId+'" style="margin-left:5px;" value="변경"></input>'
+					+'	<input type="image" class="cat" id="'+this.bookId+'" style="margin-left:5px;" src="'+context+'/resources/images/btn_modify.gif"></input>'
 					+'</div>'
 					+'<div class="column" style="display: table-cell; border: 1px solid silver;">'
-					+'	<input type="button" value="삭제" id="delete'+i+'" onclick="Cart.remove('+'\''+this.bookId+'\''+')"></input></div>'
+					+'	<input type="image" src="'+context+'/resources/images/btn_del02.gif" id="delete'+i+'" onclick="Cart.remove('+'\''+this.bookId+'\''+')"></input></div>'
 					+'</div>'
 					;
 				arr.push(this.bookId);
@@ -112,7 +112,8 @@ var Cart = {
 				+'<table cellpadding="0" cellspacing="0" border="0" width="900" style="margin-left:300px"><tbody><tr>'
 				+'<td width="300" height="20" class="pt1"><strong>총 결제 예상 금액</strong></td>'
 				+'<td id="totPrice" width="300" class="pt1"><h2><span class="pt3" style="color: red;">'+Cart.cc(Cart.getTotal())+'</span>원</h2></td>'
-				+'<td class="pt1"><input type="image" src="'+context+'/resources/images/pay.png" name="submit" value="결제하기" onclick="Cart.putInPurchase('+'\''+userid+'\''+','+'\''+arr[0]+'\''+','+'\''+Cart.cc(Cart.getTotal())+'\''+')"></input></td>  </tr></tbody></table>                </td></tr></tbody>'
+				+'<td class="pt1">'
+				+'<input type="image" src="'+context+'/resources/images/pay.png" name="submit" value="결제하기" onclick="Cart.putInPurchase('+'\''+userid+'\''+','+'\''+arr[0]+'\''+','+'\''+Cart.cc(Cart.getTotal())+'\''+')"></input></td>  </tr></tbody></table>                </td></tr></tbody>'
 				+'</table>'
 				+'</div>';
 			
