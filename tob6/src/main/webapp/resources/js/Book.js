@@ -215,7 +215,7 @@ var book = {
 	mainPage : function(bookId) {
 			$.getJSON(context + '/book/Book_main/'+bookId ,function(data){
 				var bookPage = '<div class="contents" >'
-					+'<div class="book" style="margin: auto; width:1000px;" >'
+					+'<div class="book" style="margin: auto; width:1000px;">'
 					+'<img alt="" src="'+context+'/resources/images/'+data.bookId+'.jpg" width="200px" height="301px" align="left">'
 					+'</div>'
 					+'<div class="book2">'
