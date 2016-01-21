@@ -8,6 +8,20 @@ import org.springframework.stereotype.Component;
 public class CartVO implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private String cartNum;
+	private String cartToday;
+	
+	public String getCartToday() {
+		return cartToday;
+	}
+	public String getBookId() {
+		return bookId;
+	}
+	public void setCartToday(String cartToday) {
+		this.cartToday = cartToday;
+	}
+	public void setBookId(String bookId) {
+		this.bookId = bookId;
+	}
 	private String bookId;
 	private String userid;
 	private String count;

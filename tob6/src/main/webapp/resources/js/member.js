@@ -13,8 +13,12 @@ var Member = {
 					if (data.userid === $('#userid').val() && data.password === $('#password').val()) {
 						alert('로그인 성공'+data.userid);
 						location.href = "";
+					} else if (data.userid === $('#userid').val() && data.password !== $('#password').val()){
+						alert('비밀번호를 확인하세요');
+					} else if (data.userid !== $('#userid').val() && data.password === $('#password').val()) {
+						alert('아이디를 확인하세요.');
 					} else {
-						alert('비밀번호 틀림');
+						alert('둘다 틀렸어');
 					}
 				},
 				error : function() {

@@ -41,7 +41,7 @@ public class CartController {
 			){
 		logger.info("카트 컨트롤러 - list() 진입");
 		logger.info("카트 컨트롤러 - list() 넘어온 유저아이디 : "+userid);
-		List<BookCartVO> list = service.getList(userid);
+		List<BookCartVO> list = service.getTodayList(userid);
 		logger.info("카트 컨트롤러 list() 결과 : " + list.size());
 		//logger.info("list에서 첫번째 인덱스의 책 가격 " + list.get(0).getBookPrice());
 		/*int result = Integer.parseInt(list.get(0).getBookPrice());
