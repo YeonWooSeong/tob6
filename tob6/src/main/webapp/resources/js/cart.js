@@ -73,7 +73,7 @@ var Cart = {
 		var list = [];
 /*		<form name="form'+i+'" action="'+context+'/cart/change">*/
 		$.getJSON(context+'/cart/list/'+userid, function(data) {
-			var table = '<h3 style="margin-left:10%; margin-bottom: 2%;">TOB 배송 상품 장바구니</h3>'
+			var table = '<img src="'+context+'/resources/images/cart_bag.png" alt="장바구니" style="margin-left:10%; margin-bottom: 2%;">'
 				+'<div class="orderlist" align="center" style="display: table; width:60%; margin-left:20%;">'
 				+'<div class="row" style="display: table-row;"><div class="column" style="display: table-cell; border: 1px solid silver;">'
 				+'</div><div class="column" style="display: table-cell; border: 1px solid silver;"><h5>상품명</h5></div>'
