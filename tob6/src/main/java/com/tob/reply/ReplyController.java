@@ -10,10 +10,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.tob.event.CommandEventFactory;
 import com.tob.global.CommandFactory;
+
+import sun.print.resources.serviceui;
 
 
 
@@ -25,37 +28,64 @@ public class ReplyController {
 	@Autowired ReplyVO reply;
 	
 	@RequestMapping("/write")
-	public void write(
+	public Map<String, Object> write(
 			Model model,
-			int replySeq,
 			String comment,
 			String writer,
-			//String regDate
 			String evtId
 			) {
-		logger.info("시퀀스 : {}",replySeq);
+		
 		logger.info("내용 : {}", comment);
 		logger.info("아이디 : {}", writer);
-		//logger.info("날짜: {}", regDate);
 		logger.info("이벤트아이디 : {}", evtId);
-		reply.setReplySeq(replySeq);
+		Map<String,Object> map = new HashMap<String,Object>();
 		reply.setComment(comment);
 		reply.setWriter(writer);
 		reply.setEvtId(evtId);
 		service.insert(reply);
-		//reply.setRegDate(regDate);
-		/*service.delete(reply);*/
-		
+		map.put("list", service.selectAll());
+		return map;
 	}
+	
+	
 	@RequestMapping("/read")
 	public void read(){
 		
 	}
 	@RequestMapping("/update")
-	public void update(){}
+	public @ResponseBody ReplyVO update(
+			String comment
+			){
+		logger.info("리플라이 컨트롤러 업데이트 진입");
+		logger.info("넘어온 내용 : "+comment);
+		reply.setComment(comment);
+		
+		int result = service.update(reply);
+		if (result == 1) {
+			logger.info("변경 성공");
+		} else {
+			logger.info("변경 실패");
+		}
+		return reply;
+	}
 	
 	@RequestMapping("/delete")
-	public void delete(){}
+	public @ResponseBody ReplyVO delete(
+			String replySeq,
+			Model model
+			){
+		logger.info("리플라이 시퀀스는"+replySeq);
+		/*service.delete(replySeq);*/
+		
+		/*int result = service.delete(replySeq);*/
+		/*if (result == 1) {
+			logger.info("리플라이 컨트롤러 리플 삭제성공");
+		} else {
+			logger.info("리플라이 컨트롤러 리플 삭제실패");
+		}*/
+		return reply;
+		
+	}
 	
 	@RequestMapping("/list/{evtId}/{pageNo}")
 	public @ResponseBody Map<String,Object> list(
@@ -67,28 +97,9 @@ public class ReplyController {
 		logger.info("넘어온 이벤트 id : {}",evtId);
 		logger.info("넘어온 페이지No. : {}",pageNo);
 		
-		int pageNumber = Integer.parseInt(pageNo);
-		int pageSize = 5;
-		int groupSize = 2;
-		int count = service.count();
-		logger.info("번호 : {}",count);
-		int totalPage = count/pageSize;
-		if (count%pageSize != 0) {
-			totalPage += 1;
-		}
-		int startPage = pageNumber - ((pageNumber-1) % groupSize);
-		int lastPage = startPage + groupSize -1;
-		if (lastPage > totalPage) {
-			lastPage = totalPage;
-		}
+		
 		Map<String,Object> map = new HashMap<String,Object>();
-		map.put("list", service.selectAll(CommandFactory.list(pageNo)));
-		map.put("count", count);
-		map.put("totalPage", totalPage);
-		map.put("pageNo", pageNumber);
-		map.put("startPage", startPage);
-		map.put("lastPage", lastPage);
-		map.put("groupSize", groupSize);
+		map.put("list", service.selectAll());
 		
 		return map;
 	}

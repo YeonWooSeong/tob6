@@ -45,9 +45,9 @@ public class ReplyServiceImpl implements ReplyService {
 	}
 
 	@Override
-	public List<ReplyVO> selectAll(Command command) {
+	public List<ReplyVO> selectAll() {
 		ReplyMapper mapper = sqlSession.getMapper(ReplyMapper.class);
-		return mapper.selectAll(command);
+		return mapper.selectAll();
 	}
 
 	@Override

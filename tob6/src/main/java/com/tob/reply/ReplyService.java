@@ -10,5 +10,5 @@ public interface ReplyService {
 	public int delete(int replySeq);
 	public int reply(ReplyVO reply);
 	public int count();
-	public List<ReplyVO> selectAll(Command command);
+	public List<ReplyVO> selectAll();
 }

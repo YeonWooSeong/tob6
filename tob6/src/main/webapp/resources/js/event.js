@@ -94,34 +94,50 @@ var Event = {
    eventPage : function(evtId,userid,pageNo) {
 	   alert("이벤트페이지 진입 "+userid);
       $.getJSON(context +'/reply/list/'+evtId+'/'+pageNo,function(data){
+    	   var count = data.count;
+	          var pageNo = data.pageNo; 
+	          var startPage = data.startPage;
+	          var groupSize = data.groupSize;
+	          var lastPage = data.lastPage;
+	          var totPage = data.totPage;
+    	  
          var eventPage = '<div class="contents" id="eventPage">'
             +'<div class="event" style="margin-left :175px;  margin-bottom:2%;">'
             +'<img alt="" src="'+context+'/resources/images/skill.jpg">'
             +'<div style="margin-top:35px;">'
          	+'<label for="reply" style="display:block;">댓글</label>'
-            +'<textarea name="reply" cols="82" rows="20" style="width:70%; height :80px; color:black;" placeholder="로그인 후 댓글을 입력하세요"></textarea></div>'
-            +'<div><button id="reply_btn" class="btn btn-primary btn-lg center-block" style="margin-left:35%; margin-right:20px; float:left;">입력</button>'
-            +'</div><div id="reply_area" style="padding-top:10px;"></div>'
+            +'<textarea name="reply" cols="82" rows="20" style="width:70%; height :80px; color:black;" placeholder="로그인 후 댓글을 입력하세요"></textarea>'
+            +'<button id="reply_btn" class="btn btn-primary btn-lg center-block" style="margin-right: 190px; margin-top: 10px;float:right;">입력</button></div>'
             +'</div>';
         
-          var comments = '<div>'
-        	  var reple =[];
-        	 $.each(data.list, function(index, value) {
-        	 comments += '<div name="reply" cols="82" rows="20" style="width:70%; height:80px;>'
-		     +'<div id="userid" style="margin-left:20px;">'+this.writer+'</div>'
-			 +'<div id="regDate" style="margin-left:10px;">'+this.regDate+'</div>'
-			 +'<div>'+this.comment+'</div>';
-        	 reple.push (this.replySeq);
-		});
-        	comments +='</div>';
-
-         	eventPage += comments;
+         var baseComments = '<div id="reply_area" style="padding-top:50px;">'
+         	 $.each(data.list, function(index, value) {
+         	 baseComments += '<div name="reply" style="background: #FFFFFF; width: 60%; padding: 25px; margin: auto;margin-bottom: 20px; margin-right: 290px; text-align: left; border-radius: 20px; box-shadow: none;display: block;z-index: 5;">'
+             +'<input type="text" style="width:35px; margin-left:20px; float:left; border: 0;" readonly="readonly" value="'+this.writer+'"/>'
+ 			 +'<div id="regDate" style="margin-left:10px; float:left;">'+this.regDate+'</div><br />'
+ 			 +'<img id="delete" alt="" src="'+context+'/resources/images/drop.png" onclick=Event.deleteReply('+'\''+this.writer+'\''+'); style="float:right; margin-left:10px;">'
+ 			 +'<img id="update" alt="" src="'+context+'/resources/images/update.png" onclick=Event.updateReply(); style="float:right;">'
+ 			 +'<input type="hidden" name="replyNum" value="'+this.replySeq+'"/>'
+ 			 +'<input type="hidden" id="session_User" style="margin-left:20px; float:left; background:none;" value="'+userid+'"/>'
+ 			 +'<div>'+this.comment+'</div>'
+ 			 +'</div>';
+         	 });
+         	baseComments +='</div>';
+         
+         	
+         	
+         
          	$('#event_section').empty();
-         	$('#event_section').html(eventPage);
-            $('#event_submain').empty();
+	        $('#event_section').html(eventPage);
+	        $('#event_submain').empty();
+	        $('#event_submain').html(baseComments); 
+	                
+	                
+	                
             
-            $ ("#reply_btn").click(function() {
-            	   alert(userid);
+            $("#reply_btn").click(function() {
+            	   alert('유저아이디는'+userid);
+            	   var comments = '<div id="reply_area" style="padding-top:50px;">';
                    if(userid == ""){
                        alert("댓글을 달려면 로그인을 해주세요");
                    }else{
@@ -130,23 +146,64 @@ var Event = {
                                    "writer" : userid,
                                    "comment" : $("textarea[name=reply]").val(),
                              },
-                            success : function() {
-                                 $("#reply_area").append("<p style='border:solid; position:relative;'>" + $(userid).text() + " | " +$("textarea[name=reply]").val () + "<button id='remove_reply"+ (index++ ) +"'style='position:absolute; right:0; top:0; border:none; color:black; background:white;'>지우기</button></p>");
-                                   // 댓글지우기 //
-                                  $("#remove_reply" +(index-1)).click(function() {
-                                       $("#" + this.id).parent().remove() ;
-                                   });   
+                            success : function(data) {
+                            	alert('댓글입력성공');
+                              	 $.each(data.list, function(index, value) {
+                              	 comments += '<div name="reply" style="background: #FFFFFF; width: 60%; padding: 25px; margin: auto;margin-bottom: 20px; margin-right: 290px; text-align: left; border-radius: 20px; box-shadow: none;display: block;z-index: 5;">'
+                                 +'<input type="text" style="width:35px; margin-left:20px; float:left; border: 0;" readonly="readonly" value="'+this.writer+'"/>'
+                      			 +'<div id="regDate" style="margin-left:10px; float:left;">'+this.regDate+'</div><br />'
+                      			 +'<img id="delete" alt="" src="'+context+'/resources/images/1.png" onclick=Event.deleteReply('+'\''+this.writer+'\''+'); style="float:right; margin-left:10px;">'
+                    			 +'<img id="update" alt="" src="'+context+'/resources/images/3.png" onclick=Event.updateReply(); style="float:right;">'
+                    			 +'<input type="hidden" value="'+this.replySeq+'"/>'
+                    			 +'<input type="hidden" id="session_User" style="margin-left:20px; float:left; background:none;" value="'+userid+'"/>'
+                      			 +'<div>'+this.comment+'</div>'
+                      			 +'</div>';
+                              	 });
+                              	comments +='</div>';
+                              	$('#event_submain').empty();
+                              	$('#event_submain').html(comments);
+                              	
                              },
+                             
                             error : function() {
-                                  
                              }
                         });
                    }
+                   
              });
             
             
       });
    },
+   
+	   deleteReply : function(writeUser) {
+		alert("삭제버튼 클릭");
+		var sessionUser = $("#session_User").val();
+		alert("글을 작성한 아이디는 " + writeUser);
+		alert("글을 삭제하려는 아이디는" + sessionUser);
+		
+		if (writeUser != sessionUser) {
+			alert("작성자만 글을 삭제 할 수 있습니다.");
+		} else {
+			$.ajax(context + '/reply/delete', {
+				data : {
+					replySeq : $("input[name=replyNum]").val()
+					
+				},
+				success : function(data) {
+					alert('이벤트가 삭제되었습니다');
+					Event.eventPage(data.comments);
+				},
+				error : function(xhr, status, msg) {
+					alert('에러발생상태 : ' + status + ', 내용 :' + msg);
+				}
+			});
+		}
+		   
+	},
+   
+   
+   
      findEvent : function(pageNo,searchEventName) {
           var resultSearchEvent = [];
          $.getJSON(context+'/event/Event_find/'+pageNo+'/'+searchEventName,function(data){
@@ -181,7 +238,6 @@ var Event = {
                
                for (var i = startPage ; i <= lastPage; i++) {
                   if (i == pageNo) {
-                     pagination+='<font style="color:orange;font-size: 20px">'
                      +i
                      +'</font>';
                   } else {
@@ -210,65 +266,6 @@ var Event = {
                      });
                      
                },
-               
-               
-               
-               getList : function(evtId,pageNo) {
-            	 
-				$.getJSON(context+'/reply/list/'+evtId+'/'+pageNo, function(data) {  
-					
-					
-					var count = data.count;
-		            var pageNo = data.pageNo; 
-		            var startPage = data.startPage;
-		            var groupSize = data.groupSize;
-		            var lastPage = data.lastPage;
-		            var totPage = data.totPage;
-					
-					var pagination = '<div style="width : 150px; margin:auto;"><TABLE id="pagination">'
-		               if (startPage != 1) {
-		                   pagination += '<a href="'+context+'/reply/list/1/">'
-		                   +'<img src="'+img+'/left.png">&nbsp'
-		                   +'</a>';
-		                }
-		                if ((startPage - groupSize) > 0 ) {
-		                   pagination +='<a href="'+context+'/reply/list/'+(startPage-groupSize)+'">'
-		                   +'<img src="'+img+'/right.png">&nbsp'
-		                   +'</a>';
-		                }
-		                
-		                
-		                for (var i = startPage ; i <= lastPage; i++) {
-		                   if (i == pageNo) {
-		                      pagination+='<font style="color:orange;font-size: 20px">'
-		                      +i
-		                      +'</font>';
-		                   } else {
-		                      pagination+='<label onClick="return Event.getList('+i+',\''+searchEventName+'\''+')">'
-		                      +'<font>'
-		                      +i
-		                      +'</font>'
-		                      +'</label>';
-		                   }
-		                }      
-		                
-		                
-		                if ((startPage + groupSize) <= totPage) {
-		                   pagination += +'<a href="'+context+'/reply/list/'+(startPage+groupSize)+'">'
-		                }
-		                pagination += '</TD>';
-		                pagination += '<TD WIDTH=200 ALIGN=RIGHT>'
-		                pagination+='</div>';
-		                
-		                
-		                
-		            
-		                      });
-					
-			
-			}
-         
- 
 
    
    

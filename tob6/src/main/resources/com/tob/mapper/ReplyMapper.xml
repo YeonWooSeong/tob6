@@ -3,15 +3,14 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
  <mapper namespace="com.tob.mapper.ReplyMapper">
- <select id="selectAll" resultType="com.tob.reply.ReplyVO" parameterType="com.tob.global.Command">
+ <select id="selectAll" resultType="com.tob.reply.ReplyVO">
  	SELECT
  		REPLY_SEQ AS replySeq,
  	 	COMMENT AS comment,
  	 	WRITER AS writer,
  	 	REG_DATE AS regDate,
  		EVENT_ID AS evtId
- 	  FROM REPLY ORDER BY replySeq DESC
- 	  	LIMIT #{start}, 5
+ 	  FROM REPLY ORDER BY REPLY_SEQ DESC
  </select>
  
  <insert id="insert" parameterType="com.tob.reply.ReplyVO" >
