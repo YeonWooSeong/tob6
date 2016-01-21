@@ -71,13 +71,11 @@
 	<!-- *********************** 섹션(컨텐트) ************************** -->
 	
 	
-	<section id="book_section" class="section section-padded"
-	style="background: linear-gradient(to bottom, #0d4fdd 0%,#60abf8 47%,#96efff 100%);" >
+	<section id="book_section" class="section section-padded" >
 		<div class="container">
 			<div class="row text-center title">
 				<label id="book_more"><img src="${img}/book.png" alt="" /></label>
 			</div>
-				<h5 class="text-center">전체목록은 BOOK을 눌러주세요.</h5>
 			<div class="row services">
 				<div class="col-md-4">
 					<div class="service">
@@ -123,7 +121,7 @@
 
 
 	
-	<section id="week_section" class="section" style="background: linear-gradient(to bottom, #96efff 0%,#00a8ff 32%);">
+	<section id="week_section" class="section">
 		<div class="container" style=" margin-top: 10px;">
 			<div class="row title text-center">
 				<label id="week_more"><img src="${img}/week.png" alt="" /></label>
@@ -165,14 +163,14 @@
 	<section id="event" class="section section-padded blue-bg">
 		<div class="container" id="event_section">
 			<div class="row">
-				<label id="event_more"><img src="${img}/event.png" alt="" /></label>
+				<label><img src="${img}/event.png" alt="" /></label>
 				<div class="col-md-8 col-md-offset-2">
 					<div class="owl-twitter owl-carousel">
 						<div class="item text-center">
 							<i class="icon fa fa-twitter"></i><br />
-							<label id="event_tag">
-							<h1 class="white light">EVENT 댓글로직 확인</h1>
-							<p class="white light">이벤트 검색은 Event 로고를 클릭해주세요.</p>
+							<label id="event_more">
+							<h1 class="white light">EVENT</h1>
+							<p class="white light">검색하러 가기</p>
 							</label>
 						</div>
 						<div class="item text-center">
@@ -181,21 +179,10 @@
 								<div class="caption">
 									<h4 class="white light">소프트 스킬 리뷰어 이벤트</h4>
 									<p class="white light">2016/01/01~2016/01/31</p>
-									<label id="soft" class="btn btn-primary">더보기</label>
+									<label id="event_tag" class="btn btn-primary">더보기</label>
 						</div>
 						</div>
-						<div class="item text-center">
-							<i class="icon fa fa-twitter"></i><br />
-							<h4 class="white light">계속해서 개발중이오니 불편하시더라도 기다려주세요.<br> 
-							Thank you!</h4></h4>
-							<h4 class="light-white light">Now Loading....</h4>
 						</div>
-						<div class="item text-center">
-							<i class="icon fa fa-twitter"></i><br />
-							<h4 class="white light">로딩중...</h4>
-							<h4 class="light-white light">Now Loading....</h4>
-						</div>
-					</div>
 				</div>
 			</div>
 		</div>
@@ -205,7 +192,7 @@
 	
 	<section id="join_section"></section>
 	<section id="mypage_section"></section>
-<section id="team_section" style="background: linear-gradient(to bottom, #00a8ff 0%,#29d2db 23%,#5dfcd4 55%,#ffffff 86%);">
+<section id="team_section" >
 	<div class="container" style="padding-top: 20px; padding-bottom: 20px;">
 		<div class="row title text-center">
 			<label> <img src="${img}/team.png" alt="" /></label>
