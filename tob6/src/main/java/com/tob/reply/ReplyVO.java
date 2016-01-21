@@ -13,19 +13,19 @@ public class ReplyVO implements Serializable{
 	private String comment;
 	private String writer;
 	private String regDate;
-	private String thumnail;
+	private String evtId;
 	
 	
 	public ReplyVO() {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public ReplyVO(int  replySeq,String comment,String writer,String regDate,String thumnail) {
+	public ReplyVO(int  replySeq,String comment,String writer,String regDate,String evtId) {
 		this.replySeq = replySeq;
 		this.comment = comment;
 		this.writer = writer;
 		this.regDate = regDate;
-		this.thumnail = thumnail;
+		this.evtId = evtId;
 	}
 
 	public int getReplySeq() {
@@ -44,8 +44,9 @@ public class ReplyVO implements Serializable{
 		return regDate;
 	}
 
-	public String getThumnail() {
-		return thumnail;
+	
+	public String getEvtId() {
+		return evtId;
 	}
 
 	public void setReplySeq(int replySeq) {
@@ -64,12 +65,12 @@ public class ReplyVO implements Serializable{
 		this.regDate = regDate;
 	}
 
-	public void setThumnail(String thumnail) {
-		this.thumnail = thumnail;
+	
+	public void setEvtId(String evtId) {
+		this.evtId = evtId;
 	}
 
 	
-
 	
 	
 

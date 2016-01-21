@@ -9,16 +9,16 @@
  	 	COMMENT AS comment,
  	 	WRITER AS writer,
  	 	REG_DATE AS regDate,
- 		THUMNALI AS thumnail
+ 		EVENT_ID AS evtId
  	  FROM REPLY ORDER BY replySeq DESC
- 	  	LIMIT #{start}, 8
+ 	  	LIMIT #{start}, 5
  </select>
  
  <insert id="insert" parameterType="com.tob.reply.ReplyVO" >
  	INSERT INTO REPLY
- 	 (REPLY_SEQ,COMMENT,WRITER,REG_DATE,THUMNALI)
+ 	 (REPLY_SEQ,COMMENT,WRITER,REG_DATE,EVENT_ID)
  	VALUES
- 	 (#{replySeq}, #{comment}, #{writer}, now(), #{thumnail})
+ 	 (#{replySeq}, #{comment}, #{writer}, now(), #{evtId})
  </insert>
  
  <update id="update" parameterType="com.tob.reply.ReplyVO">
@@ -26,11 +26,11 @@
  		COMMENT = #{comment},
  		WRITER = #{writer},
  		REG_DATE = #{regDate},
- 		THUMNALI = #{thumnail}
+ 		EVENT_ID = #{evtId}
  	WHERE REPLY_SEQ = #{replySeq}
  </update>
  
- <delete id="delete" parameterType="string">
+ <delete id="delete" parameterType="int">
  	DELETE FROM REPLY WHERE REPLY_SEQ = #{replySeq}
  </delete>
 

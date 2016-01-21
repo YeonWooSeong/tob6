@@ -8,7 +8,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.tob.event.CommandEventFactory;
+import com.tob.global.CommandFactory;
 
 
 
@@ -19,50 +24,75 @@ public class ReplyController {
 	@Autowired ReplyServiceImpl service;
 	@Autowired ReplyVO reply;
 	
-	@RequestMapping("/Reply")
-	public void reply(
+	@RequestMapping("/write")
+	public void write(
 			Model model,
-			String replySeq,
+			int replySeq,
 			String comment,
 			String writer,
-			String regDate,
-			String thumnail
+			//String regDate
+			String evtId
 			) {
-		logger.info("리플라이시퀀스 : {}",replySeq);
+		logger.info("시퀀스 : {}",replySeq);
 		logger.info("내용 : {}", comment);
 		logger.info("아이디 : {}", writer);
-		logger.info("날짜: {}", regDate);
-		logger.info("이미지: {}", thumnail);
-		reply.setReplySeq(Integer.parseInt(replySeq));
+		//logger.info("날짜: {}", regDate);
+		logger.info("이벤트아이디 : {}", evtId);
+		reply.setReplySeq(replySeq);
 		reply.setComment(comment);
 		reply.setWriter(writer);
-		reply.setRegDate(regDate);
-		reply.setThumnail(thumnail);
+		reply.setEvtId(evtId);
+		service.insert(reply);
+		//reply.setRegDate(regDate);
 		/*service.delete(reply);*/
 		
 	}
-	@RequestMapping("/remove_reply")
-	public void removeReply(
-			Model model,
-			String code, String reply) {
-		/*ReplyService.delete(Integer.parseInt(reply));*/
-		
-	}
 	@RequestMapping("/read")
-	public void read(
-			Model model,
-			String code,
-			String myself
-			) {
-		logger.info("read() 진입");
-		/*reply = service.selectById(Integer.parseInt(code));*/
-		// 자기자신은 조회수를 증가시키면 안됨
-		if(myself.equals("false")){
-			Map<String, Integer> data = new HashMap<String, Integer>();
-
-	}
+	public void read(){
 		
-		model.addAttribute("reply", reply);
+	}
+	@RequestMapping("/update")
+	public void update(){}
+	
+	@RequestMapping("/delete")
+	public void delete(){}
+	
+	@RequestMapping("/list/{evtId}/{pageNo}")
+	public @ResponseBody Map<String,Object> list(
+			@PathVariable("evtId")String evtId,
+			@PathVariable("pageNo")String pageNo,
+			Model model
+			){
+		logger.info("ReplyController list() 진입");
+		logger.info("넘어온 이벤트 id : {}",evtId);
+		logger.info("넘어온 페이지No. : {}",pageNo);
+		
+		int pageNumber = Integer.parseInt(pageNo);
+		int pageSize = 5;
+		int groupSize = 2;
+		int count = service.count();
+		logger.info("번호 : {}",count);
+		int totalPage = count/pageSize;
+		if (count%pageSize != 0) {
+			totalPage += 1;
+		}
+		int startPage = pageNumber - ((pageNumber-1) % groupSize);
+		int lastPage = startPage + groupSize -1;
+		if (lastPage > totalPage) {
+			lastPage = totalPage;
+		}
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("list", service.selectAll(CommandFactory.list(pageNo)));
+		map.put("count", count);
+		map.put("totalPage", totalPage);
+		map.put("pageNo", pageNumber);
+		map.put("startPage", startPage);
+		map.put("lastPage", lastPage);
+		map.put("groupSize", groupSize);
+		
+		return map;
 	}
 	
+	@RequestMapping("/count")
+	public void count(){}
 }
