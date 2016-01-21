@@ -210,7 +210,7 @@ var Cart = {
 				async : false,
 				success : function(data) {
 					alert('구매가 완료되었습니다.');
-					//Cart.emptyCart(userid);
+					Cart.emptyCart(userid);
 				},
 				error : function() {
 					alert('ajax 에러');
@@ -232,7 +232,7 @@ var Cart = {
 			async : false,
 			success : function(data) {
 				if (data.login_check =="login") {
-					alert('인증번호가 발송되었습니다.');
+					alert('구매내역이 발송되었습니다.');
 				} else {
 					alert('로그인 후 이용가능합니다.');
 				}

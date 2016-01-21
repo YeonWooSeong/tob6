@@ -75,7 +75,7 @@ public class PurchaseController {
 		
 		return model;
 	}
-	/*@RequestMapping("/sendEmail")
+	@RequestMapping("/sendEmail")
 	public Model sendEmail(
 			String userid,
 			HttpSession session,
@@ -99,16 +99,16 @@ public class PurchaseController {
 			List<BookCartVO> list = cartService.getTodayList(userid);
 			logger.info(list.toString());
 			String sentence = "TOB 홈페이지 구매내역";
-			String sentence2 = userid +" 님의 구매내역 \n" + "책 이름 \t 책 가격 \t 수량 \n";
+			String sentence2 = userid +" 님의 구매내역 \n" + "책 이름\t \t 책 가격 \t 수량 \n";
 			
-			
+			//jsoup 미구현.
 			for (int i = 0; i < list.size(); i++) {
 				String todaybookId = list.get(i).getBookId();
 				String todaybookName = list.get(i).getBookName();
 				int todayPrice = list.get(i).getBookPrice();
 				int todaycount = list.get(i).getCount();
 				
-				sentence2 += todaybookId + "\t" + todaybookName + "\t" + todayPrice + "\t" + todaycount + "\n";
+				sentence2 += todaybookName + "\t" + todayPrice + "\t" + todaycount + "\n";
 			}
 			
 			email.setReciver(member.getEmail());
@@ -116,17 +116,6 @@ public class PurchaseController {
 			email.setContent(sentence2);
 			emailSender.sendMail(email);
 		}
-		return model;
-	}*/
-	
-	@RequestMapping("/sendEmail")
-	public Model sendEmail(
-			String userid,
-			HttpSession session,
-			Model model
-			) {
-		
-		
 		return model;
 	}
 	

@@ -103,15 +103,15 @@ CREATE TABLE REPLY(
 INSERT INTO ADMIN VALUES('AD','AD','soomin0322@naver.com');
 
 INSERT INTO MEMBER VALUES('a','a','hong','1991.07.17','남','pheonix0717@naver.com','010-4278-4789','서울시 광진구 화양동','default.png');
-INSERT INTO MEMBER VALUES('b','b','hwang','2000.01.11','남','ssun9900@naver,com','010-1234-1549','서울시 강남구 역삼동','default.png');
-INSERT INTO MEMBER VALUES('c','c','young','1897.09.20','여','asdfbva@naver,com','010-4200-1234','서울시 구로구 xx동','default.png');
-INSERT INTO MEMBER VALUES('d','d','admin','1120.11.11','남','snh3n@naver,com','010-4175-0910','서울시 강북구 yy동','default.png');
-INSERT INTO MEMBER VALUES('e','e','e','1991.10.13','남','snd21@naver,com','010-2486-1022','서울시 강서구 pp동','default.png');
-INSERT INTO MEMBER VALUES('f','f','f','1990.07.11','남','af23f1@naver,com','010-7210-1242','서울시 관악구 gg동','default.png');
-INSERT INTO MEMBER VALUES('g','g','g','1989.01.21','여','adsf1v@naver,com','010-1120-9651','서울시 영등포구 cc동','default.png');
-INSERT INTO MEMBER VALUES('h','h','h','1996.12.25','여','12d1v@naver,com','010-5977-7721','서울시 동대문구 ad동','default.png');
-INSERT INTO MEMBER VALUES('i','i','i','1993.03.06','여','5je5j@naver,com','010-0865-0450','서울시 동작구 xx동','default.png');
-INSERT INTO MEMBER VALUES('j','j','j','1992.06.30','남','65hegsa@naver,com','010-1076-0910','서울시 중랑구 yx동','default.png');
+INSERT INTO MEMBER VALUES('b','b','hwang','2000.01.11','남','ssun9900@naver.com','010-1234-1549','서울시 강남구 역삼동','default.png');
+INSERT INTO MEMBER VALUES('c','c','young','1897.09.20','여','asdfbva@naver.com','010-4200-1234','서울시 구로구 xx동','default.png');
+INSERT INTO MEMBER VALUES('d','d','admin','1120.11.11','남','snh3n@naver.com','010-4175-0910','서울시 강북구 yy동','default.png');
+INSERT INTO MEMBER VALUES('e','e','e','1991.10.13','남','snd21@naver.com','010-2486-1022','서울시 강서구 pp동','default.png');
+INSERT INTO MEMBER VALUES('f','f','f','1990.07.11','남','af23f1@naver.com','010-7210-1242','서울시 관악구 gg동','default.png');
+INSERT INTO MEMBER VALUES('g','g','g','1989.01.21','여','adsf1v@naver.com','010-1120-9651','서울시 영등포구 cc동','default.png');
+INSERT INTO MEMBER VALUES('h','h','h','1996.12.25','여','12d1v@naver.com','010-5977-7721','서울시 동대문구 ad동','default.png');
+INSERT INTO MEMBER VALUES('i','i','i','1993.03.06','여','5je5j@naver.com','010-0865-0450','서울시 동작구 xx동','default.png');
+INSERT INTO MEMBER VALUES('j','j','j','1992.06.30','남','65hegsa@naver.com','010-1076-0910','서울시 중랑구 yx동','default.png');
 
 INSERT INTO CATEGORY VALUES('domestic','국내도서');
 INSERT INTO CATEGORY VALUES('abroad','해외도서');
