@@ -92,8 +92,7 @@ var Cart = {
 					+'</div>'
 					+'<div class="column" style="display: table-cell; border: 1px solid silver;">'
 					+'	<input type="image" src="'+context+'/resources/images/btn_del02.gif" id="delete'+i+'" onclick="Cart.remove('+'\''+this.bookId+'\''+')"></input></div>'
-					+'</div>'
-					;
+					+'</div>';
 				arr.push(this.bookId);
 				Cart.setTotal(this.bookPrice * this.count);
 				Cart.setTotalCount(this.count);
@@ -117,7 +116,7 @@ var Cart = {
 				+'</table>'
 				+'</div>';
 			
-			$('#cart_section').empty().append(table);
+			$('.mainView').empty().html(table);
 			$('.cat').click(function() {
 				alert($('input[id="'+$(this).attr('id')+'"]').val());
 				alert($(this).attr('id'));

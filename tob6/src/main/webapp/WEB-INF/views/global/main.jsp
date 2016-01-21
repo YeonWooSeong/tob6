@@ -29,6 +29,7 @@
 					<li><a href="#book_section">BOOK</a></li>
 					<li><a href="#week_section">WEEK-BOOK</a></li>
 					<li><a href="#event_section">EVENT</a></li>
+					<li><a href="#team_section">TEAM</a></li>
 			<c:if test="${empty sessionScope.user}">
 			<!-- 로그인 안한 상태 -->
 			<li><a href="${context}/admin/main">Admin</a></li>
@@ -36,8 +37,9 @@
 			<li style="float: right"><a href="#" data-toggle="modal" data-target="#modal2">Sign Up</a></li>
 			</c:if>
 			<c:if test="${not empty sessionScope.user}">
-			<li style="float: right; padding-right: 10px;"><a href="#" data-toggle="modal" data-target="#modal3" >마이페이지</a></li>
-			<li style="float: right;"><a class="page-scroll" href="#cart_section" id="my_cart">장바구니</a></li>
+			<!-- <li style="float: right; padding-right: 10px;"><a href="#" data-toggle="modal" data-target="#modal3" >마이페이지</a></li> -->
+			<li><label id="mypage">My page</label></li>
+			<li style="float: right;"><a class="page-scroll" href="${context}/cart/Cart" id="my_cart">장바구니</a></li>
 			<li style="float: right;"><a href="${context}/member/logout">Log out</a></li>
 			</c:if>
 					
@@ -203,8 +205,6 @@
 	</section>
 	
 	
-	<section id="join_section"></section>
-	<section id="mypage_section"></section>
 <section id="team_section" style="background: linear-gradient(to bottom, #00a8ff 0%,#29d2db 23%,#5dfcd4 55%,#ffffff 86%);">
 	<div class="container" style="padding-top: 20px; padding-bottom: 20px;">
 		<div class="row title text-center">
@@ -323,7 +323,8 @@
 
 
 <section></section>
-<section id="cart_section" style="margin-top: 5%; margin-bottom: 5%;">	</section>
+<section id="cart_section" style="margin-top: 5%; margin-bottom: 10%;">	</section>
+<section id="mypage" style="margin-top: 5%; margin-bottom: 10%;">	</section>
 
 
 	<div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -472,10 +473,13 @@
 		$('#mypage').click(function() {
 			Member.detail(context+'/member/detail/${user.userid}');
 		});
-		$('#my_cart').click(function() {
-			/* Cart.main(context, '${user.userid}'); */
-			Cart.list('${user.userid}');
-		});
+		
 		
 	});
 </script>
+<%-- 
+$('#my_cart').click(function() {
+			/* Cart.main(context, '${user.userid}'); */
+			Cart.list('${user.userid}');
+		
+		}); --%>
