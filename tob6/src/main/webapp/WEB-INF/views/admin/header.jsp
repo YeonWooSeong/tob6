@@ -53,7 +53,7 @@
           <ul class="dropdown-menu">
             <li><a href="#" id="cart_list">전체 주문 목록</a></li>
             <li><a href="#" id="calenderList">날짜별 주문 목록</a></li>
-            <li><a href="${context}/admin/test" >날짜별 주문 목록</a></li>
+            <li><a href="${context}/admin/test" >테스트 페이지</a></li>
           </ul>
         </li>
       </ul>
