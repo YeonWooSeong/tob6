@@ -42,19 +42,21 @@ public class BookController {
 			Model model
 			){
 		logger.info("BookController selectAll2()진입.");
-		logger.info("넘어온 페이지No.2 : {}",pageNo);
+		logger.info("넘어온 페이지No.2 : {}",pageNo); //pageNo = 1
 		logger.info("넘어온 장르아이디 (잘 넘어왔음): {}",genreId);
 		
 		int pageNumber = Integer.parseInt(pageNo);
 		int pageSize = 3;
 		int groupSize = 3;
 		int count = service.count();
-		logger.info("번호2 : {}",count);
+		logger.info("번호2 : {}",count); //count = 26 (장르불문 전체 책 수)
 		int totalPage = count/pageSize;
+		System.out.println("토탈페이지 수 : " + totalPage);
 		if (count%pageSize != 0) {
-			totalPage += 1;
+			totalPage += 1; // 딱 안맞아떨어지면 1 늘려야함.
 		}
-		int startPage = pageNumber - ((pageNumber-1) % groupSize);
+		System.out.println("토탈페이지 수 : " + totalPage);
+		int startPage = pageNumber - ((pageNumber-1) % groupSize); // 항상 1
 		int lastPage = startPage + groupSize -1;
 		if (lastPage > totalPage) {
 			lastPage = totalPage;
@@ -70,6 +72,12 @@ public class BookController {
 		logger.info("BookController:Book_selectAll2()");
 		logger.info("커맨드를 거친  genreId는 ??: ", genreId);
 		logger.info("커맨드를 거친  Page는 ??: ", pageNo);
+		logger.info("ㅈㅁ듛ㄳㅂ쥬3 ", count);
+		logger.info("ㅈㅁ듛ㄳㅂ쥬3 ", totalPage);
+		logger.info("ㅈㅁ듛ㄳㅂ쥬3 ", pageNumber);
+		logger.info("ㅈㅁ듛ㄳㅂ쥬3 ", startPage);
+		logger.info("ㅈㅁ듛ㄳㅂ쥬3 ", lastPage);
+		logger.info("ㅈㅁ듛ㄳㅂ쥬3 ", groupSize);
 		
 				return map;
 				}
