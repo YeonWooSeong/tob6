@@ -4,7 +4,6 @@
 <script type="text/javascript">
 	$(function() {
 		Purchase.list(context);
-		alert('구매 자동 함수 입력먹음');
 		$('#pur_wrap').css({
 			"padding-left" : "25px",
 			'margin-left' : '100px',

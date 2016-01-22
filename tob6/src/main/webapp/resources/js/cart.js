@@ -41,7 +41,7 @@ var Cart = {
 				alert('장바구니에 담겼습니다.');
 			},
 			error : function() {
-				alert('이미 장바구니에 있습니다.');
+				alert('장바구니에 담겼습니다.');
 			}
 		});
 	},
