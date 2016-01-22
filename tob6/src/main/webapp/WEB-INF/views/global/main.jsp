@@ -27,17 +27,18 @@
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav navbar-right main-nav">
 					<li><a href="#book_section">BOOK</a></li>
-					<li><a href="#week_section">WEEK-BOOK</a></li>
+					<!-- <li><a href="#week_section">WEEK-BOOK</a></li> -->
 					<li><a href="#event_section">EVENT</a></li>
+					<li><a href="#team_section">TEAM</a></li>
+					<li><a href="${context}/admin/main">Admin</a></li>
 			<c:if test="${empty sessionScope.user}">
 			<!-- 로그인 안한 상태 -->
-			<li><a href="${context}/admin/main">Admin</a></li>
 			<li><a href="#" data-toggle="modal" data-target="#modal1" class="btn btn-blue">Sign In</a></li>
 			<li style="float: right"><a href="#" data-toggle="modal" data-target="#modal2">Sign Up</a></li>
 			</c:if>
 			<c:if test="${not empty sessionScope.user}">
 			<li style="float: right; padding-right: 10px;"><a href="#" data-toggle="modal" data-target="#modal3" >마이페이지</a></li>
-			<li style="float: right;"><a class="page-scroll" href="#cart_section" id="my_cart">장바구니</a></li>
+			<li style="float: right;"><a class="page-scroll" href="${context}/cart/Cart" id="my_cart">장바구니</a></li>
 			<li style="float: right;"><a href="${context}/member/logout">Log out</a></li>
 			</c:if>
 					
@@ -71,47 +72,34 @@
 	<!-- *********************** 섹션(컨텐트) ************************** -->
 	
 	
-	<section id="book_section" class="section section-padded"
-	style="background: linear-gradient(to bottom, #0d4fdd 0%,#60abf8 47%,#96efff 100%);" >
+	<section id="book_section" class="section section-padded" >
 		<div class="container">
-			<div class="row text-center title">
+			<%-- <div class="row text-center title">
 				<label id="book_more"><img src="${img}/book.png" alt="" /></label>
-			</div>
-				<h5 class="text-center">전체목록은 BOOK을 눌러주세요.</h5>
+			</div> --%>
 			<div class="row services">
-				<div class="col-md-4">
-					<div class="service">
-						<div class="icon-holder">
-							<img src="${img}/b00k.png" alt="" class="icon">
-						</div>
-						<h4 class="heading">멈추면 보여요</h4>
-						<p class="description" style="color: white;">이세상 최고의 명품옷은 바로<br> 자신감을 입는 것 입니다. <br>
-						- 멈추면, 비로소 보이는 것들 中
-						 </p>
-					</div>
-				</div>
-				<div class="col-md-4">
+				<div class="col-md-4" id="book_more">
 					<div class="service">
 						<div class="icon-holder">
 							<img src="${img}/book_icon_2.png" alt="" class="icon">
 						</div>
-						<h4 class="heading">If I'm moon</h4>
-						<p class="description" style="color: white;">​내가 만약 달이 된다면 <br>
-							지금 그 사람의 창가에도<br>
-							아마 몇 줄기는 내려지겠지<br>
-							-김소월 '첫사랑'-
-						</p>
+						<h2 class="heading">BOOK</h2>
 					</div>
 				</div>
-				<div class="col-md-4">
+				<div class="col-md-4" id="music_more">
+					<div class="service">
+						<div class="icon-holder">
+							<img src="${img}/book_icon_2.png" alt="" class="icon">
+						</div>
+						<h2 class="heading">MUSIC</h2>
+					</div>
+				</div>
+				<div class="col-md-4" id="old_more">
 					<div class="service">
 						<div class="icon-holder">
 							<img src="${img}/book_icon.png" alt="" class="icon">
 						</div>
-						<h4 class="heading">미래</h4>
-						<p class="description" style="color: white;">미래를 예측하는<br> 최선의 방법은 미래를 <br>창조하는 것이다. <br>
-						-알랜 케이
-						</p>
+						<h3 class="heading">Old Market</h3>
 					</div>
 				</div>
 			</div>
@@ -123,7 +111,7 @@
 
 
 	
-	<section id="week_section" class="section" style="background: linear-gradient(to bottom, #96efff 0%,#00a8ff 32%);">
+	<%-- <section id="week_section" class="section">
 		<div class="container" style=" margin-top: 10px;">
 			<div class="row title text-center">
 				<label id="week_more"><img src="${img}/week.png" alt="" /></label>
@@ -157,22 +145,22 @@
 				</div>
 			</div>
 		</div>
-	</section>
+	</section> --%>
 
 
 	
 	
-	<section id="event" class="section section-padded blue-bg">
+	<section id="event" class="section section-padded blue-bg" style="padding-top: 5%;">
 		<div class="container" id="event_section">
 			<div class="row">
-				<label id="event_more"><img src="${img}/event.png" alt="" /></label>
+				<label><img src="${img}/event.png" alt="" /></label>
 				<div class="col-md-8 col-md-offset-2">
 					<div class="owl-twitter owl-carousel">
 						<div class="item text-center">
 							<i class="icon fa fa-twitter"></i><br />
-							<label id="event_tag">
-							<h1 class="white light">EVENT 댓글로직 확인</h1>
-							<p class="white light">이벤트 검색은 Event 로고를 클릭해주세요.</p>
+							<label id="event_more">
+							<h1 class="white light">EVENT</h1>
+							<p class="white light">검색하러 가기</p>
 							</label>
 						</div>
 						<div class="item text-center">
@@ -181,21 +169,10 @@
 								<div class="caption">
 									<h4 class="white light">소프트 스킬 리뷰어 이벤트</h4>
 									<p class="white light">2016/01/01~2016/01/31</p>
-									<label id="soft" class="btn btn-primary">더보기</label>
+									<label id="event_tag" class="btn btn-primary">더보기</label>
 						</div>
 						</div>
-						<div class="item text-center">
-							<i class="icon fa fa-twitter"></i><br />
-							<h4 class="white light">계속해서 개발중이오니 불편하시더라도 기다려주세요.<br> 
-							Thank you!</h4></h4>
-							<h4 class="light-white light">Now Loading....</h4>
 						</div>
-						<div class="item text-center">
-							<i class="icon fa fa-twitter"></i><br />
-							<h4 class="white light">로딩중...</h4>
-							<h4 class="light-white light">Now Loading....</h4>
-						</div>
-					</div>
 				</div>
 			</div>
 		</div>
@@ -203,8 +180,6 @@
 	</section>
 	
 	
-	<section id="join_section"></section>
-	<section id="mypage_section"></section>
 <section id="team_section" style="background: linear-gradient(to bottom, #00a8ff 0%,#29d2db 23%,#5dfcd4 55%,#ffffff 86%);">
 	<div class="container" style="padding-top: 20px; padding-bottom: 20px;">
 		<div class="row title text-center">
@@ -323,7 +298,8 @@
 
 
 <section></section>
-<section id="cart_section" style="margin-top: 5%; margin-bottom: 5%;">	</section>
+<section id="cart_section" style="margin-top: 5%; margin-bottom: 10%;">	</section>
+<section id="mypage" style="margin-top: 5%; margin-bottom: 10%;">	</section>
 
 
 	<div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -460,8 +436,13 @@
 		});
 		
 		$('#book_more').click(function() {
-			alert('섹션의 유저아이디 : '+'${user.userid}');
 			book.all('${user.userid}');
+		});
+		$('#music_more').click(function() {
+			alert('준비중입니다.');
+		});
+		$('#old_more').click(function() {
+			alert('준비중입니다.');
 		});
 		$('#event_more').click(function() {
 			Event.event('${user.userid}');
@@ -472,10 +453,13 @@
 		$('#mypage').click(function() {
 			Member.detail(context+'/member/detail/${user.userid}');
 		});
-		$('#my_cart').click(function() {
-			/* Cart.main(context, '${user.userid}'); */
-			Cart.list('${user.userid}');
-		});
+		
 		
 	});
 </script>
+<%-- 
+$('#my_cart').click(function() {
+			/* Cart.main(context, '${user.userid}'); */
+			Cart.list('${user.userid}');
+		
+		}); --%>

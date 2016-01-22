@@ -15,6 +15,17 @@
 .static{position: static;
 	border: 3px dotted #8AC007;
 	}
+.column1{
+	display: table-cell;
+	border: 1px solid silver;
+	width: 340px;
+}
+.row1{
+	display: table-row;
+	margin-bottom: 3%;
+}
+
+
 
 .fixed{position: fixed;}
 

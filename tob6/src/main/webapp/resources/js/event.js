@@ -2,8 +2,8 @@ var Event = {
       event : function() {
          
          $('#event_section').html('<div class="big" style="width: 1200px; margin-left:50px; height: 400px;">'
-               +'<div class="sea_1" style="width:650px; border : 1px solid wihte; margin-left: 40px">'
-               +'<div class="sm_1" ><h1 style="color: white;">추천이벤트</h1>'
+               +'<div class="sea_1" style="width:650px; margin-left: 40px; border : 1px solid wihte;">'
+               +'<div class="sm_1" "><h1 style="color: white; padding-left: 5px;">추천이벤트</h1>'
                +'<ol><li style="color: white;" ></li>'
                +'<li style="color: white;"></li><li style="color: white;"></li></ol></div></div>'
                +'<div class="sea_2" style="margin-top:10px; color:white;"><div class="sm_2"><div class="sm_2_1">'

@@ -32,7 +32,7 @@ public class CartController {
 	@RequestMapping("/Cart")
 	public String main(){
 		logger.info("카트 컨트롤러 - main() 진입");
-		return "cart/Cart.part";
+		return "cart/Cart.tiles";
 	}
 	
 	@RequestMapping("/list/{userid}")

@@ -28,6 +28,8 @@ var Member = {
 		},
 		change : function(context) {
 			alert('멤버의 변경 진입');
+			
+		$.getJSON(context+'/member/')
 			$.ajax(context+'/member/change',{
 				data : { //이름, 생일, 이메일, 폰, 주소
 					password : $('#ch_password').val(),
@@ -100,7 +102,7 @@ var Member = {
 			$.getJSON(url,
 				function(data){
 				alert('겟제이슨')
-				var table = '<table><tr><td rowspan="7" id="td_profile"><img id="profile" src="'+img+'/'+data.profile+'" width="70%" height="80%"/></td>'
+				var table = '<table align="center"><tr><td rowspan="7" id="td_profile"><img id="profile" src="'+img+'/'+data.profile+'" width="70%" height="80%"/></td>'
 				+'<th id="item">항목</th><th>빈 칸</th></tr><tr><td>아이디</td><td>'+data.userid+'</td></tr><tr><td>비밀번호</td><td>'+data.password+''
 				+'</td></tr><tr><td>이름</td><td>'+data.name+'</td></tr><tr><td>생일</td><td>'+data.gender+'</td></tr><tr>'
 				+'<td>주소</td><td>'+data.addr+'</td></tr><tr><td>이메일</td><td>'+data.email+'</td></tr>'
@@ -123,20 +125,19 @@ var Member = {
 			alert('업데이트 진입했다');
 			$.getJSON(context+'/member/updateForm/'+userid,
 					function(data){
-				var updates = '<form action="'+context+'/member/update" id="frm">';
+				var updates = '<form align="center" action="'+context+'/member/update" id="frm">';
 				$('.mainView').empty();
 				$('.mainView').append(updates);
-				var table = '<table><tr><td rowspan="8" id="td_profile"><img id="profile" src="'+img+'/'+data.profile+'" width="70%" height="80%"/></td>'
+				var table = '<table align="center"><tr><td rowspan="7" id="td_profile"><img id="profile" src="'+img+'/'+data.profile+'" width="70%" height="80%"/></td>'
 				+'<th id="item">항목</th><th>빈 칸</th></tr><tr><td>아이디</td><td>'+data.userid+'</td></tr><tr>'
 				+'<td>비밀번호</td><td><input type="password" id="password" value='+data.password+'>'
 				+'</td></tr><tr><td>이름</td><td>'+data.name+'</td></tr><tr><td>생일</td><td>'+data.gender+'</td></tr><tr>'
 				+'<td>주소</td><td><input type="text" id="addr" value='+data.addr+'></td></tr>'
 				+'<tr><td>이메일</td><td><input type="text" id="email" value='+data.email+'></td>'
-				+'<td><input type="text" id="phone" value='+data.phone+'></td></tr>'
 				+'<tr><td><button id="changeImg">사진변경</button></td>'
 				+'<td><button id="changeInfo">정보수정</button></td>'
 				+'<td><button id="confirm">확인</button></td></tr></table>';
-				$('#frm').append(table);
+				$('#frm').html(table);
 				Member.style();
 				$('#confirm').click(function() {
 					 	alert('확인');

@@ -23,11 +23,8 @@ var Cart = {
 				
 	
 	main : function(link, userid) {
-		alert('메인으로 넘어옴');
 		$("#cart_section").load(link+"/cart/Cart");
-		alert('메인으로 넘어온 유저아이디'+userid);
 		Cart.setUserid(userid);
-		alert('메인으로 넘어온 유저아이디'+Cart.getUserid());
 	},
 
 	put : function(bookId) {
@@ -73,7 +70,7 @@ var Cart = {
 		var arr = [];
 		var list = [];
 		$.getJSON(context+'/cart/list/'+userid, function(data) {
-			var table = '<h3 style="margin-left:10%; margin-bottom: 2%;">TOB 배송 상품 장바구니</h3>'
+			var table = '<img src="'+context+'/resources/images/cart_bag.png" alt="장바구니" style="margin-left:10%; margin-bottom: 2%;">'
 				+'<div class="orderlist" align="center" style="display: table; width:60%; margin-left:20%;">'
 				+'<div class="row" style="display: table-row;"><div class="column" style="display: table-cell; border: 1px solid silver;">'
 				+'</div><div class="column" style="display: table-cell; border: 1px solid silver;"><h5>상품명</h5></div>'
@@ -92,8 +89,7 @@ var Cart = {
 					+'</div>'
 					+'<div class="column" style="display: table-cell; border: 1px solid silver;">'
 					+'	<input type="image" src="'+context+'/resources/images/btn_del02.gif" id="delete'+i+'" onclick="Cart.remove('+'\''+this.bookId+'\''+')"></input></div>'
-					+'</div>'
-					;
+					+'</div>';
 				arr.push(this.bookId);
 				Cart.setTotal(this.bookPrice * this.count);
 				Cart.setTotalCount(this.count);
@@ -117,10 +113,10 @@ var Cart = {
 				+'</table>'
 				+'</div>';
 			
-			$('#cart_section').empty().append(table);
+			$('.mainView').empty().html(table);
 			$('.cat').click(function() {
-				alert($('input[id="'+$(this).attr('id')+'"]').val());
-				alert($(this).attr('id'));
+				//alert($('input[id="'+$(this).attr('id')+'"]').val());
+				//alert($(this).attr('id'));
 				Cart.change(userid, $('input[id="'+$(this).attr('id')+'"]').val(), $(this).attr('id'));
 				//$(this).attr('id')
 				//alert($('input:text').val($(this)));
@@ -133,9 +129,6 @@ var Cart = {
 	
 	change : function(userid, count, bookId) {
 		
-		alert('Cart.change() 진입 넘어온 아이디 : '+userid);
-		alert('Cart.change() 진입 넘어온 수량 : '+count);
-		alert('Cart.change() 진입 넘어온 책아이디 : '+bookId);
 		$.ajax(context+'/cart/change',{
 			data : {
 				userid : userid,
@@ -177,8 +170,6 @@ var Cart = {
 	},*/
 	
 	putInCart : function(userid, bookId) {
-		alert('Cart.putInCart 진입, 넘어온 아이디 : '+userid);
-		alert('Cart.putInCart 진입, 넘어온 책 아이디  : '+bookId);
 		if (userid == "") {
 			alert('로그인 후 이용가능합니다.');
 		} else {
@@ -189,15 +180,10 @@ var Cart = {
 	},
 	
 	putInPurchase : function(userid, bookId, price) {
-		if (userid === "") {
+		if (userid == "") {
 			alert('로그인 후 이용가능합니다.');
 		} else {
 			Cart.send_email(userid);
-			
-			alert('Cart.putInPurchase진입. 구매 클릭 됨.');
-			alert('넘어온 유저아이디  : '+userid);
-			alert('넘어온 책 아이디 : '+bookId);
-			alert('넘어온 책 가격 : '+price);
 		    $.ajax(context+'/purchase/buy', {
 		    	data : {
 		    		userid : userid,
@@ -211,17 +197,21 @@ var Cart = {
 				async : false,
 				success : function(data) {
 					alert('구매가 완료되었습니다.');
-					//Cart.emptyCart(userid);
+					Cart.emptyCart(userid);
 				},
 				error : function() {
 					alert('ajax 에러');
 				}
 		    });
 		}
+		
 	},
 	
+	
+	
+	
+	
 	send_email : function(userid) {
-		alert('Cart.send_email진입, 넘어온 아이디 : ' + userid);
 		$.ajax(context+'/purchase/sendEmail', {
 			data : {
 				userid : userid
@@ -233,7 +223,7 @@ var Cart = {
 			async : false,
 			success : function(data) {
 				if (data.login_check =="login") {
-					alert('인증번호가 발송되었습니다.');
+					alert('구매내역이 발송되었습니다.');
 				} else {
 					alert('로그인 후 이용가능합니다.');
 				}
@@ -267,7 +257,6 @@ var Cart = {
 	},*/
 	
 	remove : function(bookId, userid) {
-			alert('Cart.remove 진입, 넘어온 책 아이디값 : ' +bookId);
 			$.ajax(context+'/cart/remove', {
 				data : {
 					bookId : bookId,
@@ -289,7 +278,6 @@ var Cart = {
 	},
 	
 	emptyCart : function(userid) {
-		alert('Cart.emptyCart 진입, 넘어온 아이디 : ' + userid);
 		$.ajax(context+'/cart/empty', {
 			data : {
 				userid : userid
