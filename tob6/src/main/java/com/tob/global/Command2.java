@@ -7,7 +7,7 @@ public class Command2 implements Orderable{
 	public final int PAGESIZE = 10;
 	public Command2(String pageNo) {
 		this.pageNO = Integer.parseInt(pageNo);
-		this.start = (Integer.parseInt(pageNo) - 1)*PAGESIZE+1;
+		this.start = (Integer.parseInt(pageNo) - 1)*PAGESIZE;
 		this.end = (Integer.parseInt(pageNo)*PAGESIZE);
 	} //페이지 넘버만 넘어왓을때.
 	
