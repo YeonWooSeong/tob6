@@ -177,6 +177,9 @@ function drawLineChart() {
 var cartoon = 0;
 var adult = 0;
 var child = 0;
+var classic = 0;
+var cham = 0;
+var it = 0;
 
 var pieChart = {
       Factor : function() {
@@ -184,6 +187,9 @@ var pieChart = {
                adult = data.adult;
                cartoon = data.cartoon;
                child = data.child;
+               classic = data.classic;
+               cham = data.cham;
+               it = data.it;
                });
          }   
       };
@@ -195,7 +201,10 @@ function drawChart() {
           ['장르',   '판매량'],
           ['성인',    adult],
           ['만화',  cartoon],
-          ['아동',    child]
+          ['아동',    child],
+          ['고전',    classic],
+          ['종교',    cham],
+          ['IT',    it]
         ]);
 
         var options = {

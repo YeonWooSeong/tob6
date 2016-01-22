@@ -410,11 +410,13 @@ public class AdminController {
 	
 	@RequestMapping(value="/book_update",method=RequestMethod.POST)
 	public @ResponseBody BookVO bookUpdate(
-			@RequestParam("grade")String grade
+			@RequestParam("grade")String grade,
+			@RequestParam("stockSeq")String stockSeq
 			){
 		logger.info("멤버컨트롤러 book_update() - 진입");
 
 		book.setGrade(grade);
+		book.setStockSeq(stockSeq);
 
 		int result = bookService.change(book);
 		if (result == 1) {

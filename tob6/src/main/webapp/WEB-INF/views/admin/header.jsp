@@ -41,19 +41,19 @@
             <li><a href="#" id="main_todayBook">이주의 책 선정</a></li>
           </ul>
         </li>
-          <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">이벤트 관리 <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">이벤트 등록</a></li>
-            <li><a href="#">전체 이벤트 목록</a></li>
-          </ul>
-        </li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">주문 관리 <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="#" id="cart_list">전체 주문 목록</a></li>
             <li><a href="#" id="calenderList">날짜별 주문 목록</a></li>
-            <li><a href="${context}/admin/test" >날짜별 주문 목록</a></li>
+            <%-- <li><a href="${context}/admin/test" >테스트 페이지</a></li> --%>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">이벤트 관리 <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">이벤트 등록</a></li>
+            <li><a href="#">전체 이벤트 목록</a></li>
           </ul>
         </li>
       </ul>
@@ -162,7 +162,6 @@
 	
 	var daumBook = {
 			link : function(url) {
-				alert(url);
 				window.open(url);
 			}	
 	}
@@ -870,11 +869,12 @@ var adminBook ={
 	+'</div></div>'
 	+'<select class="form-control" name="genre" id="genre" style="width: 50%; float: right">'
 	+'<option name="genre" value="">장르</option>'
-	+'<option name="genre" value="fiction">fiction</option>'
-	+'<option name="genre" value="essay">essay</option>'
-	+'<option name="genre" value="it">it</option>'
-	+'<option name="genre" value="classic">classic</option>'
-	+'<option name="genre" value="poem">poem</option></select>'
+	+'<option name="genre" value="fiction">소설</option>'
+	+'<option name="genre" value="cartoon">만화</option>'
+	+'<option name="genre" value="essay">에세이</option>'
+	+'<option name="genre" value="it">IT</option>'
+	+'<option name="genre" value="classic">고전</option>'
+	+'<option name="genre" value="poem">시</option></select>'
 	+'<div class="row"><div class="col-xs-4 col-sm-3 col-md-3"><span class="button-checkbox">'
 	+'<input type="checkbox" name="t_and_c" id="t_and_c" class="hidden" value="1"></span></div>'
 	+'<div class="col-xs-8 col-sm-9 col-md-9">'
@@ -980,7 +980,7 @@ var adminBook ={
 					async : false,
 					success : function(data) {
 						if(data.result == "success"){
-							alert(data.bookName+"책 등록 완료되었습니다.");
+							alert(data.bookName+" 책 등록 완료되었습니다.");
 							adminBook.init3();
 						}
 						if(data.result == "fail"){
@@ -1125,8 +1125,8 @@ var AdminBook = {
 				+'<tr><th>책이름</th><td id="data_bookName">'+data.bookName+'</td></tr>'
 				+'<tr><th>가격</th><td id="data_bookPrice">'+data.bookPrice+'</td></tr>'
 				+'<tr><th>작가</th><td id="data_writer">'+data.writer+'</td></tr>'
-				+'<tr><th>등급</th><td><input type="text" id="data_grade" name="grade" value="'+data.grade+'"></td></tr>'
-				+'<tr><th>시퀀스</th><td id="data_bookSeq">'+data.bookSeq+'</td></tr>'
+				+'<tr><th>평점</th><td><input type="text" id="data_grade" name="grade" value="'+data.grade+'"></td></tr>'
+				+'<tr><th>재고</th><td><input type="text" id="data_stockSeq" name="stockSeq" value="'+data.stockSeq+'"></td></tr>'
 				+'<tr><th>옵션</th><td id="data_optionBook">'+data.optionBook+'</td></tr>'
 				+'<tr><th>장르</th><td id="data_genreId">'+data.genreId+'</td></tr>'
 				+'<td colspan="2"><button id="confirm" style="width:100px; margin-left: 150px;">정보수정</button></td></tr>'
@@ -1150,7 +1150,8 @@ var AdminBook = {
 						mimeType : 'multipart/form-data',
 						contentType : false,
 						processData : false,
-						success : function(data) {	
+						success : function(data) {
+							alert('정보가 수정되었습니다.');
 							var table = '<div class="panel panel-default" style="width: 25%; margin: auto;">'
 								+'<div class="panel-heading" style="width: 100%;">'
 								+'<div style="color: #7fb3b3; font-size: 20px; font-family: 굴림; font-weight:bold; margin-left: 150px;" >'
@@ -1160,8 +1161,8 @@ var AdminBook = {
 								+'<tr><th>책이름</th><td id="data_bookName">'+data.bookName+'</td></tr>'
 								+'<tr><th>가격</th><td id="data_bookPrice">'+data.bookPrice+'</td></tr>'
 								+'<tr><th>작가</th><td id="data_writer">'+data.writer+'</td></tr>'
-								+'<tr><th>등급</th><td id="data_grade">'+data.grade+'</td></tr>'
-								+'<tr><th>시퀀스</th><td id="data_bookSeq">'+data.bookSeq+'</td></tr>'
+								+'<tr><th>평점</th><td id="data_grade">'+data.grade+'</td></tr>'
+								+'<tr><th>재고</th><td id="data_stockSeq">'+data.stockSeq+'</td></tr>'
 								+'<tr><th>옵션</th><td id="data_optionBook">'+data.optionBook+'</td></tr>'
 								+'<tr><th>장르</th><td id="data_genreId">'+data.genreId+'</td></tr>'
 								+'<td colspan="2"><button id="confirm" style="width:100px; margin-left: 150px;">확인</button></td></tr>'
