@@ -177,6 +177,7 @@
 			</div>
 		</div>
 		<div id="event_submain" class="container" style="margin-bottom: 100px;"></div>
+		<div id="event_Reply"></div>
 	</section>
 	
 	
@@ -447,9 +448,7 @@
 		$('#event_more').click(function() {
 			Event.event('${user.userid}');
 		});
-		$('#event_tag').click(function() {
-			Event.eventPage();
-		});
+		
 		$('#mypage').click(function() {
 			Member.detail(context+'/member/detail/${user.userid}');
 		});
