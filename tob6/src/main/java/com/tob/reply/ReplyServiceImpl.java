@@ -56,4 +56,10 @@ public class ReplyServiceImpl implements ReplyService {
 		return mapper.reply(reply);
 	}
 
+	@Override
+	public List<String> getList(String evtId) {
+		ReplyMapper mapper = sqlSession.getMapper(ReplyMapper.class);
+		return mapper.getList(evtId);
+	}
+
 }

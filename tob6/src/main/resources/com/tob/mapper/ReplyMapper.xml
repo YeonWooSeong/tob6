@@ -12,7 +12,11 @@
  		EVENT_ID AS evtId
  	  FROM REPLY ORDER BY REPLY_SEQ DESC
  </select>
- 
+ <select id="getList" resultType="string" parameterType="string">
+  SELECT
+     WRITER AS writer
+  FROM REPLY WHERE EVENT_ID = #{evtId}
+ </select>
  <insert id="insert" parameterType="com.tob.reply.ReplyVO" >
  	INSERT INTO REPLY
  	 (REPLY_SEQ,COMMENT,WRITER,REG_DATE,EVENT_ID)

@@ -93,7 +93,7 @@ var Event = {
 },
    eventPage : function(evtId,userid,pageNo) {
 	   alert("이벤트페이지 진입 "+userid);
-      $.getJSON(context +'/reply/list/'+evtId+'/'+pageNo,function(data){
+      $.getJSON(context +'/reply/list/'+userid+'/'+evtId+'/'+pageNo,function(data){
     	   var count = data.count;
 	          var pageNo = data.pageNo; 
 	          var startPage = data.startPage;
@@ -113,12 +113,11 @@ var Event = {
          var baseComments = '<div id="reply_area" style="padding-top:50px;">'
          	 $.each(data.list, function(index, value) {
          	 baseComments += '<div name="reply" style="background: #FFFFFF; width: 60%; padding: 25px; margin: auto;margin-bottom: 20px; margin-right: 290px; text-align: left; border-radius: 20px; box-shadow: none;display: block;z-index: 5;">'
-             +'<input type="text" style="width:35px; margin-left:20px; float:left; border: 0;" readonly="readonly" value="'+this.writer+'"/>'
+             +'<input type="text" class="userid" id="userid" style="width:35px; margin-left:20px; float:left; border: 0;" readonly="readonly" value="'+this.writer+'"/>'
  			 +'<div id="regDate" style="margin-left:10px; float:left;">'+this.regDate+'</div><br />'
- 			 +'<img id="delete" alt="" src="'+context+'/resources/images/drop.png" onclick=Event.deleteReply('+'\''+this.writer+'\''+'); style="float:right; margin-left:10px;">'
- 			 +'<img id="update" alt="" src="'+context+'/resources/images/update.png" onclick=Event.updateReply(); style="float:right;">'
+ 			 +'<img id="delete" alt="" src="'+context+'/resources/images/3.png" onclick="Event.deleteReply('+'\''+this.writer+'\''+','+'\''+this.replySeq+'\''+','+'\''+userid+'\''+')" style="float:right; margin-left:10px;">'
+ 			 +'<img id="update" alt="" src="'+context+'/resources/images/2.png" onclick=Event.updateReply(); style="float:right;">'
  			 +'<input type="hidden" name="replyNum" value="'+this.replySeq+'"/>'
- 			 +'<input type="hidden" id="session_User" style="margin-left:20px; float:left; background:none;" value="'+userid+'"/>'
  			 +'<div>'+this.comment+'</div>'
  			 +'</div>';
          	 });
@@ -131,37 +130,32 @@ var Event = {
 	        $('#event_section').html(eventPage);
 	        $('#event_submain').empty();
 	        $('#event_submain').html(baseComments); 
-	                
+	         $('.userid').css("font-weight","bold").css("font-size","20px");       
 	                
 	                
             
             $("#reply_btn").click(function() {
-            	   alert('유저아이디는'+userid);
+            	  
             	   var comments = '<div id="reply_area" style="padding-top:50px;">';
                    if(userid == ""){
                        alert("댓글을 달려면 로그인을 해주세요");
                    }else{
                        $.ajax(context+"/reply/write",{
                             data : {
+                            	   
+                            	   "evtId" : evtId,
                                    "writer" : userid,
                                    "comment" : $("textarea[name=reply]").val(),
                              },
                             success : function(data) {
-                            	alert('댓글입력성공');
-                              	 $.each(data.list, function(index, value) {
-                              	 comments += '<div name="reply" style="background: #FFFFFF; width: 60%; padding: 25px; margin: auto;margin-bottom: 20px; margin-right: 290px; text-align: left; border-radius: 20px; box-shadow: none;display: block;z-index: 5;">'
-                                 +'<input type="text" style="width:35px; margin-left:20px; float:left; border: 0;" readonly="readonly" value="'+this.writer+'"/>'
-                      			 +'<div id="regDate" style="margin-left:10px; float:left;">'+this.regDate+'</div><br />'
-                      			 +'<img id="delete" alt="" src="'+context+'/resources/images/1.png" onclick=Event.deleteReply('+'\''+this.writer+'\''+'); style="float:right; margin-left:10px;">'
-                    			 +'<img id="update" alt="" src="'+context+'/resources/images/3.png" onclick=Event.updateReply(); style="float:right;">'
-                    			 +'<input type="hidden" value="'+this.replySeq+'"/>'
-                    			 +'<input type="hidden" id="session_User" style="margin-left:20px; float:left; background:none;" value="'+userid+'"/>'
-                      			 +'<div>'+this.comment+'</div>'
-                      			 +'</div>';
-                              	 });
-                              	comments +='</div>';
-                              	$('#event_submain').empty();
-                              	$('#event_submain').html(comments);
+                            	if (data.msg != null) {
+                            		alert(data.msg);
+								} else {
+									alert('댓글입력성공');
+	                            	
+	                            	Event.eventPage(evtId,userid,pageNo);
+								}
+                            	
                               	
                              },
                              
@@ -175,30 +169,55 @@ var Event = {
             
       });
    },
-   
-	   deleteReply : function(writeUser) {
+	   deleteReply : function(writer, replySeq, userid, evtId) {
 		alert("삭제버튼 클릭");
-		var sessionUser = $("#session_User").val();
-		alert("글을 작성한 아이디는 " + writeUser);
-		alert("글을 삭제하려는 아이디는" + sessionUser);
+		alert("글을 작성한 아이디는 " + writer);
+		alert("글번호" + replySeq);
+		alert("글을 작성한 USERID" + userid);
+	var comments = '<div id="reply_area" style="padding-top:50px;">'
 		
-		if (writeUser != sessionUser) {
-			alert("작성자만 글을 삭제 할 수 있습니다.");
-		} else {
-			$.ajax(context + '/reply/delete', {
+		if (writer == userid) {
+			$.ajax(context +'/reply/delete', {
+				
 				data : {
-					replySeq : $("input[name=replyNum]").val()
+					"replySeq" : replySeq,
+					"evtId" : evtId,
+					"writer" : writer,
+					"userid" : userid
 					
 				},
 				success : function(data) {
+					if (data.result == 0) {
+						alert('이벤트가 삭제 실패했습니다.');
+					}
 					alert('이벤트가 삭제되었습니다');
-					Event.eventPage(data.comments);
+
+			         	 $.each(data.list, function(index, value) {
+			         	 comments += '<div name="reply" style="background: #FFFFFF; width: 60%; padding: 25px; margin: auto;margin-bottom: 20px; margin-right: 290px; text-align: left; border-radius: 20px; box-shadow: none;display: block;z-index: 5;">'
+			             +'<input type="text" class="userid" id="userid" style="width:35px; margin-left:20px; float:left; border: 0;" readonly="readonly" value="'+this.writer+'"/>'
+			 			 +'<div id="regDate" style="margin-left:10px; float:left;">'+this.regDate+'</div><br />'
+			 			 +'<img id="delete" alt="" src="'+context+'/resources/images/3.png" onclick="Event.deleteReply('+'\''+this.writer+'\''+','+'\''+this.replySeq+'\''+','+'\''+userid+'\''+')" style="float:right; margin-left:10px;">'
+			 			 +'<img id="update" alt="" src="'+context+'/resources/images/2.png" onclick=Event.updateReply(); style="float:right;">'
+			 			 +'<input type="hidden" name="replyNum" value="'+this.replySeq+'"/>'
+			 			 +'<div>'+this.comment+'</div>'
+			 			 +'</div>';
+			         	 });
+			         	comments +='</div>';
+			         	$('#event_submain').empty();
+                      	$('#event_submain').html(comments);
+                      	$('.userid').css("font-weight","bold").css("font-size","20px"); 
+					Event.eventPage(evtId,userid,pageNo);
+					   
 				},
 				error : function(xhr, status, msg) {
 					alert('에러발생상태 : ' + status + ', 내용 :' + msg);
 				}
 			});
+		} else {
+			alert('본인의 글이 아닙니다 꺼지세요');
 		}
+			
+		
 		   
 	},
    
@@ -268,5 +287,5 @@ var Event = {
                },
 
    
-   
+               
 };

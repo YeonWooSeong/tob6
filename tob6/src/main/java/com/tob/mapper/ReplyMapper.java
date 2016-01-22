@@ -16,4 +16,5 @@ public interface ReplyMapper {
 	public int reply(ReplyVO reply);
 	public int count();
 	public List<ReplyVO> selectAll();
+	public List<String> getList(String evtId);
 }

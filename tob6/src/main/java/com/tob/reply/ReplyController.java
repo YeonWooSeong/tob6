@@ -1,7 +1,10 @@
 package com.tob.reply;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.tob.event.CommandEventFactory;
 import com.tob.global.CommandFactory;
+import com.tob.member.MemberVO;
 
 import sun.print.resources.serviceui;
 
@@ -26,25 +30,42 @@ public class ReplyController {
 	private static final Logger logger = LoggerFactory.getLogger(ReplyController.class);
 	@Autowired ReplyServiceImpl service;
 	@Autowired ReplyVO reply;
+	@Autowired MemberVO member;
 	
 	@RequestMapping("/write")
-	public Map<String, Object> write(
+	public Model write(
 			Model model,
 			String comment,
 			String writer,
 			String evtId
-			) {
+			){
 		
 		logger.info("내용 : {}", comment);
 		logger.info("아이디 : {}", writer);
 		logger.info("이벤트아이디 : {}", evtId);
-		Map<String,Object> map = new HashMap<String,Object>();
-		reply.setComment(comment);
-		reply.setWriter(writer);
-		reply.setEvtId(evtId);
-		service.insert(reply);
-		map.put("list", service.selectAll());
-		return map;
+		List<String> list = service.getList(evtId);
+		String temp = null;
+		for (int i = 0; i < list.size(); i++) {
+			System.out.println("list 목록"+list.get(i));
+			if (list.get(i).equals(writer)) {
+				temp = writer;
+			}
+		}
+		if (temp != null ) {
+			String msg = "이미 글을 씀";
+			model.addAttribute("msg", msg);
+			return model;
+		}else{
+			Map<String,Object> map = new HashMap<String,Object>();
+			reply.setComment(comment);
+			reply.setWriter(writer);
+			reply.setEvtId("soft");
+			int result = service.insert(reply);
+			//map.put("list", service.selectAll());
+			model.addAttribute("list", service.selectAll());
+			return model;
+		}
+		
 	}
 	
 	
@@ -70,34 +91,37 @@ public class ReplyController {
 	}
 	
 	@RequestMapping("/delete")
-	public @ResponseBody ReplyVO delete(
+	public @ResponseBody Map delete(
 			String replySeq,
-			Model model
-			){
+			String evtId,
+			String writer,
+			String userid){
 		logger.info("리플라이 시퀀스는"+replySeq);
-		/*service.delete(replySeq);*/
+	     int seq = Integer.parseInt(replySeq);
 		
-		/*int result = service.delete(replySeq);*/
-		/*if (result == 1) {
-			logger.info("리플라이 컨트롤러 리플 삭제성공");
-		} else {
-			logger.info("리플라이 컨트롤러 리플 삭제실패");
-		}*/
-		return reply;
+	     Map<String,Object> map = new HashMap<String,Object>();
+		int result = service.delete(seq);
+		if (result == 1) {
+		logger.info("리플라이 컨트롤러 리플 삭제성공");
+		
+		map.put("list", service.selectAll());
+	} else {
+		logger.info("리플라이 컨트롤러 리플 삭제실패");
+		map.put("result", 0);
+	}
+		return map;
 		
 	}
 	
-	@RequestMapping("/list/{evtId}/{pageNo}")
+	@RequestMapping("/list/{userid}/{evtId}/{pageNo}")
 	public @ResponseBody Map<String,Object> list(
+			@PathVariable("userid")String userid,
 			@PathVariable("evtId")String evtId,
-			@PathVariable("pageNo")String pageNo,
 			Model model
 			){
 		logger.info("ReplyController list() 진입");
+		logger.info("넘어온  userid : {}",userid);
 		logger.info("넘어온 이벤트 id : {}",evtId);
-		logger.info("넘어온 페이지No. : {}",pageNo);
-		
-		
 		Map<String,Object> map = new HashMap<String,Object>();
 		map.put("list", service.selectAll());
 		
