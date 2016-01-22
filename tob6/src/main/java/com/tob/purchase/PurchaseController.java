@@ -99,7 +99,7 @@ public class PurchaseController {
 			List<BookCartVO> list = cartService.getTodayList(userid);
 			logger.info(list.toString());
 			String sentence = "TOB 홈페이지 구매내역";
-			String sentence2 = userid +" 님의 구매내역 \n" + "책 이름\t \t 책 가격 \t 수량 \n";
+			String sentence2 = member.getName() +" 님의 구매내역 \n" + "책 이름\t \t 책 가격 \t 수량 \n";
 			
 			//jsoup 미구현.
 			for (int i = 0; i < list.size(); i++) {

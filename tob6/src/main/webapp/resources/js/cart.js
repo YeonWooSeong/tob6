@@ -23,11 +23,8 @@ var Cart = {
 				
 	
 	main : function(link, userid) {
-		alert('메인으로 넘어옴');
 		$("#cart_section").load(link+"/cart/Cart");
-		alert('메인으로 넘어온 유저아이디'+userid);
 		Cart.setUserid(userid);
-		alert('메인으로 넘어온 유저아이디'+Cart.getUserid());
 	},
 
 	put : function(bookId) {
@@ -118,8 +115,8 @@ var Cart = {
 			
 			$('.mainView').empty().html(table);
 			$('.cat').click(function() {
-				alert($('input[id="'+$(this).attr('id')+'"]').val());
-				alert($(this).attr('id'));
+				//alert($('input[id="'+$(this).attr('id')+'"]').val());
+				//alert($(this).attr('id'));
 				Cart.change(userid, $('input[id="'+$(this).attr('id')+'"]').val(), $(this).attr('id'));
 				//$(this).attr('id')
 				//alert($('input:text').val($(this)));
@@ -132,9 +129,6 @@ var Cart = {
 	
 	change : function(userid, count, bookId) {
 		
-		alert('Cart.change() 진입 넘어온 아이디 : '+userid);
-		alert('Cart.change() 진입 넘어온 수량 : '+count);
-		alert('Cart.change() 진입 넘어온 책아이디 : '+bookId);
 		$.ajax(context+'/cart/change',{
 			data : {
 				userid : userid,
@@ -176,8 +170,6 @@ var Cart = {
 	},*/
 	
 	putInCart : function(userid, bookId) {
-		alert('Cart.putInCart 진입, 넘어온 아이디 : '+userid);
-		alert('Cart.putInCart 진입, 넘어온 책 아이디  : '+bookId);
 		if (userid == "") {
 			alert('로그인 후 이용가능합니다.');
 		} else {
@@ -188,12 +180,10 @@ var Cart = {
 	},
 	
 	putInPurchase : function(userid, bookId, price) {
-		if (userid !== null) {
+		if (userid == "") {
+			alert('로그인 후 이용가능합니다.');
+		} else {
 			Cart.send_email(userid);
-			alert('Cart.putInPurchase진입. 구매 클릭 됨.');
-			alert('넘어온 유저아이디  : '+userid);
-			alert('넘어온 책 아이디 : '+bookId);
-			alert('넘어온 책 가격 : '+price);
 		    $.ajax(context+'/purchase/buy', {
 		    	data : {
 		    		userid : userid,
@@ -213,9 +203,8 @@ var Cart = {
 					alert('ajax 에러');
 				}
 		    });
-		} else {
-			alert('로그인 후 이용가능합니다.');
 		}
+		
 	},
 	
 	
@@ -223,7 +212,6 @@ var Cart = {
 	
 	
 	send_email : function(userid) {
-		alert('Cart.send_email진입, 넘어온 아이디 : ' + userid);
 		$.ajax(context+'/purchase/sendEmail', {
 			data : {
 				userid : userid
@@ -269,7 +257,6 @@ var Cart = {
 	},*/
 	
 	remove : function(bookId, userid) {
-			alert('Cart.remove 진입, 넘어온 책 아이디값 : ' +bookId);
 			$.ajax(context+'/cart/remove', {
 				data : {
 					bookId : bookId,
@@ -291,7 +278,6 @@ var Cart = {
 	},
 	
 	emptyCart : function(userid) {
-		alert('Cart.emptyCart 진입, 넘어온 아이디 : ' + userid);
 		$.ajax(context+'/cart/empty', {
 			data : {
 				userid : userid

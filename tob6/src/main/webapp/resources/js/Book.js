@@ -117,7 +117,7 @@ var book = {
 				$('.hoho').css('margin','auto').css('padding-bottom','40px').css('width','100px');
 				$('.lili').css('vertical-align','middle').css('width','100px').css('float','left')
 				.css('display','block');
-				$('#book_section').css('height','900px').css('margin','auto');
+				$('#book_section').css('height','950px').css('margin','auto');
 			
 				
 				
@@ -175,7 +175,6 @@ var book = {
 				var groupSize = data.groupSize;
 				var lastPage = data.lastPage;
 				var totPage = data.totPage;
-				alert(genreId+'의 책 리스트 길이 : ' + data.list);
 				var bookList= '<div id="bookContents2" style="width: 100%;">'
 					+'<h2 style="text-align: center; padding-bottom: 20px;"><strong>책 목록</strong></h2>'
 					$.each(data.list,function(index,value){
@@ -242,7 +241,6 @@ var book = {
 				
 				$.each(data.list, function(index, value) {
 					$('#'+arr[index]).click(function() {
-						alert("책 상세 정보를 보여주는 페이지로 넘어갑니다.");
 						book.bookEmpty();
 						book.mainPage(arr[index]);
 				});
@@ -358,7 +356,6 @@ var book = {
 		},
 		//case2--- 값 넘겨서 보여주기 ////메인----------------------------------------------------------------------
 		searchForTodayBook2 : function(bookId,target) {
-			alert('book.searchForTodayBook에 넘어온 책 아이디 : '+bookId);
 			$.getJSON(context +'/book/Book_main/'+bookId ,function(data){
 				var todayBook2= '<div id="bookTodaybook" style="color: black; width : 400px; height: 300px; border: 1px solid black;"><h2>오늘의 책</h2><br /><br /><br />'
 					+'<img alt="" src="'+context+'/resources/images/'+data.bookId+'.jpg" width="106px" height="150px" align="left">'
@@ -396,7 +393,6 @@ var book = {
 		//-case2 값 넘겨서 보여주기------------------------------------------------------------------------
 		findBook : function(pageNo,searchBookName) {
 			var resultSearchBook = [];
-			alert('검색된 책 이름:'+searchBookName);
 				$.getJSON(context+'/book/Book_find/'+pageNo+'/'+searchBookName ,function(data){
 					var count = data.count;
 					var pageNo = data.pageNo; 

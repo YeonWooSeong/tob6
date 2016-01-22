@@ -30,15 +30,14 @@
 					<!-- <li><a href="#week_section">WEEK-BOOK</a></li> -->
 					<li><a href="#event_section">EVENT</a></li>
 					<li><a href="#team_section">TEAM</a></li>
+					<li><a href="${context}/admin/main">Admin</a></li>
 			<c:if test="${empty sessionScope.user}">
 			<!-- 로그인 안한 상태 -->
-			<li><a href="${context}/admin/main">Admin</a></li>
 			<li><a href="#" data-toggle="modal" data-target="#modal1" class="btn btn-blue">Sign In</a></li>
 			<li style="float: right"><a href="#" data-toggle="modal" data-target="#modal2">Sign Up</a></li>
 			</c:if>
 			<c:if test="${not empty sessionScope.user}">
-			<!-- <li style="float: right; padding-right: 10px;"><a href="#" data-toggle="modal" data-target="#modal3" >마이페이지</a></li> -->
-			<li><label id="mypage">My page</label></li>
+			<li style="float: right; padding-right: 10px;"><a href="#" data-toggle="modal" data-target="#modal3" >마이페이지</a></li>
 			<li style="float: right;"><a class="page-scroll" href="${context}/cart/Cart" id="my_cart">장바구니</a></li>
 			<li style="float: right;"><a href="${context}/member/logout">Log out</a></li>
 			</c:if>
@@ -151,7 +150,7 @@
 
 	
 	
-	<section id="event" class="section section-padded blue-bg">
+	<section id="event" class="section section-padded blue-bg" style="padding-top: 5%;">
 		<div class="container" id="event_section">
 			<div class="row">
 				<label><img src="${img}/event.png" alt="" /></label>
