@@ -156,7 +156,7 @@
 									<h5 class="light light-white">Team Leader</h5>
 								</div>
 							</div>
-							<img src="${normal}/img2/team/team3.jpg" alt="Team Image"
+							<img src="${img}/yoongju.jpg" alt="Team Image"
 								class="avatar">
 							<div class="title">
 								<h4>Hwang YoungJu</h4>
@@ -193,7 +193,7 @@
 								<h5 class="light light-white">JAVA,Android Studio,Spring etc...</h5>
 							</div>
 						</div>
-						<img src="${normal}/img2/team/team2.jpg" alt="Team Image"
+						<img src="${img}/y.jpg" alt="Team Image"
 							class="avatar">
 						<div class="title">
 							<h4>Seong YonWoo</h4>
@@ -209,7 +209,7 @@
 								<h5 class="light light-white">JAVA, Ajax, Spring etc...</h5>
 							</div>
 						</div>
-						<img src="${normal}/img2/team/team1.jpg" alt="Team Image" class="avatar">
+						<img src="${img}/jeongmin.jpg" alt="Team Image" class="avatar">
 						<div class="title">
 							<h4>Lee JeongMin</h4>
 							<h5 class="muted regular">EVENT</h5>
