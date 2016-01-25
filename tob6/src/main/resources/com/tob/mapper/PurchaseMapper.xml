@@ -19,7 +19,7 @@
 		SELECT
 			PUR_NUM AS purNum,
 			SUM AS sum,
-			ACCOUNT_NUM AS accountNum,
+			ACCOUNT_NUM AS accNum,
 			USERID AS userid,
 			BOOK_ID AS bookid
 		FROM PURCHASE

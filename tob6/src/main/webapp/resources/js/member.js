@@ -18,7 +18,7 @@ var Member = {
 					} else if (data.userid !== $('#userid').val() && data.password === $('#password').val()) {
 						alert('아이디를 확인하세요.');
 					} else {
-						alert('둘다 틀렸어');
+						alert('아이디 혹은 비밀번호를 확인하세요');
 					}
 				},
 				error : function() {
@@ -27,7 +27,6 @@ var Member = {
 			});
 		},
 		change : function(context) {
-			alert('멤버의 변경 진입');
 			
 		$.getJSON(context+'/member/')
 			$.ajax(context+'/member/change',{
@@ -73,8 +72,6 @@ var Member = {
 				"phone" : $('#up_phone').val(),
 				"addr" : $('#up_addr').val(),
 			};
-			alert('join진입');
-			alert('입력된 아이디 : '+userid);
 			$.ajax({
 				url : context+"/member/join",
 				data : JSON.stringify(member),
@@ -98,10 +95,8 @@ var Member = {
 			});
 		},
 		detail : function(url) {
-			alert('detail 진입');
 			$.getJSON(url,
 				function(data){
-				alert('겟제이슨')
 				var table = '<table align="center"><tr><td rowspan="7" id="td_profile"><img id="profile" src="'+img+'/'+data.profile+'" width="70%" height="80%"/></td>'
 				+'<th id="item">항목</th><th>빈 칸</th></tr><tr><td>아이디</td><td>'+data.userid+'</td></tr><tr><td>비밀번호</td><td>'+data.password+''
 				+'</td></tr><tr><td>이름</td><td>'+data.name+'</td></tr><tr><td>생일</td><td>'+data.gender+'</td></tr><tr>'
@@ -112,17 +107,14 @@ var Member = {
 				$('.mainView').html(table);
 				Member.style();
 				$('#changeInfo').click(function() {
-					alert('정보수정클릭한다');
 					Member.updateForm(data.userid);
 				});
 				$('#remove').click(function() {
-					alert('삭제클릭');
 					Member.remove(data.userid);
 				});
 			});
 		},
 		updateForm : function(userid) {
-			alert('업데이트 진입했다');
 			$.getJSON(context+'/member/updateForm/'+userid,
 					function(data){
 				var updates = '<form align="center" action="'+context+'/member/update" id="frm">';
@@ -140,9 +132,7 @@ var Member = {
 				$('#frm').html(table);
 				Member.style();
 				$('#confirm').click(function() {
-					 	alert('확인');
 					$('#frm').submit(function(e) {
-						alert('예압');
 						e.preventDefault(); /* 기본 폼태그의 서브밋을 막아라. 자스의 서브밋을 실행해라 */
 						$.ajax(context+'/member/update',{
 							/*type : 'get',*/

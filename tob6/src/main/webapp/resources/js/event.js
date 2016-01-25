@@ -4,7 +4,6 @@ var Event = {
       event : function(userid) {
          $('#event_section').html('<div class="big"><h2 style="color: white; padding-top:10; float : left;">EVENT</h2>'
           +'<div class="sm_2_3"  style="margin-top: 25px; margin-left : 15px; float : left;"><input type="text" name="nameSearch"><input type="button" value="검색" id="search"></div></div>');
-      alert("이벤트의 이벤트 진입 넘어온 유저아이디 "+userid);
 
          $('#search').click(function name() {
             if ($("input:text[name=nameSearch]").val() == "") {
@@ -23,7 +22,6 @@ var Event = {
       },
   ranking : function(pageNo,userid) {
      var arr = [];
-    alert("이벤트의 랭킹 진입  "+userid);
      $.getJSON (context +'/event/Event_selectAll/'+pageNo,function (data){
          var count = data.count;
       var pageNo = data.pageNo; 
@@ -170,10 +168,6 @@ var Event = {
       });
    },
       deleteReply : function(writer, replySeq, userid, evtId) {
-      alert("삭제버튼 클릭");
-      alert("글을 작성한 아이디는 " + writer);
-      alert("글번호" + replySeq);
-      alert("글을 작성한 USERID" + userid);
    var comments = '<div id="reply_area" style="padding-top:50px;">'
       
       if (writer == userid) {
@@ -214,7 +208,7 @@ var Event = {
             }
          });
       } else {
-         alert('본인의 글이 아닙니다 꺼지세요');
+         alert('본인의 글이 아닙니다');
       }
          
       
