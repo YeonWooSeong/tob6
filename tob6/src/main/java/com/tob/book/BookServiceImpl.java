@@ -47,6 +47,8 @@ public BookVO searchByBook(String book) {
 @Override  	// 전체 책 목록
 public List<BookVO> selectAll(Command command) {
 	BookMapper mapper = sqlSession.getMapper(BookMapper.class);
+	int start = command.getStart()-1;
+	command.setStart(start);
 	return mapper.selectAll(command);
 }
 

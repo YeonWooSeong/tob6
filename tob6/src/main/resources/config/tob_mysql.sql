@@ -47,9 +47,9 @@ CREATE TABLE STOCK(
 CREATE TABLE BOOK(
 	BOOK_ID VARCHAR(20),
 	CONSTRAINT BOOK_PK PRIMARY KEY(BOOK_ID),
-	BOOK_NAME VARCHAR(40),
+	BOOK_NAME VARCHAR(60),
 	PRICE VARCHAR(20),
-	WRITER VARCHAR(20),
+	WRITER VARCHAR(40),
 	GRADE VARCHAR(20),
 	STOCK_SEQ VARCHAR(20),
 	CONSTRAINT BOOK_FK_STOCK FOREIGN KEY(STOCK_SEQ) REFERENCES STOCK(STOCK_SEQ),
@@ -103,15 +103,15 @@ CREATE TABLE REPLY(
 INSERT INTO ADMIN VALUES('AD','AD','soomin0322@naver.com');
 
 INSERT INTO MEMBER VALUES('a','a','hong','1991.07.17','남','pheonix0717@naver.com','010-4278-4789','서울시 광진구 화양동','default.png');
-INSERT INTO MEMBER VALUES('b','b','hwang','2000.01.11','남','ssun9900@naver,com','010-1234-1549','서울시 강남구 역삼동','default.png');
-INSERT INTO MEMBER VALUES('c','c','young','1897.09.20','여','asdfbva@naver,com','010-4200-1234','서울시 구로구 xx동','default.png');
-INSERT INTO MEMBER VALUES('d','d','admin','1120.11.11','남','snh3n@naver,com','010-4175-0910','서울시 강북구 yy동','default.png');
-INSERT INTO MEMBER VALUES('e','e','e','1991.10.13','남','snd21@naver,com','010-2486-1022','서울시 강서구 pp동','default.png');
-INSERT INTO MEMBER VALUES('f','f','f','1990.07.11','남','af23f1@naver,com','010-7210-1242','서울시 관악구 gg동','default.png');
-INSERT INTO MEMBER VALUES('g','g','g','1989.01.21','여','adsf1v@naver,com','010-1120-9651','서울시 영등포구 cc동','default.png');
-INSERT INTO MEMBER VALUES('h','h','h','1996.12.25','여','12d1v@naver,com','010-5977-7721','서울시 동대문구 ad동','default.png');
-INSERT INTO MEMBER VALUES('i','i','i','1993.03.06','여','5je5j@naver,com','010-0865-0450','서울시 동작구 xx동','default.png');
-INSERT INTO MEMBER VALUES('j','j','j','1992.06.30','남','65hegsa@naver,com','010-1076-0910','서울시 중랑구 yx동','default.png');
+INSERT INTO MEMBER VALUES('b','b','hwang','2000.01.11','남','ssun9900@naver.com','010-1234-1549','서울시 강남구 역삼동','default.png');
+INSERT INTO MEMBER VALUES('c','c','young','1897.09.20','여','asdfbva@naver.com','010-4200-1234','서울시 구로구 xx동','default.png');
+INSERT INTO MEMBER VALUES('d','d','admin','1120.11.11','남','snh3n@naver.com','010-4175-0910','서울시 강북구 yy동','default.png');
+INSERT INTO MEMBER VALUES('e','e','e','1991.10.13','남','snd21@naver.com','010-2486-1022','서울시 강서구 pp동','default.png');
+INSERT INTO MEMBER VALUES('f','f','f','1990.07.11','남','af23f1@naver.com','010-7210-1242','서울시 관악구 gg동','default.png');
+INSERT INTO MEMBER VALUES('g','g','g','1989.01.21','여','adsf1v@naver.com','010-1120-9651','서울시 영등포구 cc동','default.png');
+INSERT INTO MEMBER VALUES('h','h','h','1996.12.25','여','12d1v@naver.com','010-5977-7721','서울시 동대문구 ad동','default.png');
+INSERT INTO MEMBER VALUES('i','i','i','1993.03.06','여','5je5j@naver.com','010-0865-0450','서울시 동작구 xx동','default.png');
+INSERT INTO MEMBER VALUES('j','j','j','1992.06.30','남','65hegsa@naver.com','010-1076-0910','서울시 중랑구 yx동','default.png');
 
 INSERT INTO CATEGORY VALUES('domestic','국내도서');
 INSERT INTO CATEGORY VALUES('abroad','해외도서');
@@ -241,7 +241,6 @@ INSERT INTO EVENT VALUES('markrecommend','[교보 외서] 2015년 마크 주커�
 
 INSERT INTO BOOK VALUES('10','성인 ADHD 인지행동치료 프로그램: 내담자용 워크북','13000','Steven A. Safren','8.3','13','free','adult');
 INSERT INTO BOOK VALUES('11','성인 경험학습의 이해: 이론과 실제','6000',' 김영석, 이로미, 이성엽, 최성애','9.3','11','foo','adult');
-INSERT INTO BOOK VALUES('12','성인의 주의력결핍 과잉행동 장애(ADHD)','23000','Steven A. Safren , Susan Sprich, Carol A. Perlman, Michael W. Otto','8.3','13','free','adult');
 INSERT INTO BOOK VALUES('13',' 알프레드 성인용 피아노 1급 레슨교재','43000','Perlman Michael','4.3','13','foo','adult');
 INSERT INTO BOOK VALUES('14','알프레드 성인용 제3급 이론교재','21000','Carol A. Perlman','5.8','13','free','adult');
 INSERT INTO BOOK VALUES('15',' 만화 공인중개사 특별세트(2016)','12000','이용훈','9.6','10','free','cartoon');
@@ -249,20 +248,27 @@ INSERT INTO BOOK VALUES('16','나홀로 부동산 경매 [개정판 5판]','9000
 INSERT INTO BOOK VALUES('17','지금 이 순간','13000','기욤뮈소','5.3','15','free','cartoon');
 INSERT INTO BOOK VALUES('18','당신 거기 있어줄래요','15000','기욤뮈소','9.3','43','free','cartoon');
 INSERT INTO BOOK VALUES('19','들꽃 향기로 남은 너','16000','이민기','8.5','42','free','cartoon');
-INSERT INTO BOOK VALUES('20','들꽃 향기로 남은 너','16000','이민기','8.5','42','free','cham');
-INSERT INTO BOOK VALUES('21','들꽃 향기로 남은 너','16000','이민기','8.5','42','free','cham');
-INSERT INTO BOOK VALUES('22','들꽃 향기로 남은 너','16000','이민기','8.5','42','free','cham');
-INSERT INTO BOOK VALUES('23','들꽃 향기로 남은 너','16000','이민기','8.5','42','free','cham');
-INSERT INTO BOOK VALUES('24','들꽃 향기로 남은 너','16000','이민기','8.5','42','free','cham');
-INSERT INTO BOOK VALUES('25','들꽃 향기로 남은 너','16000','이민기','8.5','42','free','cham');
-INSERT INTO BOOK VALUES('26','들꽃 향기로 남은 너','16000','이민기','8.5','42','free','computer');
-INSERT INTO BOOK VALUES('27','들꽃 향기로 남은 너','16000','이민기','8.5','42','free','computer');
-INSERT INTO BOOK VALUES('28','들꽃 향기로 남은 너','16000','이민기','8.5','42','free','computer');
-INSERT INTO BOOK VALUES('29','들꽃 향기로 남은 너','16000','이민기','8.5','42','free','computer');
-INSERT INTO BOOK VALUES('30','들꽃 향기로 남은 너','16000','이민기','8.5','42','free','computer');
-INSERT INTO BOOK VALUES('31','들꽃 향기로 남은 너','16000','이민기','8.5','42','free','computer');
-INSERT INTO BOOK VALUES('32','들꽃 향기로 남은 너','16000','이민기','8.5','42','free','computer');
-INSERT INTO BOOK VALUES('33','들꽃 향기로 남은 너','16000','이민기','8.5','42','free','computer');
+
+INSERT INTO BOOK VALUES('comedy1','Shakespeare. 셰익스피어 희극읽기 그리고 거스르기','7200','이용관','7.1','30','free','comedy');
+INSERT INTO BOOK VALUES('comedy2','Shakespeare. 셰익스피어 한권으로 읽는 4대 비극 5대 희극','14800','윌리엄 셰익스피어','9.1','30','free','comedy');
+INSERT INTO BOOK VALUES('comedy3','William. 휴먼코미디 윌리엄 사로얀','10800','윌리엄 사로얀','7.9','30','free','comedy');
+INSERT INTO BOOK VALUES('comedy4','홍상수의 인간희극, Human_Comedy.한국 비평가의 시선','13500','김시무','7.1','30','free','comedy');
+INSERT INTO BOOK VALUES('comedy5','Comedy, Fun. 코미디, 웃음과 행복의 텍스트','15000','박근서','5.1','30','free','comedy');
+INSERT INTO BOOK VALUES('comedy6','Romentic. 로맨틱 코미디 강지언 시집. 북인시선','5400','강지언','9.0','30','free','comedy');
+INSERT INTO BOOK VALUES('comedy7','Aristopanes. 아리스토파네스 희극 전집1 ','22500','아리스토파네스','9.8','30','free','comedy');
+INSERT INTO BOOK VALUES('comedy8','Aristopanes. 아리스토파네스 희극 전집2','22500','아리스토파네스','9.9','30','free','comedy');
+INSERT INTO BOOK VALUES('comedy9','2005-Comedy Festival 코미디 페스티벌 참가 희극선집','15000','연극과인간 편집부','7.9','30','free','comedy');
+
+INSERT INTO BOOK VALUES('classic1','On load. 길 위에서 1', '10000','(지은이) 잭 케루악, (옮긴이) 이만식','5.7','30','free','classic');
+INSERT INTO BOOK VALUES('classic2','On load. 길 위에서 2', '10000','(지은이) 잭 케루악, (옮긴이) 이만식','5.9','30','free','classic');
+INSERT INTO BOOK VALUES('classic3','Classic. 내 서재 속 고전 (나를 견디게 해준 책들)', '14000','(지은이) 서경식, (옮긴이) 한승동','7.7','30','free','classic');
+INSERT INTO BOOK VALUES('classic4','1984. World 믿음사 세계문학전집 77', '9500','(지은이) 조지 오웰, (옮긴이) 정희성','6.7','30','free','classic');
+INSERT INTO BOOK VALUES('classic5','Gulliver. 걸리버 여행기', '11900','(지은이) 조나단 스위프트, (옮긴이) 이기동 (그림) 박정윤','8.8','30','free','classic');
+INSERT INTO BOOK VALUES('classic6','Four spell. 옛사람이 건넨 네글자', '15000','정민','8.1','30','free','classic');
+INSERT INTO BOOK VALUES('classic7','단숨에 이해하는 Free/Classic 자유론/클래식 브라운 시리즈2', '12000','김요한','8.0','30','free','classic');
+INSERT INTO BOOK VALUES('classic8','한권으로 읽는 중국고전시리즈 Classic1 - 사마천 사기', '10000','(지은이) 잭 케루악, (옮긴이) 이만식','5.7','30','free','classic');
+
+
 
 INSERT INTO PURCHASE VALUES('20160114-0001','780000','20160114','a','10');
 INSERT INTO PURCHASE VALUES('20160113-0001','600000','20160113','b','13');
@@ -274,15 +280,15 @@ INSERT INTO PURCHASE VALUES('20160108-0001','200000','20160108','h','19');
 INSERT INTO PURCHASE VALUES('20160107-0001','150000','20160107','a','17');
 INSERT INTO PURCHASE VALUES('20160106-0001','100000','20160106','a','40');
 
-INSERT INTO REPLY VALUES('1','AWIEU4RVHNOW8437RVH308O7RHBO 3W84RBHQ3','a','2016-01-20','best');
-INSERT INTO REPLY VALUES('2','AA3RV3R2Q3RVQ2BO 3W84RBHQ3','b','2016-01-20','chance');
-INSERT INTO REPLY VALUES('3','AWIEUAW3VFAW3BF7RHBO 3W84RBHQ3','b','2016-01-20','soft');
-INSERT INTO REPLY VALUES('4','AWIEU4RVHNOW8437RVHAW3BRAW3BFWABHQ3','b','2016-01-20','chance');
-INSERT INTO REPLY VALUES('5','AWIEAW3BFAW3BFAW3BHBO 3W84RBHQ3','a','2016-01-20','best');
-INSERT INTO REPLY VALUES('6','AWIEU4RAW3BFWA3BFWA3BFAW3BFWA3BFAW3BFAW3BFQ3','a','2016-01-20','best');
-INSERT INTO REPLY VALUES('7','AWIEU4RVHWA3BRFE4TN4W5TW4 T3WA4T3WQBQ3','c','2016-01-20','best');
-INSERT INTO REPLY VALUES('8','AWIEU4RVHNWA3BRWA34RTBSERGFBWA4ERBAWBFRQ3','c','2016-01-20','chance');
-INSERT INTO REPLY VALUES('9','AWIEAWB3RAW3FV3W4 RSERBTSE4TN34TVW34 T34WBRBHQ3','c','2016-01-20','soft');
-INSERT INTO REPLY VALUES('10','AWIEU4RVHAW3BRAW43RGV4EW35RGBS3ERTNES5TB34A5BQ2A35HAB2HQ3','a','2016-01-20','best');
-INSERT INTO REPLY VALUES('11','AWIEA2B35RA23FV4Q2A3B5WS45HA35JH3S45NSW45BHAW35NRBHQ3','a','2016-01-20','chance');
+INSERT INTO REPLY VALUES('1','안녕하세요','a','2016-01-20','best');
+INSERT INTO REPLY VALUES('2','집가고싶다','b','2016-01-20','chance');
+INSERT INTO REPLY VALUES('3','오늘가서 꿀잠 자야짐','b','2016-01-20','soft');
+INSERT INTO REPLY VALUES('4','연우오빠 면접 잘보세요','b','2016-01-20','chance');
+INSERT INTO REPLY VALUES('5','에이씨 나는 아이폰이자나','a','2016-01-20','best');
+INSERT INTO REPLY VALUES('6','헝 시험 얼마 안남음 걱정태산','a','2016-01-20','best');
+INSERT INTO REPLY VALUES('7',' D-2','c','2016-01-20','best');
+INSERT INTO REPLY VALUES('8','오늘이 플젝 마지막나아아아알','c','2016-01-20','chance');
+INSERT INTO REPLY VALUES('9','이길이 내길인가....','c','2016-01-20','soft');
+INSERT INTO REPLY VALUES('10','좋아좋아','a','2016-01-20','best');
+INSERT INTO REPLY VALUES('11','띠로링','a','2016-01-20','chance');
 COMMIT;

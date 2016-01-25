@@ -15,7 +15,7 @@
 	 	ADDR AS addr,
 	 	PROFILE AS profile
  		FROM MEMBER ORDER BY userid ASC
-         LIMIT #{start}, 5
+         LIMIT #{start}, 10
  </select>
  <select id="selectSomeBy" resultType="com.tob.member.MemberVO" parameterType="com.tob.global.Command">
  	SELECT 

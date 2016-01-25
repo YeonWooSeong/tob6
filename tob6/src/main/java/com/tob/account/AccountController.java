@@ -79,6 +79,9 @@ private static final Logger logger = LoggerFactory.getLogger(AccountController.c
 		int adult = 0;
 		int cartoon = 0;
 		int child = 0;
+		int classic = 0;
+		int cham = 0;
+		int it = 0;
 		
 		logger.info("파이차트 진입");
 		List<String> list = accountService.ratio();
@@ -91,6 +94,9 @@ private static final Logger logger = LoggerFactory.getLogger(AccountController.c
 				case "adult": adult++; ;break;
 				case "cartoon": cartoon++; break;
 				case "child": child++; break;
+				case "classic": classic++; break;
+				case "cham": cham++; break;
+				case "it": it++; break;
 				default: break;	
 			}
 		}
@@ -98,10 +104,16 @@ private static final Logger logger = LoggerFactory.getLogger(AccountController.c
 		logger.info("adult: {}", adult);
 		logger.info("cartoon: {}", cartoon);
 		logger.info("child: {}", child);
+		logger.info("classic: {}", classic);
+		logger.info("cham: {}", cham);
+		logger.info("it: {}", it);
 		
 		model.addAttribute("adult", adult);
 		model.addAttribute("cartoon", cartoon);
 		model.addAttribute("child", child);
+		model.addAttribute("classic", classic);
+		model.addAttribute("cham", cham);
+		model.addAttribute("it", it);
 		return model;
 	}
 	

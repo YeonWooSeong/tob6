@@ -1,24 +1,26 @@
-package com.tob.global;
+package com.tob.reply;
 
-public class Command2 implements Orderable{
+import com.tob.global.Orderable;
+
+public class CommandReply implements Orderable{
 	private String column, keyword; 
 	private int pageNO, start, end, themeNo;
 	
-	public final int PAGESIZE = 10;
-	public Command2(String pageNo) {
+	public final int PAGESIZE = 3;
+	public CommandReply(String pageNo) {
 		this.pageNO = Integer.parseInt(pageNo);
 		this.start = (Integer.parseInt(pageNo) - 1)*PAGESIZE;
 		this.end = (Integer.parseInt(pageNo)*PAGESIZE);
 	} //페이지 넘버만 넘어왓을때.
 	
-	public Command2(String pageNo, String themeNo) {
+	public CommandReply(String pageNo, String themeNo) {
 		this.pageNO = Integer.parseInt(pageNo);
 		this.start = (Integer.parseInt(pageNo) - 1)*PAGESIZE+1;
 		this.end = (Integer.parseInt(pageNo)*PAGESIZE);
 		this.themeNo = Integer.parseInt(themeNo);
 	}
 	
-	public Command2(String column, String keyword, String pageNo) {
+	public CommandReply(String column, String keyword, String pageNo) {
 		this.column = column;
 		this.keyword = keyword;
 		this.pageNO = Integer.parseInt(pageNo);

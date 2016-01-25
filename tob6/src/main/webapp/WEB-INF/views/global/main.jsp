@@ -27,17 +27,18 @@
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav navbar-right main-nav">
 					<li><a href="#book_section">BOOK</a></li>
-					<li><a href="#week_section">WEEK-BOOK</a></li>
+					<!-- <li><a href="#week_section">WEEK-BOOK</a></li> -->
 					<li><a href="#event_section">EVENT</a></li>
+					<li><a href="#team_section">TEAM</a></li>
+					<li><a href="${context}/admin/main">Admin</a></li>
 			<c:if test="${empty sessionScope.user}">
 			<!-- 로그인 안한 상태 -->
-			<li><a href="${context}/admin/main">Admin</a></li>
 			<li><a href="#" data-toggle="modal" data-target="#modal1" class="btn btn-blue">Sign In</a></li>
 			<li style="float: right"><a href="#" data-toggle="modal" data-target="#modal2">Sign Up</a></li>
 			</c:if>
 			<c:if test="${not empty sessionScope.user}">
 			<li style="float: right; padding-right: 10px;"><a href="#" data-toggle="modal" data-target="#modal3" >마이페이지</a></li>
-			<li style="float: right;"><a class="page-scroll" href="#cart_section" id="my_cart">장바구니</a></li>
+			<li style="float: right;"><a class="page-scroll" href="${context}/cart/Cart" id="my_cart">장바구니</a></li>
 			<li style="float: right;"><a href="${context}/member/logout">Log out</a></li>
 			</c:if>
 					
@@ -73,43 +74,32 @@
 	
 	<section id="book_section" class="section section-padded" >
 		<div class="container">
-			<div class="row text-center title">
+			<%-- <div class="row text-center title">
 				<label id="book_more"><img src="${img}/book.png" alt="" /></label>
-			</div>
+			</div> --%>
 			<div class="row services">
-				<div class="col-md-4">
-					<div class="service">
-						<div class="icon-holder">
-							<img src="${img}/b00k.png" alt="" class="icon">
-						</div>
-						<h4 class="heading">멈추면 보여요</h4>
-						<p class="description" style="color: white;">이세상 최고의 명품옷은 바로<br> 자신감을 입는 것 입니다. <br>
-						- 멈추면, 비로소 보이는 것들 中
-						 </p>
-					</div>
-				</div>
-				<div class="col-md-4">
+				<div class="col-md-4" id="book_more">
 					<div class="service">
 						<div class="icon-holder">
 							<img src="${img}/book_icon_2.png" alt="" class="icon">
 						</div>
-						<h4 class="heading">If I'm moon</h4>
-						<p class="description" style="color: white;">​내가 만약 달이 된다면 <br>
-							지금 그 사람의 창가에도<br>
-							아마 몇 줄기는 내려지겠지<br>
-							-김소월 '첫사랑'-
-						</p>
+						<h2 class="heading">BOOK</h2>
 					</div>
 				</div>
-				<div class="col-md-4">
+				<div class="col-md-4" id="music_more">
+					<div class="service">
+						<div class="icon-holder">
+							<img src="${img}/book_icon_2.png" alt="" class="icon">
+						</div>
+						<h2 class="heading">MUSIC</h2>
+					</div>
+				</div>
+				<div class="col-md-4" id="old_more">
 					<div class="service">
 						<div class="icon-holder">
 							<img src="${img}/book_icon.png" alt="" class="icon">
 						</div>
-						<h4 class="heading">미래</h4>
-						<p class="description" style="color: white;">미래를 예측하는<br> 최선의 방법은 미래를 <br>창조하는 것이다. <br>
-						-알랜 케이
-						</p>
+						<h3 class="heading">Old Market</h3>
 					</div>
 				</div>
 			</div>
@@ -121,7 +111,7 @@
 
 
 	
-	<section id="week_section" class="section">
+	<%-- <section id="week_section" class="section">
 		<div class="container" style=" margin-top: 10px;">
 			<div class="row title text-center">
 				<label id="week_more"><img src="${img}/week.png" alt="" /></label>
@@ -155,12 +145,12 @@
 				</div>
 			</div>
 		</div>
-	</section>
+	</section> --%>
 
 
 	
 	
-	<section id="event" class="section section-padded blue-bg">
+	<section id="event" class="section section-padded blue-bg" style="padding-top: 5%;">
 		<div class="container" id="event_section">
 			<div class="row">
 				<label><img src="${img}/event.png" alt="" /></label>
@@ -187,12 +177,11 @@
 			</div>
 		</div>
 		<div id="event_submain" class="container" style="margin-bottom: 100px;"></div>
+		<div id="event_Reply"></div>
 	</section>
 	
 	
-	<section id="join_section"></section>
-	<section id="mypage_section"></section>
-<section id="team_section" >
+<section id="team_section" style="background: linear-gradient(to bottom, #00a8ff 0%,#29d2db 23%,#5dfcd4 55%,#ffffff 86%);">
 	<div class="container" style="padding-top: 20px; padding-bottom: 20px;">
 		<div class="row title text-center">
 			<label> <img src="${img}/team.png" alt="" /></label>
@@ -310,7 +299,8 @@
 
 
 <section></section>
-<section id="cart_section" style="margin-top: 5%; margin-bottom: 5%;">	</section>
+<section id="cart_section" style="margin-top: 5%; margin-bottom: 10%;">	</section>
+<section id="mypage" style="margin-top: 5%; margin-bottom: 10%;">	</section>
 
 
 	<div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -447,22 +437,28 @@
 		});
 		
 		$('#book_more').click(function() {
-			alert('섹션의 유저아이디 : '+'${user.userid}');
 			book.all('${user.userid}');
+		});
+		$('#music_more').click(function() {
+			alert('준비중입니다.');
+		});
+		$('#old_more').click(function() {
+			alert('준비중입니다.');
 		});
 		$('#event_more').click(function() {
 			Event.event('${user.userid}');
 		});
-		$('#event_tag').click(function() {
-			Event.eventPage();
-		});
+		
 		$('#mypage').click(function() {
 			Member.detail(context+'/member/detail/${user.userid}');
 		});
-		$('#my_cart').click(function() {
-			/* Cart.main(context, '${user.userid}'); */
-			Cart.list('${user.userid}');
-		});
+		
 		
 	});
 </script>
+<%-- 
+$('#my_cart').click(function() {
+			/* Cart.main(context, '${user.userid}'); */
+			Cart.list('${user.userid}');
+		
+		}); --%>
