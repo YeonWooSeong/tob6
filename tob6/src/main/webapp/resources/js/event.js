@@ -139,6 +139,7 @@ var Event = {
             	   var comments = '<div id="reply_area" style="padding-top:50px;">';
                    if(userid == ""){
                        alert("댓글을 달려면 로그인을 해주세요");
+                       alert("왜 안들어가지");
                    }else{
                        $.ajax(context+"/reply/write",{
                             data : {
