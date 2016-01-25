@@ -100,7 +100,7 @@ public class PurchaseController {
 			logger.info(list.toString());
 			String sentence = "TOB 홈페이지 구매내역";
 			String sentence2 = member.getName() +" 님의 구매내역 \n" + "책 이름\t \t 책 가격 \t 수량 \n";
-			
+			int todayTotal = 0;
 			//jsoup 미구현.
 			for (int i = 0; i < list.size(); i++) {
 				String todaybookId = list.get(i).getBookId();
@@ -109,7 +109,10 @@ public class PurchaseController {
 				int todaycount = list.get(i).getCount();
 				
 				sentence2 += todaybookName + "\t" + todayPrice + "\t" + todaycount + "\n";
+				
+				todayTotal += list.get(i).getBookPrice();
 			}
+			sentence2 += "합계 : " + todayTotal;
 			
 			email.setReciver(member.getEmail());
 			email.setSubject(sentence);

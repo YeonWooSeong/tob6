@@ -242,7 +242,7 @@ var book = {
 				$.each(data.list, function(index, value) {
 					$('#'+arr[index]).click(function() {
 						book.bookEmpty();
-						book.mainPage(arr[index]);
+						book.mainPage(arr[index], userid);
 				});
 
 				});	
@@ -251,7 +251,7 @@ var book = {
 			});
 		},
 		
-	mainPage : function(bookId) {
+	mainPage : function(bookId, userid) {
 			$.getJSON(context + '/book/Book_main/'+bookId ,function(data){
 				var bookPage = '<div class="contents" >'
 					+'<div class="book" style="margin: auto; width:1000px;" >'
@@ -266,8 +266,8 @@ var book = {
 					+'<font color="black" size="3px" style="padding-left:30px; font">판매가 :</font>'
 					+'<font color="red" size="7pk"><strong style="font-size: 20px;">'+data.bookPrice+'</strong></font>'
 					+'<font color="purple" size="3px"><strong style="font-size:10px;">[10%↓ 1,500원 할인]</strong></font><br />'
-					+'<span style="padding-left: 30px;"><input type="image" src="'+context+'/resources/images/btn_bag2.png" ></span>'
-					+'<input type="image" src="'+context+'/resources/images/btn_buy2.png" >'
+					+'<span style="padding-left: 30px;"><input type="image" src="'+context+'/resources/images/btn_bag2.png" onclick="Cart.putInCart('+'\''+userid+'\''+','+'\''+this.bookId+'\''+')"></span>'
+					+'<input type="image" src="'+context+'/resources/images/btn_buy2.png" onclick="Cart.putInPurchase('+'\''+userid+'\''+','+'\''+this.bookId+'\''+','+'\''+this.bookPrice+'\''+')" >'
 					+'<br /><br /><hr style="width: 67%;"/><br /><br />'
 					+'<div class="panel panel-default" style="margin:auto; width: 84%;">'
 					+'<div class="panel-heading"><strong style="color: blue;">회원리뷰</strong></div>'

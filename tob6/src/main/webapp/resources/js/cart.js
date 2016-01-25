@@ -276,7 +276,6 @@ var Cart = {
 	},*/
 	
 	remove : function(bookId, userid) {
-		alert('remove 넘어온 유저아이디 : ' +userid);
 			$.ajax(context+'/cart/remove', {
 				data : {
 					bookId : bookId,
