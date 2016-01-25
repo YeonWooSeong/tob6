@@ -812,7 +812,8 @@ var AdminMember = {
 		},
 		
 		remove : function(userid) {
-			$.ajax('${context}/admin/member_delete/'+userid,{
+			alert("보안을 위해 잠시 비활성화 하였습니다.");
+/* 			$.ajax('${context}/admin/member_delete/'+userid,{
 				data : {
 					userid : userid
 				},
@@ -824,7 +825,7 @@ var AdminMember = {
 				error : function(xhr, status, msg) {
 					alert('에러발생상태 : '+status +', 내용 :'+msg);
 				}
-			});
+			}); */
 		}
 };
 
@@ -1188,7 +1189,8 @@ var AdminBook = {
 		},
 		
 		remove : function(bookId) {
-			$.ajax('${context}/admin/book_delete/'+bookId,{
+			alert("보안을 위해 잠시 비활성화 하였습니다.");
+/* 			$.ajax('${context}/admin/book_delete/'+bookId,{
 				data : {
 					bookId : bookId
 				},
@@ -1200,7 +1202,7 @@ var AdminBook = {
 				error : function(xhr, status, msg) {
 					alert('에러발생상태 : '+status +', 내용 :'+msg);
 				}
-			});
+			}); */
 		},
 		
 		inputBookId : function() {
@@ -1260,7 +1262,7 @@ var adminPurchase = {
 				
 				$.each(data, function(i, val) {
 					$('#'+arr[i]).click(function() {
-						alert('삭제 버튼 먹음');
+						alert("보안을 위해 잠시 비활성화 하였습니다.");
 					});
 				});		
 			});
@@ -1309,7 +1311,7 @@ var AdminPurchase2 = {
 				
 				$.each(data, function(i, val) {
 					$('#'+arr[i]).click(function() {
-						alert('삭제 버튼 먹음');
+						alert("보안을 위해 잠시 비활성화 하였습니다.");
 					});
 				});
 			});			
