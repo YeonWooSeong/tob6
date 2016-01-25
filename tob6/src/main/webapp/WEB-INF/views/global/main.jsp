@@ -107,45 +107,6 @@
 		<div id="submain"></div>
 	</section>
 
-	
-
-
-	
-	<%-- <section id="week_section" class="section">
-		<div class="container" style=" margin-top: 10px;">
-			<div class="row title text-center">
-				<label id="week_more"><img src="${img}/week.png" alt="" /></label>
-			</div>
-			<div class="row no-margin">
-				<div class="col-md-7 no-padding col-md-offset-5 pricings text-center">
-					<div class="pricing">
-						<div class="box-main active">
-						<label id="you"><img alt="참 좋은 당신을 만났습니다." src="${img}/weekday1.jpg" style="width: 141px; height: 203px;">
-						</label>
-						</div>
-						<div class="box-second active">
-							<label id="happy"><img src="${img}/weekday2.jpg"
-						alt="나는 이제 좀 행복해져야겠다." style="width: 141px; height: 203px;"></label>
-						</div>
-					</div>
-					<div class="pricing">
-						<div class="box-main">
-							<label id="story"><img src="${img}/recome1.jpg"
-						alt="내 스물아홉 이야기" style="width: 141px; height: 203px;"></label>
-							
-						</div>
-						<div class="box-second">
-							<ul class="white-list text-left">
-								<li>이 주의 책 추천은</li>
-								<li>출판사가 추천하는 </li>
-								<li>한 주간의 책입니다.</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section> --%>
 
 
 	
@@ -153,7 +114,6 @@
 	<section id="event" class="section section-padded blue-bg" style="padding-top: 5%;">
 		<div class="container" id="event_section">
 			<div class="row">
-				<label><img src="${img}/event.png" alt="" /></label>
 				<div class="col-md-8 col-md-offset-2">
 					<div class="owl-twitter owl-carousel">
 						<div class="item text-center">
