@@ -11,7 +11,6 @@ var Member = {
 				datatype : 'json',
 				success : function(data) {
 					if (data.userid === $('#userid').val() && data.password === $('#password').val()) {
-						alert('로그인 성공'+data.userid);
 						location.href = "";
 					} else if (data.userid === $('#userid').val() && data.password !== $('#password').val()){
 						alert('비밀번호를 확인하세요');

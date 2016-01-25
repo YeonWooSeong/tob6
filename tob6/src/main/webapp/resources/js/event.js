@@ -78,7 +78,6 @@ var Event = {
             $.each(data.list, function(index,value) {
                
                    $('#'+ arr[index]).click( function() {
-                       alert("이벤트 댓글달기로 이동1");
                         Event.eventPage(arr[index],userid,pageNo);
 
             });
@@ -90,7 +89,6 @@ var Event = {
      });
 },
    eventPage : function(evtId,userid,pageNo) {
-      alert("이벤트페이지 진입 "+userid);
       $.getJSON(context +'/reply/list/'+userid+'/'+evtId+'/'+pageNo,function(data){
           var count = data.count;
              var pageNo = data.pageNo; 
