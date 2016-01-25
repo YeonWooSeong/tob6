@@ -134,11 +134,13 @@ public class EventController {
 				Map<String,Object> map = new HashMap<String,Object>();
 				
 				map.put("list", service.searchByEventName(CommandEventFactory.search("EVENT_NAME",evtName,pageNo)));
+				map.put("count", count);
 				map.put("totalPage", totalPage);
 				map.put("pageNo", pageNumber);
 				map.put("startPage", startPage);
 				map.put("lastPage", lastPage);
 				map.put("groupSize", groupSize);
+				map.put("evtName2", evtName);
 				logger.info("EventController:Event_find() 커맨드를 거친 이벤트 이 :{}",evtName);
 				logger.info("EventController:Event_find() 페이지 번호 :{}",pageNo);
 				

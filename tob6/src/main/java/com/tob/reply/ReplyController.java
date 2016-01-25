@@ -59,7 +59,7 @@ public class ReplyController {
 			Map<String,Object> map = new HashMap<String,Object>();
 			reply.setComment(comment);
 			reply.setWriter(writer);
-			reply.setEvtId("soft");
+			reply.setEvtId(evtId);
 			int result = service.insert(reply);
 			//map.put("list", service.selectAll());
 			model.addAttribute("list", service.selectAll());
