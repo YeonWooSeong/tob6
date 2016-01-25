@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.tob.book.BookServiceImpl;
+import com.tob.book.BookVO;
 import com.tob.member.MemberVO;
 
 
@@ -28,6 +30,7 @@ public class CartController {
 	@Autowired CartVO cart;
 	@Autowired BookCartVO bookcart;
 	@Autowired CartServiceImpl service;
+	@Autowired BookServiceImpl bookService;
 	List<?> BooksInCart;
 	@RequestMapping("/Cart")
 	public String main(){
@@ -101,7 +104,19 @@ public class CartController {
 		String[] result = data.split(",");
 		logger.info("분리된 북아이디 : {}" ,result[0]);
 		logger.info("분리된 수량 : {}" ,result[1]);*/
-		int result = service.changeCount(userid, count, bookId);
+		BookVO book = bookService.searchByBook(bookId);
+		String stock = book.getStockSeq();
+		logger.info("해당 책의 재고량 : {}", stock);
+		if (count > Integer.parseInt(stock)) {
+			model.addAttribute("over","Countover");
+			logger.info("책 재고량보다 많이 입력");
+		} else {
+			service.changeCount(userid, count, bookId);
+			model.addAttribute("over","success");
+			model.addAttribute("list",service.getList(userid));
+			
+			logger.info("책 재고량보다 적게 입력");
+		}
 		
 		return model;
 	}
@@ -109,11 +124,15 @@ public class CartController {
 	@RequestMapping("/remove")
 	public Model remove(
 			String bookId,
+			String userid,
 			Model model
 			){
 		logger.info("카트 컨트롤러 = remove() 진입");
 		logger.info("넘어온 북아이디 : {}", bookId);
+		logger.info("넘어온 유저아이디 : {}", userid);
 		int result = service.remove(bookId);
+		model.addAttribute("success","success");
+		model.addAttribute("list",service.getList(userid));
 		return model;
 	}
 	@RequestMapping("/empty")
