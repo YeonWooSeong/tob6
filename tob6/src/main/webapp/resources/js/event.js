@@ -99,7 +99,7 @@ var Event = {
          
          var eventPage = '<div class="contents" id="eventPage">'
             +'<div class="event" style="margin-left :175px;  margin-bottom:2%;">'
-            +'<img alt="" src="'+context+'/resources/images/skill.jpg">'
+            +'<img alt="" src="'+context+'/resources/images/skill.jpg" style="margin:auto">'
             +'<div style="margin-top:35px;">'
             +'<label for="reply" style="display:block;">댓글</label>'
             +'<textarea name="reply" cols="82" rows="20" style="width:70%; height :80px; color:black;" placeholder="로그인 후 댓글을 입력하세요"></textarea>'
