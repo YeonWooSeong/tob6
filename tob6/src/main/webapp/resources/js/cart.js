@@ -315,7 +315,6 @@ var Cart = {
 			mimeType : "application/json;",
 			async : false,
 			success : function() {
-				alert('구매완료 후 장바구니 비우기 완료.');
 			},
 			error : function() {
 				

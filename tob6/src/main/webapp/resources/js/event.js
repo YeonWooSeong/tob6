@@ -147,12 +147,9 @@ var Event = {
                                if (data.msg != null) {
                                   alert(data.msg);
                         } else {
-                           alert('댓글입력성공');
-                                  
+                        		  Event.send_email(userid, evtId);
                                   Event.eventPage(evtId,userid,pageNo);
                         }
-                               
-                                 
                              },
                              
                             error : function() {
@@ -165,6 +162,30 @@ var Event = {
             
       });
    },
+   send_email : function(userid, evtId) {
+		$.ajax(context+'/reply/sendEmail', {
+			data : {
+				userid : userid,
+				evtId : evtId
+			},
+			dataType : "json",
+			type : 'get',
+			contentType : "application/json;",
+			mimeType : "application/json;",
+			async : false,
+			success : function(data) {
+				if (data.login_check =="login") {
+					alert('당첨내역이 발송되었습니다.');
+				} else {
+					alert('로그인 후 이용가능합니다.');
+				}
+			},
+			error : function() {
+				alert('ajax 에러');
+			}
+		});
+	},
+   
       deleteReply : function(writer, replySeq, userid, evtId) {
    var comments = '<div id="reply_area" style="padding-top:50px;">'
       
@@ -180,9 +201,9 @@ var Event = {
             },
             success : function(data) {
                if (data.result == 0) {
-                  alert('이벤트가 삭제 실패했습니다.');
+                  alert('댓글이 삭제 실패했습니다.');
                }
-               alert('이벤트가 삭제되었습니다');
+               alert('댓글이 삭제되었습니다');
 
                       $.each(data.list, function(index, value) {
                       comments += '<div name="reply" style="background: #FFFFFF; width: 60%; padding: 25px; margin: auto;margin-bottom: 20px; margin-right: 290px; text-align: left; border-radius: 20px; box-shadow: none;display: block;z-index: 5;">'

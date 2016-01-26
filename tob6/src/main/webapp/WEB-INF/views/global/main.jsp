@@ -288,7 +288,7 @@
 	<div class="modal fade" id="modal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content modal-popup">
-				<a href="#" class="close-link"><i class="icon_close_alt2"></i></a>
+				<a href="#" class="close-link" data-dismiss="modal"><i class="icon_close_alt2"></i></a>
 				<h3 class="white">Sign Up</h3>
 				<form class="popup-form" method="post">
 					<input type="text" name="up_userid" id="up_userid" class="form-control form-white" placeholder="ID">
@@ -314,7 +314,7 @@
 	<div class="modal fade" id="modal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content modal-popup">
-				<a href="#" class="close-link"><i class="icon_close_alt2"></i></a>
+				<a href="#" class="close-link" data-dismiss="modal"><i class="icon_close_alt2"></i></a>
 				<h3 class="white">정보 수정</h3>
 				<form class="popup-form" method="post" id="form_mem_change" >
 					<input type="text" name="ch_userid" id="ch_userid" class="form-control form-white" placeholder="${user.userid}" readonly/>

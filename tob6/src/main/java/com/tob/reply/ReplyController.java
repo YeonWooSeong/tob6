@@ -1,9 +1,11 @@
 package com.tob.reply;
 
+import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.mail.MessagingException;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -16,9 +18,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.tob.cart.BookCartVO;
 import com.tob.event.CommandEventFactory;
 import com.tob.global.CommandFactory;
+import com.tob.member.MemberServiceImpl;
 import com.tob.member.MemberVO;
+import com.tob.purchase.Email_Pur;
 
 import sun.print.resources.serviceui;
 
@@ -31,6 +36,8 @@ public class ReplyController {
 	@Autowired ReplyServiceImpl service;
 	@Autowired ReplyVO reply;
 	@Autowired MemberVO member;
+	@Autowired MemberServiceImpl memberService;
+	@Autowired EmailSender_Re emailSender;
 	
 	@RequestMapping("/write")
 	public Model write(
@@ -68,10 +75,33 @@ public class ReplyController {
 		
 	}
 	
-	
-	@RequestMapping("/read")
-	public void read(){
+	@RequestMapping("/sendEmail")
+	public Model sendEmail(
+			String userid,
+			String evtId,
+			HttpSession session,
+			Model model
+			) throws UnsupportedEncodingException, MessagingException{
+		Email_Re email = new Email_Re();
 		
+		logger.info("리플 컨트롤러 - sendEmail() 진입");
+		logger.info("넘어온 유저아이디 : " + userid);
+		if (session.getAttribute("user") == null) {
+			model.addAttribute("login_check","unlogin");
+		} else {
+			MemberVO member = (MemberVO) session.getAttribute("user");
+			logger.info("로그인 된 유저의 이메일 : "+member.getEmail());
+			member = memberService.searchById(member.getUserid());
+			logger.info("이메일로 찾은 멤버의 아이디 : "+member.getUserid());
+			model.addAttribute("login_check","login");
+			String sentence = "TOB 이벤트 당첨내역";
+			String sentence2 = member.getName() +" 님 " + evtId + "에 당첨되신 것을 축하드립니다.";
+			email.setReciver(member.getEmail());
+			email.setSubject(sentence);
+			email.setContent(sentence2);
+			emailSender.sendMail(email);
+		}
+		return model;
 	}
 	@RequestMapping("/update")
 	public @ResponseBody ReplyVO update(
