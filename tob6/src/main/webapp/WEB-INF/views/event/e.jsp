@@ -3,7 +3,7 @@
 var AdminEvent = {
            detail : function(evtId ) {
                 $ .getJSON (context +'/admin/event_profile/' +evtId , function(data) {
-                     $('<form action ="${context}/admin/event_update" id="eventFrm" method="post">').appendTo($ ('.mainView').empty());
+                     $('<form action ="${context}/admin/event_" id="eventFrm" method="post">').appendTo($ ('.mainView').empty());
                  var table = '<div class="panel panel-default" style="width: 25%; margin: auto;">'
      			  +'<div class="panel-heading" style="width: 100%;">'
     			 +'<div style="color: #7fb3b3; font-size: 20px; font-family: 굴림; font-weight:bold; margin-left: 120px;" >'

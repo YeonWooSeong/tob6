@@ -71,7 +71,7 @@ private static final Logger logger = LoggerFactory.getLogger(AccountController.c
 		return "admin/admin/test.tiles";
 	}
 	
-	@RequestMapping("/ratio")
+	@RequestMapping("/raddtio")
 	public Model ratio(
 			Model model
 			) {
